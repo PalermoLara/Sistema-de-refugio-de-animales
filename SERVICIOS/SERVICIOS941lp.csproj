@@ -80,7 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="seguridad941lp.cs" />
+    <Compile Include="encriptador_941lp.cs" />
     <Compile Include="sessionManager941lp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario_941lp.cs" />

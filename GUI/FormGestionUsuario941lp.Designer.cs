@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class FormAdministradorUsuario941lp
+    partial class FormGestionUsuario941lp
     {
         /// <summary>
         /// Required designer variable.
@@ -57,8 +57,6 @@
             this.labelModo = new System.Windows.Forms.Label();
             this.checkBoxTodosConsulta = new System.Windows.Forms.CheckBox();
             this.checkBoxActivosConsulta = new System.Windows.Forms.CheckBox();
-            this.txtLoginUsuario = new System.Windows.Forms.TextBox();
-            this.labelLogIn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -184,7 +182,7 @@
             // 
             this.labelRolAdministradorUsuarios.AutoSize = true;
             this.labelRolAdministradorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRolAdministradorUsuarios.Location = new System.Drawing.Point(19, 659);
+            this.labelRolAdministradorUsuarios.Location = new System.Drawing.Point(19, 600);
             this.labelRolAdministradorUsuarios.Name = "labelRolAdministradorUsuarios";
             this.labelRolAdministradorUsuarios.Size = new System.Drawing.Size(70, 31);
             this.labelRolAdministradorUsuarios.TabIndex = 7;
@@ -216,7 +214,7 @@
             // 
             // txtEmailUsuario
             // 
-            this.txtEmailUsuario.Location = new System.Drawing.Point(251, 713);
+            this.txtEmailUsuario.Location = new System.Drawing.Point(251, 654);
             this.txtEmailUsuario.Name = "txtEmailUsuario";
             this.txtEmailUsuario.Size = new System.Drawing.Size(317, 31);
             this.txtEmailUsuario.TabIndex = 5;
@@ -225,7 +223,7 @@
             // 
             this.labelEmailAdministradorUsuarios.AutoSize = true;
             this.labelEmailAdministradorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmailAdministradorUsuarios.Location = new System.Drawing.Point(19, 713);
+            this.labelEmailAdministradorUsuarios.Location = new System.Drawing.Point(19, 654);
             this.labelEmailAdministradorUsuarios.Name = "labelEmailAdministradorUsuarios";
             this.labelEmailAdministradorUsuarios.Size = new System.Drawing.Size(95, 31);
             this.labelEmailAdministradorUsuarios.TabIndex = 16;
@@ -258,7 +256,7 @@
             this.comboBoxRoles.Items.AddRange(new object[] {
             "Administrador",
             "Maestro"});
-            this.comboBoxRoles.Location = new System.Drawing.Point(251, 659);
+            this.comboBoxRoles.Location = new System.Drawing.Point(251, 600);
             this.comboBoxRoles.Name = "comboBoxRoles";
             this.comboBoxRoles.Size = new System.Drawing.Size(317, 33);
             this.comboBoxRoles.TabIndex = 4;
@@ -345,31 +343,12 @@
             this.checkBoxActivosConsulta.UseVisualStyleBackColor = true;
             this.checkBoxActivosConsulta.CheckedChanged += new System.EventHandler(this.checkBoxActivosConsulta_CheckedChanged);
             // 
-            // txtLoginUsuario
-            // 
-            this.txtLoginUsuario.Location = new System.Drawing.Point(251, 604);
-            this.txtLoginUsuario.Name = "txtLoginUsuario";
-            this.txtLoginUsuario.Size = new System.Drawing.Size(317, 31);
-            this.txtLoginUsuario.TabIndex = 3;
-            // 
-            // labelLogIn
-            // 
-            this.labelLogIn.AutoSize = true;
-            this.labelLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogIn.Location = new System.Drawing.Point(19, 604);
-            this.labelLogIn.Name = "labelLogIn";
-            this.labelLogIn.Size = new System.Drawing.Size(99, 31);
-            this.labelLogIn.TabIndex = 29;
-            this.labelLogIn.Text = "LOGIN";
-            // 
-            // FormAdministradorUsuario941lp
+            // FormGestionUsuario941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1653, 856);
-            this.Controls.Add(this.txtLoginUsuario);
-            this.Controls.Add(this.labelLogIn);
             this.Controls.Add(this.checkBoxActivosConsulta);
             this.Controls.Add(this.checkBoxTodosConsulta);
             this.Controls.Add(this.labelModo);
@@ -392,7 +371,7 @@
             this.Controls.Add(this.btnActivarDesactivar);
             this.Controls.Add(this.btnAltaUsuario);
             this.Controls.Add(this.dataUsuarios);
-            this.Name = "FormAdministradorUsuario941lp";
+            this.Name = "FormGestionUsuario941lp";
             this.Text = "FormAdministradorUsuario";
             this.Load += new System.EventHandler(this.FormAdministradorUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).EndInit();
@@ -425,8 +404,6 @@
         private System.Windows.Forms.CheckBox checkBoxTodosConsulta;
         private System.Windows.Forms.CheckBox checkBoxActivosConsulta;
         private System.Windows.Forms.Button btnActivarDesactivar;
-        private System.Windows.Forms.TextBox txtLoginUsuario;
-        private System.Windows.Forms.Label labelLogIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

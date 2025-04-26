@@ -17,7 +17,7 @@ namespace GUI
     public partial class FormularioMenuPrincipal941lp : Form
     {
         bllUsuario_941lp bllUsuario_941lp;
-        private readonly FormAdministradorUsuario941lp formularioAdministradorUsuario_941lp;
+        private readonly FormGestionUsuario941lp formularioAdministradorUsuario_941lp;
         private readonly FormCambiarContraseña formularioCambiarContraseña_941lp;
         private List<Panel> submenus_941lp;
 
@@ -26,7 +26,7 @@ namespace GUI
             InitializeComponent();
             InicializarSubmenus_941lp();
             bllUsuario_941lp = new bllUsuario_941lp();
-            formularioAdministradorUsuario_941lp = new FormAdministradorUsuario941lp();
+            formularioAdministradorUsuario_941lp = new FormGestionUsuario941lp();
             formularioCambiarContraseña_941lp = new FormCambiarContraseña();
         }
 
@@ -150,6 +150,18 @@ namespace GUI
         private void panelMenuPrincipal_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnIniciarSesion2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp() != null)
+                {
+                    MessageBox.Show("Ya hay una sesión iniciada.");
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

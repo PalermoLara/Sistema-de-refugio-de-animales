@@ -77,7 +77,6 @@ namespace ORM
         {
             if (usuario_941lp.rol_941lp != "Administrador")
             {
-                usuario_941lp.intentos_941lp++;
                 if (usuario_941lp.intentos_941lp >= 3)
                 {
                     usuario_941lp.bloqueo_941lp = true;
@@ -91,6 +90,7 @@ namespace ORM
                 }
                 else
                 {
+                    usuario_941lp.intentos_941lp++;
                     dao_941lp.Query_941lp("UPDATE Usuario_941lp SET intentos_941lp = @intentos WHERE dni_941lp = @dni",
                         new Dictionary<string, object>
                         {

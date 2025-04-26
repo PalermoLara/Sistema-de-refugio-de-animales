@@ -29,7 +29,17 @@ namespace SERVICIOS
             return usuarioSession_941lp;
         }
 
-        public void LogIn(Usuario_941lp usuario_941lp)
+        public bool Session_941lp()
+        {
+            bool iniciada_941lp = false;
+            if(usuarioSession_941lp!=null)
+            {
+                iniciada_941lp = true;
+            }
+            return iniciada_941lp;
+        }
+
+        public void LogIn_941lp(Usuario_941lp usuario_941lp)
         {
             if(Gestor_941lp.usuarioSession_941lp == null)
             {

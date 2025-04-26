@@ -15,11 +15,11 @@ using SERVICIOS;
 
 namespace GUI
 {
-    public partial class FormAdministradorUsuario941lp : Form
+    public partial class FormGestionUsuario941lp : Form
     {
         bllUsuario_941lp bllUsuario_941lp;
         ModoOperacion_941lp modo_941lp;
-        public FormAdministradorUsuario941lp()
+        public FormGestionUsuario941lp()
         {
             InitializeComponent();
             bllUsuario_941lp = new bllUsuario_941lp();
@@ -56,7 +56,6 @@ namespace GUI
                 txtNombreUsuario.Enabled = habilitar_941lp;
                 txtEmailUsuario.Enabled = habilitar_941lp;
                 comboBoxRoles.Enabled = habilitar_941lp;
-                txtLoginUsuario.Enabled = !habilitar_941lp;
             }
             if(modo_941lp == ModoOperacion_941lp.Modificar)
             {
@@ -65,7 +64,6 @@ namespace GUI
                 txtNombreUsuario.Enabled = habilitar_941lp;
                 txtEmailUsuario.Enabled = habilitar_941lp;
                 comboBoxRoles.Enabled = habilitar_941lp;
-                txtLoginUsuario.Enabled = !habilitar_941lp;
             }
             else
             {
@@ -74,7 +72,6 @@ namespace GUI
                 txtNombreUsuario.Enabled = habilitar_941lp;
                 txtEmailUsuario.Enabled = habilitar_941lp;
                 comboBoxRoles.Enabled = habilitar_941lp;
-                txtLoginUsuario.Enabled = habilitar_941lp;
             }
         }
 
@@ -160,7 +157,6 @@ namespace GUI
                     //nombre real
                     txtNombreUsuario.Text = dataUsuarios.SelectedRows[0].Cells[1].Value.ToString();
                     txtApellidoUsuario.Text = dataUsuarios.SelectedRows[0].Cells[2].Value.ToString();
-                    txtLoginUsuario.Text = dataUsuarios.SelectedRows[0].Cells[3].Value.ToString();
                     comboBoxRoles.Text = dataUsuarios.SelectedRows[0].Cells[4].Value.ToString();
                     txtEmailUsuario.Text = dataUsuarios.SelectedRows[0].Cells[5].Value.ToString();
                 }
@@ -213,11 +209,13 @@ namespace GUI
                         break;
                     case ModoOperacion_941lp.Modificar:
                         bllUsuario_941lp.Modificar_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text,  comboBoxRoles.Text, txtEmailUsuario.Text);
+                        MessageBox.Show("Usuario modificado exitosamente");
                         MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
                         break;
                     case ModoOperacion_941lp.ActivarDesactivar:
                         bllUsuario_941lp.ActivarDesactivar_941lp(txtDni.Text);
                         MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
+
                         break;
                     case ModoOperacion_941lp.Desbloquear:
                         bllUsuario_941lp.Desbloquear_941lp(txtDni.Text);
@@ -274,6 +272,7 @@ namespace GUI
             btnModificarUsuario.Enabled = true;
             btnDesbloquearUsuario.Enabled = true;
             btnSalir.Enabled = true;
+            HabilitarTxt_941lp(false);
             DefinirModoEnTxt_941lp();
             LimpiarTxt_941lp();
         }

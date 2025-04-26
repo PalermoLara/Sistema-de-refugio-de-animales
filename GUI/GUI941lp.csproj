@@ -55,11 +55,11 @@
   <ItemGroup>
     <Compile Include="EstadoLogIn941lp.cs" />
     <Compile Include="EstadoMenu941lp.cs" />
-    <Compile Include="FormAdministradorUsuario941lp.cs">
+    <Compile Include="FormGestionUsuario941lp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdministradorUsuario941lp.Designer.cs">
-      <DependentUpon>FormAdministradorUsuario941lp.cs</DependentUpon>
+    <Compile Include="FormGestionUsuario941lp.Designer.cs">
+      <DependentUpon>FormGestionUsuario941lp.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCambiarContraseña.cs">
       <SubType>Form</SubType>
@@ -83,8 +83,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAdministradorUsuario941lp.resx">
-      <DependentUpon>FormAdministradorUsuario941lp.cs</DependentUpon>
+    <EmbeddedResource Include="FormGestionUsuario941lp.resx">
+      <DependentUpon>FormGestionUsuario941lp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCambiarContraseña.resx">
       <DependentUpon>FormCambiarContraseña.cs</DependentUpon>

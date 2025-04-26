@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SERVICIOS
 {
-    public class seguridad941lp
+    public class encriptador_941lp
     {
         #region CIFRADO IRREVERSIBLE SHA-256 (contraseña)
         public string GetSHA256_941lp(string str_941lp)

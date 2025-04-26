@@ -56,6 +56,7 @@
             this.btnUsuarioMenuPrincipal = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelWhiskerWare = new System.Windows.Forms.Label();
+            this.btnIniciarSesion2 = new System.Windows.Forms.Button();
             this.panelMenuPrincipal.SuspendLayout();
             this.panelSubMenuMaestro.SuspendLayout();
             this.panelSubMenuAdministrador.SuspendLayout();
@@ -135,7 +136,7 @@
             this.panelMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.panelMenuPrincipal.Name = "panelMenuPrincipal";
-            this.panelMenuPrincipal.Size = new System.Drawing.Size(300, 1395);
+            this.panelMenuPrincipal.Size = new System.Drawing.Size(300, 1061);
             this.panelMenuPrincipal.TabIndex = 9;
             this.panelMenuPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenuPrincipal_Paint);
             // 
@@ -372,12 +373,23 @@
             this.labelWhiskerWare.TabIndex = 11;
             this.labelWhiskerWare.Text = "WHISKER-WARE";
             // 
+            // btnIniciarSesion2
+            // 
+            this.btnIniciarSesion2.Location = new System.Drawing.Point(306, 0);
+            this.btnIniciarSesion2.Name = "btnIniciarSesion2";
+            this.btnIniciarSesion2.Size = new System.Drawing.Size(387, 75);
+            this.btnIniciarSesion2.TabIndex = 12;
+            this.btnIniciarSesion2.Text = "Iniciar sesión";
+            this.btnIniciarSesion2.UseVisualStyleBackColor = true;
+            this.btnIniciarSesion2.Click += new System.EventHandler(this.btnIniciarSesion2_Click);
+            // 
             // FormularioMenuPrincipal941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1666, 1395);
+            this.ClientSize = new System.Drawing.Size(1666, 1061);
+            this.Controls.Add(this.btnIniciarSesion2);
             this.Controls.Add(this.labelWhiskerWare);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelMenuPrincipal);
@@ -422,5 +434,6 @@
         private System.Windows.Forms.Button btnAdopcion;
         private System.Windows.Forms.Panel panelSubMenuReportes;
         private System.Windows.Forms.Label labelWhiskerWare;
+        private System.Windows.Forms.Button btnIniciarSesion2;
     }
 }

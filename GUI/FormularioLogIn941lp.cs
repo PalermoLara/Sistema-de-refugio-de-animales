@@ -30,29 +30,31 @@ namespace GUI
                 if (bllUsuario_941lp.ValidarExistenciaNombreUsuario_941lp(txtNombreUsuario.Text.Trim()))
                 {
                     Usuario_941lp usuario_941lp = bllUsuario_941lp.RetornarUsuarios_941lp().Find(x => x.nombreUsuario_941lp == txtNombreUsuario.Text);
-                    if (bllUsuario_941lp.ValidarContraseñaActual_941lp(txtContraseñaUsuario.Text))
+                    if (bllUsuario_941lp.UsuarioActivo_941lp(usuario_941lp))
                     {
-                        if (usuario_941lp.activo_941lp == true)
+                        if (!(bllUsuario_941lp.UsuarioBloqueado_941lp(usuario_941lp)))
                         {
-                            if (usuario_941lp.bloqueo_941lp == false)
+                            if (bllUsuario_941lp.ValidarContraseñaActual_941lp(txtContraseñaUsuario.Text))
                             {
-                                sessionManager941lp.Gestor_941lp.LogIn(usuario_941lp);
+                                bllUsuario_941lp.ReiniciarIntentos_941lp(usuario_941lp);
+                                sessionManager941lp.Gestor_941lp.LogIn_941lp(usuario_941lp);
                                 GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoMenu941lp());
                             }
                             else
                             {
-                                MessageBox.Show("Usuario bloqueado");
+                                bllUsuario_941lp.AumentarIntentos_941lp(usuario_941lp);
+                                MessageBox.Show("Contraseña incorrecta");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Usuario inactivo");
+
+                            MessageBox.Show("Usuario bloqueado");
                         }
                     }
                     else
                     {
-                        bllUsuario_941lp.AumentarIntentos_941lp(usuario_941lp);
-                        MessageBox.Show("Contraseña incorrecta");
+                        MessageBox.Show("Usuario inactivo");
                     }
                 }
                 else
