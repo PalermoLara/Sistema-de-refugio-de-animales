@@ -55,17 +55,41 @@
   <ItemGroup>
     <Compile Include="EstadoLogIn941lp.cs" />
     <Compile Include="EstadoMenu941lp.cs" />
+    <Compile Include="FormEstadoDeAdopcion_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEstadoDeAdopcion_941lp.Designer.cs">
+      <DependentUpon>FormEstadoDeAdopcion_941lp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFichaDeIngreso_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFichaDeIngreso_941lp.Designer.cs">
+      <DependentUpon>FormFichaDeIngreso_941lp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGestionFichaMedica_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGestionFichaMedica_941lp.Designer.cs">
+      <DependentUpon>FormGestionFichaMedica_941lp.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGestionUsuario941lp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormGestionUsuario941lp.Designer.cs">
       <DependentUpon>FormGestionUsuario941lp.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCambiarContraseña.cs">
+    <Compile Include="FormCambiarContraseña_941lp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCambiarContraseña.Designer.cs">
-      <DependentUpon>FormCambiarContraseña.cs</DependentUpon>
+    <Compile Include="FormCambiarContraseña_941lp.Designer.cs">
+      <DependentUpon>FormCambiarContraseña_941lp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRegistroAnimales_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegistroAnimales_941lp.Designer.cs">
+      <DependentUpon>FormRegistroAnimales_941lp.cs</DependentUpon>
     </Compile>
     <Compile Include="GestorFormulario941lp.cs" />
     <Compile Include="IEstado941lp.cs" />
@@ -83,11 +107,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormEstadoDeAdopcion_941lp.resx">
+      <DependentUpon>FormEstadoDeAdopcion_941lp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFichaDeIngreso_941lp.resx">
+      <DependentUpon>FormFichaDeIngreso_941lp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGestionFichaMedica_941lp.resx">
+      <DependentUpon>FormGestionFichaMedica_941lp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormGestionUsuario941lp.resx">
       <DependentUpon>FormGestionUsuario941lp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCambiarContraseña.resx">
-      <DependentUpon>FormCambiarContraseña.cs</DependentUpon>
+    <EmbeddedResource Include="FormCambiarContraseña_941lp.resx">
+      <DependentUpon>FormCambiarContraseña_941lp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegistroAnimales_941lp.resx">
+      <DependentUpon>FormRegistroAnimales_941lp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioLogIn941lp.resx">
       <DependentUpon>FormularioLogIn941lp.cs</DependentUpon>

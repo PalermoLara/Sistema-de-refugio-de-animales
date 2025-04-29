@@ -17,7 +17,7 @@ namespace BLL
             seguridad_941lp = new encriptador_941lp();
         }
 
-        public void Alta_941lp(string dni_941lp, string nombre_941lp, string apellido_941lp,string email_941lp,string rol_941lp)
+        public void Alta_941lp(string dni_941lp, string nombre_941lp, string apellido_941lp,string rol_941lp, string email_941lp)
         {
             try
             { 
@@ -27,6 +27,17 @@ namespace BLL
                 orm_941lp.Alta_941lp(nuevoUsuario_941lp);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        public bool PrimerInicioDeSesion_941lp(string contraseña_941lp)
+        {
+            bool coincide_941lp = false;
+            string contraseñaVieja_941lp = HashearContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp + sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().apellido_941lp);
+            if (sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().contraseña_941lp == contraseñaVieja_941lp)
+            {
+                coincide_941lp = true;
+            }
+            return coincide_941lp;
         }
 
         public bool ValidarExistenciaNombreUsuario_941lp(string nombreUsuario_941lp)

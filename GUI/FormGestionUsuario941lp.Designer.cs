@@ -57,6 +57,7 @@
             this.labelModo = new System.Windows.Forms.Label();
             this.checkBoxTodosConsulta = new System.Windows.Forms.CheckBox();
             this.checkBoxActivosConsulta = new System.Windows.Forms.CheckBox();
+            this.checkBoxBloqueadosConsulta = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -343,12 +344,25 @@
             this.checkBoxActivosConsulta.UseVisualStyleBackColor = true;
             this.checkBoxActivosConsulta.CheckedChanged += new System.EventHandler(this.checkBoxActivosConsulta_CheckedChanged);
             // 
+            // checkBoxBloqueadosConsulta
+            // 
+            this.checkBoxBloqueadosConsulta.AutoSize = true;
+            this.checkBoxBloqueadosConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxBloqueadosConsulta.Location = new System.Drawing.Point(251, 720);
+            this.checkBoxBloqueadosConsulta.Name = "checkBoxBloqueadosConsulta";
+            this.checkBoxBloqueadosConsulta.Size = new System.Drawing.Size(316, 48);
+            this.checkBoxBloqueadosConsulta.TabIndex = 27;
+            this.checkBoxBloqueadosConsulta.Text = "BLOQUEADOS";
+            this.checkBoxBloqueadosConsulta.UseVisualStyleBackColor = true;
+            this.checkBoxBloqueadosConsulta.CheckedChanged += new System.EventHandler(this.checkBoxBloqueados_CheckedChanged);
+            // 
             // FormGestionUsuario941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1653, 856);
+            this.Controls.Add(this.checkBoxBloqueadosConsulta);
             this.Controls.Add(this.checkBoxActivosConsulta);
             this.Controls.Add(this.checkBoxTodosConsulta);
             this.Controls.Add(this.labelModo);
@@ -411,5 +425,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.CheckBox checkBoxBloqueadosConsulta;
     }
 }

@@ -18,7 +18,7 @@ namespace GUI
     {
         bllUsuario_941lp bllUsuario_941lp;
         private readonly FormGestionUsuario941lp formularioAdministradorUsuario_941lp;
-        private readonly FormCambiarContraseña formularioCambiarContraseña_941lp;
+        private readonly FormCambiarContraseña_941lp formularioCambiarContraseña_941lp;
         private List<Panel> submenus_941lp;
 
         public FormularioMenuPrincipal941lp()
@@ -27,7 +27,7 @@ namespace GUI
             InicializarSubmenus_941lp();
             bllUsuario_941lp = new bllUsuario_941lp();
             formularioAdministradorUsuario_941lp = new FormGestionUsuario941lp();
-            formularioCambiarContraseña_941lp = new FormCambiarContraseña();
+            formularioCambiarContraseña_941lp = new FormCambiarContraseña_941lp();
         }
 
         private void InicializarSubmenus_941lp()
@@ -90,7 +90,11 @@ namespace GUI
 
         private void FormularioMenu_Load(object sender, EventArgs e)
         {
-            
+            if(bllUsuario_941lp.PrimerInicioDeSesion_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().contraseña_941lp))
+            {
+                MessageBox.Show("Primer inicio de sesión. Debe cambiar su contraseña", "CAMBIO DE CONTRASEÑA REQUERIDO", MessageBoxButtons.OK);
+                formularioCambiarContraseña_941lp.ShowDialog();
+            }
         }
 
         private void btnUsuarioMenuPrincipal_Click(object sender, EventArgs e)

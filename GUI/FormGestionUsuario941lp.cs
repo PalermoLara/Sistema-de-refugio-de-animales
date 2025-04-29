@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using SERVICIOS;
+using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Net;
 
 namespace GUI
 {
@@ -80,13 +83,17 @@ namespace GUI
             dataUsuarios.Rows.Clear();
             foreach (Usuario_941lp u_941lp in usuariosLista_941lp)
             {
-                if (!checkBoxActivosConsulta.Checked || u_941lp.activo_941lp)
+                // Añadir una nueva fila
+                int rowIndex = dataUsuarios.Rows.Add(u_941lp.dni_941lp, u_941lp.nombre_941lp, u_941lp.apellido_941lp, u_941lp.nombreUsuario_941lp, u_941lp.rol_941lp, u_941lp.email_941lp, u_941lp.bloqueo_941lp);
+                // Si el usuario no está activo y el checkbox no está marcado, se pone en rojo
+                if (!u_941lp.activo_941lp && !checkBoxActivosConsulta.Checked && !checkBoxBloqueadosConsulta.Checked)
                 {
-                    int rowIndex = dataUsuarios.Rows.Add(u_941lp.dni_941lp, u_941lp.nombre_941lp, u_941lp.apellido_941lp, u_941lp.nombreUsuario_941lp, u_941lp.rol_941lp, u_941lp.email_941lp, u_941lp.bloqueo_941lp);
-                    if (!u_941lp.activo_941lp && !checkBoxActivosConsulta.Checked)
-                    {
-                        dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
-                    }
+                    dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+                // Si el usuario está bloqueado, se pone en azul
+                if (u_941lp.bloqueo_941lp && !checkBoxActivosConsulta.Checked && !checkBoxTodosConsulta.Checked)
+                {
+                    dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Blue;
                 }
             }
         }
@@ -202,12 +209,14 @@ namespace GUI
                         break;
                     case ModoOperacion_941lp.Alta:
                         ValidarCargaDeTxt_941lp();
+                        ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text, comboBoxRoles.Text, txtEmailUsuario.Text);
                         if (bllUsuario_941lp.ValidarDNI_941lp(txtDni.Text)) { throw new Exception("DNI repetido"); }
-                        bllUsuario_941lp.Alta_941lp(txtDni.Text,txtNombreUsuario.Text,txtApellidoUsuario.Text,txtEmailUsuario.Text,comboBoxRoles.Text);
+                        bllUsuario_941lp.Alta_941lp(txtDni.Text,txtNombreUsuario.Text,txtApellidoUsuario.Text,comboBoxRoles.Text,txtEmailUsuario.Text);
                         MessageBox.Show("Usuario dado de alta exitosamente");
                         MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
                         break;
                     case ModoOperacion_941lp.Modificar:
+                        ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text, comboBoxRoles.Text, txtEmailUsuario.Text);
                         bllUsuario_941lp.Modificar_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text,  comboBoxRoles.Text, txtEmailUsuario.Text);
                         MessageBox.Show("Usuario modificado exitosamente");
                         MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
@@ -278,26 +287,72 @@ namespace GUI
         }
 
         private void checkBoxActivosConsulta_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                checkBoxTodosConsulta.Checked = false;
-                modo_941lp = ModoOperacion_941lp.Consulta;
-                MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
-
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        {    
+            ActualizarCheckboxesConsulta_941lp(checkBoxBloqueadosConsulta, checkBoxTodosConsulta);
         }
 
         private void checkBoxTodosConsulta_CheckedChanged(object sender, EventArgs e)
         {
+            ActualizarCheckboxesConsulta_941lp(checkBoxBloqueadosConsulta, checkBoxActivosConsulta);
+        }
+
+        private void checkBoxBloqueados_CheckedChanged(object sender, EventArgs e)
+        {
+            ActualizarCheckboxesConsulta_941lp(checkBoxActivosConsulta, checkBoxTodosConsulta);   
+        }
+
+        private void ActualizarCheckboxesConsulta_941lp(CheckBox checkbox1_941lp, CheckBox checkbox2_941lp)
+        {
             try
             {
-                checkBoxActivosConsulta.Checked = false;
-                modo_941lp =ModoOperacion_941lp.Consulta;
+                // Desmarcar todos los checkboxes
+                checkbox1_941lp.Checked = false;
+                checkbox2_941lp.Checked = false;
+
+                // Establecer el modo de operación
+                modo_941lp = ModoOperacion_941lp.Consulta;
+
+                // Mostrar la grilla de usuarios
                 MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ControlDeIngresoDeDatos_941lp(string dni_941lp, string nombre_941lp, string apellido_941lp, string rol_941lp, string email_941lp)
+        {
+            try
+            {
+                // Regex reutilizables
+                var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
+                var regexGmail_941lp = new Regex(@"^[a-zA-Z0-9._%+-]+@gmail\.com$", RegexOptions.IgnoreCase);
+                var regexDni = new Regex(@"^\d{8}$");
+
+                // Limpiar los puntos del DNI (por ejemplo "12.345.678" se convierte en "12345678")
+                dni_941lp = dni_941lp.Replace(".", "");
+
+                // Validaciones
+                if (!regexDni.IsMatch(dni_941lp))
+                    throw new ArgumentException("El DNI ingresado es inválido. Debe contener exactamente 8 dígitos.");
+                if (!regexTexto_941lp.IsMatch(nombre_941lp))
+                    throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras y espacios.");
+                if (!regexTexto_941lp.IsMatch(apellido_941lp))
+                    throw new ArgumentException("El apellido ingresado es inválido. Solo se permiten letras y espacios.");
+                if (!regexTexto_941lp.IsMatch(rol_941lp))
+                    throw new ArgumentException("El rol ingresado es inválido. Solo se permiten letras y espacios.");
+                if (!regexGmail_941lp.IsMatch(email_941lp))
+                    throw new ArgumentException("El email ingresado debe ser una dirección válida de Gmail.");
+            }
+            catch (ArgumentException ex)
+            {
+                throw new Exception($"Error de validación: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class FormCambiarContraseña
+    partial class FormCambiarContraseña_941lp
     {
         /// <summary>
         /// Required designer variable.

@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormCambiarContraseña : Form
+    public partial class FormCambiarContraseña_941lp : Form
     {
         bllUsuario_941lp bllUsuario_941lp;
-        public FormCambiarContraseña()
+        public FormCambiarContraseña_941lp()
         {
             InitializeComponent();
             bllUsuario_941lp = new bllUsuario_941lp();
@@ -34,6 +34,7 @@ namespace GUI
                 if (contraseñaNueva_941lp != contraseñaConfirmacion_941lp) throw new Exception("La contraseña nueva y la confirmación no coinciden");
                 bllUsuario_941lp.ModificarContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp(), contraseñaNueva_941lp);
                 MessageBox.Show("Su contraseña a sido modificada con exito");
+                btnCancelar_Click(null, null);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
