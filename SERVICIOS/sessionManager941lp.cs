@@ -31,12 +31,7 @@ namespace SERVICIOS
 
         public bool Session_941lp()
         {
-            bool iniciada_941lp = false;
-            if(usuarioSession_941lp!=null)
-            {
-                iniciada_941lp = true;
-            }
-            return iniciada_941lp;
+            return usuarioSession_941lp != null ? true : false;
         }
 
         public void SetUsuario_941lp(Usuario_941lp usuario_941lp)

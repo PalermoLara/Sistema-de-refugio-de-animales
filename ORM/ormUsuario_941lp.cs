@@ -45,10 +45,24 @@ namespace ORM
             dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
 
-        public bool ValidarExistencia(string campo, string valor)
+        public bool ValidarDni_941lp(string dni_941lp)
         {
-            string query = $"SELECT COUNT(*) FROM Usuario_941lp WHERE {campo} = @valor";
-            var parametros = new Dictionary<string, object> { { "@valor", valor } };
+            string query = "SELECT COUNT(*) FROM Usuario_941lp WHERE dni_941lp = @dni";
+            var parametros = new Dictionary<string, object>
+            {
+                { "@dni", dni_941lp }
+            };
+            int count = Convert.ToInt32(dao_941lp.EjecutarEscalar_941lp(query, parametros));
+            return count > 0;
+        }
+
+        public bool ValidarExistenciaNombreUsuario_941lp(string nombreUsuario_941lp)
+        {
+            string query = "SELECT COUNT(*) FROM Usuario_941lp WHERE nombreUsuario_941lp = @nombreusuario_941lp";
+            var parametros = new Dictionary<string, object>
+            {
+                { "@nombreusuario_941lp", nombreUsuario_941lp }
+            };
             int count = Convert.ToInt32(dao_941lp.EjecutarEscalar_941lp(query, parametros));
             return count > 0;
         }
@@ -67,24 +81,23 @@ namespace ORM
 
         //si el usuario ingresa mal la contraseña, se le incrementa + 1 los intentos
         // intentos > 3 --> usuario bloqueado
-        public void AumentarIntentos_941lp(Usuario_941lp usuario_941lp)
+        public int AumentarIntentos_941lp(Usuario_941lp usuario_941lp)
         {
             if (usuario_941lp.rol_941lp != "Administrador")
             {
-                if (usuario_941lp.intentos_941lp >= 3)
+                usuario_941lp.intentos_941lp++;
+                if (usuario_941lp.intentos_941lp == 3)
                 {
                     usuario_941lp.bloqueo_941lp = true;
-                    dao_941lp.Query_941lp("UPDATE Usuario_941lp SET intentos_941lp = @intentos, bloqueo_941lp = @bloqueo WHERE dni_941lp = @dni",
+                    dao_941lp.Query_941lp("UPDATE Usuario_941lp SET bloqueo_941lp = @bloqueo WHERE dni_941lp = @dni",
                         new Dictionary<string, object>
                         {
-                            { "@intentos", usuario_941lp.intentos_941lp },
                             { "@bloqueo", usuario_941lp.bloqueo_941lp },
                             { "@dni", usuario_941lp.dni_941lp }
                         });
                 }
                 else
                 {
-                    usuario_941lp.intentos_941lp++;
                     dao_941lp.Query_941lp("UPDATE Usuario_941lp SET intentos_941lp = @intentos WHERE dni_941lp = @dni",
                         new Dictionary<string, object>
                         {
@@ -93,6 +106,7 @@ namespace ORM
                         });
                 }
             }
+            return usuario_941lp.intentos_941lp;
         }
 
         public Usuario_941lp ObtenerUsuarioPorDni_941lp(string dni_941lp)
@@ -102,13 +116,13 @@ namespace ORM
             {
                 { "@dni", dni_941lp }
             };
-            var usuarios = dao_941lp.EjecutarConsultaGenerica_941lp(query,MapearUsuario,parametros);
+            var usuarios = dao_941lp.RetornarLista_941lp(query,MapearUsuario,parametros);
             return usuarios.FirstOrDefault(); 
         }
 
         public List<Usuario_941lp> RetornarUsuarios_941lp()
         {
-            List<Usuario_941lp> usuarios = dao_941lp.EjecutarConsultaGenerica_941lp("SELECT * FROM Usuario_941lp",MapearUsuario);
+            List<Usuario_941lp> usuarios = dao_941lp.RetornarLista_941lp("SELECT * FROM Usuario_941lp",MapearUsuario);
             return usuarios;
         }
 

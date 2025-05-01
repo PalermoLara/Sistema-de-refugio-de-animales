@@ -25,21 +25,6 @@ namespace BE
             activo_941lp = pActivado_941lp;
         }
 
-        public Usuario_941lp(object[] datos_941lp)
-        {
-            dni_941lp = datos_941lp[0].ToString();
-            nombreUsuario_941lp = datos_941lp[1].ToString();
-            contraseña_941lp = datos_941lp[2].ToString();
-            nombre_941lp = datos_941lp[3].ToString();
-            apellido_941lp = datos_941lp[4].ToString();
-            rol_941lp = datos_941lp[5].ToString();
-            email_941lp = datos_941lp[6].ToString();
-            bloqueo_941lp = Convert.ToBoolean(datos_941lp[7]);
-            intentos_941lp = Convert.ToInt32(datos_941lp[8]);
-            lenguaje_941lp = datos_941lp[9].ToString();
-            activo_941lp = Convert.ToBoolean(datos_941lp[10]);
-        }
-
         public string dni_941lp { get; set; }
         public string nombreUsuario_941lp { get; set; }
         public string contraseña_941lp { get; set; }

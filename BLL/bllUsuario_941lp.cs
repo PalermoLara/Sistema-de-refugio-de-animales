@@ -42,7 +42,7 @@ namespace BLL
 
         public bool ValidarExistenciaNombreUsuario_941lp(string nombreUsuario_941lp)
         {
-            return orm_941lp.ValidarExistencia("nombreUsuario_941lp", nombreUsuario_941lp);
+            return orm_941lp.ValidarExistenciaNombreUsuario_941lp(nombreUsuario_941lp);
         }
 
         private string HashearContraseña_941lp(string contraseñaUsuario_941lp)
@@ -64,12 +64,12 @@ namespace BLL
 
         public bool ValidarDNI_941lp(string dni_941lp)
         {
-            return orm_941lp.ValidarExistencia("dni_941lp", dni_941lp);
+            return orm_941lp.ValidarDni_941lp(dni_941lp);
         }
 
-        public void AumentarIntentos_941lp(Usuario_941lp nombreUsuario941lp_941lp)
+        public int AumentarIntentos_941lp(Usuario_941lp nombreUsuario941lp_941lp)
         {
-             orm_941lp.AumentarIntentos_941lp(nombreUsuario941lp_941lp);
+            return orm_941lp.AumentarIntentos_941lp(nombreUsuario941lp_941lp);
         }
 
         public void Modificar_941lp(string dni_941lp, string nombre_941lp, string apellido_941lp, string rol_941lp, string email_941lp)
@@ -140,22 +140,12 @@ namespace BLL
 
         public bool UsuarioActivo_941lp(Usuario_941lp usuario_941lp)
         {
-            bool activo_941lp = false;
-            if(usuario_941lp.activo_941lp == true)
-            {
-                activo_941lp = true;
-            }
-            return activo_941lp;
+            return usuario_941lp.activo_941lp;
         }
 
         public bool UsuarioBloqueado_941lp(Usuario_941lp usuario_941lp)
         {
-            bool bloqueado_941lp = false;
-            if (usuario_941lp.bloqueo_941lp == true)
-            {
-                bloqueado_941lp = true;
-            }
-            return bloqueado_941lp;
+            return usuario_941lp.bloqueo_941lp;
         }
 
         public void ModificarContraseña_941lp(Usuario_941lp usuario_941lp,string contraseñaNueva_941lp)

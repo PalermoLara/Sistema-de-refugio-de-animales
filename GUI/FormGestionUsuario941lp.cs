@@ -206,7 +206,6 @@ namespace GUI
                 {
                     case ModoOperacion_941lp.Consulta:
                         btnAplicar.Enabled = true;
-                        MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
                         break;
                     case ModoOperacion_941lp.Alta:
                         ValidarCargaDeTxt_941lp();
@@ -214,27 +213,23 @@ namespace GUI
                         if (bllUsuario_941lp.ValidarDNI_941lp(txtDni.Text)) { throw new Exception("DNI repetido"); }
                         bllUsuario_941lp.Alta_941lp(txtDni.Text,txtNombreUsuario.Text,txtApellidoUsuario.Text,comboBoxRoles.Text,txtEmailUsuario.Text);
                         MessageBox.Show("Usuario dado de alta exitosamente");
-                        MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
                         break;
                     case ModoOperacion_941lp.Modificar:
                         ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text, comboBoxRoles.Text, txtEmailUsuario.Text);
                         bllUsuario_941lp.Modificar_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text,  comboBoxRoles.Text, txtEmailUsuario.Text);
                         MessageBox.Show("Usuario modificado exitosamente");
-                        MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
                         break;
                     case ModoOperacion_941lp.ActivarDesactivar:
                         bllUsuario_941lp.ActivarDesactivar_941lp(dataUsuarios.SelectedRows[0].Cells[0].Value.ToString());
-                        MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
-
                         break;
                     case ModoOperacion_941lp.Desbloquear:
                         bllUsuario_941lp.Desbloquear_941lp(dataUsuarios.SelectedRows[0].Cells[0].Value.ToString());
-                        MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
                         break;
                     default:
                         MessageBox.Show("Error en la operación");
                         break;
                 }
+                MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
                 ModoAceptarCancelar_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -288,22 +283,36 @@ namespace GUI
         }
 
         private void checkBoxActivosConsulta_CheckedChanged(object sender, EventArgs e)
-        {    
+        {
             ActualizarCheckboxesConsulta_941lp(checkBoxTodosConsulta);
+            if(checkBoxTodosConsulta.CheckState == CheckState.Checked)
+            {
+                checkBoxActivosConsulta.Checked = false;
+            }
+            else
+            {
+                checkBoxActivosConsulta.Checked = true;
+            }
         }
 
         private void checkBoxTodosConsulta_CheckedChanged(object sender, EventArgs e)
         {
             ActualizarCheckboxesConsulta_941lp(checkBoxActivosConsulta);
+            if (checkBoxActivosConsulta.CheckState == CheckState.Checked)
+            {
+                checkBoxTodosConsulta.Checked = false;
+            }
+            else
+            {
+                checkBoxTodosConsulta.Checked = true;
+            }
         }
 
-        private void ActualizarCheckboxesConsulta_941lp(CheckBox checkbox2_941lp)
+        private void ActualizarCheckboxesConsulta_941lp( CheckBox checkboxDesactivar_941lp)
         {
             try
             {
-                // Desmarcar todos los checkboxes
-                checkbox2_941lp.Checked = false;
-
+                checkboxDesactivar_941lp.CheckState = CheckState.Unchecked;
                 // Establecer el modo de operación
                 modo_941lp = ModoOperacion_941lp.Consulta;
 

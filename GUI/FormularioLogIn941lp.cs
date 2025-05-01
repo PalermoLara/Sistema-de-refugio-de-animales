@@ -42,8 +42,14 @@ namespace GUI
                             }
                             else
                             {
-                                bllUsuario_941lp.AumentarIntentos_941lp(usuario_941lp);
-                                MessageBox.Show("Contraseña incorrecta");
+                                if (bllUsuario_941lp.AumentarIntentos_941lp(usuario_941lp) == 3)
+                                {
+                                    MessageBox.Show("Usted a sido bloqueado");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Contraseña incorrecta");
+                                }
                             }
                         }
                         else
