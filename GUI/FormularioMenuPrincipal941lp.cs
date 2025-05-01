@@ -63,7 +63,7 @@ namespace GUI
                 DialogResult dr_941lp = MessageBox.Show("¿Desea cerrar la sesión?", "CERRAR SESIÓN...", MessageBoxButtons.OKCancel);
                 if(dr_941lp == DialogResult.OK)
                 {
-                    sessionManager941lp.Gestor_941lp.LogOut_941lp();
+                    sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
                     GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoLogIn941lp());
                 }
             }

@@ -1,9 +1,11 @@
 ﻿using BE;
 using DAO;
+using ORM;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -16,17 +18,10 @@ namespace ORM
     public class ormUsuario_941lp
     {
         dao_941lp dao_941lp;
-        DataTable dtUsuario_941lp;
 
         public ormUsuario_941lp()
         {
             dao_941lp = new dao_941lp();
-            CargarTabla_941lp();
-        }
-
-        private void CargarTabla_941lp()
-        {
-            dtUsuario_941lp = dao_941lp.RetornarTabla_941lp("Usuario_941lp", "select * from Usuario_941lp");
         }
 
         public void Alta_941lp(Usuario_941lp usuario_941lp)
@@ -50,25 +45,24 @@ namespace ORM
             dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
 
-        //valida si existe la contraseña o el nombre de usuario ingresado para el alta de un usuario
-        public bool ValidarExistenciaNombreUsuario_941lp( string nombreUsuario_941lp)
+        public bool ValidarExistencia(string campo, string valor)
         {
-            return dtUsuario_941lp.AsEnumerable()
-            .Any(row => row["nombreUsuario_941lp"].ToString() == nombreUsuario_941lp);
+            string query = $"SELECT COUNT(*) FROM Usuario_941lp WHERE {campo} = @valor";
+            var parametros = new Dictionary<string, object> { { "@valor", valor } };
+            int count = Convert.ToInt32(dao_941lp.EjecutarEscalar_941lp(query, parametros));
+            return count > 0;
         }
 
-        //validacion para el cambio de contraseña, verifica que la contraseña actual del usuario
-        //logueado sea correcta
-        public bool ValidarContraseñaActual_941lp(string contraseña_941lp)
+        public bool ValidarContraseña_941lp(string usuario, string contraseña)
         {
-            return dtUsuario_941lp.AsEnumerable()
-            .Any(row => row["contraseña_941lp"].ToString() == contraseña_941lp);
-        }
-
-        //verifica si el dni ingresado ya se encuentra registrado
-        public bool ValidarDni_941lp(string dni_941lp)
-        {
-            return dtUsuario_941lp.Rows.Find(dni_941lp) != null;
+            string query = "SELECT COUNT(*) FROM Usuario_941lp WHERE nombreUsuario_941lp = @usuario AND contraseña_941lp = @contraseña";
+            var parametros = new Dictionary<string, object>
+            {
+                { "@usuario", usuario },
+                { "@contraseña", contraseña }
+            };
+            int count = Convert.ToInt32(dao_941lp.EjecutarEscalar_941lp(query, parametros));
+            return count > 0;
         }
 
         //si el usuario ingresa mal la contraseña, se le incrementa + 1 los intentos
@@ -101,13 +95,38 @@ namespace ORM
             }
         }
 
-        //retorna una lista de usuarios
+        public Usuario_941lp ObtenerUsuarioPorDni_941lp(string dni_941lp)
+        {
+            string query = "SELECT * FROM Usuario_941lp WHERE dni_941lp = @dni";
+            var parametros = new Dictionary<string, object>
+            {
+                { "@dni", dni_941lp }
+            };
+            var usuarios = dao_941lp.EjecutarConsultaGenerica_941lp(query,MapearUsuario,parametros);
+            return usuarios.FirstOrDefault(); 
+        }
+
         public List<Usuario_941lp> RetornarUsuarios_941lp()
         {
-            CargarTabla_941lp();
-            return dtUsuario_941lp.AsEnumerable()
-                .Select(row => new Usuario_941lp(row.ItemArray))
-                .ToList();
+            List<Usuario_941lp> usuarios = dao_941lp.EjecutarConsultaGenerica_941lp("SELECT * FROM Usuario_941lp",MapearUsuario);
+            return usuarios;
+        }
+
+        private Usuario_941lp MapearUsuario(SqlDataReader reader)
+        {
+            return new Usuario_941lp(
+                reader["dni_941lp"].ToString(),
+                reader["nombreUsuario_941lp"].ToString(),
+                reader["contraseña_941lp"].ToString(),
+                reader["nombre_941lp"].ToString(),
+                reader["apellido_941lp"].ToString(),
+                reader["rol_941lp"].ToString(),
+                reader["email_941lp"].ToString(),
+                Convert.ToBoolean(reader["bloqueo_941lp"]),
+                Convert.ToInt32(reader["intentos_941lp"]),
+                reader["lenguaje_941lp"].ToString(),
+                Convert.ToBoolean(reader["activo_941lp"])
+            );
         }
     }
 }

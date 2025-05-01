@@ -132,6 +132,7 @@
             this.KeyPreview = true;
             this.Name = "FormularioLogIn941lp";
             this.Text = "log in ";
+            this.Load += new System.EventHandler(this.FormularioLogIn941lp_Load_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormularioLogIn941lp_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

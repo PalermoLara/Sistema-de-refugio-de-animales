@@ -36,6 +36,7 @@ namespace GUI
             dataUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataUsuarios.MultiSelect = false;
             dataUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            txtModo.ReadOnly = true;
             MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
             HabilitarTxt_941lp(false);
             DefinirModoEnTxt_941lp();
@@ -222,12 +223,12 @@ namespace GUI
                         MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
                         break;
                     case ModoOperacion_941lp.ActivarDesactivar:
-                        bllUsuario_941lp.ActivarDesactivar_941lp(txtDni.Text);
+                        bllUsuario_941lp.ActivarDesactivar_941lp(dataUsuarios.SelectedRows[0].Cells[0].Value.ToString());
                         MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
 
                         break;
                     case ModoOperacion_941lp.Desbloquear:
-                        bllUsuario_941lp.Desbloquear_941lp(txtDni.Text);
+                        bllUsuario_941lp.Desbloquear_941lp(dataUsuarios.SelectedRows[0].Cells[0].Value.ToString());
                         MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
                         break;
                     default:

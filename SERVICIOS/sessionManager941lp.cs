@@ -39,20 +39,14 @@ namespace SERVICIOS
             return iniciada_941lp;
         }
 
-        public void LogIn_941lp(Usuario_941lp usuario_941lp)
+        public void SetUsuario_941lp(Usuario_941lp usuario_941lp)
         {
-            if(Gestor_941lp.usuarioSession_941lp == null)
-            {
-                usuarioSession_941lp = usuario_941lp;
-            }
+            usuarioSession_941lp = usuario_941lp;
         }
 
-        public void LogOut_941lp()
+        public void UnsetUsuario_941lp()
         {
-            if(Gestor_941lp.usuarioSession_941lp!=null)
-            {
-                Gestor_941lp.usuarioSession_941lp = null;
-            }
+            Gestor_941lp.usuarioSession_941lp = null;
         }
     }
 }

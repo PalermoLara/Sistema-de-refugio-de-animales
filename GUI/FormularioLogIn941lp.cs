@@ -34,10 +34,10 @@ namespace GUI
                     {
                         if (!(bllUsuario_941lp.UsuarioBloqueado_941lp(usuario_941lp)))
                         {
-                            if (bllUsuario_941lp.ValidarContraseñaActual_941lp(txtContraseñaUsuario.Text))
+                            if (bllUsuario_941lp.ValidarContraseñaActual_941lp(usuario_941lp.nombreUsuario_941lp,txtContraseñaUsuario.Text))
                             {
                                 bllUsuario_941lp.ReiniciarIntentos_941lp(usuario_941lp);
-                                sessionManager941lp.Gestor_941lp.LogIn_941lp(usuario_941lp);
+                                sessionManager941lp.Gestor_941lp.SetUsuario_941lp(usuario_941lp);
                                 GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoMenu941lp());
                             }
                             else
@@ -80,6 +80,11 @@ namespace GUI
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void FormularioLogIn941lp_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

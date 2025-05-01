@@ -42,7 +42,7 @@ namespace BLL
 
         public bool ValidarExistenciaNombreUsuario_941lp(string nombreUsuario_941lp)
         {
-            return orm_941lp.ValidarExistenciaNombreUsuario_941lp(nombreUsuario_941lp);
+            return orm_941lp.ValidarExistencia("nombreUsuario_941lp", nombreUsuario_941lp);
         }
 
         private string HashearContraseña_941lp(string contraseñaUsuario_941lp)
@@ -56,15 +56,15 @@ namespace BLL
             orm_941lp.Modificar_941lp(usuario_941lp);
         }
 
-        public bool ValidarContraseñaActual_941lp(string contraseña_941lp)
+        public bool ValidarContraseñaActual_941lp(string usuario_941lp, string contraseña_941lp)
         {
             string contraseñaHasheada_941lp = HashearContraseña_941lp(contraseña_941lp);
-            return orm_941lp.ValidarContraseñaActual_941lp(contraseñaHasheada_941lp);
+            return orm_941lp.ValidarContraseña_941lp(usuario_941lp,contraseñaHasheada_941lp);
         }
 
         public bool ValidarDNI_941lp(string dni_941lp)
         {
-            return orm_941lp.ValidarDni_941lp(dni_941lp);
+            return orm_941lp.ValidarExistencia("dni_941lp", dni_941lp);
         }
 
         public void AumentarIntentos_941lp(Usuario_941lp nombreUsuario941lp_941lp)
@@ -108,7 +108,7 @@ namespace BLL
 
         public Usuario_941lp BuscarUsuarioPorDNI_941lp(string dni_941lp)
         {
-            return orm_941lp.RetornarUsuarios_941lp().Find(x => x.dni_941lp == dni_941lp);
+            return orm_941lp.ObtenerUsuarioPorDni_941lp(dni_941lp);
         }
 
         public void Desbloquear_941lp(string dni_941lp)
@@ -116,17 +116,24 @@ namespace BLL
             try
             {
                 Usuario_941lp usuario_941lp = BuscarUsuarioPorDNI_941lp(dni_941lp);
-                if (!usuario_941lp.bloqueo_941lp)
+                if(usuario_941lp != null)
                 {
-                    throw new Exception("El usuario ya se encuentra desbloqueado");
+                    if (!usuario_941lp.bloqueo_941lp)
+                    {
+                        throw new Exception("El usuario ya se encuentra desbloqueado");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario desbloqueado exitosamente");
+                    }
+                    usuario_941lp.bloqueo_941lp = false;
+                    usuario_941lp.intentos_941lp = 0;
+                    orm_941lp.Modificar_941lp(usuario_941lp);
                 }
                 else
                 {
-                    MessageBox.Show("Usuario desbloqueado exitosamente");
+                    MessageBox.Show("Usuario no encontrado");
                 }
-                    usuario_941lp.bloqueo_941lp = false;
-                usuario_941lp.intentos_941lp = 0;
-                orm_941lp.Modificar_941lp(usuario_941lp);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -155,6 +162,7 @@ namespace BLL
         {
             usuario_941lp.contraseña_941lp = HashearContraseña_941lp(contraseñaNueva_941lp);
             orm_941lp.Modificar_941lp(usuario_941lp);
+            sessionManager941lp.Gestor_941lp.SetUsuario_941lp(usuario_941lp);
         }
 
         public List<Usuario_941lp> RetornarUsuarios_941lp()

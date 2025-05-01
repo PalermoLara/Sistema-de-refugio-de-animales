@@ -9,7 +9,6 @@ namespace BE
 {
     public class Usuario_941lp
     {
-        public Usuario_941lp() { }
 
         public Usuario_941lp(string pDni_941lp, string pNombreUsuario_941lp, string pContraseñaUsuario_941lp, string pNombre_941lp, string pApellido_941lp, string pRol_941lp,string pEmailUsuario_941lp, bool pBloqueo_941lp, int pIntentos_941lp, string pLenguaje_941lp, bool pActivado_941lp)
         {

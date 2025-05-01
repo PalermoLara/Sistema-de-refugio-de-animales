@@ -29,7 +29,7 @@ namespace GUI
                 string contraseñaActual_941lp = txtContraseñaActual.Text;
                 string contraseñaNueva_941lp = txtContraseñaNueva.Text;
                 string contraseñaConfirmacion_941lp = txtContraseñaConfirmacion.Text;
-                if (bllUsuario_941lp.ValidarContraseñaActual_941lp(contraseñaActual_941lp) == false) throw new Exception("Contraseña actual incorrecta");
+                if (bllUsuario_941lp.ValidarContraseñaActual_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp,contraseñaActual_941lp) == false) throw new Exception("Contraseña actual incorrecta");
                 if (contraseñaActual_941lp == contraseñaNueva_941lp) throw new Exception("La nueva contraseña no puede ser igual a la actual");
                 if (contraseñaNueva_941lp != contraseñaConfirmacion_941lp) throw new Exception("La contraseña nueva y la confirmación no coinciden");
                 bllUsuario_941lp.ModificarContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp(), contraseñaNueva_941lp);
@@ -41,7 +41,7 @@ namespace GUI
 
         private void FormCambiarContraseña_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
