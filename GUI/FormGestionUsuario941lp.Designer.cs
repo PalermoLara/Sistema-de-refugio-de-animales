@@ -57,7 +57,6 @@
             this.labelModo = new System.Windows.Forms.Label();
             this.checkBoxTodosConsulta = new System.Windows.Forms.CheckBox();
             this.checkBoxActivosConsulta = new System.Windows.Forms.CheckBox();
-            this.checkBoxBloqueadosConsulta = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,7 +174,7 @@
             this.labelNombreAdministradorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNombreAdministradorUsuarios.Location = new System.Drawing.Point(19, 493);
             this.labelNombreAdministradorUsuarios.Name = "labelNombreAdministradorUsuarios";
-            this.labelNombreAdministradorUsuarios.Size = new System.Drawing.Size(133, 31);
+            this.labelNombreAdministradorUsuarios.Size = new System.Drawing.Size(68, 17);
             this.labelNombreAdministradorUsuarios.TabIndex = 4;
             this.labelNombreAdministradorUsuarios.Text = "NOMBRE";
             // 
@@ -185,7 +184,7 @@
             this.labelRolAdministradorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRolAdministradorUsuarios.Location = new System.Drawing.Point(19, 600);
             this.labelRolAdministradorUsuarios.Name = "labelRolAdministradorUsuarios";
-            this.labelRolAdministradorUsuarios.Size = new System.Drawing.Size(70, 31);
+            this.labelRolAdministradorUsuarios.Size = new System.Drawing.Size(37, 17);
             this.labelRolAdministradorUsuarios.TabIndex = 7;
             this.labelRolAdministradorUsuarios.Text = "ROL";
             // 
@@ -195,7 +194,7 @@
             this.labelApellidoAdministradorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelApellidoAdministradorUsuarios.Location = new System.Drawing.Point(19, 548);
             this.labelApellidoAdministradorUsuarios.Name = "labelApellidoAdministradorUsuarios";
-            this.labelApellidoAdministradorUsuarios.Size = new System.Drawing.Size(147, 31);
+            this.labelApellidoAdministradorUsuarios.Size = new System.Drawing.Size(75, 17);
             this.labelApellidoAdministradorUsuarios.TabIndex = 10;
             this.labelApellidoAdministradorUsuarios.Text = "APELLIDO";
             // 
@@ -226,7 +225,7 @@
             this.labelEmailAdministradorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEmailAdministradorUsuarios.Location = new System.Drawing.Point(19, 654);
             this.labelEmailAdministradorUsuarios.Name = "labelEmailAdministradorUsuarios";
-            this.labelEmailAdministradorUsuarios.Size = new System.Drawing.Size(95, 31);
+            this.labelEmailAdministradorUsuarios.Size = new System.Drawing.Size(48, 17);
             this.labelEmailAdministradorUsuarios.TabIndex = 16;
             this.labelEmailAdministradorUsuarios.Text = "EMAIL";
             // 
@@ -275,7 +274,7 @@
             this.labelDniAdministrtadorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDniAdministrtadorUsuarios.Location = new System.Drawing.Point(19, 443);
             this.labelDniAdministrtadorUsuarios.Name = "labelDniAdministrtadorUsuarios";
-            this.labelDniAdministrtadorUsuarios.Size = new System.Drawing.Size(62, 31);
+            this.labelDniAdministrtadorUsuarios.Size = new System.Drawing.Size(31, 17);
             this.labelDniAdministrtadorUsuarios.TabIndex = 21;
             this.labelDniAdministrtadorUsuarios.Text = "DNI";
             // 
@@ -314,7 +313,7 @@
             this.labelModo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelModo.Location = new System.Drawing.Point(1056, 710);
             this.labelModo.Name = "labelModo";
-            this.labelModo.Size = new System.Drawing.Size(149, 44);
+            this.labelModo.Size = new System.Drawing.Size(74, 24);
             this.labelModo.TabIndex = 26;
             this.labelModo.Text = "MODO:";
             // 
@@ -324,7 +323,7 @@
             this.checkBoxTodosConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxTodosConsulta.Location = new System.Drawing.Point(251, 797);
             this.checkBoxTodosConsulta.Name = "checkBoxTodosConsulta";
-            this.checkBoxTodosConsulta.Size = new System.Drawing.Size(186, 48);
+            this.checkBoxTodosConsulta.Size = new System.Drawing.Size(96, 28);
             this.checkBoxTodosConsulta.TabIndex = 12;
             this.checkBoxTodosConsulta.Text = "TODOS";
             this.checkBoxTodosConsulta.UseVisualStyleBackColor = true;
@@ -338,23 +337,11 @@
             this.checkBoxActivosConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxActivosConsulta.Location = new System.Drawing.Point(602, 797);
             this.checkBoxActivosConsulta.Name = "checkBoxActivosConsulta";
-            this.checkBoxActivosConsulta.Size = new System.Drawing.Size(216, 48);
+            this.checkBoxActivosConsulta.Size = new System.Drawing.Size(111, 28);
             this.checkBoxActivosConsulta.TabIndex = 12;
             this.checkBoxActivosConsulta.Text = "ACTIVOS";
             this.checkBoxActivosConsulta.UseVisualStyleBackColor = true;
             this.checkBoxActivosConsulta.CheckedChanged += new System.EventHandler(this.checkBoxActivosConsulta_CheckedChanged);
-            // 
-            // checkBoxBloqueadosConsulta
-            // 
-            this.checkBoxBloqueadosConsulta.AutoSize = true;
-            this.checkBoxBloqueadosConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxBloqueadosConsulta.Location = new System.Drawing.Point(251, 720);
-            this.checkBoxBloqueadosConsulta.Name = "checkBoxBloqueadosConsulta";
-            this.checkBoxBloqueadosConsulta.Size = new System.Drawing.Size(316, 48);
-            this.checkBoxBloqueadosConsulta.TabIndex = 27;
-            this.checkBoxBloqueadosConsulta.Text = "BLOQUEADOS";
-            this.checkBoxBloqueadosConsulta.UseVisualStyleBackColor = true;
-            this.checkBoxBloqueadosConsulta.CheckedChanged += new System.EventHandler(this.checkBoxBloqueados_CheckedChanged);
             // 
             // FormGestionUsuario941lp
             // 
@@ -362,7 +349,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1653, 856);
-            this.Controls.Add(this.checkBoxBloqueadosConsulta);
             this.Controls.Add(this.checkBoxActivosConsulta);
             this.Controls.Add(this.checkBoxTodosConsulta);
             this.Controls.Add(this.labelModo);
@@ -425,6 +411,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.CheckBox checkBoxBloqueadosConsulta;
     }
 }

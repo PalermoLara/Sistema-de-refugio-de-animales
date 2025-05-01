@@ -86,14 +86,14 @@ namespace GUI
                 // Añadir una nueva fila
                 int rowIndex = dataUsuarios.Rows.Add(u_941lp.dni_941lp, u_941lp.nombre_941lp, u_941lp.apellido_941lp, u_941lp.nombreUsuario_941lp, u_941lp.rol_941lp, u_941lp.email_941lp, u_941lp.bloqueo_941lp);
                 // Si el usuario no está activo y el checkbox no está marcado, se pone en rojo
-                if (!u_941lp.activo_941lp && !checkBoxActivosConsulta.Checked && !checkBoxBloqueadosConsulta.Checked)
+                if (!u_941lp.activo_941lp && !checkBoxActivosConsulta.Checked)
                 {
                     dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
                 }
                 // Si el usuario está bloqueado, se pone en azul
-                if (u_941lp.bloqueo_941lp && !checkBoxActivosConsulta.Checked && !checkBoxTodosConsulta.Checked)
+                if (u_941lp.bloqueo_941lp && !checkBoxActivosConsulta.Checked && checkBoxTodosConsulta.Checked)
                 {
-                    dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Blue;
+                    dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightSteelBlue;
                 }
             }
         }
@@ -288,25 +288,19 @@ namespace GUI
 
         private void checkBoxActivosConsulta_CheckedChanged(object sender, EventArgs e)
         {    
-            ActualizarCheckboxesConsulta_941lp(checkBoxBloqueadosConsulta, checkBoxTodosConsulta);
+            ActualizarCheckboxesConsulta_941lp(checkBoxTodosConsulta);
         }
 
         private void checkBoxTodosConsulta_CheckedChanged(object sender, EventArgs e)
         {
-            ActualizarCheckboxesConsulta_941lp(checkBoxBloqueadosConsulta, checkBoxActivosConsulta);
+            ActualizarCheckboxesConsulta_941lp(checkBoxActivosConsulta);
         }
 
-        private void checkBoxBloqueados_CheckedChanged(object sender, EventArgs e)
-        {
-            ActualizarCheckboxesConsulta_941lp(checkBoxActivosConsulta, checkBoxTodosConsulta);   
-        }
-
-        private void ActualizarCheckboxesConsulta_941lp(CheckBox checkbox1_941lp, CheckBox checkbox2_941lp)
+        private void ActualizarCheckboxesConsulta_941lp(CheckBox checkbox2_941lp)
         {
             try
             {
                 // Desmarcar todos los checkboxes
-                checkbox1_941lp.Checked = false;
                 checkbox2_941lp.Checked = false;
 
                 // Establecer el modo de operación

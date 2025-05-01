@@ -49,6 +49,9 @@ namespace GUI
             try
             {
                 this.Close();
+                txtContraseñaActual.Clear();
+                txtContraseñaNueva.Clear();
+                txtContraseñaConfirmacion.Clear();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

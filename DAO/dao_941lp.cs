@@ -17,39 +17,6 @@ namespace DAO
             connectionString_941lp = "Data Source=.;Initial Catalog=sistAdopcion941lp;Integrated Security=True;";
         }
 
-        //public DataTable RetornarTabla_941lp(string tabla_941lp, string query_941lp, Dictionary<string, object> parametros_941lp = null)
-        //{
-        //    dt_941lp = new DataTable(tabla_941lp);
-        //    AsignarParametros_941lp(query_941lp, parametros_941lp);
-        //    using (SqlDataReader dr_941lp = cmd_941lp.ExecuteReader())
-        //    {
-        //        dt_941lp.Load(dr_941lp);
-        //    }
-        //    dt_941lp.PrimaryKey = new DataColumn[] { dt_941lp.Columns[0] };
-        //    return dt_941lp;
-        //}
-
-        //public void Query_941lp(string query_941lp, Dictionary<string, object> parametros_941lp = null)
-        //{
-        //    AsignarParametros_941lp(query_941lp, parametros_941lp);
-        //    cmd_941lp.ExecuteNonQuery();
-        //}
-
-        //private void AsignarParametros_941lp(string query_941lp, Dictionary<string, object> parametros_941lp)
-        //{
-        //    cmd_941lp.CommandText = query_941lp;
-        //    cmd_941lp.Parameters.Clear();
-        //    if (parametros_941lp != null)
-        //    {
-        //        foreach (KeyValuePair<string, object> parametro in parametros_941lp)
-        //        {
-        //            cmd_941lp.Parameters.AddWithValue(parametro.Key, parametro.Value);
-        //        }
-        //    }
-
-
-        //}
-
         public DataTable RetornarTabla_941lp(string tabla_941lp, string query_941lp, Dictionary<string, object> parametros_941lp = null)
         {
             DataTable dt = new DataTable(tabla_941lp);
