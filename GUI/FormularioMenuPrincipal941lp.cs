@@ -151,11 +151,6 @@ namespace GUI
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void panelMenuPrincipal_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnIniciarSesion2_Click(object sender, EventArgs e)
         {
             try

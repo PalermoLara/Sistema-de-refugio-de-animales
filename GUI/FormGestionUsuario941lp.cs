@@ -56,10 +56,15 @@ namespace GUI
             if(modo_941lp==ModoOperacion_941lp.Alta)
             {
                 txtDni.Enabled = habilitar_941lp;
+                AplicarColorControles_941lp(txtDni);
                 txtApellidoUsuario.Enabled = habilitar_941lp;
+                AplicarColorControles_941lp(txtApellidoUsuario);
                 txtNombreUsuario.Enabled = habilitar_941lp;
+                AplicarColorControles_941lp(txtNombreUsuario);
                 txtEmailUsuario.Enabled = habilitar_941lp;
+                AplicarColorControles_941lp(txtEmailUsuario);
                 comboBoxRoles.Enabled = habilitar_941lp;
+                AplicarColorControles_941lp(comboBoxRoles);
             }
             if(modo_941lp == ModoOperacion_941lp.Modificar)
             {
@@ -77,24 +82,39 @@ namespace GUI
                 txtEmailUsuario.Enabled = habilitar_941lp;
                 comboBoxRoles.Enabled = habilitar_941lp;
             }
+            AplicarColorControles_941lp(txtDni);
+            AplicarColorControles_941lp(txtApellidoUsuario);
+            AplicarColorControles_941lp(txtNombreUsuario);
+            AplicarColorControles_941lp(txtEmailUsuario);
+            AplicarColorControles_941lp(comboBoxRoles);
         }
 
         private void MostrarGrillaUsuarios_941lp(List<Usuario_941lp> usuariosLista_941lp)
         {
             dataUsuarios.Rows.Clear();
+
             foreach (Usuario_941lp u_941lp in usuariosLista_941lp)
             {
-                // Añadir una nueva fila
-                int rowIndex = dataUsuarios.Rows.Add(u_941lp.dni_941lp, u_941lp.nombre_941lp, u_941lp.apellido_941lp, u_941lp.nombreUsuario_941lp, u_941lp.rol_941lp, u_941lp.email_941lp, u_941lp.bloqueo_941lp);
-                // Si el usuario no está activo y el checkbox no está marcado, se pone en rojo
-                if (!u_941lp.activo_941lp && !checkBoxActivosConsulta.Checked)
+                // Si está seleccionada la opción de solo activos, y el usuario no lo es, lo omitimos
+                if (rbActivosConsulta.Checked && !u_941lp.activo_941lp)
                 {
-                    dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    continue;
                 }
-                // Si el usuario está bloqueado, se pone en azul
-                if (u_941lp.bloqueo_941lp && !checkBoxActivosConsulta.Checked && checkBoxTodosConsulta.Checked)
+
+                // Agregar la fila
+                int rowIndex = dataUsuarios.Rows.Add(u_941lp.dni_941lp,u_941lp.nombre_941lp,u_941lp.apellido_941lp,u_941lp.nombreUsuario_941lp,u_941lp.rol_941lp,u_941lp.email_941lp,u_941lp.bloqueo_941lp);
+
+                // Aplicar color solo si está seleccionada la opción "Todos"
+                if (rbTodosConsulta.Checked)
                 {
-                    dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightSteelBlue;
+                    if (!u_941lp.activo_941lp)
+                    {
+                        dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    }
+                    else if (u_941lp.bloqueo_941lp)
+                    {
+                        dataUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.MediumPurple;
+                    }
                 }
             }
         }
@@ -116,12 +136,19 @@ namespace GUI
         private void VisibilidadDeBotones_941lp()
         {
             btnAltaUsuario.Enabled = false;
+            AplicarColorControles_941lp(btnAltaUsuario);
             btnModificarUsuario.Enabled = false;
+            AplicarColorControles_941lp(btnModificarUsuario);
             btnSalir.Enabled = false;
+            AplicarColorControles_941lp(btnSalir);
             btnDesbloquearUsuario.Enabled = false;
+            AplicarColorControles_941lp(btnDesbloquearUsuario);
             btnActivarDesactivar.Enabled = false;
+            AplicarColorControles_941lp(btnActivarDesactivar);        
             btnCancelar.Enabled = true;
+            AplicarColorControles_941lp(btnCancelar);
             btnAplicar.Enabled = true;
+            AplicarColorControles_941lp(btnAplicar);
         }
 
         private void DefinirModoEnTxt_941lp()
@@ -215,6 +242,7 @@ namespace GUI
                         MessageBox.Show("Usuario dado de alta exitosamente");
                         break;
                     case ModoOperacion_941lp.Modificar:
+                        ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text, comboBoxRoles.Text, txtEmailUsuario.Text);
                         bllUsuario_941lp.Modificar_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text,  comboBoxRoles.Text, txtEmailUsuario.Text);
                         MessageBox.Show("Usuario modificado exitosamente");
@@ -271,57 +299,33 @@ namespace GUI
         {
             modo_941lp = ModoOperacion_941lp.Consulta;
             btnCancelar.Enabled = false;
+            AplicarColorControles_941lp(btnCancelar);
             btnAplicar.Enabled = false;
+            AplicarColorControles_941lp(btnAplicar);
             btnAltaUsuario.Enabled = true;
+            AplicarColorControles_941lp(btnAltaUsuario);
             btnActivarDesactivar.Enabled = true;
+            AplicarColorControles_941lp(btnActivarDesactivar);
             btnModificarUsuario.Enabled = true;
+            AplicarColorControles_941lp(btnModificarUsuario);
             btnDesbloquearUsuario.Enabled = true;
+            AplicarColorControles_941lp(btnDesbloquearUsuario);
             btnSalir.Enabled = true;
+            AplicarColorControles_941lp(btnSalir);
             HabilitarTxt_941lp(false);
             DefinirModoEnTxt_941lp();
             LimpiarTxt_941lp();
         }
 
-        private void checkBoxActivosConsulta_CheckedChanged(object sender, EventArgs e)
+        private void AplicarColorControles_941lp(Control control_941lp)
         {
-            ActualizarCheckboxesConsulta_941lp(checkBoxTodosConsulta);
-            if(checkBoxTodosConsulta.CheckState == CheckState.Checked)
+            if(control_941lp.Enabled == false)
             {
-                checkBoxActivosConsulta.Checked = false;
+                control_941lp.BackColor = Color.LightSteelBlue;
             }
             else
             {
-                checkBoxActivosConsulta.Checked = true;
-            }
-        }
-
-        private void checkBoxTodosConsulta_CheckedChanged(object sender, EventArgs e)
-        {
-            ActualizarCheckboxesConsulta_941lp(checkBoxActivosConsulta);
-            if (checkBoxActivosConsulta.CheckState == CheckState.Checked)
-            {
-                checkBoxTodosConsulta.Checked = false;
-            }
-            else
-            {
-                checkBoxTodosConsulta.Checked = true;
-            }
-        }
-
-        private void ActualizarCheckboxesConsulta_941lp( CheckBox checkboxDesactivar_941lp)
-        {
-            try
-            {
-                checkboxDesactivar_941lp.CheckState = CheckState.Unchecked;
-                // Establecer el modo de operación
-                modo_941lp = ModoOperacion_941lp.Consulta;
-
-                // Mostrar la grilla de usuarios
-                MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                control_941lp.BackColor = Color.White;
             }
         }
 
@@ -357,6 +361,24 @@ namespace GUI
             {
                 throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
             }
+        }
+
+        private void rbTodosConsulta_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
+            }
+            catch (Exception ex){ MessageBox.Show(ex.Message); }
+        }
+
+        private void rbActivosConsulta_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

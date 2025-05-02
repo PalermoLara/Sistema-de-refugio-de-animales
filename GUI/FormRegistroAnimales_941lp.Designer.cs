@@ -50,12 +50,16 @@
             this.btnModificarUsuario = new System.Windows.Forms.Button();
             this.btnAltaUsuario = new System.Windows.Forms.Button();
             this.txtTamaño = new System.Windows.Forms.TextBox();
-            this.checkBoxHembra = new System.Windows.Forms.CheckBox();
-            this.checkBoxMacho = new System.Windows.Forms.CheckBox();
-            this.checkBoxAdoptados = new System.Windows.Forms.CheckBox();
-            this.checkBoxDisponibles = new System.Windows.Forms.CheckBox();
-            this.checkBoxEvaluacion = new System.Windows.Forms.CheckBox();
+            this.groupBoxEstadoAdopcion = new System.Windows.Forms.GroupBox();
+            this.rbAdoptado = new System.Windows.Forms.RadioButton();
+            this.rbDisponibleAdopcion = new System.Windows.Forms.RadioButton();
+            this.rbEnEvaluacionAdopcion = new System.Windows.Forms.RadioButton();
+            this.groupBoxCastrado = new System.Windows.Forms.GroupBox();
+            this.rbHembraSexo = new System.Windows.Forms.RadioButton();
+            this.rbMachoSexo = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtAnimales)).BeginInit();
+            this.groupBoxEstadoAdopcion.SuspendLayout();
+            this.groupBoxCastrado.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtAnimales
@@ -71,12 +75,13 @@
             this.Column5,
             this.Column6,
             this.Column7});
-            this.dtAnimales.Location = new System.Drawing.Point(12, 12);
+            this.dtAnimales.Location = new System.Drawing.Point(6, 6);
+            this.dtAnimales.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtAnimales.Name = "dtAnimales";
             this.dtAnimales.ReadOnly = true;
             this.dtAnimales.RowHeadersWidth = 82;
             this.dtAnimales.RowTemplate.Height = 33;
-            this.dtAnimales.Size = new System.Drawing.Size(1455, 329);
+            this.dtAnimales.Size = new System.Drawing.Size(728, 171);
             this.dtAnimales.TabIndex = 2;
             // 
             // Column2
@@ -137,44 +142,49 @@
             // 
             // btnAplicar
             // 
-            this.btnAplicar.Location = new System.Drawing.Point(595, 363);
+            this.btnAplicar.Location = new System.Drawing.Point(298, 189);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(258, 81);
+            this.btnAplicar.Size = new System.Drawing.Size(129, 42);
             this.btnAplicar.TabIndex = 32;
             this.btnAplicar.Text = "APLICAR";
             this.btnAplicar.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(595, 452);
+            this.btnCancelar.Location = new System.Drawing.Point(298, 235);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(258, 81);
+            this.btnCancelar.Size = new System.Drawing.Size(129, 42);
             this.btnCancelar.TabIndex = 34;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // txtEspecie
             // 
-            this.txtEspecie.Location = new System.Drawing.Point(244, 369);
+            this.txtEspecie.Location = new System.Drawing.Point(122, 192);
+            this.txtEspecie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEspecie.Name = "txtEspecie";
-            this.txtEspecie.Size = new System.Drawing.Size(317, 31);
+            this.txtEspecie.Size = new System.Drawing.Size(160, 20);
             this.txtEspecie.TabIndex = 27;
             // 
             // labelEspecieRegistro
             // 
             this.labelEspecieRegistro.AutoSize = true;
             this.labelEspecieRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEspecieRegistro.Location = new System.Drawing.Point(12, 369);
+            this.labelEspecieRegistro.Location = new System.Drawing.Point(6, 192);
+            this.labelEspecieRegistro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEspecieRegistro.Name = "labelEspecieRegistro";
-            this.labelEspecieRegistro.Size = new System.Drawing.Size(132, 31);
+            this.labelEspecieRegistro.Size = new System.Drawing.Size(65, 17);
             this.labelEspecieRegistro.TabIndex = 41;
             this.labelEspecieRegistro.Text = "ESPECIE";
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(595, 543);
+            this.btnSalir.Location = new System.Drawing.Point(298, 282);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(258, 81);
+            this.btnSalir.Size = new System.Drawing.Size(129, 42);
             this.btnSalir.TabIndex = 39;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -183,33 +193,37 @@
             // 
             this.labelSexoAnimal.AutoSize = true;
             this.labelSexoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSexoAnimal.Location = new System.Drawing.Point(12, 580);
+            this.labelSexoAnimal.Location = new System.Drawing.Point(7, 321);
+            this.labelSexoAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSexoAnimal.Name = "labelSexoAnimal";
-            this.labelSexoAnimal.Size = new System.Drawing.Size(89, 31);
+            this.labelSexoAnimal.Size = new System.Drawing.Size(46, 17);
             this.labelSexoAnimal.TabIndex = 40;
             this.labelSexoAnimal.Text = "SEXO";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(244, 474);
+            this.txtNombre.Location = new System.Drawing.Point(122, 246);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(317, 31);
+            this.txtNombre.Size = new System.Drawing.Size(160, 20);
             this.txtNombre.TabIndex = 29;
             // 
             // txtRaza
             // 
-            this.txtRaza.Location = new System.Drawing.Point(244, 419);
+            this.txtRaza.Location = new System.Drawing.Point(122, 218);
+            this.txtRaza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRaza.Name = "txtRaza";
-            this.txtRaza.Size = new System.Drawing.Size(317, 31);
+            this.txtRaza.Size = new System.Drawing.Size(160, 20);
             this.txtRaza.TabIndex = 28;
             // 
             // btnRazaRegistroAnimal
             // 
             this.btnRazaRegistroAnimal.AutoSize = true;
             this.btnRazaRegistroAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRazaRegistroAnimal.Location = new System.Drawing.Point(14, 419);
+            this.btnRazaRegistroAnimal.Location = new System.Drawing.Point(7, 218);
+            this.btnRazaRegistroAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.btnRazaRegistroAnimal.Name = "btnRazaRegistroAnimal";
-            this.btnRazaRegistroAnimal.Size = new System.Drawing.Size(87, 31);
+            this.btnRazaRegistroAnimal.Size = new System.Drawing.Size(45, 17);
             this.btnRazaRegistroAnimal.TabIndex = 38;
             this.btnRazaRegistroAnimal.Text = "RAZA";
             // 
@@ -217,9 +231,10 @@
             // 
             this.labelTamañoAnimal.AutoSize = true;
             this.labelTamañoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTamañoAnimal.Location = new System.Drawing.Point(12, 526);
+            this.labelTamañoAnimal.Location = new System.Drawing.Point(6, 274);
+            this.labelTamañoAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTamañoAnimal.Name = "labelTamañoAnimal";
-            this.labelTamañoAnimal.Size = new System.Drawing.Size(130, 31);
+            this.labelTamañoAnimal.Size = new System.Drawing.Size(67, 17);
             this.labelTamañoAnimal.TabIndex = 35;
             this.labelTamañoAnimal.Text = "TAMAÑO";
             // 
@@ -227,103 +242,127 @@
             // 
             this.labelNombreRegistroAnimal.AutoSize = true;
             this.labelNombreRegistroAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNombreRegistroAnimal.Location = new System.Drawing.Point(14, 471);
+            this.labelNombreRegistroAnimal.Location = new System.Drawing.Point(7, 245);
+            this.labelNombreRegistroAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelNombreRegistroAnimal.Name = "labelNombreRegistroAnimal";
-            this.labelNombreRegistroAnimal.Size = new System.Drawing.Size(133, 31);
+            this.labelNombreRegistroAnimal.Size = new System.Drawing.Size(68, 17);
             this.labelNombreRegistroAnimal.TabIndex = 31;
             this.labelNombreRegistroAnimal.Text = "NOMBRE";
             // 
             // btnModificarUsuario
             // 
-            this.btnModificarUsuario.Location = new System.Drawing.Point(1057, 443);
+            this.btnModificarUsuario.Location = new System.Drawing.Point(528, 230);
+            this.btnModificarUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnModificarUsuario.Name = "btnModificarUsuario";
-            this.btnModificarUsuario.Size = new System.Drawing.Size(410, 81);
+            this.btnModificarUsuario.Size = new System.Drawing.Size(205, 42);
             this.btnModificarUsuario.TabIndex = 37;
             this.btnModificarUsuario.Text = "MODIFICAR";
             this.btnModificarUsuario.UseVisualStyleBackColor = true;
             // 
             // btnAltaUsuario
             // 
-            this.btnAltaUsuario.Location = new System.Drawing.Point(1057, 356);
+            this.btnAltaUsuario.Location = new System.Drawing.Point(528, 185);
+            this.btnAltaUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAltaUsuario.Name = "btnAltaUsuario";
-            this.btnAltaUsuario.Size = new System.Drawing.Size(410, 81);
+            this.btnAltaUsuario.Size = new System.Drawing.Size(205, 42);
             this.btnAltaUsuario.TabIndex = 36;
             this.btnAltaUsuario.Text = "ALTA";
             this.btnAltaUsuario.UseVisualStyleBackColor = true;
             // 
             // txtTamaño
             // 
-            this.txtTamaño.Location = new System.Drawing.Point(244, 529);
+            this.txtTamaño.Location = new System.Drawing.Point(122, 275);
+            this.txtTamaño.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTamaño.Name = "txtTamaño";
-            this.txtTamaño.Size = new System.Drawing.Size(317, 31);
+            this.txtTamaño.Size = new System.Drawing.Size(160, 20);
             this.txtTamaño.TabIndex = 42;
             // 
-            // checkBoxHembra
+            // groupBoxEstadoAdopcion
             // 
-            this.checkBoxHembra.AutoSize = true;
-            this.checkBoxHembra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxHembra.Location = new System.Drawing.Point(342, 580);
-            this.checkBoxHembra.Name = "checkBoxHembra";
-            this.checkBoxHembra.Size = new System.Drawing.Size(72, 41);
-            this.checkBoxHembra.TabIndex = 44;
-            this.checkBoxHembra.Text = "H";
-            this.checkBoxHembra.UseVisualStyleBackColor = true;
+            this.groupBoxEstadoAdopcion.Controls.Add(this.rbAdoptado);
+            this.groupBoxEstadoAdopcion.Controls.Add(this.rbDisponibleAdopcion);
+            this.groupBoxEstadoAdopcion.Controls.Add(this.rbEnEvaluacionAdopcion);
+            this.groupBoxEstadoAdopcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxEstadoAdopcion.Location = new System.Drawing.Point(464, 285);
+            this.groupBoxEstadoAdopcion.Name = "groupBoxEstadoAdopcion";
+            this.groupBoxEstadoAdopcion.Size = new System.Drawing.Size(264, 134);
+            this.groupBoxEstadoAdopcion.TabIndex = 45;
+            this.groupBoxEstadoAdopcion.TabStop = false;
+            this.groupBoxEstadoAdopcion.Text = "Estado";
             // 
-            // checkBoxMacho
+            // rbAdoptado
             // 
-            this.checkBoxMacho.AutoSize = true;
-            this.checkBoxMacho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxMacho.Location = new System.Drawing.Point(244, 580);
-            this.checkBoxMacho.Name = "checkBoxMacho";
-            this.checkBoxMacho.Size = new System.Drawing.Size(75, 41);
-            this.checkBoxMacho.TabIndex = 43;
-            this.checkBoxMacho.Text = "M";
-            this.checkBoxMacho.UseVisualStyleBackColor = true;
+            this.rbAdoptado.AutoSize = true;
+            this.rbAdoptado.Location = new System.Drawing.Point(40, 94);
+            this.rbAdoptado.Name = "rbAdoptado";
+            this.rbAdoptado.Size = new System.Drawing.Size(97, 24);
+            this.rbAdoptado.TabIndex = 2;
+            this.rbAdoptado.TabStop = true;
+            this.rbAdoptado.Text = "Adoptado";
+            this.rbAdoptado.UseVisualStyleBackColor = true;
             // 
-            // checkBoxAdoptados
+            // rbDisponibleAdopcion
             // 
-            this.checkBoxAdoptados.AutoSize = true;
-            this.checkBoxAdoptados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAdoptados.Location = new System.Drawing.Point(1057, 627);
-            this.checkBoxAdoptados.Name = "checkBoxAdoptados";
-            this.checkBoxAdoptados.Size = new System.Drawing.Size(251, 41);
-            this.checkBoxAdoptados.TabIndex = 46;
-            this.checkBoxAdoptados.Text = "ADOPTADOS";
-            this.checkBoxAdoptados.UseVisualStyleBackColor = true;
+            this.rbDisponibleAdopcion.AutoSize = true;
+            this.rbDisponibleAdopcion.Location = new System.Drawing.Point(40, 60);
+            this.rbDisponibleAdopcion.Name = "rbDisponibleAdopcion";
+            this.rbDisponibleAdopcion.Size = new System.Drawing.Size(101, 24);
+            this.rbDisponibleAdopcion.TabIndex = 1;
+            this.rbDisponibleAdopcion.TabStop = true;
+            this.rbDisponibleAdopcion.Text = "Disponible";
+            this.rbDisponibleAdopcion.UseVisualStyleBackColor = true;
             // 
-            // checkBoxDisponibles
+            // rbEnEvaluacionAdopcion
             // 
-            this.checkBoxDisponibles.AutoSize = true;
-            this.checkBoxDisponibles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxDisponibles.Location = new System.Drawing.Point(1057, 690);
-            this.checkBoxDisponibles.Name = "checkBoxDisponibles";
-            this.checkBoxDisponibles.Size = new System.Drawing.Size(260, 41);
-            this.checkBoxDisponibles.TabIndex = 45;
-            this.checkBoxDisponibles.Text = "DISPONIBLES";
-            this.checkBoxDisponibles.UseVisualStyleBackColor = true;
+            this.rbEnEvaluacionAdopcion.AutoSize = true;
+            this.rbEnEvaluacionAdopcion.Location = new System.Drawing.Point(40, 26);
+            this.rbEnEvaluacionAdopcion.Name = "rbEnEvaluacionAdopcion";
+            this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(126, 24);
+            this.rbEnEvaluacionAdopcion.TabIndex = 0;
+            this.rbEnEvaluacionAdopcion.TabStop = true;
+            this.rbEnEvaluacionAdopcion.Text = "En evaluación";
+            this.rbEnEvaluacionAdopcion.UseVisualStyleBackColor = true;
             // 
-            // checkBoxEvaluacion
+            // groupBoxCastrado
             // 
-            this.checkBoxEvaluacion.AutoSize = true;
-            this.checkBoxEvaluacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxEvaluacion.Location = new System.Drawing.Point(1057, 750);
-            this.checkBoxEvaluacion.Name = "checkBoxEvaluacion";
-            this.checkBoxEvaluacion.Size = new System.Drawing.Size(311, 41);
-            this.checkBoxEvaluacion.TabIndex = 47;
-            this.checkBoxEvaluacion.Text = "EN EVALUACIÓN";
-            this.checkBoxEvaluacion.UseVisualStyleBackColor = true;
+            this.groupBoxCastrado.Controls.Add(this.rbHembraSexo);
+            this.groupBoxCastrado.Controls.Add(this.rbMachoSexo);
+            this.groupBoxCastrado.Location = new System.Drawing.Point(122, 302);
+            this.groupBoxCastrado.Name = "groupBoxCastrado";
+            this.groupBoxCastrado.Size = new System.Drawing.Size(160, 47);
+            this.groupBoxCastrado.TabIndex = 19;
+            this.groupBoxCastrado.TabStop = false;
             // 
-            // FormRegistroAnimales
+            // rbHembraSexo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.rbHembraSexo.AutoSize = true;
+            this.rbHembraSexo.Location = new System.Drawing.Point(100, 19);
+            this.rbHembraSexo.Name = "rbHembraSexo";
+            this.rbHembraSexo.Size = new System.Drawing.Size(33, 17);
+            this.rbHembraSexo.TabIndex = 1;
+            this.rbHembraSexo.TabStop = true;
+            this.rbHembraSexo.Text = "H";
+            this.rbHembraSexo.UseVisualStyleBackColor = true;
+            // 
+            // rbMachoSexo
+            // 
+            this.rbMachoSexo.AutoSize = true;
+            this.rbMachoSexo.Location = new System.Drawing.Point(29, 19);
+            this.rbMachoSexo.Name = "rbMachoSexo";
+            this.rbMachoSexo.Size = new System.Drawing.Size(34, 17);
+            this.rbMachoSexo.TabIndex = 0;
+            this.rbMachoSexo.TabStop = true;
+            this.rbMachoSexo.Text = "M";
+            this.rbMachoSexo.UseVisualStyleBackColor = true;
+            // 
+            // FormRegistroAnimales_941lp
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1479, 829);
-            this.Controls.Add(this.checkBoxEvaluacion);
-            this.Controls.Add(this.checkBoxAdoptados);
-            this.Controls.Add(this.checkBoxDisponibles);
-            this.Controls.Add(this.checkBoxHembra);
-            this.Controls.Add(this.checkBoxMacho);
+            this.ClientSize = new System.Drawing.Size(740, 431);
+            this.Controls.Add(this.groupBoxCastrado);
+            this.Controls.Add(this.groupBoxEstadoAdopcion);
             this.Controls.Add(this.txtTamaño);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.btnCancelar);
@@ -339,9 +378,15 @@
             this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.btnAltaUsuario);
             this.Controls.Add(this.dtAnimales);
-            this.Name = "FormRegistroAnimales";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "FormRegistroAnimales_941lp";
             this.Text = "FormRegistroAnimales";
+            this.Load += new System.EventHandler(this.FormRegistroAnimales_941lp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtAnimales)).EndInit();
+            this.groupBoxEstadoAdopcion.ResumeLayout(false);
+            this.groupBoxEstadoAdopcion.PerformLayout();
+            this.groupBoxCastrado.ResumeLayout(false);
+            this.groupBoxCastrado.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,10 +416,12 @@
         private System.Windows.Forms.Button btnModificarUsuario;
         private System.Windows.Forms.Button btnAltaUsuario;
         private System.Windows.Forms.TextBox txtTamaño;
-        private System.Windows.Forms.CheckBox checkBoxHembra;
-        private System.Windows.Forms.CheckBox checkBoxMacho;
-        private System.Windows.Forms.CheckBox checkBoxAdoptados;
-        private System.Windows.Forms.CheckBox checkBoxDisponibles;
-        private System.Windows.Forms.CheckBox checkBoxEvaluacion;
+        private System.Windows.Forms.GroupBox groupBoxEstadoAdopcion;
+        private System.Windows.Forms.RadioButton rbAdoptado;
+        private System.Windows.Forms.RadioButton rbDisponibleAdopcion;
+        private System.Windows.Forms.RadioButton rbEnEvaluacionAdopcion;
+        private System.Windows.Forms.GroupBox groupBoxCastrado;
+        private System.Windows.Forms.RadioButton rbHembraSexo;
+        private System.Windows.Forms.RadioButton rbMachoSexo;
     }
 }

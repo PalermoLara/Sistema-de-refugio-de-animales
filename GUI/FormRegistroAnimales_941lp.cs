@@ -16,5 +16,10 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void FormRegistroAnimales_941lp_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
