@@ -238,12 +238,14 @@ namespace GUI
                         ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text, comboBoxRoles.Text, txtEmailUsuario.Text);
                         if (bllUsuario_941lp.ValidarDNI_941lp(txtDni.Text)) { throw new Exception("DNI repetido"); }
+                        if (bllUsuario_941lp.ValidarEmail_941lp(txtEmailUsuario.Text)) throw new Exception("Email repetido");
                         bllUsuario_941lp.Alta_941lp(txtDni.Text,txtNombreUsuario.Text,txtApellidoUsuario.Text,comboBoxRoles.Text,txtEmailUsuario.Text);
                         MessageBox.Show("Usuario dado de alta exitosamente");
                         break;
                     case ModoOperacion_941lp.Modificar:
                         ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text, comboBoxRoles.Text, txtEmailUsuario.Text);
+                        if (bllUsuario_941lp.ValidarEmail_941lp(txtEmailUsuario.Text)) throw new Exception("Email repetido");
                         bllUsuario_941lp.Modificar_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text,  comboBoxRoles.Text, txtEmailUsuario.Text);
                         MessageBox.Show("Usuario modificado exitosamente");
                         break;
@@ -337,13 +339,9 @@ namespace GUI
                 var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
                 var regexGmail_941lp = new Regex(@"^[a-zA-Z0-9._%+-]+@gmail\.com$", RegexOptions.IgnoreCase);
                 var regexDni = new Regex(@"^\d{8}$");
-
-                // Limpiar los puntos del DNI (por ejemplo "12.345.678" se convierte en "12345678")
-                dni_941lp = dni_941lp.Replace(".", "");
-
                 // Validaciones
                 if (!regexDni.IsMatch(dni_941lp))
-                    throw new ArgumentException("El DNI ingresado es inválido. Debe contener exactamente 8 dígitos.");
+                    throw new ArgumentException("El DNI ingresado es inválido. Debe contener exactamente 8 dígitos y solo números.");
                 if (!regexTexto_941lp.IsMatch(nombre_941lp))
                     throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras y espacios.");
                 if (!regexTexto_941lp.IsMatch(apellido_941lp))

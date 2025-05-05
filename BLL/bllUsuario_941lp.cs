@@ -91,17 +91,16 @@ namespace BLL
             try
             {
                 Usuario_941lp usuario_941lp = BuscarUsuarioPorDNI_941lp(dni_941lp);
-                if (usuario_941lp.activo_941lp)
+                if (usuario_941lp == null)
                 {
-                    usuario_941lp.activo_941lp = false;
-                    MessageBox.Show("Se ha desactivado al usuario con exito");
+                    MessageBox.Show("Usuario no encontrado");
+                    return;
                 }
-                else
-                {
-                    usuario_941lp.activo_941lp = true;
-                    MessageBox.Show("Se ha activado al usuario con exito");
-                }
+                //Invierte el valor actual del campo activo_941lp
+                usuario_941lp.activo_941lp = !usuario_941lp.activo_941lp;
+                string mensaje = usuario_941lp.activo_941lp ? "Se ha activado al usuario con éxito" : "Se ha desactivado al usuario con éxito";
                 orm_941lp.Modificar_941lp(usuario_941lp);
+                MessageBox.Show(mensaje);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -116,24 +115,20 @@ namespace BLL
             try
             {
                 Usuario_941lp usuario_941lp = BuscarUsuarioPorDNI_941lp(dni_941lp);
-                if(usuario_941lp != null)
-                {
-                    if (!usuario_941lp.bloqueo_941lp)
-                    {
-                        throw new Exception("El usuario ya se encuentra desbloqueado");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Usuario desbloqueado exitosamente");
-                    }
-                    usuario_941lp.bloqueo_941lp = false;
-                    usuario_941lp.intentos_941lp = 0;
-                    orm_941lp.Modificar_941lp(usuario_941lp);
-                }
-                else
+                if (usuario_941lp == null)
                 {
                     MessageBox.Show("Usuario no encontrado");
+                    return;
                 }
+                if (!usuario_941lp.bloqueo_941lp)
+                {
+                    MessageBox.Show("El usuario ya se encuentra desbloqueado");
+                    return;
+                }
+                usuario_941lp.bloqueo_941lp = false;
+                usuario_941lp.intentos_941lp = 0;
+                orm_941lp.Modificar_941lp(usuario_941lp);
+                MessageBox.Show("Usuario desbloqueado exitosamente");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -146,6 +141,11 @@ namespace BLL
         public bool UsuarioBloqueado_941lp(Usuario_941lp usuario_941lp)
         {
             return usuario_941lp.bloqueo_941lp;
+        }
+
+        public bool ValidarEmail_941lp(string email_941lp)
+        {
+            return orm_941lp.ValidarEmail_941lp(email_941lp);
         }
 
         public void ModificarContraseña_941lp(Usuario_941lp usuario_941lp,string contraseñaNueva_941lp)

@@ -67,6 +67,17 @@ namespace ORM
             return count > 0;
         }
 
+        public bool ValidarEmail_941lp(string email_941lp)
+        {
+            string query = "SELECT COUNT(*) FROM Usuario_941lp WHERE email_941lp = @email_941lp";
+            var parametros = new Dictionary<string, object>
+            {
+                { "@email_941lp", email_941lp }
+            };
+            int count = Convert.ToInt32(dao_941lp.EjecutarEscalar_941lp(query, parametros));
+            return count > 0;
+        }
+
         public bool ValidarContraseña_941lp(string usuario, string contraseña)
         {
             string query = "SELECT COUNT(*) FROM Usuario_941lp WHERE nombreUsuario_941lp = @usuario AND contraseña_941lp = @contraseña";
@@ -86,25 +97,19 @@ namespace ORM
             if (usuario_941lp.rol_941lp != "Administrador")
             {
                 usuario_941lp.intentos_941lp++;
+                string query;
+
                 if (usuario_941lp.intentos_941lp == 3)
                 {
                     usuario_941lp.bloqueo_941lp = true;
-                    dao_941lp.Query_941lp("UPDATE Usuario_941lp SET bloqueo_941lp = @bloqueo WHERE dni_941lp = @dni",
-                        new Dictionary<string, object>
-                        {
-                            { "@bloqueo", usuario_941lp.bloqueo_941lp },
-                            { "@dni", usuario_941lp.dni_941lp }
-                        });
+                    query = "UPDATE Usuario_941lp SET bloqueo_941lp = @bloqueo_941lp WHERE dni_941lp = @dni_941lp";
                 }
                 else
                 {
-                    dao_941lp.Query_941lp("UPDATE Usuario_941lp SET intentos_941lp = @intentos WHERE dni_941lp = @dni",
-                        new Dictionary<string, object>
-                        {
-                            { "@intentos", usuario_941lp.intentos_941lp },
-                            { "@dni", usuario_941lp.dni_941lp }
-                        });
+                    query = "UPDATE Usuario_941lp SET intentos_941lp = @intentos_941lp WHERE dni_941lp = @dni_941lp";
                 }
+                var parametros = ParametroHelper_941lp.CrearParametros_941lp(usuario_941lp);
+                dao_941lp.Query_941lp(query, parametros);
             }
             return usuario_941lp.intentos_941lp;
         }

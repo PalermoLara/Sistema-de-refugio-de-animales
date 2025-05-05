@@ -27,6 +27,7 @@ namespace GUI
             try
             {
                 if (txtNombreUsuario.Text == "" || txtContraseñaUsuario.Text == "") throw new Exception("Faltan ingresar datos");
+                if (sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp() != null) throw new Exception("Ya hay una sesión iniciada");
                 if (bllUsuario_941lp.ValidarExistenciaNombreUsuario_941lp(txtNombreUsuario.Text.Trim()))
                 {
                     Usuario_941lp usuario_941lp = bllUsuario_941lp.RetornarUsuarios_941lp().Find(x => x.nombreUsuario_941lp == txtNombreUsuario.Text);

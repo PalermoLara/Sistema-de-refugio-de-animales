@@ -19,6 +19,7 @@ namespace GUI
         bllUsuario_941lp bllUsuario_941lp;
         private readonly FormGestionUsuario941lp formularioAdministradorUsuario_941lp;
         private readonly FormCambiarContraseña_941lp formularioCambiarContraseña_941lp;
+        private FormularioLogIn941lp formularioLogIn941lp;
         private List<Panel> submenus_941lp;
 
         public FormularioMenuPrincipal941lp()
@@ -28,6 +29,7 @@ namespace GUI
             bllUsuario_941lp = new bllUsuario_941lp();
             formularioAdministradorUsuario_941lp = new FormGestionUsuario941lp();
             formularioCambiarContraseña_941lp = new FormCambiarContraseña_941lp();
+            formularioLogIn941lp = new FormularioLogIn941lp();
         }
 
         private void InicializarSubmenus_941lp()
@@ -155,10 +157,7 @@ namespace GUI
         {
             try
             {
-                if (sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp() != null)
-                {
-                    MessageBox.Show("Ya hay una sesión iniciada.");
-                }
+                formularioLogIn941lp.ShowDialog();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
