@@ -36,6 +36,7 @@
             this.txtContraseñaNueva = new System.Windows.Forms.TextBox();
             this.txtContraseñaConfirmacion = new System.Windows.Forms.TextBox();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.checkBoxMostrarConstraseñas = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelContraseñaActual
@@ -80,27 +81,27 @@
             // 
             // txtContraseñaActual
             // 
-            this.txtContraseñaActual.Location = new System.Drawing.Point(504, 160);
-            this.txtContraseñaActual.Multiline = true;
+            this.txtContraseñaActual.Location = new System.Drawing.Point(504, 180);
             this.txtContraseñaActual.Name = "txtContraseñaActual";
-            this.txtContraseñaActual.Size = new System.Drawing.Size(434, 57);
+            this.txtContraseñaActual.Size = new System.Drawing.Size(431, 31);
             this.txtContraseñaActual.TabIndex = 4;
+            this.txtContraseñaActual.UseSystemPasswordChar = true;
             // 
             // txtContraseñaNueva
             // 
-            this.txtContraseñaNueva.Location = new System.Drawing.Point(504, 270);
-            this.txtContraseñaNueva.Multiline = true;
+            this.txtContraseñaNueva.Location = new System.Drawing.Point(504, 290);
             this.txtContraseñaNueva.Name = "txtContraseñaNueva";
-            this.txtContraseñaNueva.Size = new System.Drawing.Size(434, 57);
+            this.txtContraseñaNueva.Size = new System.Drawing.Size(434, 31);
             this.txtContraseñaNueva.TabIndex = 5;
+            this.txtContraseñaNueva.UseSystemPasswordChar = true;
             // 
             // txtContraseñaConfirmacion
             // 
-            this.txtContraseñaConfirmacion.Location = new System.Drawing.Point(504, 380);
-            this.txtContraseñaConfirmacion.Multiline = true;
+            this.txtContraseñaConfirmacion.Location = new System.Drawing.Point(504, 400);
             this.txtContraseñaConfirmacion.Name = "txtContraseñaConfirmacion";
-            this.txtContraseñaConfirmacion.Size = new System.Drawing.Size(434, 57);
+            this.txtContraseñaConfirmacion.Size = new System.Drawing.Size(434, 31);
             this.txtContraseñaConfirmacion.TabIndex = 6;
+            this.txtContraseñaConfirmacion.UseSystemPasswordChar = true;
             // 
             // btnSalir
             // 
@@ -112,12 +113,25 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // FormCambiarContraseña
+            // checkBoxMostrarConstraseñas
+            // 
+            this.checkBoxMostrarConstraseñas.AutoSize = true;
+            this.checkBoxMostrarConstraseñas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxMostrarConstraseñas.Location = new System.Drawing.Point(504, 454);
+            this.checkBoxMostrarConstraseñas.Name = "checkBoxMostrarConstraseñas";
+            this.checkBoxMostrarConstraseñas.Size = new System.Drawing.Size(342, 41);
+            this.checkBoxMostrarConstraseñas.TabIndex = 14;
+            this.checkBoxMostrarConstraseñas.Text = "Mostrar contraseñas";
+            this.checkBoxMostrarConstraseñas.UseVisualStyleBackColor = true;
+            this.checkBoxMostrarConstraseñas.CheckedChanged += new System.EventHandler(this.checkBoxMostrarConstraseñas_CheckedChanged);
+            // 
+            // FormCambiarContraseña_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1522, 745);
+            this.Controls.Add(this.checkBoxMostrarConstraseñas);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.txtContraseñaConfirmacion);
             this.Controls.Add(this.txtContraseñaNueva);
@@ -126,7 +140,7 @@
             this.Controls.Add(this.labelContraseñaNueva);
             this.Controls.Add(this.labelContraseñaConfirmacion);
             this.Controls.Add(this.labelContraseñaActual);
-            this.Name = "FormCambiarContraseña";
+            this.Name = "FormCambiarContraseña_941lp";
             this.Text = "FormCambiarContraseña";
             this.Load += new System.EventHandler(this.FormCambiarContraseña_Load);
             this.ResumeLayout(false);
@@ -144,5 +158,6 @@
         private System.Windows.Forms.TextBox txtContraseñaNueva;
         private System.Windows.Forms.TextBox txtContraseñaConfirmacion;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.CheckBox checkBoxMostrarConstraseñas;
     }
 }

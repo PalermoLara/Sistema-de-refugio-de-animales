@@ -38,6 +38,7 @@
             this.labelNombreUsuarioLogIn = new System.Windows.Forms.Label();
             this.labelContraseñaLogIN = new System.Windows.Forms.Label();
             this.labelWhiskerWare = new System.Windows.Forms.Label();
+            this.checkBoxMostrarConstraseña = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +76,7 @@
             this.txtContraseñaUsuario.Size = new System.Drawing.Size(289, 38);
             this.txtContraseñaUsuario.TabIndex = 1;
             this.txtContraseñaUsuario.Text = "1234";
+            this.txtContraseñaUsuario.UseSystemPasswordChar = true;
             // 
             // pictureBox1
             // 
@@ -116,12 +118,25 @@
             this.labelWhiskerWare.TabIndex = 12;
             this.labelWhiskerWare.Text = "WHISKER-WARE";
             // 
+            // checkBoxMostrarConstraseña
+            // 
+            this.checkBoxMostrarConstraseña.AutoSize = true;
+            this.checkBoxMostrarConstraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxMostrarConstraseña.Location = new System.Drawing.Point(359, 361);
+            this.checkBoxMostrarConstraseña.Name = "checkBoxMostrarConstraseña";
+            this.checkBoxMostrarConstraseña.Size = new System.Drawing.Size(158, 41);
+            this.checkBoxMostrarConstraseña.TabIndex = 13;
+            this.checkBoxMostrarConstraseña.Text = "Mostrar";
+            this.checkBoxMostrarConstraseña.UseVisualStyleBackColor = true;
+            this.checkBoxMostrarConstraseña.CheckedChanged += new System.EventHandler(this.checkBoxMostrarConstraseña_CheckedChanged);
+            // 
             // FormularioLogIn941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1279, 736);
+            this.Controls.Add(this.checkBoxMostrarConstraseña);
             this.Controls.Add(this.labelWhiskerWare);
             this.Controls.Add(this.labelContraseñaLogIN);
             this.Controls.Add(this.labelNombreUsuarioLogIn);
@@ -150,6 +165,7 @@
         private System.Windows.Forms.Label labelNombreUsuarioLogIn;
         private System.Windows.Forms.Label labelContraseñaLogIN;
         private System.Windows.Forms.Label labelWhiskerWare;
+        private System.Windows.Forms.CheckBox checkBoxMostrarConstraseña;
     }
 }
 

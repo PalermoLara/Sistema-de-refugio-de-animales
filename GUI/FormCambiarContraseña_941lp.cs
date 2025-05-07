@@ -55,5 +55,12 @@ namespace GUI
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
+
+        private void checkBoxMostrarConstraseñas_CheckedChanged(object sender, EventArgs e)
+        {
+            txtContraseñaActual.UseSystemPasswordChar = !checkBoxMostrarConstraseñas.Checked;
+            txtContraseñaConfirmacion.UseSystemPasswordChar = !checkBoxMostrarConstraseñas.Checked;
+            txtContraseñaNueva.UseSystemPasswordChar = !checkBoxMostrarConstraseñas.Checked;
+        }
     }
 }

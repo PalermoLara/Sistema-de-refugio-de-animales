@@ -91,7 +91,11 @@ namespace GUI
 
         private void FormularioLogIn941lp_Load_1(object sender, EventArgs e)
         {
+        }
 
+        private void checkBoxMostrarConstraseña_CheckedChanged(object sender, EventArgs e)
+        {
+            txtContraseñaUsuario.UseSystemPasswordChar = !checkBoxMostrarConstraseña.Checked;
         }
     }
 }
