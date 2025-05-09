@@ -77,6 +77,7 @@ namespace BLL
             try
             {
                 Usuario_941lp nuevoUsuario_941lp = BuscarUsuarioPorDNI_941lp(dni_941lp);
+                nuevoUsuario_941lp.nombreUsuario_941lp = dni_941lp + nombre_941lp;
                 nuevoUsuario_941lp.nombre_941lp = nombre_941lp;
                 nuevoUsuario_941lp.apellido_941lp = apellido_941lp;
                 nuevoUsuario_941lp.rol_941lp = rol_941lp;
@@ -143,9 +144,9 @@ namespace BLL
             return usuario_941lp.bloqueo_941lp;
         }
 
-        public bool ValidarEmail_941lp(string email_941lp)
+        public bool ValidarEmail_941lp(string email_941lp, string dni_941lp)
         {
-            return orm_941lp.ValidarEmail_941lp(email_941lp);
+            return orm_941lp.ValidarEmail_941lp(email_941lp, dni_941lp);
         }
 
         public void ModificarContraseña_941lp(Usuario_941lp usuario_941lp,string contraseñaNueva_941lp)

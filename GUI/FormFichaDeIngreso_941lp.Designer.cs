@@ -44,13 +44,20 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.dtCedentes = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtAnimales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtCedentes)).BeginInit();
             this.SuspendLayout();
             // 
             // btnModificarFichaMedica
             // 
             this.btnModificarFichaMedica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarFichaMedica.Location = new System.Drawing.Point(1141, 593);
+            this.btnModificarFichaMedica.Location = new System.Drawing.Point(1322, 733);
             this.btnModificarFichaMedica.Name = "btnModificarFichaMedica";
             this.btnModificarFichaMedica.Size = new System.Drawing.Size(437, 82);
             this.btnModificarFichaMedica.TabIndex = 28;
@@ -59,7 +66,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(1214, 317);
+            this.txtNombre.Location = new System.Drawing.Point(1395, 457);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(376, 31);
             this.txtNombre.TabIndex = 24;
@@ -68,7 +75,7 @@
             // 
             this.labelMedicamento.AutoSize = true;
             this.labelMedicamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMedicamento.Location = new System.Drawing.Point(1148, 271);
+            this.labelMedicamento.Location = new System.Drawing.Point(1329, 411);
             this.labelMedicamento.Name = "labelMedicamento";
             this.labelMedicamento.Size = new System.Drawing.Size(76, 31);
             this.labelMedicamento.TabIndex = 23;
@@ -76,7 +83,7 @@
             // 
             // txtRaza
             // 
-            this.txtRaza.Location = new System.Drawing.Point(1214, 192);
+            this.txtRaza.Location = new System.Drawing.Point(1395, 332);
             this.txtRaza.Name = "txtRaza";
             this.txtRaza.Size = new System.Drawing.Size(376, 31);
             this.txtRaza.TabIndex = 22;
@@ -85,7 +92,7 @@
             // 
             this.labelDieta.AutoSize = true;
             this.labelDieta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDieta.Location = new System.Drawing.Point(1148, 146);
+            this.labelDieta.Location = new System.Drawing.Point(1329, 286);
             this.labelDieta.Name = "labelDieta";
             this.labelDieta.Size = new System.Drawing.Size(229, 31);
             this.labelDieta.TabIndex = 21;
@@ -94,7 +101,7 @@
             // btnCrearFichaDeIngreso
             // 
             this.btnCrearFichaDeIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearFichaDeIngreso.Location = new System.Drawing.Point(1141, 24);
+            this.btnCrearFichaDeIngreso.Location = new System.Drawing.Point(1322, 164);
             this.btnCrearFichaDeIngreso.Name = "btnCrearFichaDeIngreso";
             this.btnCrearFichaDeIngreso.Size = new System.Drawing.Size(437, 82);
             this.btnCrearFichaDeIngreso.TabIndex = 19;
@@ -105,9 +112,9 @@
             // 
             this.listBoxFichaIngreso.FormattingEnabled = true;
             this.listBoxFichaIngreso.ItemHeight = 25;
-            this.listBoxFichaIngreso.Location = new System.Drawing.Point(12, 359);
+            this.listBoxFichaIngreso.Location = new System.Drawing.Point(12, 704);
             this.listBoxFichaIngreso.Name = "listBoxFichaIngreso";
-            this.listBoxFichaIngreso.Size = new System.Drawing.Size(1114, 404);
+            this.listBoxFichaIngreso.Size = new System.Drawing.Size(1114, 279);
             this.listBoxFichaIngreso.TabIndex = 18;
             // 
             // dtAnimales
@@ -190,19 +197,79 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(1141, 681);
+            this.btnSalir.Location = new System.Drawing.Point(1322, 821);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(437, 82);
             this.btnSalir.TabIndex = 29;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
+            // dtCedentes
+            // 
+            this.dtCedentes.AllowUserToAddRows = false;
+            this.dtCedentes.AllowUserToDeleteRows = false;
+            this.dtCedentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtCedentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.dtCedentes.Location = new System.Drawing.Point(12, 369);
+            this.dtCedentes.Name = "dtCedentes";
+            this.dtCedentes.ReadOnly = true;
+            this.dtCedentes.RowHeadersWidth = 82;
+            this.dtCedentes.RowTemplate.Height = 33;
+            this.dtCedentes.Size = new System.Drawing.Size(1114, 329);
+            this.dtCedentes.TabIndex = 30;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Apellido";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Telefono";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Dirección";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 200;
+            // 
             // FormFichaDeIngreso_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1680, 815);
+            this.ClientSize = new System.Drawing.Size(1883, 995);
+            this.Controls.Add(this.dtCedentes);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnModificarFichaMedica);
             this.Controls.Add(this.txtNombre);
@@ -215,6 +282,7 @@
             this.Name = "FormFichaDeIngreso_941lp";
             this.Text = "FormFichaDeIngreso_941lp";
             ((System.ComponentModel.ISupportInitialize)(this.dtAnimales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtCedentes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +306,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.DataGridView dtCedentes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }
