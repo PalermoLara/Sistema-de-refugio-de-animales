@@ -72,14 +72,11 @@ namespace BLL
             return orm_941lp.AumentarIntentos_941lp(nombreUsuario941lp_941lp);
         }
 
-        public void Modificar_941lp(string dni_941lp, string nombre_941lp, string apellido_941lp, string rol_941lp, string email_941lp)
+        public void Modificar_941lp(string dni_941lp, string rol_941lp, string email_941lp)
         {
             try
             {
                 Usuario_941lp nuevoUsuario_941lp = BuscarUsuarioPorDNI_941lp(dni_941lp);
-                nuevoUsuario_941lp.nombreUsuario_941lp = dni_941lp + nombre_941lp;
-                nuevoUsuario_941lp.nombre_941lp = nombre_941lp;
-                nuevoUsuario_941lp.apellido_941lp = apellido_941lp;
                 nuevoUsuario_941lp.rol_941lp = rol_941lp;
                 nuevoUsuario_941lp.email_941lp = email_941lp;
                 orm_941lp.Modificar_941lp(nuevoUsuario_941lp);

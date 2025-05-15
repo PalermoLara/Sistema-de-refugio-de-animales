@@ -34,7 +34,7 @@ namespace ORM
 
         public void Modificar_941lp(Usuario_941lp usuario_941lp)
         {
-            string query_941lp = "UPDATE Usuario_941lp SET nombreUsuario_941lp = @nombreUsuario_941lp, contraseña_941lp = @contraseña_941lp, nombre_941lp = @nombre_941lp, apellido_941lp = @apellido_941lp, rol_941lp = @rol_941lp, email_941lp = @email_941lp, bloqueo_941lp = @bloqueo_941lp, intentos_941lp = @intentos_941lp, " +
+            string query_941lp = "UPDATE Usuario_941lp SET contraseña_941lp = @contraseña_941lp, nombre_941lp = @nombre_941lp, apellido_941lp = @apellido_941lp, rol_941lp = @rol_941lp, email_941lp = @email_941lp, bloqueo_941lp = @bloqueo_941lp, intentos_941lp = @intentos_941lp, " +
                          "lenguaje_941lp = @lenguaje_941lp, activo_941lp = @activo_941lp WHERE dni_941lp = @dni_941lp";
             EjecutarQueryConEntidad_941lp(usuario_941lp, query_941lp);
         }

@@ -69,8 +69,8 @@ namespace GUI
             if(modo_941lp == ModoOperacion_941lp.Modificar)
             {
                 txtDni.Enabled = !habilitar_941lp;
-                txtApellidoUsuario.Enabled = habilitar_941lp;
-                txtNombreUsuario.Enabled = habilitar_941lp;
+                txtApellidoUsuario.Enabled = !habilitar_941lp;
+                txtNombreUsuario.Enabled = !habilitar_941lp;
                 txtEmailUsuario.Enabled = habilitar_941lp;
                 comboBoxRoles.Enabled = habilitar_941lp;
             }
@@ -246,7 +246,7 @@ namespace GUI
                         ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text, comboBoxRoles.Text, txtEmailUsuario.Text);
                         if (bllUsuario_941lp.ValidarEmail_941lp(txtEmailUsuario.Text, txtDni.Text)) throw new Exception("Email repetido");
-                        bllUsuario_941lp.Modificar_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text,  comboBoxRoles.Text, txtEmailUsuario.Text);
+                        bllUsuario_941lp.Modificar_941lp(txtDni.Text,comboBoxRoles.Text, txtEmailUsuario.Text);
                         MessageBox.Show("Usuario modificado exitosamente");
                         break;
                     case ModoOperacion_941lp.ActivarDesactivar:
