@@ -118,15 +118,19 @@ namespace BLL
                     MessageBox.Show("Usuario no encontrado");
                     return;
                 }
-                if (!usuario_941lp.bloqueo_941lp)
+                else if (usuario_941lp.bloqueo_941lp)
+                {
+                    usuario_941lp.contraseña_941lp = HashearContraseña_941lp(usuario_941lp.dni_941lp + usuario_941lp.apellido_941lp);
+                    usuario_941lp.bloqueo_941lp = false;
+                    usuario_941lp.intentos_941lp = 0;
+                    orm_941lp.Modificar_941lp(usuario_941lp);
+                    MessageBox.Show("Usuario desbloqueado exitosamente");
+                }
+                else
                 {
                     MessageBox.Show("El usuario ya se encuentra desbloqueado");
                     return;
                 }
-                usuario_941lp.bloqueo_941lp = false;
-                usuario_941lp.intentos_941lp = 0;
-                orm_941lp.Modificar_941lp(usuario_941lp);
-                MessageBox.Show("Usuario desbloqueado exitosamente");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

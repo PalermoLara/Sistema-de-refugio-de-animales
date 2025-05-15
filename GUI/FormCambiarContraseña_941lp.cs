@@ -34,7 +34,8 @@ namespace GUI
                 if (contraseñaNueva_941lp != contraseñaConfirmacion_941lp) throw new Exception("La contraseña nueva y la confirmación no coinciden");
                 bllUsuario_941lp.ModificarContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp(), contraseñaNueva_941lp);
                 MessageBox.Show("Su contraseña a sido modificada con exito");
-                btnCancelar_Click(null, null);
+                sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
+                GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoLogIn941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
