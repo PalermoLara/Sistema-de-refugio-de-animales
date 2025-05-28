@@ -10,7 +10,7 @@ namespace BE
     public class Usuario_941lp
     {
 
-        public Usuario_941lp(string pDni_941lp, string pNombreUsuario_941lp, string pContraseñaUsuario_941lp, string pNombre_941lp, string pApellido_941lp, string pRol_941lp,string pEmailUsuario_941lp, bool pBloqueo_941lp, int pIntentos_941lp, string pLenguaje_941lp, bool pActivado_941lp)
+        public Usuario_941lp(string pDni_941lp, string pNombreUsuario_941lp, string pContraseñaUsuario_941lp, string pNombre_941lp, string pApellido_941lp, string pRol_941lp,string pEmailUsuario_941lp, bool pBloqueo_941lp, int pIntentos_941lp, string pLenguaje_941lp, bool pActivado_941lp, DateTime? pHoraDesbloqueo_941lp)
         {
             dni_941lp = pDni_941lp;
             nombreUsuario_941lp = pNombreUsuario_941lp;
@@ -23,6 +23,7 @@ namespace BE
             intentos_941lp = pIntentos_941lp;
             lenguaje_941lp = pLenguaje_941lp;
             activo_941lp = pActivado_941lp;
+            horaDesbloquear_941lp = pHoraDesbloqueo_941lp;
         }
 
         public string dni_941lp { get; set; }
@@ -36,5 +37,6 @@ namespace BE
         public int intentos_941lp { get; set; }
         public string lenguaje_941lp { get; set; }
         public bool activo_941lp { get; set; }
+        public DateTime? horaDesbloquear_941lp { get; set; }
     }
 }

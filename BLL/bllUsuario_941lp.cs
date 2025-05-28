@@ -23,17 +23,17 @@ namespace BLL
             { 
                 string nombreUsuario_941lp = dni_941lp + nombre_941lp;
                 string contraseña_941lp = HashearContraseña_941lp(dni_941lp + apellido_941lp); // lógica de negocio: contraseña inicial hasheada
-                Usuario_941lp nuevoUsuario_941lp = new Usuario_941lp( dni_941lp, nombreUsuario_941lp, contraseña_941lp, nombre_941lp, apellido_941lp, rol_941lp, email_941lp, false, 0, "es", true);
+                Usuario_941lp nuevoUsuario_941lp = new Usuario_941lp( dni_941lp, nombreUsuario_941lp, contraseña_941lp, nombre_941lp, apellido_941lp, rol_941lp, email_941lp, false, 0, "es", true, null);
                 orm_941lp.Alta_941lp(nuevoUsuario_941lp);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        public bool PrimerInicioDeSesion_941lp(string contraseña_941lp)
+        public bool VerificarContraseñaNoSeaDNIyApellido(string contraseña_941lp)
         {
             bool coincide_941lp = false;
             string contraseñaVieja_941lp = HashearContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp + sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().apellido_941lp);
-            if (sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().contraseña_941lp == contraseñaVieja_941lp)
+            if (contraseña_941lp== contraseñaVieja_941lp)
             {
                 coincide_941lp = true;
             }
@@ -45,7 +45,7 @@ namespace BLL
             return orm_941lp.ValidarExistenciaNombreUsuario_941lp(nombreUsuario_941lp);
         }
 
-        private string HashearContraseña_941lp(string contraseñaUsuario_941lp)
+        public string HashearContraseña_941lp(string contraseñaUsuario_941lp)
         {
             return seguridad_941lp.GetSHA256_941lp(contraseñaUsuario_941lp);
         }
@@ -55,6 +55,7 @@ namespace BLL
             usuario_941lp.intentos_941lp = 0;
             orm_941lp.Modificar_941lp(usuario_941lp);
         }
+
 
         public bool ValidarContraseñaActual_941lp(string usuario_941lp, string contraseña_941lp)
         {
@@ -123,6 +124,7 @@ namespace BLL
                     usuario_941lp.contraseña_941lp = HashearContraseña_941lp(usuario_941lp.dni_941lp + usuario_941lp.apellido_941lp);
                     usuario_941lp.bloqueo_941lp = false;
                     usuario_941lp.intentos_941lp = 0;
+                    usuario_941lp.horaDesbloquear_941lp = null;
                     orm_941lp.Modificar_941lp(usuario_941lp);
                     MessageBox.Show("Usuario desbloqueado exitosamente");
                 }
@@ -142,7 +144,34 @@ namespace BLL
 
         public bool UsuarioBloqueado_941lp(Usuario_941lp usuario_941lp)
         {
-            return usuario_941lp.bloqueo_941lp;
+            if (!usuario_941lp.bloqueo_941lp)
+                return false;
+
+            if (usuario_941lp.intentos_941lp < 3 && usuario_941lp.horaDesbloquear_941lp.HasValue && DateTime.Now > usuario_941lp.horaDesbloquear_941lp.Value.AddMinutes(1))
+            {
+                usuario_941lp.bloqueo_941lp = false;
+                usuario_941lp.intentos_941lp = 0;
+                usuario_941lp.horaDesbloquear_941lp = null;
+                orm_941lp.Modificar_941lp(usuario_941lp);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool ValidarAdminSupremo(string nombreUsuario_941lp, string contraseña_941lp)
+        {
+            bool adminSupremo = false;
+            if(ormUsuario_941lp.AdminSupremo.nombreUsuario_941lp == nombreUsuario_941lp && ormUsuario_941lp.AdminSupremo.contraseña_941lp == contraseña_941lp)
+            {
+                adminSupremo = true;
+            }
+            return adminSupremo;
+        }
+
+        public void SetAdminSupremo()
+        {
+            sessionManager941lp.Gestor_941lp.SetUsuario_941lp(ormUsuario_941lp.AdminSupremo);
         }
 
         public bool ValidarEmail_941lp(string email_941lp, string dni_941lp)

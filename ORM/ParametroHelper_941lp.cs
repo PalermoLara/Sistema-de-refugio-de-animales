@@ -8,29 +8,33 @@ namespace ORM
 {
     internal class ParametroHelper_941lp
     {
-        // Método estático que recibe cualquier entidad y devuelve un diccionario con los parámetros para una consulta SQL.
-        public static Dictionary<string, object> CrearParametros_941lp(object entity_941lp)
+        /// <summary>
+        /// Crea un diccionario de parámetros a partir de las propiedades de una entidad.
+        /// Si se especifica una lista de nombres de propiedades, solo esas se incluyen.
+        /// </summary>
+        /// <param name="entity_941lp">La entidad de la cual extraer propiedades.</param>
+        /// <param name="propiedadesIncluir_941lp">Lista opcional de nombres de propiedades a incluir (en minúscula).</param>
+        public static Dictionary<string, object> CrearParametros_941lp(object entity_941lp, List<string> propiedadesIncluir_941lp = null)
         {
-            // Se crea un diccionario para almacenar los parámetros, donde la clave será el nombre del parámetro
-            // (ej. @nombre, @email) y el valor será el valor de la propiedad correspondiente del objeto.
             var parametros_941lp = new Dictionary<string, object>();
 
-            // Recorre todas las propiedades del objeto recibido como parámetro.
             foreach (var prop_941lp in entity_941lp.GetType().GetProperties())
             {
-                // Crea el nombre del parámetro SQL, que será @propName (por ejemplo, @nombre, @email, etc.)
-                var propName_941lp = "@" + prop_941lp.Name.ToLower();
+                string propName = prop_941lp.Name;
 
-                // Obtiene el valor de la propiedad en el objeto actual.
-                var propValue_941lp = prop_941lp.GetValue(entity_941lp);
+                // Si se pasó una lista de propiedades a incluir, y esta propiedad no está en la lista, la salteamos
+                if (propiedadesIncluir_941lp != null && !propiedadesIncluir_941lp.Contains(propName))
+                    continue;
 
-                // Se agrega al diccionario el nombre del parámetro y su valor, o DBNull.Value si el valor es null.
-                // Esto es útil para evitar problemas con valores null en las consultas SQL.
-                parametros_941lp.Add(propName_941lp, propValue_941lp ?? DBNull.Value);
+                var nombreParametro = "@" + propName;
+                var valor = prop_941lp.GetValue(entity_941lp) ?? DBNull.Value;
+
+                parametros_941lp[nombreParametro] = valor;
             }
 
-            // Devuelve el diccionario con todos los parámetros de la entidad.
             return parametros_941lp;
+            
         }
+
     }
 }

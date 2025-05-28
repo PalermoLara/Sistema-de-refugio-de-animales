@@ -24,6 +24,8 @@ namespace ORM
             dao_941lp = new dao_941lp();
         }
 
+        public static readonly Usuario_941lp AdminSupremo = new Usuario_941lp("00000000", "#admin!!", "_adminSup123", "admin", "supremo", "Administrador", "admin@sistema.com", false, 0, "es", true, null);
+
         public void Alta_941lp(Usuario_941lp usuario_941lp)
         {
             string query_941lp = "INSERT INTO Usuario_941lp " +
@@ -34,14 +36,21 @@ namespace ORM
 
         public void Modificar_941lp(Usuario_941lp usuario_941lp)
         {
-            string query_941lp = "UPDATE Usuario_941lp SET contraseña_941lp = @contraseña_941lp, nombre_941lp = @nombre_941lp, apellido_941lp = @apellido_941lp, rol_941lp = @rol_941lp, email_941lp = @email_941lp, bloqueo_941lp = @bloqueo_941lp, intentos_941lp = @intentos_941lp, " +
-                         "lenguaje_941lp = @lenguaje_941lp, activo_941lp = @activo_941lp WHERE dni_941lp = @dni_941lp";
-            EjecutarQueryConEntidad_941lp(usuario_941lp, query_941lp);
+            string query_941lp = "UPDATE Usuario_941lp SET contraseña_941lp = @contraseña_941lp, rol_941lp = @rol_941lp, email_941lp = @email_941lp, bloqueo_941lp = @bloqueo_941lp, intentos_941lp = @intentos_941lp, " +
+                         "lenguaje_941lp = @lenguaje_941lp, activo_941lp = @activo_941lp, horaDesbloquear_941lp = @horaDesbloquear_941lp WHERE dni_941lp = @dni_941lp";
+            // Lista de propiedades usadas en la consulta
+            var props = new List<string> 
+            {
+                "contraseña_941lp", "rol_941lp", "email_941lp", "bloqueo_941lp",
+                "intentos_941lp", "lenguaje_941lp", "activo_941lp", "horaDesbloquear_941lp", "dni_941lp"
+            };
+
+            EjecutarQueryConEntidad_941lp(usuario_941lp, query_941lp, props);
         }
 
-        private void EjecutarQueryConEntidad_941lp(Usuario_941lp usuario_941lp, string query_941lp)
+        private void EjecutarQueryConEntidad_941lp(Usuario_941lp usuario_941lp, string query_941lp, List<string> propiedadesIncluir_941lp = null)
         {
-            Dictionary<string, object> parametros_941lp = ParametroHelper_941lp.CrearParametros_941lp(usuario_941lp);
+            Dictionary<string, object> parametros_941lp = ParametroHelper_941lp.CrearParametros_941lp(usuario_941lp, propiedadesIncluir_941lp);
             dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
 
@@ -95,23 +104,23 @@ namespace ORM
         // intentos > 3 --> usuario bloqueado
         public int AumentarIntentos_941lp(Usuario_941lp usuario_941lp)
         {
-            if (usuario_941lp.rol_941lp != "Administrador")
-            {
-                usuario_941lp.intentos_941lp++;
-                string query;
+            usuario_941lp.intentos_941lp++;
+            string query;
+            List<string> propiedades;
 
-                if (usuario_941lp.intentos_941lp == 3)
-                {
-                    usuario_941lp.bloqueo_941lp = true;
-                    query = "UPDATE Usuario_941lp SET bloqueo_941lp = @bloqueo_941lp WHERE dni_941lp = @dni_941lp";
-                }
-                else
-                {
-                    query = "UPDATE Usuario_941lp SET intentos_941lp = @intentos_941lp WHERE dni_941lp = @dni_941lp";
-                }
-                var parametros = ParametroHelper_941lp.CrearParametros_941lp(usuario_941lp);
-                dao_941lp.Query_941lp(query, parametros);
+            if (usuario_941lp.intentos_941lp == 3)
+            {
+                usuario_941lp.bloqueo_941lp = true;
+                query = "UPDATE Usuario_941lp SET intentos_941lp = @intentos_941lp, bloqueo_941lp = @bloqueo_941lp WHERE dni_941lp = @dni_941lp";
+                propiedades = new List<string> { "intentos_941lp", "bloqueo_941lp", "dni_941lp" };
             }
+            else
+            {
+                usuario_941lp.horaDesbloquear_941lp = DateTime.Now;
+                query = "UPDATE Usuario_941lp SET intentos_941lp = @intentos_941lp, horaDesbloquear_941lp = @horaDesbloquear_941lp  WHERE dni_941lp = @dni_941lp";
+                propiedades = new List<string> { "intentos_941lp", "horaDesbloquear_941lp", "dni_941lp" };
+            }
+            EjecutarQueryConEntidad_941lp(usuario_941lp,query, propiedades);
             return usuario_941lp.intentos_941lp;
         }
 
@@ -134,6 +143,10 @@ namespace ORM
 
         private Usuario_941lp MapearUsuario(SqlDataReader reader)
         {
+            DateTime? horaDesbloquear = reader["horaDesbloquear_941lp"] == DBNull.Value
+            ? (DateTime?)null
+            : Convert.ToDateTime(reader["horaDesbloquear_941lp"]);
+
             return new Usuario_941lp(
                 reader["dni_941lp"].ToString(),
                 reader["nombreUsuario_941lp"].ToString(),
@@ -145,7 +158,8 @@ namespace ORM
                 Convert.ToBoolean(reader["bloqueo_941lp"]),
                 Convert.ToInt32(reader["intentos_941lp"]),
                 reader["lenguaje_941lp"].ToString(),
-                Convert.ToBoolean(reader["activo_941lp"])
+                Convert.ToBoolean(reader["activo_941lp"]),
+                horaDesbloquear
             );
         }
     }

@@ -26,14 +26,20 @@ namespace GUI
         {
             try
             {
+                if (txtContraseñaActual.Text == "" || txtContraseñaConfirmacion.Text == "" || txtContraseñaNueva.Text == "")
+                {
+                    throw new Exception("Fantan ingresar contraseñas");
+                }
                 string contraseñaActual_941lp = txtContraseñaActual.Text;
                 string contraseñaNueva_941lp = txtContraseñaNueva.Text;
                 string contraseñaConfirmacion_941lp = txtContraseñaConfirmacion.Text;
                 if (bllUsuario_941lp.ValidarContraseñaActual_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp,contraseñaActual_941lp) == false) throw new Exception("Contraseña actual incorrecta");
+                if (bllUsuario_941lp.VerificarContraseñaNoSeaDNIyApellido(bllUsuario_941lp.HashearContraseña_941lp(contraseñaNueva_941lp))) throw new Exception("La contraseña no puede ser su dni y apellido");
                 if (contraseñaActual_941lp == contraseñaNueva_941lp) throw new Exception("La nueva contraseña no puede ser igual a la actual");
                 if (contraseñaNueva_941lp != contraseñaConfirmacion_941lp) throw new Exception("La contraseña nueva y la confirmación no coinciden");
                 bllUsuario_941lp.ModificarContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp(), contraseñaNueva_941lp);
                 MessageBox.Show("Su contraseña a sido modificada con exito");
+                if (btnSalir.Enabled == false) { btnSalir.Enabled = true; }
                 sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
                 GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoLogIn941lp());
             }
@@ -42,7 +48,10 @@ namespace GUI
 
         private void FormCambiarContraseña_Load(object sender, EventArgs e)
         {
-            
+            if (sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().contraseña_941lp ==bllUsuario_941lp.HashearContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp + sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().apellido_941lp))
+            {
+                btnSalir.Enabled = false;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

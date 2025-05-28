@@ -92,10 +92,9 @@ namespace GUI
 
         private void FormularioMenu_Load(object sender, EventArgs e)
         {
-            if(bllUsuario_941lp.PrimerInicioDeSesion_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().contraseña_941lp))
+            if (bllUsuario_941lp.ValidarAdminSupremo(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().contraseña_941lp))
             {
-                MessageBox.Show("Primer inicio de sesión. Debe cambiar su contraseña", "CAMBIO DE CONTRASEÑA REQUERIDO", MessageBoxButtons.OK);
-                formularioCambiarContraseña_941lp.ShowDialog();
+                btnCambiarContraseña.Enabled = false;
             }
         }
 
