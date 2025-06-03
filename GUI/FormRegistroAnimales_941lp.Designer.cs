@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtAnimales = new System.Windows.Forms.DataGridView();
+            this.dataAnimales = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,25 +49,22 @@
             this.labelNombreRegistroAnimal = new System.Windows.Forms.Label();
             this.btnModificarUsuario = new System.Windows.Forms.Button();
             this.btnAltaUsuario = new System.Windows.Forms.Button();
-            this.txtTamaño = new System.Windows.Forms.TextBox();
             this.groupBoxEstadoAdopcion = new System.Windows.Forms.GroupBox();
             this.rbAdoptado = new System.Windows.Forms.RadioButton();
             this.rbDisponibleAdopcion = new System.Windows.Forms.RadioButton();
             this.rbEnEvaluacionAdopcion = new System.Windows.Forms.RadioButton();
-            this.groupBoxCastrado = new System.Windows.Forms.GroupBox();
-            this.rbHembraSexo = new System.Windows.Forms.RadioButton();
-            this.rbMachoSexo = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dtAnimales)).BeginInit();
+            this.comboBoxSexo = new System.Windows.Forms.ComboBox();
+            this.comboBoxTamaño = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
             this.groupBoxEstadoAdopcion.SuspendLayout();
-            this.groupBoxCastrado.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dtAnimales
+            // dataAnimales
             // 
-            this.dtAnimales.AllowUserToAddRows = false;
-            this.dtAnimales.AllowUserToDeleteRows = false;
-            this.dtAnimales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtAnimales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataAnimales.AllowUserToAddRows = false;
+            this.dataAnimales.AllowUserToDeleteRows = false;
+            this.dataAnimales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataAnimales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
             this.Column1,
             this.Column3,
@@ -75,14 +72,14 @@
             this.Column5,
             this.Column6,
             this.Column7});
-            this.dtAnimales.Location = new System.Drawing.Point(6, 6);
-            this.dtAnimales.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dtAnimales.Name = "dtAnimales";
-            this.dtAnimales.ReadOnly = true;
-            this.dtAnimales.RowHeadersWidth = 82;
-            this.dtAnimales.RowTemplate.Height = 33;
-            this.dtAnimales.Size = new System.Drawing.Size(728, 171);
-            this.dtAnimales.TabIndex = 2;
+            this.dataAnimales.Location = new System.Drawing.Point(12, 12);
+            this.dataAnimales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataAnimales.Name = "dataAnimales";
+            this.dataAnimales.ReadOnly = true;
+            this.dataAnimales.RowHeadersWidth = 82;
+            this.dataAnimales.RowTemplate.Height = 33;
+            this.dataAnimales.Size = new System.Drawing.Size(1456, 329);
+            this.dataAnimales.TabIndex = 2;
             // 
             // Column2
             // 
@@ -142,88 +139,91 @@
             // 
             // btnAplicar
             // 
-            this.btnAplicar.Location = new System.Drawing.Point(298, 189);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAplicar.Location = new System.Drawing.Point(596, 363);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(129, 42);
+            this.btnAplicar.Size = new System.Drawing.Size(258, 81);
             this.btnAplicar.TabIndex = 32;
             this.btnAplicar.Text = "APLICAR";
             this.btnAplicar.UseVisualStyleBackColor = true;
+            this.btnAplicar.Click += new System.EventHandler(this.btnAplicar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(298, 235);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Location = new System.Drawing.Point(596, 452);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(129, 42);
+            this.btnCancelar.Size = new System.Drawing.Size(258, 81);
             this.btnCancelar.TabIndex = 34;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtEspecie
             // 
-            this.txtEspecie.Location = new System.Drawing.Point(122, 192);
-            this.txtEspecie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEspecie.Location = new System.Drawing.Point(244, 369);
+            this.txtEspecie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEspecie.Name = "txtEspecie";
-            this.txtEspecie.Size = new System.Drawing.Size(160, 20);
+            this.txtEspecie.Size = new System.Drawing.Size(316, 31);
             this.txtEspecie.TabIndex = 27;
             // 
             // labelEspecieRegistro
             // 
             this.labelEspecieRegistro.AutoSize = true;
             this.labelEspecieRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEspecieRegistro.Location = new System.Drawing.Point(6, 192);
-            this.labelEspecieRegistro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelEspecieRegistro.Location = new System.Drawing.Point(12, 369);
+            this.labelEspecieRegistro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEspecieRegistro.Name = "labelEspecieRegistro";
-            this.labelEspecieRegistro.Size = new System.Drawing.Size(65, 17);
+            this.labelEspecieRegistro.Size = new System.Drawing.Size(132, 31);
             this.labelEspecieRegistro.TabIndex = 41;
             this.labelEspecieRegistro.Text = "ESPECIE";
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(298, 282);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalir.Location = new System.Drawing.Point(596, 542);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(129, 42);
+            this.btnSalir.Size = new System.Drawing.Size(258, 81);
             this.btnSalir.TabIndex = 39;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // labelSexoAnimal
             // 
             this.labelSexoAnimal.AutoSize = true;
             this.labelSexoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSexoAnimal.Location = new System.Drawing.Point(7, 321);
-            this.labelSexoAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSexoAnimal.Location = new System.Drawing.Point(14, 581);
+            this.labelSexoAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSexoAnimal.Name = "labelSexoAnimal";
-            this.labelSexoAnimal.Size = new System.Drawing.Size(46, 17);
+            this.labelSexoAnimal.Size = new System.Drawing.Size(89, 31);
             this.labelSexoAnimal.TabIndex = 40;
             this.labelSexoAnimal.Text = "SEXO";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(122, 246);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Location = new System.Drawing.Point(244, 473);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(160, 20);
+            this.txtNombre.Size = new System.Drawing.Size(316, 31);
             this.txtNombre.TabIndex = 29;
             // 
             // txtRaza
             // 
-            this.txtRaza.Location = new System.Drawing.Point(122, 218);
-            this.txtRaza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRaza.Location = new System.Drawing.Point(244, 419);
+            this.txtRaza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRaza.Name = "txtRaza";
-            this.txtRaza.Size = new System.Drawing.Size(160, 20);
+            this.txtRaza.Size = new System.Drawing.Size(316, 31);
             this.txtRaza.TabIndex = 28;
             // 
             // btnRazaRegistroAnimal
             // 
             this.btnRazaRegistroAnimal.AutoSize = true;
             this.btnRazaRegistroAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRazaRegistroAnimal.Location = new System.Drawing.Point(7, 218);
-            this.btnRazaRegistroAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.btnRazaRegistroAnimal.Location = new System.Drawing.Point(14, 419);
+            this.btnRazaRegistroAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnRazaRegistroAnimal.Name = "btnRazaRegistroAnimal";
-            this.btnRazaRegistroAnimal.Size = new System.Drawing.Size(45, 17);
+            this.btnRazaRegistroAnimal.Size = new System.Drawing.Size(87, 31);
             this.btnRazaRegistroAnimal.TabIndex = 38;
             this.btnRazaRegistroAnimal.Text = "RAZA";
             // 
@@ -231,10 +231,10 @@
             // 
             this.labelTamañoAnimal.AutoSize = true;
             this.labelTamañoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTamañoAnimal.Location = new System.Drawing.Point(6, 274);
-            this.labelTamañoAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTamañoAnimal.Location = new System.Drawing.Point(12, 527);
+            this.labelTamañoAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTamañoAnimal.Name = "labelTamañoAnimal";
-            this.labelTamañoAnimal.Size = new System.Drawing.Size(67, 17);
+            this.labelTamañoAnimal.Size = new System.Drawing.Size(130, 31);
             this.labelTamañoAnimal.TabIndex = 35;
             this.labelTamañoAnimal.Text = "TAMAÑO";
             // 
@@ -242,40 +242,33 @@
             // 
             this.labelNombreRegistroAnimal.AutoSize = true;
             this.labelNombreRegistroAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNombreRegistroAnimal.Location = new System.Drawing.Point(7, 245);
-            this.labelNombreRegistroAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelNombreRegistroAnimal.Location = new System.Drawing.Point(14, 471);
+            this.labelNombreRegistroAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNombreRegistroAnimal.Name = "labelNombreRegistroAnimal";
-            this.labelNombreRegistroAnimal.Size = new System.Drawing.Size(68, 17);
+            this.labelNombreRegistroAnimal.Size = new System.Drawing.Size(133, 31);
             this.labelNombreRegistroAnimal.TabIndex = 31;
             this.labelNombreRegistroAnimal.Text = "NOMBRE";
             // 
             // btnModificarUsuario
             // 
-            this.btnModificarUsuario.Location = new System.Drawing.Point(528, 230);
-            this.btnModificarUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificarUsuario.Location = new System.Drawing.Point(987, 449);
+            this.btnModificarUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnModificarUsuario.Name = "btnModificarUsuario";
-            this.btnModificarUsuario.Size = new System.Drawing.Size(205, 42);
+            this.btnModificarUsuario.Size = new System.Drawing.Size(410, 81);
             this.btnModificarUsuario.TabIndex = 37;
             this.btnModificarUsuario.Text = "MODIFICAR";
             this.btnModificarUsuario.UseVisualStyleBackColor = true;
             // 
             // btnAltaUsuario
             // 
-            this.btnAltaUsuario.Location = new System.Drawing.Point(528, 185);
-            this.btnAltaUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAltaUsuario.Location = new System.Drawing.Point(987, 363);
+            this.btnAltaUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAltaUsuario.Name = "btnAltaUsuario";
-            this.btnAltaUsuario.Size = new System.Drawing.Size(205, 42);
+            this.btnAltaUsuario.Size = new System.Drawing.Size(410, 81);
             this.btnAltaUsuario.TabIndex = 36;
             this.btnAltaUsuario.Text = "ALTA";
             this.btnAltaUsuario.UseVisualStyleBackColor = true;
-            // 
-            // txtTamaño
-            // 
-            this.txtTamaño.Location = new System.Drawing.Point(122, 275);
-            this.txtTamaño.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtTamaño.Name = "txtTamaño";
-            this.txtTamaño.Size = new System.Drawing.Size(160, 20);
-            this.txtTamaño.TabIndex = 42;
+            this.btnAltaUsuario.Click += new System.EventHandler(this.btnAltaUsuario_Click);
             // 
             // groupBoxEstadoAdopcion
             // 
@@ -283,9 +276,11 @@
             this.groupBoxEstadoAdopcion.Controls.Add(this.rbDisponibleAdopcion);
             this.groupBoxEstadoAdopcion.Controls.Add(this.rbEnEvaluacionAdopcion);
             this.groupBoxEstadoAdopcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxEstadoAdopcion.Location = new System.Drawing.Point(464, 285);
+            this.groupBoxEstadoAdopcion.Location = new System.Drawing.Point(928, 548);
+            this.groupBoxEstadoAdopcion.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBoxEstadoAdopcion.Name = "groupBoxEstadoAdopcion";
-            this.groupBoxEstadoAdopcion.Size = new System.Drawing.Size(264, 134);
+            this.groupBoxEstadoAdopcion.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBoxEstadoAdopcion.Size = new System.Drawing.Size(528, 258);
             this.groupBoxEstadoAdopcion.TabIndex = 45;
             this.groupBoxEstadoAdopcion.TabStop = false;
             this.groupBoxEstadoAdopcion.Text = "Estado";
@@ -293,9 +288,10 @@
             // rbAdoptado
             // 
             this.rbAdoptado.AutoSize = true;
-            this.rbAdoptado.Location = new System.Drawing.Point(40, 94);
+            this.rbAdoptado.Location = new System.Drawing.Point(80, 181);
+            this.rbAdoptado.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbAdoptado.Name = "rbAdoptado";
-            this.rbAdoptado.Size = new System.Drawing.Size(97, 24);
+            this.rbAdoptado.Size = new System.Drawing.Size(187, 41);
             this.rbAdoptado.TabIndex = 2;
             this.rbAdoptado.TabStop = true;
             this.rbAdoptado.Text = "Adoptado";
@@ -304,9 +300,10 @@
             // rbDisponibleAdopcion
             // 
             this.rbDisponibleAdopcion.AutoSize = true;
-            this.rbDisponibleAdopcion.Location = new System.Drawing.Point(40, 60);
+            this.rbDisponibleAdopcion.Location = new System.Drawing.Point(80, 115);
+            this.rbDisponibleAdopcion.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbDisponibleAdopcion.Name = "rbDisponibleAdopcion";
-            this.rbDisponibleAdopcion.Size = new System.Drawing.Size(101, 24);
+            this.rbDisponibleAdopcion.Size = new System.Drawing.Size(197, 41);
             this.rbDisponibleAdopcion.TabIndex = 1;
             this.rbDisponibleAdopcion.TabStop = true;
             this.rbDisponibleAdopcion.Text = "Disponible";
@@ -315,55 +312,48 @@
             // rbEnEvaluacionAdopcion
             // 
             this.rbEnEvaluacionAdopcion.AutoSize = true;
-            this.rbEnEvaluacionAdopcion.Location = new System.Drawing.Point(40, 26);
+            this.rbEnEvaluacionAdopcion.Location = new System.Drawing.Point(80, 50);
+            this.rbEnEvaluacionAdopcion.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbEnEvaluacionAdopcion.Name = "rbEnEvaluacionAdopcion";
-            this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(126, 24);
+            this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(248, 41);
             this.rbEnEvaluacionAdopcion.TabIndex = 0;
             this.rbEnEvaluacionAdopcion.TabStop = true;
             this.rbEnEvaluacionAdopcion.Text = "En evaluación";
             this.rbEnEvaluacionAdopcion.UseVisualStyleBackColor = true;
             // 
-            // groupBoxCastrado
+            // comboBoxSexo
             // 
-            this.groupBoxCastrado.Controls.Add(this.rbHembraSexo);
-            this.groupBoxCastrado.Controls.Add(this.rbMachoSexo);
-            this.groupBoxCastrado.Location = new System.Drawing.Point(122, 302);
-            this.groupBoxCastrado.Name = "groupBoxCastrado";
-            this.groupBoxCastrado.Size = new System.Drawing.Size(160, 47);
-            this.groupBoxCastrado.TabIndex = 19;
-            this.groupBoxCastrado.TabStop = false;
+            this.comboBoxSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSexo.FormattingEnabled = true;
+            this.comboBoxSexo.Items.AddRange(new object[] {
+            "Macho",
+            "Hembra"});
+            this.comboBoxSexo.Location = new System.Drawing.Point(244, 581);
+            this.comboBoxSexo.Name = "comboBoxSexo";
+            this.comboBoxSexo.Size = new System.Drawing.Size(316, 33);
+            this.comboBoxSexo.TabIndex = 46;
             // 
-            // rbHembraSexo
+            // comboBoxTamaño
             // 
-            this.rbHembraSexo.AutoSize = true;
-            this.rbHembraSexo.Location = new System.Drawing.Point(100, 19);
-            this.rbHembraSexo.Name = "rbHembraSexo";
-            this.rbHembraSexo.Size = new System.Drawing.Size(33, 17);
-            this.rbHembraSexo.TabIndex = 1;
-            this.rbHembraSexo.TabStop = true;
-            this.rbHembraSexo.Text = "H";
-            this.rbHembraSexo.UseVisualStyleBackColor = true;
-            // 
-            // rbMachoSexo
-            // 
-            this.rbMachoSexo.AutoSize = true;
-            this.rbMachoSexo.Location = new System.Drawing.Point(29, 19);
-            this.rbMachoSexo.Name = "rbMachoSexo";
-            this.rbMachoSexo.Size = new System.Drawing.Size(34, 17);
-            this.rbMachoSexo.TabIndex = 0;
-            this.rbMachoSexo.TabStop = true;
-            this.rbMachoSexo.Text = "M";
-            this.rbMachoSexo.UseVisualStyleBackColor = true;
+            this.comboBoxTamaño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTamaño.FormattingEnabled = true;
+            this.comboBoxTamaño.Items.AddRange(new object[] {
+            "Macho",
+            "Hembra"});
+            this.comboBoxTamaño.Location = new System.Drawing.Point(244, 525);
+            this.comboBoxTamaño.Name = "comboBoxTamaño";
+            this.comboBoxTamaño.Size = new System.Drawing.Size(316, 33);
+            this.comboBoxTamaño.TabIndex = 47;
             // 
             // FormRegistroAnimales_941lp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(740, 431);
-            this.Controls.Add(this.groupBoxCastrado);
+            this.ClientSize = new System.Drawing.Size(1480, 829);
+            this.Controls.Add(this.comboBoxTamaño);
+            this.Controls.Add(this.comboBoxSexo);
             this.Controls.Add(this.groupBoxEstadoAdopcion);
-            this.Controls.Add(this.txtTamaño);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtEspecie);
@@ -377,16 +367,14 @@
             this.Controls.Add(this.labelNombreRegistroAnimal);
             this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.btnAltaUsuario);
-            this.Controls.Add(this.dtAnimales);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.dataAnimales);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormRegistroAnimales_941lp";
             this.Text = "FormRegistroAnimales";
             this.Load += new System.EventHandler(this.FormRegistroAnimales_941lp_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtAnimales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).EndInit();
             this.groupBoxEstadoAdopcion.ResumeLayout(false);
             this.groupBoxEstadoAdopcion.PerformLayout();
-            this.groupBoxCastrado.ResumeLayout(false);
-            this.groupBoxCastrado.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,7 +382,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtAnimales;
+        private System.Windows.Forms.DataGridView dataAnimales;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -415,13 +403,11 @@
         private System.Windows.Forms.Label labelNombreRegistroAnimal;
         private System.Windows.Forms.Button btnModificarUsuario;
         private System.Windows.Forms.Button btnAltaUsuario;
-        private System.Windows.Forms.TextBox txtTamaño;
         private System.Windows.Forms.GroupBox groupBoxEstadoAdopcion;
         private System.Windows.Forms.RadioButton rbAdoptado;
         private System.Windows.Forms.RadioButton rbDisponibleAdopcion;
         private System.Windows.Forms.RadioButton rbEnEvaluacionAdopcion;
-        private System.Windows.Forms.GroupBox groupBoxCastrado;
-        private System.Windows.Forms.RadioButton rbHembraSexo;
-        private System.Windows.Forms.RadioButton rbMachoSexo;
+        private System.Windows.Forms.ComboBox comboBoxSexo;
+        private System.Windows.Forms.ComboBox comboBoxTamaño;
     }
 }

@@ -20,6 +20,7 @@ namespace GUI
         private readonly FormGestionUsuario941lp formularioAdministradorUsuario_941lp;
         private readonly FormCambiarContraseña_941lp formularioCambiarContraseña_941lp;
         private FormularioLogIn941lp formularioLogIn941lp;
+        private FormRegistroAnimales_941lp formRegistroDeAnimales_941lp;
         private List<Panel> submenus_941lp;
 
         public FormularioMenuPrincipal941lp()
@@ -30,6 +31,7 @@ namespace GUI
             formularioAdministradorUsuario_941lp = new FormGestionUsuario941lp();
             formularioCambiarContraseña_941lp = new FormCambiarContraseña_941lp();
             formularioLogIn941lp = new FormularioLogIn941lp();
+            formRegistroDeAnimales_941lp = new FormRegistroAnimales_941lp();
         }
 
         private void InicializarSubmenus_941lp()
@@ -159,6 +161,11 @@ namespace GUI
                 formularioLogIn941lp.ShowDialog();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnAnimales_Click(object sender, EventArgs e)
+        {
+            formRegistroDeAnimales_941lp.ShowDialog();
         }
     }
 }

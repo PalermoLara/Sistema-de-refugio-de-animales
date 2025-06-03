@@ -44,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animal_941lp.cs" />
+    <Compile Include="FichaDeIngreso_941lp.cs" />
+    <Compile Include="FichaMedica_941lp.cs" />
+    <Compile Include="Medicamento_941lp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

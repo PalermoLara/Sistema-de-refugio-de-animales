@@ -66,7 +66,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(1395, 457);
+            this.txtNombre.Location = new System.Drawing.Point(1361, 648);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(376, 31);
             this.txtNombre.TabIndex = 24;
@@ -75,7 +75,7 @@
             // 
             this.labelMedicamento.AutoSize = true;
             this.labelMedicamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMedicamento.Location = new System.Drawing.Point(1329, 411);
+            this.labelMedicamento.Location = new System.Drawing.Point(1329, 583);
             this.labelMedicamento.Name = "labelMedicamento";
             this.labelMedicamento.Size = new System.Drawing.Size(76, 31);
             this.labelMedicamento.TabIndex = 23;
@@ -83,7 +83,7 @@
             // 
             // txtRaza
             // 
-            this.txtRaza.Location = new System.Drawing.Point(1395, 332);
+            this.txtRaza.Location = new System.Drawing.Point(1361, 530);
             this.txtRaza.Name = "txtRaza";
             this.txtRaza.Size = new System.Drawing.Size(376, 31);
             this.txtRaza.TabIndex = 22;
@@ -92,7 +92,7 @@
             // 
             this.labelDieta.AutoSize = true;
             this.labelDieta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDieta.Location = new System.Drawing.Point(1329, 286);
+            this.labelDieta.Location = new System.Drawing.Point(1329, 473);
             this.labelDieta.Name = "labelDieta";
             this.labelDieta.Size = new System.Drawing.Size(229, 31);
             this.labelDieta.TabIndex = 21;
@@ -101,7 +101,7 @@
             // btnCrearFichaDeIngreso
             // 
             this.btnCrearFichaDeIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearFichaDeIngreso.Location = new System.Drawing.Point(1322, 164);
+            this.btnCrearFichaDeIngreso.Location = new System.Drawing.Point(1322, 379);
             this.btnCrearFichaDeIngreso.Name = "btnCrearFichaDeIngreso";
             this.btnCrearFichaDeIngreso.Size = new System.Drawing.Size(437, 82);
             this.btnCrearFichaDeIngreso.TabIndex = 19;
@@ -130,12 +130,12 @@
             this.Column5,
             this.Column6,
             this.Column7});
-            this.dtAnimales.Location = new System.Drawing.Point(12, 24);
+            this.dtAnimales.Location = new System.Drawing.Point(12, 12);
             this.dtAnimales.Name = "dtAnimales";
             this.dtAnimales.ReadOnly = true;
             this.dtAnimales.RowHeadersWidth = 82;
             this.dtAnimales.RowTemplate.Height = 33;
-            this.dtAnimales.Size = new System.Drawing.Size(1114, 329);
+            this.dtAnimales.Size = new System.Drawing.Size(1486, 329);
             this.dtAnimales.TabIndex = 17;
             // 
             // Column2
@@ -215,7 +215,7 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
-            this.dtCedentes.Location = new System.Drawing.Point(12, 369);
+            this.dtCedentes.Location = new System.Drawing.Point(12, 359);
             this.dtCedentes.Name = "dtCedentes";
             this.dtCedentes.ReadOnly = true;
             this.dtCedentes.RowHeadersWidth = 82;

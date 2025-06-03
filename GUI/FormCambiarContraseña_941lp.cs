@@ -34,9 +34,9 @@ namespace GUI
                 string contraseñaNueva_941lp = txtContraseñaNueva.Text;
                 string contraseñaConfirmacion_941lp = txtContraseñaConfirmacion.Text;
                 if (bllUsuario_941lp.ValidarContraseñaActual_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp,contraseñaActual_941lp) == false) throw new Exception("Contraseña actual incorrecta");
-                if (bllUsuario_941lp.VerificarContraseñaNoSeaDNIyApellido(bllUsuario_941lp.HashearContraseña_941lp(contraseñaNueva_941lp))) throw new Exception("La contraseña no puede ser su dni y apellido");
                 if (contraseñaActual_941lp == contraseñaNueva_941lp) throw new Exception("La nueva contraseña no puede ser igual a la actual");
                 if (contraseñaNueva_941lp != contraseñaConfirmacion_941lp) throw new Exception("La contraseña nueva y la confirmación no coinciden");
+                if (bllUsuario_941lp.VerificarContraseñaNoSeaDNIyApellido(bllUsuario_941lp.HashearContraseña_941lp(contraseñaNueva_941lp))) throw new Exception("La contraseña no puede ser su dni y apellido");
                 bllUsuario_941lp.ModificarContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp(), contraseñaNueva_941lp);
                 MessageBox.Show("Su contraseña a sido modificada con exito");
                 if (btnSalir.Enabled == false) { btnSalir.Enabled = true; }

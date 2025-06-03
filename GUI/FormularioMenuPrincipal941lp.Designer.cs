@@ -35,6 +35,7 @@
             this.btnBitacora = new System.Windows.Forms.Button();
             this.btnAdministrarPermisos = new System.Windows.Forms.Button();
             this.panelMenuPrincipal = new System.Windows.Forms.Panel();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.panelSubMenuAdopcion = new System.Windows.Forms.Panel();
             this.btnAdopcion = new System.Windows.Forms.Button();
             this.panelSubMenuReportes = new System.Windows.Forms.Panel();
@@ -56,7 +57,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelWhiskerWare = new System.Windows.Forms.Label();
             this.btnIniciarSesion2 = new System.Windows.Forms.Button();
-            this.btnHelp = new System.Windows.Forms.Button();
             this.panelMenuPrincipal.SuspendLayout();
             this.panelSubMenuMaestro.SuspendLayout();
             this.panelSubMenuAdministrador.SuspendLayout();
@@ -140,6 +140,18 @@
             this.panelMenuPrincipal.Name = "panelMenuPrincipal";
             this.panelMenuPrincipal.Size = new System.Drawing.Size(300, 1533);
             this.panelMenuPrincipal.TabIndex = 9;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHelp.Location = new System.Drawing.Point(0, 1308);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(300, 71);
+            this.btnHelp.TabIndex = 18;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // panelSubMenuAdopcion
             // 
@@ -234,6 +246,7 @@
             this.btnAnimales.TabIndex = 19;
             this.btnAnimales.Text = "Animales";
             this.btnAnimales.UseVisualStyleBackColor = false;
+            this.btnAnimales.Click += new System.EventHandler(this.btnAnimales_Click);
             // 
             // btnMaestroMenuPrincipal
             // 
@@ -371,18 +384,6 @@
             this.btnIniciarSesion2.Text = "Iniciar sesión";
             this.btnIniciarSesion2.UseVisualStyleBackColor = true;
             this.btnIniciarSesion2.Click += new System.EventHandler(this.btnIniciarSesion2_Click);
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHelp.Location = new System.Drawing.Point(0, 1308);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(300, 71);
-            this.btnHelp.TabIndex = 18;
-            this.btnHelp.Text = "Help";
-            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // FormularioMenuPrincipal941lp
             // 
