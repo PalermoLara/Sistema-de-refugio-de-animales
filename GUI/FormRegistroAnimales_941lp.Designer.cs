@@ -47,14 +47,17 @@
             this.btnRazaRegistroAnimal = new System.Windows.Forms.Label();
             this.labelTamañoAnimal = new System.Windows.Forms.Label();
             this.labelNombreRegistroAnimal = new System.Windows.Forms.Label();
-            this.btnModificarUsuario = new System.Windows.Forms.Button();
-            this.btnAltaUsuario = new System.Windows.Forms.Button();
+            this.btnModificarAnimal = new System.Windows.Forms.Button();
+            this.btnAltaAnimal = new System.Windows.Forms.Button();
             this.groupBoxEstadoAdopcion = new System.Windows.Forms.GroupBox();
+            this.rbTodos = new System.Windows.Forms.RadioButton();
             this.rbAdoptado = new System.Windows.Forms.RadioButton();
             this.rbDisponibleAdopcion = new System.Windows.Forms.RadioButton();
             this.rbEnEvaluacionAdopcion = new System.Windows.Forms.RadioButton();
             this.comboBoxSexo = new System.Windows.Forms.ComboBox();
             this.comboBoxTamaño = new System.Windows.Forms.ComboBox();
+            this.comboBoxEstado = new System.Windows.Forms.ComboBox();
+            this.labelEstadoAnimal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
             this.groupBoxEstadoAdopcion.SuspendLayout();
             this.SuspendLayout();
@@ -73,13 +76,14 @@
             this.Column6,
             this.Column7});
             this.dataAnimales.Location = new System.Drawing.Point(12, 12);
-            this.dataAnimales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataAnimales.Margin = new System.Windows.Forms.Padding(4);
             this.dataAnimales.Name = "dataAnimales";
             this.dataAnimales.ReadOnly = true;
             this.dataAnimales.RowHeadersWidth = 82;
             this.dataAnimales.RowTemplate.Height = 33;
             this.dataAnimales.Size = new System.Drawing.Size(1456, 329);
             this.dataAnimales.TabIndex = 2;
+            this.dataAnimales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataAnimales_CellClick);
             // 
             // Column2
             // 
@@ -140,7 +144,7 @@
             // btnAplicar
             // 
             this.btnAplicar.Location = new System.Drawing.Point(596, 363);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(258, 81);
             this.btnAplicar.TabIndex = 32;
@@ -151,7 +155,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(596, 452);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(258, 81);
             this.btnCancelar.TabIndex = 34;
@@ -162,10 +166,10 @@
             // txtEspecie
             // 
             this.txtEspecie.Location = new System.Drawing.Point(244, 369);
-            this.txtEspecie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEspecie.Margin = new System.Windows.Forms.Padding(4);
             this.txtEspecie.Name = "txtEspecie";
             this.txtEspecie.Size = new System.Drawing.Size(316, 31);
-            this.txtEspecie.TabIndex = 27;
+            this.txtEspecie.TabIndex = 0;
             // 
             // labelEspecieRegistro
             // 
@@ -181,7 +185,7 @@
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(596, 542);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(258, 81);
             this.btnSalir.TabIndex = 39;
@@ -203,18 +207,18 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(244, 473);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(316, 31);
-            this.txtNombre.TabIndex = 29;
+            this.txtNombre.TabIndex = 2;
             // 
             // txtRaza
             // 
             this.txtRaza.Location = new System.Drawing.Point(244, 419);
-            this.txtRaza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRaza.Margin = new System.Windows.Forms.Padding(4);
             this.txtRaza.Name = "txtRaza";
             this.txtRaza.Size = new System.Drawing.Size(316, 31);
-            this.txtRaza.TabIndex = 28;
+            this.txtRaza.TabIndex = 1;
             // 
             // btnRazaRegistroAnimal
             // 
@@ -249,77 +253,93 @@
             this.labelNombreRegistroAnimal.TabIndex = 31;
             this.labelNombreRegistroAnimal.Text = "NOMBRE";
             // 
-            // btnModificarUsuario
+            // btnModificarAnimal
             // 
-            this.btnModificarUsuario.Location = new System.Drawing.Point(987, 449);
-            this.btnModificarUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnModificarUsuario.Name = "btnModificarUsuario";
-            this.btnModificarUsuario.Size = new System.Drawing.Size(410, 81);
-            this.btnModificarUsuario.TabIndex = 37;
-            this.btnModificarUsuario.Text = "MODIFICAR";
-            this.btnModificarUsuario.UseVisualStyleBackColor = true;
+            this.btnModificarAnimal.Location = new System.Drawing.Point(987, 449);
+            this.btnModificarAnimal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModificarAnimal.Name = "btnModificarAnimal";
+            this.btnModificarAnimal.Size = new System.Drawing.Size(410, 81);
+            this.btnModificarAnimal.TabIndex = 37;
+            this.btnModificarAnimal.Text = "MODIFICAR";
+            this.btnModificarAnimal.UseVisualStyleBackColor = true;
+            this.btnModificarAnimal.Click += new System.EventHandler(this.btnModificarAnimal_Click);
             // 
-            // btnAltaUsuario
+            // btnAltaAnimal
             // 
-            this.btnAltaUsuario.Location = new System.Drawing.Point(987, 363);
-            this.btnAltaUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnAltaUsuario.Name = "btnAltaUsuario";
-            this.btnAltaUsuario.Size = new System.Drawing.Size(410, 81);
-            this.btnAltaUsuario.TabIndex = 36;
-            this.btnAltaUsuario.Text = "ALTA";
-            this.btnAltaUsuario.UseVisualStyleBackColor = true;
-            this.btnAltaUsuario.Click += new System.EventHandler(this.btnAltaUsuario_Click);
+            this.btnAltaAnimal.Location = new System.Drawing.Point(987, 363);
+            this.btnAltaAnimal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAltaAnimal.Name = "btnAltaAnimal";
+            this.btnAltaAnimal.Size = new System.Drawing.Size(410, 81);
+            this.btnAltaAnimal.TabIndex = 36;
+            this.btnAltaAnimal.Text = "ALTA";
+            this.btnAltaAnimal.UseVisualStyleBackColor = true;
+            this.btnAltaAnimal.Click += new System.EventHandler(this.btnAltaAnimal_Click);
             // 
             // groupBoxEstadoAdopcion
             // 
+            this.groupBoxEstadoAdopcion.Controls.Add(this.rbTodos);
             this.groupBoxEstadoAdopcion.Controls.Add(this.rbAdoptado);
             this.groupBoxEstadoAdopcion.Controls.Add(this.rbDisponibleAdopcion);
             this.groupBoxEstadoAdopcion.Controls.Add(this.rbEnEvaluacionAdopcion);
             this.groupBoxEstadoAdopcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxEstadoAdopcion.Location = new System.Drawing.Point(928, 548);
-            this.groupBoxEstadoAdopcion.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBoxEstadoAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxEstadoAdopcion.Name = "groupBoxEstadoAdopcion";
-            this.groupBoxEstadoAdopcion.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBoxEstadoAdopcion.Size = new System.Drawing.Size(528, 258);
+            this.groupBoxEstadoAdopcion.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBoxEstadoAdopcion.Size = new System.Drawing.Size(528, 310);
             this.groupBoxEstadoAdopcion.TabIndex = 45;
             this.groupBoxEstadoAdopcion.TabStop = false;
             this.groupBoxEstadoAdopcion.Text = "Estado";
+            // 
+            // rbTodos
+            // 
+            this.rbTodos.AutoSize = true;
+            this.rbTodos.Checked = true;
+            this.rbTodos.Location = new System.Drawing.Point(80, 244);
+            this.rbTodos.Margin = new System.Windows.Forms.Padding(6);
+            this.rbTodos.Name = "rbTodos";
+            this.rbTodos.Size = new System.Drawing.Size(138, 41);
+            this.rbTodos.TabIndex = 3;
+            this.rbTodos.TabStop = true;
+            this.rbTodos.Text = "Todos";
+            this.rbTodos.UseVisualStyleBackColor = true;
+            this.rbTodos.CheckedChanged += new System.EventHandler(this.rbTodos_CheckedChanged);
             // 
             // rbAdoptado
             // 
             this.rbAdoptado.AutoSize = true;
             this.rbAdoptado.Location = new System.Drawing.Point(80, 181);
-            this.rbAdoptado.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rbAdoptado.Margin = new System.Windows.Forms.Padding(6);
             this.rbAdoptado.Name = "rbAdoptado";
             this.rbAdoptado.Size = new System.Drawing.Size(187, 41);
             this.rbAdoptado.TabIndex = 2;
-            this.rbAdoptado.TabStop = true;
             this.rbAdoptado.Text = "Adoptado";
             this.rbAdoptado.UseVisualStyleBackColor = true;
+            this.rbAdoptado.CheckedChanged += new System.EventHandler(this.rbAdoptado_CheckedChanged);
             // 
             // rbDisponibleAdopcion
             // 
             this.rbDisponibleAdopcion.AutoSize = true;
             this.rbDisponibleAdopcion.Location = new System.Drawing.Point(80, 115);
-            this.rbDisponibleAdopcion.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rbDisponibleAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.rbDisponibleAdopcion.Name = "rbDisponibleAdopcion";
             this.rbDisponibleAdopcion.Size = new System.Drawing.Size(197, 41);
             this.rbDisponibleAdopcion.TabIndex = 1;
-            this.rbDisponibleAdopcion.TabStop = true;
             this.rbDisponibleAdopcion.Text = "Disponible";
             this.rbDisponibleAdopcion.UseVisualStyleBackColor = true;
+            this.rbDisponibleAdopcion.CheckedChanged += new System.EventHandler(this.rbDisponibleAdopcion_CheckedChanged);
             // 
             // rbEnEvaluacionAdopcion
             // 
             this.rbEnEvaluacionAdopcion.AutoSize = true;
             this.rbEnEvaluacionAdopcion.Location = new System.Drawing.Point(80, 50);
-            this.rbEnEvaluacionAdopcion.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rbEnEvaluacionAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.rbEnEvaluacionAdopcion.Name = "rbEnEvaluacionAdopcion";
             this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(248, 41);
             this.rbEnEvaluacionAdopcion.TabIndex = 0;
-            this.rbEnEvaluacionAdopcion.TabStop = true;
             this.rbEnEvaluacionAdopcion.Text = "En evaluación";
             this.rbEnEvaluacionAdopcion.UseVisualStyleBackColor = true;
+            this.rbEnEvaluacionAdopcion.CheckedChanged += new System.EventHandler(this.rbEnEvaluacionAdopcion_CheckedChanged);
             // 
             // comboBoxSexo
             // 
@@ -338,19 +358,46 @@
             this.comboBoxTamaño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTamaño.FormattingEnabled = true;
             this.comboBoxTamaño.Items.AddRange(new object[] {
-            "Macho",
-            "Hembra"});
+            "Grande",
+            "Mediano",
+            "Pequeño"});
             this.comboBoxTamaño.Location = new System.Drawing.Point(244, 525);
             this.comboBoxTamaño.Name = "comboBoxTamaño";
             this.comboBoxTamaño.Size = new System.Drawing.Size(316, 33);
             this.comboBoxTamaño.TabIndex = 47;
+            // 
+            // comboBoxEstado
+            // 
+            this.comboBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEstado.FormattingEnabled = true;
+            this.comboBoxEstado.Items.AddRange(new object[] {
+            "En evaluación",
+            "Disponible",
+            "Adoptado"});
+            this.comboBoxEstado.Location = new System.Drawing.Point(244, 635);
+            this.comboBoxEstado.Name = "comboBoxEstado";
+            this.comboBoxEstado.Size = new System.Drawing.Size(316, 33);
+            this.comboBoxEstado.TabIndex = 49;
+            // 
+            // labelEstadoAnimal
+            // 
+            this.labelEstadoAnimal.AutoSize = true;
+            this.labelEstadoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEstadoAnimal.Location = new System.Drawing.Point(14, 635);
+            this.labelEstadoAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEstadoAnimal.Name = "labelEstadoAnimal";
+            this.labelEstadoAnimal.Size = new System.Drawing.Size(126, 31);
+            this.labelEstadoAnimal.TabIndex = 48;
+            this.labelEstadoAnimal.Text = "ESTADO";
             // 
             // FormRegistroAnimales_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1480, 829);
+            this.ClientSize = new System.Drawing.Size(1480, 873);
+            this.Controls.Add(this.comboBoxEstado);
+            this.Controls.Add(this.labelEstadoAnimal);
             this.Controls.Add(this.comboBoxTamaño);
             this.Controls.Add(this.comboBoxSexo);
             this.Controls.Add(this.groupBoxEstadoAdopcion);
@@ -365,10 +412,10 @@
             this.Controls.Add(this.btnRazaRegistroAnimal);
             this.Controls.Add(this.labelTamañoAnimal);
             this.Controls.Add(this.labelNombreRegistroAnimal);
-            this.Controls.Add(this.btnModificarUsuario);
-            this.Controls.Add(this.btnAltaUsuario);
+            this.Controls.Add(this.btnModificarAnimal);
+            this.Controls.Add(this.btnAltaAnimal);
             this.Controls.Add(this.dataAnimales);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormRegistroAnimales_941lp";
             this.Text = "FormRegistroAnimales";
             this.Load += new System.EventHandler(this.FormRegistroAnimales_941lp_Load);
@@ -401,13 +448,16 @@
         private System.Windows.Forms.Label btnRazaRegistroAnimal;
         private System.Windows.Forms.Label labelTamañoAnimal;
         private System.Windows.Forms.Label labelNombreRegistroAnimal;
-        private System.Windows.Forms.Button btnModificarUsuario;
-        private System.Windows.Forms.Button btnAltaUsuario;
+        private System.Windows.Forms.Button btnModificarAnimal;
+        private System.Windows.Forms.Button btnAltaAnimal;
         private System.Windows.Forms.GroupBox groupBoxEstadoAdopcion;
         private System.Windows.Forms.RadioButton rbAdoptado;
         private System.Windows.Forms.RadioButton rbDisponibleAdopcion;
         private System.Windows.Forms.RadioButton rbEnEvaluacionAdopcion;
         private System.Windows.Forms.ComboBox comboBoxSexo;
         private System.Windows.Forms.ComboBox comboBoxTamaño;
+        private System.Windows.Forms.ComboBox comboBoxEstado;
+        private System.Windows.Forms.Label labelEstadoAnimal;
+        private System.Windows.Forms.RadioButton rbTodos;
     }
 }

@@ -105,40 +105,40 @@ namespace ORM
         public int AumentarIntentos_941lp(Usuario_941lp usuario_941lp)
         {
             usuario_941lp.intentos_941lp++;
-            string query;
-            List<string> propiedades;
+            string query_941lp;
+            List<string> propiedades_941lp;
 
             if (usuario_941lp.intentos_941lp == 3)
             {
                 usuario_941lp.bloqueo_941lp = true;
-                query = "UPDATE Usuario_941lp SET intentos_941lp = @intentos_941lp, bloqueo_941lp = @bloqueo_941lp WHERE dni_941lp = @dni_941lp";
-                propiedades = new List<string> { "intentos_941lp", "bloqueo_941lp", "dni_941lp" };
+                query_941lp = "UPDATE Usuario_941lp SET intentos_941lp = @intentos_941lp, bloqueo_941lp = @bloqueo_941lp WHERE dni_941lp = @dni_941lp";
+                propiedades_941lp = new List<string> { "intentos_941lp", "bloqueo_941lp", "dni_941lp" };
             }
             else
             {
                 usuario_941lp.horaDesbloquear_941lp = DateTime.Now;
-                query = "UPDATE Usuario_941lp SET intentos_941lp = @intentos_941lp, horaDesbloquear_941lp = @horaDesbloquear_941lp  WHERE dni_941lp = @dni_941lp";
-                propiedades = new List<string> { "intentos_941lp", "horaDesbloquear_941lp", "dni_941lp" };
+                query_941lp = "UPDATE Usuario_941lp SET intentos_941lp = @intentos_941lp, horaDesbloquear_941lp = @horaDesbloquear_941lp  WHERE dni_941lp = @dni_941lp";
+                propiedades_941lp = new List<string> { "intentos_941lp", "horaDesbloquear_941lp", "dni_941lp" };
             }
-            EjecutarQueryConEntidad_941lp(usuario_941lp,query, propiedades);
+            EjecutarQueryConEntidad_941lp(usuario_941lp,query_941lp, propiedades_941lp);
             return usuario_941lp.intentos_941lp;
         }
 
         public Usuario_941lp ObtenerUsuarioPorDni_941lp(string dni_941lp)
         {
-            string query = "SELECT * FROM Usuario_941lp WHERE dni_941lp = @dni";
-            var parametros = new Dictionary<string, object>
+            string query_941lp = "SELECT * FROM Usuario_941lp WHERE dni_941lp = @dni";
+            var parametros_941lp = new Dictionary<string, object>
             {
                 { "@dni", dni_941lp }
             };
-            var usuarios = dao_941lp.RetornarLista_941lp(query,MapearUsuario,parametros);
-            return usuarios.FirstOrDefault(); 
+            var usuarios_941lp = dao_941lp.RetornarLista_941lp(query_941lp,MapearUsuario,parametros_941lp);
+            return usuarios_941lp.FirstOrDefault(); 
         }
 
         public List<Usuario_941lp> RetornarUsuarios_941lp()
         {
-            List<Usuario_941lp> usuarios = dao_941lp.RetornarLista_941lp("SELECT * FROM Usuario_941lp",MapearUsuario);
-            return usuarios;
+            List<Usuario_941lp> usuarios_941lp = dao_941lp.RetornarLista_941lp("SELECT * FROM Usuario_941lp",MapearUsuario);
+            return usuarios_941lp;
         }
 
         private Usuario_941lp MapearUsuario(SqlDataReader reader)

@@ -8,7 +8,7 @@ namespace BE
 {
     public class Animal_941lp
     {
-        public Animal_941lp(int pCodigoAnimal_941lp, string pEspecie_941lp, string pRaza_941lp, string pNombre_941lp, string pTamaño_941lp, string pSexo_941lp, string pEstadoDeAdopcion_941lp)
+        public Animal_941lp(string pEspecie_941lp, string pRaza_941lp, string pNombre_941lp, string pTamaño_941lp, string pSexo_941lp, string pEstadoDeAdopcion_941lp, int pCodigoAnimal_941lp = 0)
         {
             codigoAnimal_941lp = pCodigoAnimal_941lp;
             especie_941lp = pEspecie_941lp;
