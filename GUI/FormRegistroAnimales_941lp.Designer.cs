@@ -58,6 +58,9 @@
             this.comboBoxTamaño = new System.Windows.Forms.ComboBox();
             this.comboBoxEstado = new System.Windows.Forms.ComboBox();
             this.labelEstadoAnimal = new System.Windows.Forms.Label();
+            this.labelCodigo = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.btnReingreso = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
             this.groupBoxEstadoAdopcion.SuspendLayout();
             this.SuspendLayout();
@@ -390,12 +393,45 @@
             this.labelEstadoAnimal.TabIndex = 48;
             this.labelEstadoAnimal.Text = "ESTADO";
             // 
+            // labelCodigo
+            // 
+            this.labelCodigo.AutoSize = true;
+            this.labelCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCodigo.Location = new System.Drawing.Point(18, 827);
+            this.labelCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCodigo.Name = "labelCodigo";
+            this.labelCodigo.Size = new System.Drawing.Size(125, 31);
+            this.labelCodigo.TabIndex = 50;
+            this.labelCodigo.Text = "CÓDIGO";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(244, 827);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(316, 31);
+            this.txtCodigo.TabIndex = 51;
+            // 
+            // btnReingreso
+            // 
+            this.btnReingreso.Location = new System.Drawing.Point(24, 712);
+            this.btnReingreso.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReingreso.Name = "btnReingreso";
+            this.btnReingreso.Size = new System.Drawing.Size(410, 81);
+            this.btnReingreso.TabIndex = 52;
+            this.btnReingreso.Text = "REINGRESO";
+            this.btnReingreso.UseVisualStyleBackColor = true;
+            this.btnReingreso.Click += new System.EventHandler(this.btnReingreso_Click);
+            // 
             // FormRegistroAnimales_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1480, 873);
+            this.Controls.Add(this.btnReingreso);
+            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.labelCodigo);
             this.Controls.Add(this.comboBoxEstado);
             this.Controls.Add(this.labelEstadoAnimal);
             this.Controls.Add(this.comboBoxTamaño);
@@ -459,5 +495,8 @@
         private System.Windows.Forms.ComboBox comboBoxEstado;
         private System.Windows.Forms.Label labelEstadoAnimal;
         private System.Windows.Forms.RadioButton rbTodos;
+        private System.Windows.Forms.Label labelCodigo;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Button btnReingreso;
     }
 }
