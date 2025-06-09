@@ -42,8 +42,8 @@
             this.btnReportes = new System.Windows.Forms.Button();
             this.panelSubMenuMaestro = new System.Windows.Forms.Panel();
             this.btnAdoptante = new System.Windows.Forms.Button();
-            this.btnBitacoraCambios = new System.Windows.Forms.Button();
-            this.btnVeterinaria = new System.Windows.Forms.Button();
+            this.btnFichaIngreso = new System.Windows.Forms.Button();
+            this.btnAbrirRegistroCedentes = new System.Windows.Forms.Button();
             this.btnAnimales = new System.Windows.Forms.Button();
             this.btnMaestroMenuPrincipal = new System.Windows.Forms.Button();
             this.panelSubMenuAdministrador = new System.Windows.Forms.Panel();
@@ -196,8 +196,8 @@
             // panelSubMenuMaestro
             // 
             this.panelSubMenuMaestro.Controls.Add(this.btnAdoptante);
-            this.panelSubMenuMaestro.Controls.Add(this.btnBitacoraCambios);
-            this.panelSubMenuMaestro.Controls.Add(this.btnVeterinaria);
+            this.panelSubMenuMaestro.Controls.Add(this.btnFichaIngreso);
+            this.panelSubMenuMaestro.Controls.Add(this.btnAbrirRegistroCedentes);
             this.panelSubMenuMaestro.Controls.Add(this.btnAnimales);
             this.panelSubMenuMaestro.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuMaestro.Location = new System.Drawing.Point(0, 663);
@@ -215,26 +215,27 @@
             this.btnAdoptante.Text = "Adoptante";
             this.btnAdoptante.UseVisualStyleBackColor = true;
             // 
-            // btnBitacoraCambios
+            // btnFichaIngreso
             // 
-            this.btnBitacoraCambios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBitacoraCambios.Location = new System.Drawing.Point(0, 134);
-            this.btnBitacoraCambios.Name = "btnBitacoraCambios";
-            this.btnBitacoraCambios.Size = new System.Drawing.Size(300, 67);
-            this.btnBitacoraCambios.TabIndex = 17;
-            this.btnBitacoraCambios.Text = "Bitacora cambios";
-            this.btnBitacoraCambios.UseVisualStyleBackColor = true;
+            this.btnFichaIngreso.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFichaIngreso.Location = new System.Drawing.Point(0, 134);
+            this.btnFichaIngreso.Name = "btnFichaIngreso";
+            this.btnFichaIngreso.Size = new System.Drawing.Size(300, 67);
+            this.btnFichaIngreso.TabIndex = 17;
+            this.btnFichaIngreso.Text = "Generar F. Ingreso";
+            this.btnFichaIngreso.UseVisualStyleBackColor = true;
+            this.btnFichaIngreso.Click += new System.EventHandler(this.btnFichaIngreso_Click);
             // 
-            // btnVeterinaria
+            // btnAbrirRegistroCedentes
             // 
-            this.btnVeterinaria.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.btnVeterinaria.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnVeterinaria.Location = new System.Drawing.Point(0, 67);
-            this.btnVeterinaria.Name = "btnVeterinaria";
-            this.btnVeterinaria.Size = new System.Drawing.Size(300, 67);
-            this.btnVeterinaria.TabIndex = 18;
-            this.btnVeterinaria.Text = "Veterinaria";
-            this.btnVeterinaria.UseVisualStyleBackColor = true;
+            this.btnAbrirRegistroCedentes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAbrirRegistroCedentes.Location = new System.Drawing.Point(0, 67);
+            this.btnAbrirRegistroCedentes.Name = "btnAbrirRegistroCedentes";
+            this.btnAbrirRegistroCedentes.Size = new System.Drawing.Size(300, 67);
+            this.btnAbrirRegistroCedentes.TabIndex = 18;
+            this.btnAbrirRegistroCedentes.Text = "Cedente";
+            this.btnAbrirRegistroCedentes.UseVisualStyleBackColor = true;
+            this.btnAbrirRegistroCedentes.Click += new System.EventHandler(this.btnAbrirRegistroCedentes_Click);
             // 
             // btnAnimales
             // 
@@ -425,10 +426,10 @@
         private System.Windows.Forms.Panel panelSubMenuAdministrador;
         private System.Windows.Forms.Button btnMaestroMenuPrincipal;
         private System.Windows.Forms.Panel panelSubMenuMaestro;
-        private System.Windows.Forms.Button btnVeterinaria;
+        private System.Windows.Forms.Button btnAbrirRegistroCedentes;
         private System.Windows.Forms.Button btnAnimales;
         private System.Windows.Forms.Button btnAdoptante;
-        private System.Windows.Forms.Button btnBitacoraCambios;
+        private System.Windows.Forms.Button btnFichaIngreso;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Panel panelSubMenuAdopcion;

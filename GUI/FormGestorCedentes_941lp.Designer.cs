@@ -43,13 +43,15 @@
             this.btnModificarCedente = new System.Windows.Forms.Button();
             this.btnAltaCedente = new System.Windows.Forms.Button();
             this.txtDni = new System.Windows.Forms.TextBox();
-            this.dtCedentes = new System.Windows.Forms.DataGridView();
+            this.dataCedentes = new System.Windows.Forms.DataGridView();
+            this.btnActDesact = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtCedentes)).BeginInit();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCedentes)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDireccion
@@ -69,6 +71,7 @@
             this.btnAplicar.TabIndex = 52;
             this.btnAplicar.Text = "APLICAR";
             this.btnAplicar.UseVisualStyleBackColor = true;
+            this.btnAplicar.Click += new System.EventHandler(this.btnAplicar_Click_1);
             // 
             // btnCancelar
             // 
@@ -79,6 +82,7 @@
             this.btnCancelar.TabIndex = 53;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
             // txtNOmbreCedente
             // 
@@ -109,6 +113,7 @@
             this.btnSalir.TabIndex = 58;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // labelDNI
             // 
@@ -172,23 +177,25 @@
             // 
             // btnModificarCedente
             // 
-            this.btnModificarCedente.Location = new System.Drawing.Point(1056, 449);
+            this.btnModificarCedente.Location = new System.Drawing.Point(1056, 459);
             this.btnModificarCedente.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificarCedente.Name = "btnModificarCedente";
             this.btnModificarCedente.Size = new System.Drawing.Size(410, 81);
             this.btnModificarCedente.TabIndex = 56;
             this.btnModificarCedente.Text = "MODIFICAR";
             this.btnModificarCedente.UseVisualStyleBackColor = true;
+            this.btnModificarCedente.Click += new System.EventHandler(this.btnModificarCedente_Click);
             // 
             // btnAltaCedente
             // 
-            this.btnAltaCedente.Location = new System.Drawing.Point(1056, 363);
+            this.btnAltaCedente.Location = new System.Drawing.Point(1056, 370);
             this.btnAltaCedente.Margin = new System.Windows.Forms.Padding(4);
             this.btnAltaCedente.Name = "btnAltaCedente";
             this.btnAltaCedente.Size = new System.Drawing.Size(410, 81);
             this.btnAltaCedente.TabIndex = 55;
             this.btnAltaCedente.Text = "ALTA";
             this.btnAltaCedente.UseVisualStyleBackColor = true;
+            this.btnAltaCedente.Click += new System.EventHandler(this.btnAltaCedente_Click);
             // 
             // txtDni
             // 
@@ -198,24 +205,37 @@
             this.txtDni.Size = new System.Drawing.Size(316, 31);
             this.txtDni.TabIndex = 62;
             // 
-            // dtCedentes
+            // dataCedentes
             // 
-            this.dtCedentes.AllowUserToAddRows = false;
-            this.dtCedentes.AllowUserToDeleteRows = false;
-            this.dtCedentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtCedentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataCedentes.AllowUserToAddRows = false;
+            this.dataCedentes.AllowUserToDeleteRows = false;
+            this.dataCedentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataCedentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
-            this.dtCedentes.Location = new System.Drawing.Point(12, 12);
-            this.dtCedentes.Name = "dtCedentes";
-            this.dtCedentes.ReadOnly = true;
-            this.dtCedentes.RowHeadersWidth = 82;
-            this.dtCedentes.RowTemplate.Height = 33;
-            this.dtCedentes.Size = new System.Drawing.Size(1454, 329);
-            this.dtCedentes.TabIndex = 63;
+            this.Column1});
+            this.dataCedentes.Location = new System.Drawing.Point(12, 12);
+            this.dataCedentes.Name = "dataCedentes";
+            this.dataCedentes.ReadOnly = true;
+            this.dataCedentes.RowHeadersWidth = 82;
+            this.dataCedentes.RowTemplate.Height = 33;
+            this.dataCedentes.Size = new System.Drawing.Size(1454, 329);
+            this.dataCedentes.TabIndex = 63;
+            this.dataCedentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCedentes_CellClick);
+            // 
+            // btnActDesact
+            // 
+            this.btnActDesact.Location = new System.Drawing.Point(1056, 549);
+            this.btnActDesact.Margin = new System.Windows.Forms.Padding(4);
+            this.btnActDesact.Name = "btnActDesact";
+            this.btnActDesact.Size = new System.Drawing.Size(410, 81);
+            this.btnActDesact.TabIndex = 64;
+            this.btnActDesact.Text = "ACTIVAR/DESACTIVAR";
+            this.btnActDesact.UseVisualStyleBackColor = true;
+            this.btnActDesact.Click += new System.EventHandler(this.btnActDesact_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -241,14 +261,6 @@
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 200;
             // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Telefono";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 200;
-            // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "Dirección";
@@ -257,13 +269,30 @@
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 200;
             // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Telefono";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 200;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Activo";
+            this.Column1.MinimumWidth = 10;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
+            // 
             // FormGestorCedentes_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1636, 733);
-            this.Controls.Add(this.dtCedentes);
+            this.ClientSize = new System.Drawing.Size(1636, 749);
+            this.Controls.Add(this.btnActDesact);
+            this.Controls.Add(this.dataCedentes);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.btnAplicar);
@@ -281,7 +310,8 @@
             this.Controls.Add(this.btnAltaCedente);
             this.Name = "FormGestorCedentes_941lp";
             this.Text = "FormGestorCedentes_941lp";
-            ((System.ComponentModel.ISupportInitialize)(this.dtCedentes)).EndInit();
+            this.Load += new System.EventHandler(this.FormGestorCedentes_941lp_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataCedentes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,11 +334,13 @@
         private System.Windows.Forms.Button btnModificarCedente;
         private System.Windows.Forms.Button btnAltaCedente;
         private System.Windows.Forms.TextBox txtDni;
-        private System.Windows.Forms.DataGridView dtCedentes;
+        private System.Windows.Forms.DataGridView dataCedentes;
+        private System.Windows.Forms.Button btnActDesact;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

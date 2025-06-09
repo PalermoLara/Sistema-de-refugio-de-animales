@@ -21,6 +21,8 @@ namespace GUI
         private readonly FormCambiarContraseña_941lp formularioCambiarContraseña_941lp;
         private FormularioLogIn941lp formularioLogIn941lp;
         private FormRegistroAnimales_941lp formRegistroDeAnimales_941lp;
+        private FormGestorCedentes_941lp formGestorCedentes_941Lp;
+        private FormFichaDeIngreso_941lp formFichaDeIngreso_941Lp;
         private List<Panel> submenus_941lp;
 
         public FormularioMenuPrincipal941lp()
@@ -32,6 +34,8 @@ namespace GUI
             formularioCambiarContraseña_941lp = new FormCambiarContraseña_941lp();
             formularioLogIn941lp = new FormularioLogIn941lp();
             formRegistroDeAnimales_941lp = new FormRegistroAnimales_941lp();
+            formGestorCedentes_941Lp = new FormGestorCedentes_941lp();
+            formFichaDeIngreso_941Lp = new FormFichaDeIngreso_941lp();
         }
 
         private void InicializarSubmenus_941lp()
@@ -166,6 +170,16 @@ namespace GUI
         private void btnAnimales_Click(object sender, EventArgs e)
         {
             formRegistroDeAnimales_941lp.ShowDialog();
+        }
+
+        private void btnAbrirRegistroCedentes_Click(object sender, EventArgs e)
+        {
+            formGestorCedentes_941Lp.ShowDialog();
+        }
+
+        private void btnFichaIngreso_Click(object sender, EventArgs e)
+        {
+            formFichaDeIngreso_941Lp.ShowDialog();
         }
     }
 }

@@ -29,7 +29,8 @@ namespace GUI
             Consulta,
             Alta,
             Modificar,
-            Reingreso
+            Reingreso,
+            Baja
         }
 
         private void FormRegistroAnimales_941lp_Load(object sender, EventArgs e)
@@ -49,11 +50,11 @@ namespace GUI
 
             if (rbEnEvaluacionAdopcion.Checked)
             {
-                animalesFiltrados_941lp = animalLista_941lp.Where(a => a.estadoAdopcion_941lp == "En evaluación");
+                animalesFiltrados_941lp = animalLista_941lp.Where(a => a.estadoAdopcion_941lp == "En evaluación" && a.vivo_941lp != false);
             }
             else if (rbDisponibleAdopcion.Checked)
             {
-                animalesFiltrados_941lp = animalLista_941lp.Where(a => a.estadoAdopcion_941lp == "Disponible");
+                animalesFiltrados_941lp = animalLista_941lp.Where(a => a.estadoAdopcion_941lp == "Disponible" && a.vivo_941lp != false);
             }
             else if (rbAdoptado.Checked)
             {
@@ -74,13 +75,15 @@ namespace GUI
                     a_941lp.nombre_941lp,
                     a_941lp.tamaño_941lp,
                     a_941lp.sexo_941lp,
-                    a_941lp.estadoAdopcion_941lp
+                    a_941lp.estadoAdopcion_941lp,
+                    a_941lp.vivo_941lp
                 );
             }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            modo_941lp = ModoOperacion_941lp.Consulta;
             this.Close();
         }
 
@@ -91,41 +94,24 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Alta;
                 HabilitarControlesDeIngresoDeDatos_941lp(true);
                 HabilitarBotones_941lp();
+                LimpiarTxt_941lp();
                 comboBoxEstado.SelectedIndex = 0;
+                comboBoxVivo.SelectedIndex = 0;
                 comboBoxEstado.Enabled = false;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void ValidarCargaDeDatos_941lp()
+        private bool ValidarCargaDeDatos_941lp()
         {
-            try
-            {
-                if(modo_941lp != ModoOperacion_941lp.Reingreso || modo_941lp == ModoOperacion_941lp.Consulta)
-                {
-                    if (string.IsNullOrWhiteSpace(txtEspecie.Text) ||
-                            string.IsNullOrWhiteSpace(txtRaza.Text) ||
-                            string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                            comboBoxTamaño.SelectedItem == null ||
-                            comboBoxSexo.SelectedItem == null)
-                    {
-                        throw new Exception("Debe completar todos los campos obligatorios.");
-                    }
-                }
-                else
-                {
-                    if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
-                            comboBoxEstado.SelectedItem == null )
-                    {
-                        throw new Exception("Debe completar todos los campos obligatorios.");
-                    }
-                }
-            }
-            catch (Exception)
-            {
+            if (modo_941lp == ModoOperacion_941lp.Reingreso)
+                return !string.IsNullOrWhiteSpace(txtCodigo.Text) && comboBoxEstado.SelectedItem != null;
 
-                throw;
-            }
+            return !string.IsNullOrWhiteSpace(txtEspecie.Text)
+                && !string.IsNullOrWhiteSpace(txtRaza.Text)
+                && !string.IsNullOrWhiteSpace(txtNombre.Text)
+                && comboBoxTamaño.SelectedItem != null
+                && comboBoxSexo.SelectedItem != null;
         }
 
         private void ControlDeIngresoDeDatos_941lp(string codigo_941lp = null,string especie_941lp = null, string raza_941lp = null, string nombre_941lp = null)
@@ -133,18 +119,23 @@ namespace GUI
             try
             {
                 //Regex para el código
-                var regexCodigo_941lp = new Regex(@"^\d{5}$");
+                if (codigo_941lp != null)
+                {
+                    var regexCodigo_941lp = new Regex(@"^\d{5}$");
+                    if (!regexCodigo_941lp.IsMatch(codigo_941lp))
+                        throw new ArgumentException("El código ingresado es inválido.Solo se permiten cinco números.");
+                }
                 // Regex reutilizables
                 var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
-                // Validaciones
-                if (!regexCodigo_941lp.IsMatch(codigo_941lp))
-                    throw new ArgumentException("El código ingresado es inválido.Solo se permiten cinco números.");
-                if (!regexTexto_941lp.IsMatch(especie_941lp))
-                    throw new ArgumentException("La especie ingresada es inválida. Solo se permiten letras y espacios.");
-                if (!regexTexto_941lp.IsMatch(raza_941lp))
-                    throw new ArgumentException("La raza ingresada es inválida. Solo se permiten letras y espacios.");
-                if (!regexTexto_941lp.IsMatch(nombre_941lp))
-                    throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras y espacios.");
+                if(especie_941lp!=null && raza_941lp != null && nombre_941lp != null)
+                {
+                    if (!regexTexto_941lp.IsMatch(especie_941lp))
+                        throw new ArgumentException("La especie ingresada es inválida. Solo se permiten letras.");
+                    if (!regexTexto_941lp.IsMatch(raza_941lp))
+                        throw new ArgumentException("La raza ingresada es inválida. Solo se permiten letras.");
+                    if (!regexTexto_941lp.IsMatch(nombre_941lp))
+                        throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras.");
+                }
             }
             catch (ArgumentException ex)
             {
@@ -163,66 +154,65 @@ namespace GUI
             txtRaza.Enabled = habilitar_941lp;
             comboBoxTamaño.Enabled = habilitar_941lp;
             comboBoxSexo.Enabled = habilitar_941lp;
-            if(modo_941lp == ModoOperacion_941lp.Reingreso)
-            {
-                txtCodigo.Enabled = !habilitar_941lp;
-                comboBoxEstado.Enabled = !habilitar_941lp;
-            }
-            else
+            if(modo_941lp == ModoOperacion_941lp.Consulta)
             {
                 txtCodigo.Enabled = habilitar_941lp;
                 comboBoxEstado.Enabled = habilitar_941lp;
+                comboBoxVivo.Enabled = habilitar_941lp;
             }
-            AplicarColorControles_941lp(txtEspecie);
-            AplicarColorControles_941lp(txtNombre);
-            AplicarColorControles_941lp(txtRaza);
-            AplicarColorControles_941lp(comboBoxSexo);
-            AplicarColorControles_941lp(comboBoxEstado);
-            AplicarColorControles_941lp(comboBoxTamaño);
+            else if (modo_941lp == ModoOperacion_941lp.Baja)
+            {
+                txtCodigo.Enabled = habilitar_941lp;
+                comboBoxEstado.Enabled = habilitar_941lp;
+                comboBoxVivo.Enabled = !habilitar_941lp;
+            }
+            else if (modo_941lp == ModoOperacion_941lp.Reingreso)
+            {
+                txtCodigo.Enabled = !habilitar_941lp;
+                comboBoxEstado.Enabled = !habilitar_941lp;
+                comboBoxVivo.Enabled = !habilitar_941lp;
+            }
+            else
+            {
+                comboBoxEstado.Enabled = habilitar_941lp;
+                comboBoxVivo.Enabled = !habilitar_941lp;
+                txtCodigo.Enabled = !habilitar_941lp;
+            }
+            AplicarColorControles_941lp();
         }
 
         private void HabilitarBotones_941lp()
         {
-            if (modo_941lp == ModoOperacion_941lp.Alta || modo_941lp == ModoOperacion_941lp.Modificar)
-            {
-                btnAltaAnimal.Enabled = false;
-                btnModificarAnimal.Enabled = false;
-                btnReingreso.Enabled = false;
-                btnAplicar.Enabled = true;
-                btnCancelar.Enabled = true;
-            }
-            else if (modo_941lp == ModoOperacion_941lp.Reingreso)
-            {
-                btnAltaAnimal.Enabled = false;
-                btnModificarAnimal.Enabled = false;
-                btnReingreso.Enabled = false;
-                btnAplicar.Enabled = true;
-                btnCancelar.Enabled = true;
-            }
-            else
-            {
-                btnAltaAnimal.Enabled = true;
-                btnModificarAnimal.Enabled = true;
-                btnReingreso.Enabled = true;
-                btnAplicar.Enabled = false;
-                btnCancelar.Enabled = false;
-            }
-            AplicarColorControles_941lp(btnAltaAnimal);
-            AplicarColorControles_941lp(btnModificarAnimal);
-            AplicarColorControles_941lp(btnAplicar);
-            AplicarColorControles_941lp(btnCancelar);
-            AplicarColorControles_941lp(btnReingreso);
+            bool modoDeOperacion_941lp = modo_941lp == ModoOperacion_941lp.Alta || modo_941lp == ModoOperacion_941lp.Modificar || modo_941lp == ModoOperacion_941lp.Reingreso || modo_941lp == ModoOperacion_941lp.Baja;
+            btnAltaAnimal.Enabled = !modoDeOperacion_941lp;
+            btnModificarAnimal.Enabled = !modoDeOperacion_941lp;
+            btnReingreso.Enabled = !modoDeOperacion_941lp;
+            btnBaja.Enabled = !modoDeOperacion_941lp;
+            btnAplicar.Enabled = modoDeOperacion_941lp;
+            btnCancelar.Enabled = modoDeOperacion_941lp;
+            AplicarColorControles_941lp();
         }
 
-        private void AplicarColorControles_941lp(Control control_941lp)
+        private void AplicarColorControles_941lp()
         {
-            if (control_941lp.Enabled == false)
+            var controles_941lp = new Control[]
             {
-                control_941lp.BackColor = Color.LightSteelBlue;
-            }
-            else
+                btnAltaAnimal, btnModificarAnimal, btnBaja, btnAplicar, btnCancelar, btnReingreso,
+                txtEspecie, txtRaza, txtNombre, txtCodigo,
+                comboBoxTamaño, comboBoxSexo, comboBoxEstado
+            };
+
+            foreach (var control_941lp in controles_941lp)
             {
-                control_941lp.BackColor = Color.White;
+                if (control_941lp.Enabled == false)
+                {
+                
+                    control_941lp.BackColor = Color.LightSteelBlue;
+                }
+                else
+                {
+                    control_941lp.BackColor = Color.White;
+                }
             }
         }
 
@@ -230,31 +220,51 @@ namespace GUI
         {
             try
             {
-                ValidarCargaDeDatos_941lp();
-                string especie_941lp = txtEspecie.Text;
-                string raza_941lp = txtRaza.Text;
-                string nombre_941lp = txtNombre.Text;
-                string tamaño_941lp = comboBoxTamaño.SelectedItem.ToString(); 
-                string sexo_941lp = comboBoxSexo.SelectedItem.ToString();
-                string estadoDeAdopcion_941lp = comboBoxEstado.SelectedItem.ToString();
-                ControlDeIngresoDeDatos_941lp(especie_941lp, raza_941lp, nombre_941lp);
+                if(ValidarCargaDeDatos_941lp()==false) throw new Exception("Debe de ingresar todos los datos obligatorios");
+                string codigoIngresado_941lp = " ";
+                string especieIngresada_941lp = " ";
+                string razaIngresada_941lp= " ";
+                string nombreIngresado_941lp= " ";
+                string tamañoIngresado_941lp = " ";
+                string sexoIngresado_941lp = " ";
+                string estadoDeAdopcionIngresado_941lp = " ";
+                bool vivoIngresado_941lp = true;
+                if(modo_941lp == ModoOperacion_941lp.Reingreso)
+                {
+                    estadoDeAdopcionIngresado_941lp = comboBoxEstado.SelectedItem.ToString();
+                }
+                else
+                {
+                    especieIngresada_941lp = txtEspecie.Text;
+                    razaIngresada_941lp = txtRaza.Text;
+                    nombreIngresado_941lp = txtNombre.Text;
+                    tamañoIngresado_941lp = comboBoxTamaño.SelectedItem.ToString();
+                    sexoIngresado_941lp = comboBoxSexo.SelectedItem.ToString();
+                    estadoDeAdopcionIngresado_941lp = comboBoxEstado.SelectedItem.ToString();
+                }
+                    ControlDeIngresoDeDatos_941lp(especie_941lp: especieIngresada_941lp, raza_941lp: razaIngresada_941lp, nombre_941lp: nombreIngresado_941lp);
                 HabilitarBotones_941lp();
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Alta:
-                        bllRegistroAnimales_941lp.AltaAnimal_941lp(especie_941lp, raza_941lp, nombre_941lp, tamaño_941lp, sexo_941lp, estadoDeAdopcion_941lp);
-                        MostrarDataAnimales_941lp(bllRegistroAnimales_941lp.RetornarAnimales_941lp());
+                        bllRegistroAnimales_941lp.AltaAnimal_941lp(especieIngresada_941lp, razaIngresada_941lp, nombreIngresado_941lp, tamañoIngresado_941lp, sexoIngresado_941lp, estadoDeAdopcionIngresado_941lp, vivoIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Modificar:
-                        bllRegistroAnimales_941lp.Modificar_941lp(dataAnimales.SelectedRows[0].Cells[0].Value.ToString(),especie_941lp, raza_941lp, nombre_941lp, tamaño_941lp, sexo_941lp, estadoDeAdopcion_941lp);
-                        MostrarDataAnimales_941lp(bllRegistroAnimales_941lp.RetornarAnimales_941lp());
+                        bllRegistroAnimales_941lp.Modificar_941lp(dataAnimales.SelectedRows[0].Cells[0].Value.ToString(),especieIngresada_941lp, razaIngresada_941lp, nombreIngresado_941lp, tamañoIngresado_941lp, sexoIngresado_941lp, estadoDeAdopcionIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Reingreso:
+                        codigoIngresado_941lp = txtCodigo.Text;
+                        ControlDeIngresoDeDatos_941lp(codigo_941lp : codigoIngresado_941lp);
                         if (bllRegistroAnimales_941lp.ValidarExistenciaAnimal_941lp(txtCodigo.Text) == false) throw new Exception("El animal no se encuentra registrado");
-                        string codigo_941lp = txtCodigo.Text;
-                        ControlDeIngresoDeDatos_941lp(codigo_941lp);
-                        bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp, estadoDeAdopcion_941lp);
-                        MostrarDataAnimales_941lp(bllRegistroAnimales_941lp.RetornarAnimales_941lp());
+                        bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp : codigoIngresado_941lp,estadoDeAdopcion_941lp : estadoDeAdopcionIngresado_941lp);
+                        break;
+                    case ModoOperacion_941lp.Baja:
+                        codigoIngresado_941lp = txtCodigo.Text;
+                        if (comboBoxVivo.Text == "No")
+                        {
+                            vivoIngresado_941lp = false;
+                        }
+                        bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp: codigoIngresado_941lp, vivo_941lp :  vivoIngresado_941lp);
                         break;
                     default:
                         MessageBox.Show("Error");
@@ -262,6 +272,9 @@ namespace GUI
                 }
                 modo_941lp = ModoOperacion_941lp.Consulta;
                 LimpiarTxt_941lp();
+                MostrarDataAnimales_941lp(bllRegistroAnimales_941lp.RetornarAnimales_941lp());
+                HabilitarControlesDeIngresoDeDatos_941lp(false);
+                HabilitarBotones_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -287,6 +300,8 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Consulta;
                 HabilitarBotones_941lp();
                 HabilitarControlesDeIngresoDeDatos_941lp(false);
+                comboBoxVivo.SelectedItem = null;
+                comboBoxEstado.SelectedItem = null;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -309,45 +324,27 @@ namespace GUI
             {
                 if (modo_941lp != ModoOperacion_941lp.Alta)
                 {
+                    txtCodigo.Text = dataAnimales.SelectedRows[0].Cells[0].Value.ToString();
                     txtEspecie.Text = dataAnimales.SelectedRows[0].Cells[1].Value.ToString();
                     txtRaza.Text = dataAnimales.SelectedRows[0].Cells[2].Value.ToString();
                     txtNombre.Text = dataAnimales.SelectedRows[0].Cells[3].Value.ToString();
                     comboBoxTamaño.SelectedItem = dataAnimales.SelectedRows[0].Cells[4].Value.ToString();
                     comboBoxSexo.SelectedItem = dataAnimales.SelectedRows[0].Cells[5].Value.ToString();
                     comboBoxEstado.SelectedItem = dataAnimales.SelectedRows[0].Cells[6].Value.ToString();
-                }
+                    if (dataAnimales.SelectedRows[0].Cells[7].Value.ToString()=="True")
+                    {
+                        comboBoxVivo.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        comboBoxVivo.SelectedIndex = 1;
+                    }
+                } 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void rbTodos_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                MostrarDataAnimales_941lp(bllRegistroAnimales_941lp.RetornarAnimales_941lp());
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
-        private void rbAdoptado_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                MostrarDataAnimales_941lp(bllRegistroAnimales_941lp.RetornarAnimales_941lp());
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
-        private void rbDisponibleAdopcion_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                MostrarDataAnimales_941lp(bllRegistroAnimales_941lp.RetornarAnimales_941lp());
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
-        private void rbEnEvaluacionAdopcion_CheckedChanged(object sender, EventArgs e)
+        private void RadioButtonFiltro_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -363,6 +360,21 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Reingreso;
                 HabilitarControlesDeIngresoDeDatos_941lp(false);
                 HabilitarBotones_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnBaja_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dr_941lp = MessageBox.Show("¿Está seguro que desea dar de baja al animal?", "FALLECIMIENTO", MessageBoxButtons.YesNo);
+                if(dr_941lp == DialogResult.Yes)
+                {
+                    modo_941lp = ModoOperacion_941lp.Baja;
+                    HabilitarControlesDeIngresoDeDatos_941lp(false);
+                    HabilitarBotones_941lp();
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

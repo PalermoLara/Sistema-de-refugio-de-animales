@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.dataAnimales = new System.Windows.Forms.DataGridView();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtEspecie = new System.Windows.Forms.TextBox();
@@ -61,6 +54,17 @@
             this.labelCodigo = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.btnReingreso = new System.Windows.Forms.Button();
+            this.btnBaja = new System.Windows.Forms.Button();
+            this.comboBoxVivo = new System.Windows.Forms.ComboBox();
+            this.labelVivo = new System.Windows.Forms.Label();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
             this.groupBoxEstadoAdopcion.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +81,8 @@
             this.Column4,
             this.Column5,
             this.Column6,
-            this.Column7});
+            this.Column7,
+            this.Column8});
             this.dataAnimales.Location = new System.Drawing.Point(12, 12);
             this.dataAnimales.Margin = new System.Windows.Forms.Padding(4);
             this.dataAnimales.Name = "dataAnimales";
@@ -87,62 +92,6 @@
             this.dataAnimales.Size = new System.Drawing.Size(1456, 329);
             this.dataAnimales.TabIndex = 2;
             this.dataAnimales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataAnimales_CellClick);
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Codigo";
-            this.Column2.MinimumWidth = 10;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Especie";
-            this.Column1.MinimumWidth = 10;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Raza";
-            this.Column3.MinimumWidth = 10;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 200;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Nombre";
-            this.Column4.MinimumWidth = 10;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Tamaño";
-            this.Column5.MinimumWidth = 10;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 200;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Sexo";
-            this.Column6.MinimumWidth = 10;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 200;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Estado";
-            this.Column7.MinimumWidth = 10;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 200;
             // 
             // btnAplicar
             // 
@@ -285,7 +234,7 @@
             this.groupBoxEstadoAdopcion.Controls.Add(this.rbDisponibleAdopcion);
             this.groupBoxEstadoAdopcion.Controls.Add(this.rbEnEvaluacionAdopcion);
             this.groupBoxEstadoAdopcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxEstadoAdopcion.Location = new System.Drawing.Point(928, 548);
+            this.groupBoxEstadoAdopcion.Location = new System.Drawing.Point(923, 694);
             this.groupBoxEstadoAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxEstadoAdopcion.Name = "groupBoxEstadoAdopcion";
             this.groupBoxEstadoAdopcion.Padding = new System.Windows.Forms.Padding(6);
@@ -306,7 +255,7 @@
             this.rbTodos.TabStop = true;
             this.rbTodos.Text = "Todos";
             this.rbTodos.UseVisualStyleBackColor = true;
-            this.rbTodos.CheckedChanged += new System.EventHandler(this.rbTodos_CheckedChanged);
+            this.rbTodos.CheckedChanged += new System.EventHandler(this.RadioButtonFiltro_CheckedChanged);
             // 
             // rbAdoptado
             // 
@@ -318,7 +267,7 @@
             this.rbAdoptado.TabIndex = 2;
             this.rbAdoptado.Text = "Adoptado";
             this.rbAdoptado.UseVisualStyleBackColor = true;
-            this.rbAdoptado.CheckedChanged += new System.EventHandler(this.rbAdoptado_CheckedChanged);
+            this.rbAdoptado.CheckedChanged += new System.EventHandler(this.RadioButtonFiltro_CheckedChanged);
             // 
             // rbDisponibleAdopcion
             // 
@@ -330,7 +279,7 @@
             this.rbDisponibleAdopcion.TabIndex = 1;
             this.rbDisponibleAdopcion.Text = "Disponible";
             this.rbDisponibleAdopcion.UseVisualStyleBackColor = true;
-            this.rbDisponibleAdopcion.CheckedChanged += new System.EventHandler(this.rbDisponibleAdopcion_CheckedChanged);
+            this.rbDisponibleAdopcion.CheckedChanged += new System.EventHandler(this.RadioButtonFiltro_CheckedChanged);
             // 
             // rbEnEvaluacionAdopcion
             // 
@@ -342,7 +291,7 @@
             this.rbEnEvaluacionAdopcion.TabIndex = 0;
             this.rbEnEvaluacionAdopcion.Text = "En evaluación";
             this.rbEnEvaluacionAdopcion.UseVisualStyleBackColor = true;
-            this.rbEnEvaluacionAdopcion.CheckedChanged += new System.EventHandler(this.rbEnEvaluacionAdopcion_CheckedChanged);
+            this.rbEnEvaluacionAdopcion.CheckedChanged += new System.EventHandler(this.RadioButtonFiltro_CheckedChanged);
             // 
             // comboBoxSexo
             // 
@@ -371,6 +320,7 @@
             // 
             // comboBoxEstado
             // 
+            this.comboBoxEstado.BackColor = System.Drawing.Color.White;
             this.comboBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEstado.FormattingEnabled = true;
             this.comboBoxEstado.Items.AddRange(new object[] {
@@ -397,7 +347,7 @@
             // 
             this.labelCodigo.AutoSize = true;
             this.labelCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCodigo.Location = new System.Drawing.Point(18, 827);
+            this.labelCodigo.Location = new System.Drawing.Point(18, 881);
             this.labelCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCodigo.Name = "labelCodigo";
             this.labelCodigo.Size = new System.Drawing.Size(125, 31);
@@ -406,7 +356,7 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(244, 827);
+            this.txtCodigo.Location = new System.Drawing.Point(244, 881);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(316, 31);
@@ -414,7 +364,7 @@
             // 
             // btnReingreso
             // 
-            this.btnReingreso.Location = new System.Drawing.Point(24, 712);
+            this.btnReingreso.Location = new System.Drawing.Point(18, 767);
             this.btnReingreso.Margin = new System.Windows.Forms.Padding(4);
             this.btnReingreso.Name = "btnReingreso";
             this.btnReingreso.Size = new System.Drawing.Size(410, 81);
@@ -423,12 +373,114 @@
             this.btnReingreso.UseVisualStyleBackColor = true;
             this.btnReingreso.Click += new System.EventHandler(this.btnReingreso_Click);
             // 
+            // btnBaja
+            // 
+            this.btnBaja.Location = new System.Drawing.Point(987, 542);
+            this.btnBaja.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBaja.Name = "btnBaja";
+            this.btnBaja.Size = new System.Drawing.Size(410, 81);
+            this.btnBaja.TabIndex = 53;
+            this.btnBaja.Text = "BAJA";
+            this.btnBaja.UseVisualStyleBackColor = true;
+            this.btnBaja.Click += new System.EventHandler(this.btnBaja_Click);
+            // 
+            // comboBoxVivo
+            // 
+            this.comboBoxVivo.BackColor = System.Drawing.Color.White;
+            this.comboBoxVivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVivo.FormattingEnabled = true;
+            this.comboBoxVivo.Items.AddRange(new object[] {
+            "Si",
+            "No"});
+            this.comboBoxVivo.Location = new System.Drawing.Point(244, 694);
+            this.comboBoxVivo.Name = "comboBoxVivo";
+            this.comboBoxVivo.Size = new System.Drawing.Size(316, 33);
+            this.comboBoxVivo.TabIndex = 55;
+            // 
+            // labelVivo
+            // 
+            this.labelVivo.AutoSize = true;
+            this.labelVivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVivo.Location = new System.Drawing.Point(14, 694);
+            this.labelVivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelVivo.Name = "labelVivo";
+            this.labelVivo.Size = new System.Drawing.Size(79, 31);
+            this.labelVivo.TabIndex = 54;
+            this.labelVivo.Text = "VIVO";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Codigo";
+            this.Column2.MinimumWidth = 10;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Especie";
+            this.Column1.MinimumWidth = 10;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Raza";
+            this.Column3.MinimumWidth = 10;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 200;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Nombre";
+            this.Column4.MinimumWidth = 10;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Tamaño";
+            this.Column5.MinimumWidth = 10;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 200;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Sexo";
+            this.Column6.MinimumWidth = 10;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 200;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Estado";
+            this.Column7.MinimumWidth = 10;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 200;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Vivo";
+            this.Column8.MinimumWidth = 10;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 200;
+            // 
             // FormRegistroAnimales_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1480, 873);
+            this.ClientSize = new System.Drawing.Size(1480, 1068);
+            this.Controls.Add(this.comboBoxVivo);
+            this.Controls.Add(this.labelVivo);
+            this.Controls.Add(this.btnBaja);
             this.Controls.Add(this.btnReingreso);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.labelCodigo);
@@ -466,13 +518,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataAnimales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtEspecie;
@@ -498,5 +543,16 @@
         private System.Windows.Forms.Label labelCodigo;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Button btnReingreso;
+        private System.Windows.Forms.Button btnBaja;
+        private System.Windows.Forms.ComboBox comboBoxVivo;
+        private System.Windows.Forms.Label labelVivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }
 }

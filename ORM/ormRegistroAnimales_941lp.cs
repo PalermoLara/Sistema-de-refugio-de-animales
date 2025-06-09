@@ -21,8 +21,8 @@ namespace ORM
         public void Alta_941lp(Animal_941lp animal_941lp)
         {
             string query_941lp = "INSERT INTO Animal_941lp " +
-                         "(codigoAnimal_941lp, especie_941lp, raza_941lp, nombre_941lp, tamaño_941lp, sexo_941lp, estadoAdopcion_941lp) " +
-                         "VALUES (@codigoAnimal_941lp, @especie_941lp, @raza_941lp, @nombre_941lp, @tamaño_941lp,@sexo_941lp, @estadoAdopcion_941lp)";
+                         "(codigoAnimal_941lp, especie_941lp, raza_941lp, nombre_941lp, tamaño_941lp, sexo_941lp, estadoAdopcion_941lp, vivo_941lp) " +
+                         "VALUES (@codigoAnimal_941lp, @especie_941lp, @raza_941lp, @nombre_941lp, @tamaño_941lp,@sexo_941lp, @estadoAdopcion_941lp, @vivo_941lp)";
             EjecutarQueryConEntidad_941lp(animal_941lp, query_941lp);
         }
 
@@ -46,7 +46,7 @@ namespace ORM
 
         public void Modificar_941lp(Animal_941lp animal_941lp)
         {
-            string query_941lp = "UPDATE Animal_941lp SET especie_941lp = @especie_941lp, raza_941lp = @raza_941lp,nombre_941lp = @nombre_941lp, tamaño_941lp = @tamaño_941lp, sexo_941lp = @sexo_941lp, estadoAdopcion_941lp = @estadoAdopcion_941lp" +
+            string query_941lp = "UPDATE Animal_941lp SET especie_941lp = @especie_941lp, raza_941lp = @raza_941lp,nombre_941lp = @nombre_941lp, tamaño_941lp = @tamaño_941lp, sexo_941lp = @sexo_941lp, estadoAdopcion_941lp = @estadoAdopcion_941lp, vivo_941lp = @vivo_941lp" +
                 " WHERE codigoAnimal_941lp = @codigoAnimal_941lp";
             var propiedadesAIncluir = new List<string>
             {
@@ -56,6 +56,7 @@ namespace ORM
                 "tamaño_941lp",
                 "sexo_941lp",
                 "estadoAdopcion_941lp",
+                "vivo_941lp",
                 "codigoAnimal_941lp"
             };
             EjecutarQueryConEntidad_941lp(animal_941lp, query_941lp, propiedadesAIncluir);
@@ -94,7 +95,8 @@ namespace ORM
                 reader["nombre_941lp"].ToString(),
                 reader["tamaño_941lp"].ToString(),
                 reader["sexo_941lp"].ToString(),
-                reader["estadoAdopcion_941lp"].ToString()
+                reader["estadoAdopcion_941lp"].ToString(),
+                Convert.ToBoolean(reader["vivo_941lp"])
             );
         }
     }

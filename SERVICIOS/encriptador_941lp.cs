@@ -23,7 +23,7 @@ namespace SERVICIOS
         }
         #endregion
 
-        #region CIFRADO REVERSIBLE AES (nombre de usuario)
+        #region CIFRADO REVERSIBLE AES (dirección del cedente)
         private static readonly byte[] key = new byte[32] {
         0x2B, 0x7E, 0x15, 0x16, 0x28, 0xAE, 0xD2, 0xA6,
         0xAB, 0xF7, 0xCF, 0x40, 0x44, 0x35, 0x5C, 0xE5,

@@ -1,10 +1,13 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,9 +15,293 @@ namespace GUI
 {
     public partial class FormGestorCedentes_941lp : Form
     {
+
+        bllCedente_941lp bllCedente_941lp;
+        ModoOperacion_941lp modo_941lp;
         public FormGestorCedentes_941lp()
         {
             InitializeComponent();
+            bllCedente_941lp = new bllCedente_941lp();
+            btnAplicar.Enabled = false;
+            btnCancelar.Enabled = false;
+            modo_941lp = ModoOperacion_941lp.Consulta;
+        }
+        private void FormGestorCedentes_941lp_Load(object sender, EventArgs e)
+        {
+            dataCedentes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataCedentes.MultiSelect = false;
+            dataCedentes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
+            HabilitarTxt_941lp(true);
+        }
+
+
+        enum ModoOperacion_941lp
+        {
+            Consulta,
+            Alta,
+            Modificar,
+            ActivarDesactivar
+        }
+
+        private void HabilitarTxt_941lp(bool habilitar_941lp)
+        {
+            if (modo_941lp == ModoOperacion_941lp.Alta)
+            {
+                txtDni.Enabled = habilitar_941lp;
+                txtNOmbreCedente.Enabled = habilitar_941lp;
+                txtApellido.Enabled = habilitar_941lp;
+                txtDireccion.Enabled = habilitar_941lp;
+                txtTelefono.Enabled = habilitar_941lp;
+            }
+            else if (modo_941lp == ModoOperacion_941lp.Modificar)
+            {
+                txtDni.Enabled = !habilitar_941lp;
+                txtNOmbreCedente.Enabled = habilitar_941lp;
+                txtApellido.Enabled = habilitar_941lp;
+                txtDireccion.Enabled = habilitar_941lp;
+                txtTelefono.Enabled = habilitar_941lp;
+            }
+            else
+            {
+                txtDni.Enabled = !habilitar_941lp;
+                txtNOmbreCedente.Enabled = !habilitar_941lp;
+                txtApellido.Enabled = !habilitar_941lp;
+                txtDireccion.Enabled = !habilitar_941lp;
+                txtTelefono.Enabled = !habilitar_941lp;
+            }
+            AplicarColorControles_941lp();
+        }
+
+        private void MostrarGrillaCedentes_941lp(List<Cedente_941lp> cedentesLista_941lp)
+        {
+            dataCedentes.Rows.Clear();
+            if(cedentesLista_941lp!=null)
+            {
+                foreach (Cedente_941lp c_941lp in cedentesLista_941lp)
+                {
+                    dataCedentes.Rows.Add(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp,  c_941lp.direccion_941lp, c_941lp.telefono_941lp, c_941lp.activo_941lp);
+                }
+            }
+        }
+
+        private void VisibilidadDeBotones_941lp()
+        {
+            btnAltaCedente.Enabled = false;
+            btnModificarCedente.Enabled = false;
+            btnSalir.Enabled = false;
+            btnActDesact.Enabled = false;
+            btnCancelar.Enabled = true;
+            btnAplicar.Enabled = true;
+            AplicarColorControles_941lp();
+        }
+
+        private void ValidarCargaDeTxt_941lp()
+        {
+            if (string.IsNullOrWhiteSpace(txtDni.Text) ||
+                        string.IsNullOrWhiteSpace(txtNOmbreCedente.Text) ||
+                        string.IsNullOrWhiteSpace(txtApellido.Text) ||
+                        string.IsNullOrWhiteSpace(txtDireccion.Text) ||
+                        string.IsNullOrWhiteSpace(txtTelefono.Text))
+            {
+                throw new Exception("Debe completar todos los campos obligatorios.");
+            }
+        }
+
+        private void LimpiarTxt_941lp()
+        {
+            foreach (Control c_941lp in this.Controls)
+            {
+                if (c_941lp is TextBox t_941lp)
+                {
+                    t_941lp.Text = "";
+                }
+            }
+        }
+
+        private void ModoAceptarCancelar_941lp()
+        {
+            modo_941lp = ModoOperacion_941lp.Consulta;
+            btnCancelar.Enabled = false;
+            btnAplicar.Enabled = false;
+            btnAltaCedente.Enabled = true;
+            btnActDesact.Enabled = true;
+            btnModificarCedente.Enabled = true;
+            btnSalir.Enabled = true;
+            AplicarColorControles_941lp();
+            HabilitarTxt_941lp(true);
+            LimpiarTxt_941lp();
+        }
+
+        private void AplicarColorControles_941lp()
+        {
+            var controles_941lp = new Control[]
+            {
+                btnActDesact, btnAltaCedente, btnModificarCedente, btnAplicar, btnCancelar, txtDni,
+                txtNOmbreCedente, txtApellido, txtDireccion, txtTelefono
+            };
+
+            foreach (var control_941lp in controles_941lp)
+            {
+                if (control_941lp.Enabled == false)
+                {
+
+                    control_941lp.BackColor = Color.LightSteelBlue;
+                }
+                else
+                {
+                    control_941lp.BackColor = Color.White;
+                }
+            }
+        }
+
+        private void ControlDeIngresoDeDatos_941lp(string dni_941lp, string nombre_941lp, string apellido_941lp, string direccion_941lp, string telefono_941lp)
+        {
+            try
+            {
+                // Regex reutilizables
+                var regexDireccion_941lp = new Regex(@"^[\p{L}\d\s\.,°#\-]+$");
+                /*
+                 *  Ejemplos válidos:
+                    Av. Rivadavia 1234
+                    Calle Falsa 123, Piso 2° A
+                    San Martín 4444 - Dpto #3
+                 */
+                var regexTelefonoAR_941lp = new Regex(@"^(\+54|54)?\s?(9)?\s?(11|[2368]\d{2})\s?\d{3,4}[- ]?\d{4}$");
+                var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
+                var regexDni = new Regex(@"^\d{8}$");
+                // Validaciones
+                if (!regexDni.IsMatch(dni_941lp))
+                    throw new ArgumentException("El DNI ingresado es inválido. Debe contener exactamente 8 dígitos y solo números.");
+                if (!regexTexto_941lp.IsMatch(nombre_941lp))
+                    throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras y espacios.");
+                if (!regexTexto_941lp.IsMatch(apellido_941lp))
+                    throw new ArgumentException("El apellido ingresado es inválido. Solo se permiten letras y espacios.");
+                if (!regexDireccion_941lp.IsMatch(direccion_941lp))
+                    throw new ArgumentException("La dirección ingresada es inválida.");
+                if (!regexTelefonoAR_941lp.IsMatch(telefono_941lp))
+                    throw new ArgumentException("El telefono ingresado es inválido. Solo se permiten telefonos argentinos.");
+            }
+            catch (ArgumentException ex)
+            {
+                throw new Exception($"Error de validación: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
+            }
+        }
+
+        private void btnAltaCedente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.Alta;
+                VisibilidadDeBotones_941lp();
+                HabilitarTxt_941lp(true);
+                LimpiarTxt_941lp();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnModificarCedente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.Modificar;
+                VisibilidadDeBotones_941lp();
+                HabilitarTxt_941lp(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnActDesact_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.ActivarDesactivar;
+                VisibilidadDeBotones_941lp();
+                HabilitarTxt_941lp(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+                modo_941lp = ModoOperacion_941lp.Consulta;
+                this.Close();
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                ModoAceptarCancelar_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnAplicar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (modo_941lp)
+                {
+                    case ModoOperacion_941lp.Consulta:
+                        btnAplicar.Enabled = true;
+                        break;
+                    case ModoOperacion_941lp.Alta:
+                        ValidarCargaDeTxt_941lp();
+                        ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNOmbreCedente.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text);
+                        if (bllCedente_941lp.ValidarDNI_941lp(txtDni.Text)) { throw new Exception("DNI repetido"); }
+                        bllCedente_941lp.Alta_941lp(txtDni.Text, txtNOmbreCedente.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text);
+                        MessageBox.Show("Cedente dado de alta exitosamente");
+                        break;
+                    case ModoOperacion_941lp.Modificar:
+                        ValidarCargaDeTxt_941lp();
+                        ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNOmbreCedente.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text);
+                        bllCedente_941lp.Modificar_941lp(txtDni.Text, txtNOmbreCedente.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text);
+                        MessageBox.Show("Cedente modificado exitosamente");
+                        break;
+                    case ModoOperacion_941lp.ActivarDesactivar:
+                        bllCedente_941lp.ActivarDesactivar_941lp(dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
+                        break;
+                    default:
+                        MessageBox.Show("Error en la operación");
+                        break;
+                }
+                MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
+                ModoAceptarCancelar_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dataCedentes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            try
+            {
+                if (modo_941lp != ModoOperacion_941lp.Alta)
+                {
+                    txtDni.Text = dataCedentes.SelectedRows[0].Cells[0].Value.ToString();
+                    //nombre real
+                    txtNOmbreCedente.Text = dataCedentes.SelectedRows[0].Cells[1].Value.ToString();
+                    txtApellido.Text = dataCedentes.SelectedRows[0].Cells[2].Value.ToString();
+                    txtDireccion.Text = dataCedentes.SelectedRows[0].Cells[3].Value.ToString();
+                    txtTelefono.Text = dataCedentes.SelectedRows[0].Cells[4].Value.ToString();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
+
 }
