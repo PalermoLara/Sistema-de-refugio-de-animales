@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bllCedente_941lp.cs" />
+    <Compile Include="bllFichaIngreso_941lp.cs" />
     <Compile Include="bllRegistroAnimales_941lp.cs" />
     <Compile Include="bllUsuario_941lp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

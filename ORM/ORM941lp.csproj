@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ormCedente_941lp.cs" />
+    <Compile Include="ormFichaIngreso_941lp.cs" />
     <Compile Include="ormRegistroAnimales_941lp.cs" />
     <Compile Include="ormUsuario_941lp.cs" />
     <Compile Include="ParametroHelper_941lp.cs" />

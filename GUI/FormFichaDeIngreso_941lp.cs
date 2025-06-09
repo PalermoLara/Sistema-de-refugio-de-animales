@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,11 +17,19 @@ namespace GUI
     {
         bllCedente_941lp bllCedente_941lp;
         bllRegistroAnimales_941lp bllAnimal_941lp;
+        bllFichaIngreso_941lp bllFichaIngreso_941;
+        FormRegistroAnimales_941lp formRegistroAnimales_941lp;
+        FormGestorCedentes_941lp formGestorCedentes_941lp;
+        ModoOperacion_941lp modo_941lp;
         public FormFichaDeIngreso_941lp()
         {
             InitializeComponent();
             bllAnimal_941lp = new bllRegistroAnimales_941lp();
             bllCedente_941lp = new bllCedente_941lp();
+            bllFichaIngreso_941 = new bllFichaIngreso_941lp();
+            formRegistroAnimales_941lp = new FormRegistroAnimales_941lp();
+            formGestorCedentes_941lp = new FormGestorCedentes_941lp();
+            modo_941lp = ModoOperacion_941lp.Consulta;
         }
 
         private void FormFichaDeIngreso_941lp_Load(object sender, EventArgs e)
@@ -32,7 +41,52 @@ namespace GUI
             dataAnimales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataAnimales.MultiSelect = false;
             dataAnimales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            listViewFichas.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             MostrarDataAnimales_941lp(bllAnimal_941lp.RetornarAnimales_941lp());
+            MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), " ");
+            dataAnimales.Enabled = false;
+            dataCedentes.Enabled = false;
+            ModoAceptarCancelar_941lp();
+        }
+
+        private void MostrarFichasIngreso_941lp(List<FichaDeIngreso_941lp> listaFichas_941lp, string identificador_941lp)
+        {
+            listViewFichas.Items.Clear();
+
+            IEnumerable<FichaDeIngreso_941lp> fichasFiltradas_941lp;
+
+            if (rbCedente.Checked)
+            {
+                fichasFiltradas_941lp = listaFichas_941lp.Where(a => a.dni_941lp == identificador_941lp);
+            }
+            else if (rbAnimal.Checked)
+            {
+                fichasFiltradas_941lp = listaFichas_941lp.Where(a => a.codigoAnimal_941lp == Convert.ToInt32(identificador_941lp));
+            }
+            else
+            {
+                fichasFiltradas_941lp = listaFichas_941lp;
+            }
+
+            foreach (var ficha in fichasFiltradas_941lp)
+            {
+                var item = new ListViewItem(ficha.codigo_941lp.ToString());
+                item.SubItems.Add($"{ficha.codigoAnimal_941lp}");
+                item.SubItems.Add(ficha.dni_941lp);
+                item.SubItems.Add(ficha.especie_941lp);
+                item.SubItems.Add(ficha.fecha_941lp.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(ficha.hora_941lp.ToString());
+                item.SubItems.Add(ficha.razon_941lp);
+                item.SubItems.Add(ficha.zona_941lp);
+                listViewFichas.Items.Add(item);
+            }
+        }
+
+        enum ModoOperacion_941lp
+        {
+            Consulta,
+            Alta,
+            Modificar
         }
 
         private void MostrarDataAnimales_941lp(List<Animal_941lp> animalLista_941lp)
@@ -60,6 +114,256 @@ namespace GUI
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        private void btnCrearFichaDeIngreso_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult drAnimal_941lp = MessageBox.Show("¿Nuevo animal?", "Generar ficha médica", MessageBoxButtons.YesNo);
+                if(drAnimal_941lp == DialogResult.Yes)
+                {
+                    formRegistroAnimales_941lp.ShowDialog();
+                }
+                DialogResult drCedente_941lp = MessageBox.Show("¿Nuevo cedente?", "Generar ficha médica", MessageBoxButtons.YesNo);
+                if (drCedente_941lp == DialogResult.Yes)
+                {
+                    formGestorCedentes_941lp.ShowDialog();
+                }
+                if (drAnimal_941lp == DialogResult.No && drCedente_941lp == DialogResult.No)
+                {
+                    modo_941lp = ModoOperacion_941lp.Alta;
+                    HabilitarTxt_941lp(true);
+                    VisibilidadDeBotones_941lp();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+
+        private void HabilitarTxt_941lp(bool habilitar_941lp)
+        {
+            if (modo_941lp == ModoOperacion_941lp.Alta || modo_941lp == ModoOperacion_941lp.Modificar)
+            {
+                txtRazon.Enabled = habilitar_941lp;
+                txtZona.Enabled = habilitar_941lp;
+            }
+            else
+            {
+                txtRazon.Enabled = !habilitar_941lp;
+                txtZona.Enabled = !habilitar_941lp;
+            }
+            AplicarColorControles_941lp();
+        }
+
+        private void VisibilidadDeBotones_941lp()
+        {
+            btnCrearFichaDeIngreso.Enabled = false;
+            btnModificarFichaMedica.Enabled = false;
+            btnSalir.Enabled = false;
+            btnCancelar.Enabled = true;
+            btnAplicar.Enabled = true;
+            dataAnimales.Enabled = true;
+            dataCedentes.Enabled = true;
+            AplicarColorControles_941lp();
+        }
+
+        private void AplicarColorControles_941lp()
+        {
+            var controles_941lp = new Control[]
+            {
+                txtZona, txtRazon, btnCancelar, btnAplicar, btnCrearFichaDeIngreso, btnModificarFichaMedica, btnSalir
+            };
+
+            foreach (var control_941lp in controles_941lp)
+            {
+                if (control_941lp.Enabled == false)
+                {
+
+                    control_941lp.BackColor = Color.LightSteelBlue;
+                }
+                else
+                {
+                    control_941lp.BackColor = Color.White;
+                }
+            }
+        }
+
+        private void ControlDeIngresoDeDatos_941lp(string razon_941lp, string zona_941lp)
+        {
+            try
+            {
+                var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
+                if (!regexTexto_941lp.IsMatch(razon_941lp))
+                    throw new ArgumentException("La razón ingresada es inválida. Solo se permiten letras y espacios.");
+                if (!regexTexto_941lp.IsMatch(zona_941lp))
+                    throw new ArgumentException("La zona ingresada es inválida. Solo se permiten letras y espacios.");
+            }
+            catch (ArgumentException ex)
+            {
+                throw new Exception($"Error de validación: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
+            }
+        }
+
+        private void btnAplicar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ValidarCargaDeTxt_941lp();
+                ControlDeIngresoDeDatos_941lp(txtRazon.Text, txtZona.Text);
+                string dni_941lp = dataCedentes.SelectedRows[0].Cells[0].Value.ToString();
+                int codigoAnimal_941lp = Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value);
+                string especie_941lp = dataAnimales.SelectedRows[0].Cells[1].Value.ToString();
+                switch (modo_941lp)
+                {
+                    case ModoOperacion_941lp.Alta:
+                        if (bllFichaIngreso_941.VerificarCedenteActivo_941lp(dataCedentes.SelectedRows[0].Cells[0].Value.ToString())==false) throw new Exception("El cedente debe estar activo para generar una ficha de ingreso");
+                        bllFichaIngreso_941.Alta_941lp(codigoAnimal_941lp, dni_941lp,especie_941lp, DateTime.Now, DateTime.Now, txtRazon.Text, txtZona.Text);
+                        MessageBox.Show("Ficha de ingreso generada exitosamente");
+                        break;
+                    case ModoOperacion_941lp.Modificar:
+                        int codigo_941lp = Convert.ToInt32(listViewFichas.SelectedItems[0].SubItems[0].Text);
+                        bllFichaIngreso_941.Modificar_941lp(codigo_941lp, txtRazon.Text, txtZona.Text);
+                        MessageBox.Show("Ficha de ingreso modificada exitosamente");
+                        break;
+                    default:
+                        MessageBox.Show("Error en la operación");
+                        break;
+                }
+                ModoAceptarCancelar_941lp();
+                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), " ");
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void ValidarCargaDeTxt_941lp()
+        {
+            if (string.IsNullOrWhiteSpace(txtRazon.Text) ||
+                        string.IsNullOrWhiteSpace(txtZona.Text))
+            {
+                throw new Exception("Debe completar todos los campos obligatorios.");
+            }
+        }
+
+        private void ModoAceptarCancelar_941lp()
+        {
+            modo_941lp = ModoOperacion_941lp.Consulta;
+            btnAplicar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnCrearFichaDeIngreso.Enabled = true;
+            btnModificarFichaMedica.Enabled = true;
+            btnSalir.Enabled = true;
+            dataAnimales.Enabled = false;
+            dataCedentes.Enabled = false;
+            AplicarColorControles_941lp();
+            HabilitarTxt_941lp(true);
+            LimpiarTxt_941lp();
+        }
+
+        private void LimpiarTxt_941lp()
+        {
+            foreach (Control c_941lp in this.Controls)
+            {
+                if (c_941lp is TextBox t_941lp)
+                {
+                    t_941lp.Text = "";
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.Consulta;
+                ModoAceptarCancelar_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void rbTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dataAnimales.Enabled = false;
+                dataCedentes.Enabled = false;
+                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), " ");
+            }
+            catch (Exception ex){ MessageBox.Show(ex.Message); }
+        }
+
+        private void rbCedente_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dataAnimales.Enabled = false;
+                dataCedentes.Enabled = true;
+                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void rbAnimal_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dataAnimales.Enabled = true;
+                dataCedentes.Enabled = false;
+                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataAnimales.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dataAnimales_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataAnimales.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dataCedentes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnModificarFichaMedica_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.Modificar;
+                HabilitarTxt_941lp(true);
+                VisibilidadDeBotones_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dataAnimales_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataAnimales.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dataCedentes_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }
