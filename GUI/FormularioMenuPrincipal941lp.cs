@@ -23,6 +23,7 @@ namespace GUI
         private FormRegistroAnimales_941lp formRegistroDeAnimales_941lp;
         private FormGestorCedentes_941lp formGestorCedentes_941Lp;
         private FormFichaDeIngreso_941lp formFichaDeIngreso_941Lp;
+        private FormGestionFichaMedica_941lp formGestionFichaMedica_941lp;
         private List<Panel> submenus_941lp;
 
         public FormularioMenuPrincipal941lp()
@@ -36,6 +37,7 @@ namespace GUI
             formRegistroDeAnimales_941lp = new FormRegistroAnimales_941lp();
             formGestorCedentes_941Lp = new FormGestorCedentes_941lp();
             formFichaDeIngreso_941Lp = new FormFichaDeIngreso_941lp();
+            formGestionFichaMedica_941lp = new FormGestionFichaMedica_941lp();
         }
 
         private void InicializarSubmenus_941lp()
@@ -180,6 +182,11 @@ namespace GUI
         private void btnFichaIngreso_Click(object sender, EventArgs e)
         {
             formFichaDeIngreso_941Lp.ShowDialog();
+        }
+
+        private void btnFichaMedica_Click(object sender, EventArgs e)
+        {
+            formGestionFichaMedica_941lp.ShowDialog();
         }
     }
 }
