@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
@@ -17,12 +18,36 @@ namespace GUI
     public partial class FormGestionFichaMedica_941lp : Form
     {
         bllRegistroAnimales_941lp bllRegistroAnimales_941Lp;
+        bllMedicamento_941lp bllMedicamento_941lp;
+        bllFichaMedica_941lp bllFichaMedica_941lp;
         ModoOperacion_941lp modo_941lp;
         public FormGestionFichaMedica_941lp()
         {
             InitializeComponent();
             bllRegistroAnimales_941Lp = new bllRegistroAnimales_941lp();
+            bllMedicamento_941lp = new bllMedicamento_941lp();
+            bllFichaMedica_941lp = new bllFichaMedica_941lp();
+        }
+
+        private void FormGestionFichaMedica_941lp_Load(object sender, EventArgs e)
+        {
+            dataAnimales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataAnimales.MultiSelect = false;
+            dataAnimales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            MostrarDataAnimales_941lp(bllRegistroAnimales_941Lp.RetornarAnimales_941lp());
+            dataMedicamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataMedicamentos.MultiSelect = false;
+            dataMedicamentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            MostrarGrillaMedicamentos_941lp(bllMedicamento_941lp.RetornarMedicamento_941lp());
+            dataFichaMedica.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataFichaMedica.MultiSelect = false;
+            dataFichaMedica.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            MostrarGrillaFicha_941lp(bllFichaMedica_941lp.RetornarFichas_941lp());
             modo_941lp = ModoOperacion_941lp.Consulta;
+            HabilitarTxt_941lp(true);
+            btnCancelar.Enabled = false;
+            btnAplicar.Enabled = false;
+            AplicarColorControles_941lp();
         }
 
         enum ModoOperacion_941lp
@@ -34,16 +59,34 @@ namespace GUI
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            modo_941lp = ModoOperacion_941lp.Consulta;
             this.Close();
         }
 
-
-        private void FormGestionFichaMedica_941lp_Load(object sender, EventArgs e)
+        private void MostrarGrillaMedicamentos_941lp(List<Medicamento_941lp> medicamentosLista_941lp)
         {
-            dataAnimales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataAnimales.MultiSelect = false;
-            dataAnimales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            MostrarDataAnimales_941lp(bllRegistroAnimales_941Lp.RetornarAnimales_941lp());
+            dataMedicamentos.Rows.Clear();
+            if (medicamentosLista_941lp != null)
+            {
+                foreach (Medicamento_941lp m_941lp in medicamentosLista_941lp)
+                {
+                    dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp, m_941lp.animalDestinado_941lp, m_941lp.caducidad_941lp);
+                    dataMedicamentos.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
+                }
+            }
+        }
+
+        private void MostrarGrillaFicha_941lp(List<FichaMedica_941lp> fichas_941lp)
+        {
+            dataFichaMedica.Rows.Clear();
+            if (fichas_941lp != null)
+            {
+                foreach (FichaMedica_941lp f_941lp in fichas_941lp)
+                {
+                    dataFichaMedica.Rows.Add(f_941lp.codigo_941lp, f_941lp.codigoAnimal_941lp, f_941lp.fecha_941lp, f_941lp.castrado_941lp, f_941lp.dieta_941lp, f_941lp.medicamento_941lp, f_941lp.observaciones_941lp);
+                    dataFichaMedica.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+                }
+            }
         }
 
         private void MostrarDataAnimales_941lp(List<Animal_941lp> animalLista_941lp)
@@ -70,6 +113,8 @@ namespace GUI
             try
             {
                 modo_941lp = ModoOperacion_941lp.Alta;
+                HabilitarTxt_941lp(true);
+                VisibilidadDeBotones_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -79,29 +124,63 @@ namespace GUI
             try
             {
                 modo_941lp = ModoOperacion_941lp.Modificar;
+                HabilitarTxt_941lp(true);
+                VisibilidadDeBotones_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void ControlDeIngresoDeDatos_941lp(string dieta_941lp, string observaciones_941lp = "")
+        {
+            try
+            {
+                var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s.,]+$");
+                if (!regexTexto_941lp.IsMatch(dieta_941lp))
+                    throw new ArgumentException("La dieta ingresada es inválida. Solo se permiten letras y espacios.");
+                if(observaciones_941lp!="")
+                {
+                    if (!regexTexto_941lp.IsMatch(observaciones_941lp))
+                        throw new ArgumentException("La observación ingresada es inválida. Solo se permiten letras y espacios.");
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                throw new Exception($"Error de validación: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
+            }
         }
 
         private void btnAplicar_Click(object sender, EventArgs e)
         {
             try
             {
+                ValidarCargaDeTxt_941lp();
+                ControlDeIngresoDeDatos_941lp(txtDieta.Text, txtObservaciones.Text);
+                RadioButton seleccionado_941lp = groupBoxCastrado.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Alta:
-                        ValidarCargaDeTxt_941lp();
-                        MessageBox.Show("Cedente dado de alta exitosamente");
+                        MessageBox.Show("Debe definir el estado del animal luego de la revisión médica", "ESTADO DE ADOPCIÓN", MessageBoxButtons.OK);
+                        RadioButton estado_941lp = groupBoxEstadoAdopcion.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
+                        if (estado_941lp == null) throw new Exception("Debe seleccionar un estado");
+                        bllRegistroAnimales_941Lp.Modificar_941lp(codigo_941lp: dataAnimales.SelectedRows[0].Cells[0].Value.ToString(), estadoDeAdopcion_941lp: estado_941lp.Text);
+                        MostrarDataAnimales_941lp(bllRegistroAnimales_941Lp.RetornarAnimales_941lp());
+                        bllFichaMedica_941lp.Alta_941lp(Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value), DateTime.Now, seleccionado_941lp.Text=="Si", txtDieta.Text, dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), txtObservaciones.Text);
+                        MessageBox.Show("Ficha médica dada de alta exitosamente");
                         break;
                     case ModoOperacion_941lp.Modificar:
-                        ValidarCargaDeTxt_941lp();
-                        MessageBox.Show("Cedente modificado exitosamente");
+                        bllFichaMedica_941lp.Modificar_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), seleccionado_941lp.Text == "Si" , txtDieta.Text, dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), txtObservaciones.Text);
+                        MessageBox.Show("Ficha médica modificada exitosamente");
                         break;
                     default:
                         MessageBox.Show("Error en la operación");
                         break;
                 }
                 ModoAceptarCancelar_941lp();
+                MostrarGrillaFicha_941lp(bllFichaMedica_941lp.RetornarFichas_941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -110,8 +189,6 @@ namespace GUI
         {
             bool radioSeleccionado = groupBoxCastrado.Controls.OfType<RadioButton>().Any(rb => rb.Checked);
             if (string.IsNullOrWhiteSpace(txtDieta.Text) ||
-                string.IsNullOrWhiteSpace(txtObservaciones.Text) ||
-                string.IsNullOrWhiteSpace(txtMedicamentos.Text) ||
                 !radioSeleccionado)
             {
                 throw new Exception("Debe completar todos los campos obligatorios.");
@@ -131,7 +208,7 @@ namespace GUI
         {
             var controles_941lp = new Control[]
             {
-                btnAplicar, btnModificarFichaMedica,btnCrearFichaMedica, btnSalir, txtMedicamentos, txtDieta, txtObservaciones, groupBoxCastrado
+                btnAplicar, btnModificarFichaMedica,btnCancelar,btnCrearFichaMedica, btnSalir, txtDieta, txtObservaciones, groupBoxCastrado
             };
 
             foreach (var control_941lp in controles_941lp)
@@ -159,25 +236,38 @@ namespace GUI
             }
         }
 
+        private void VisibilidadDeBotones_941lp()
+        {
+            btnCrearFichaMedica.Enabled = false;
+            btnModificarFichaMedica.Enabled = false;
+            btnSalir.Enabled = false;
+            btnCancelar.Enabled = true;
+            btnAplicar.Enabled = true;
+            AplicarColorControles_941lp();
+        }
+
         private void HabilitarTxt_941lp(bool habilitar_941lp)
         {
             if (modo_941lp == ModoOperacion_941lp.Alta || modo_941lp == ModoOperacion_941lp.Modificar)
             {
-                btnCancelar.Enabled = habilitar_941lp;
-                btnAplicar.Enabled = habilitar_941lp;
-                btnCrearFichaMedica.Enabled = !habilitar_941lp;
-                btnModificarFichaMedica.Enabled = !habilitar_941lp;
-                btnSalir.Enabled = !habilitar_941lp;
-                groupBoxCastrado.Enabled = !habilitar_941lp;
+                txtDieta.Enabled = habilitar_941lp;
+                txtObservaciones.Enabled = habilitar_941lp;
+                groupBoxCastrado.Enabled = habilitar_941lp;
+                if(modo_941lp == ModoOperacion_941lp.Alta)
+                {
+                    groupBoxEstadoAdopcion.Enabled = habilitar_941lp;
+                }
+                else
+                {
+                    groupBoxEstadoAdopcion.Enabled = !habilitar_941lp;
+                }
             }
             else
             {
-                btnCancelar.Enabled = !habilitar_941lp;
-                btnAplicar.Enabled = !habilitar_941lp;
-                btnCrearFichaMedica.Enabled = habilitar_941lp;
-                btnModificarFichaMedica.Enabled = habilitar_941lp;
-                btnSalir.Enabled = habilitar_941lp;
-                groupBoxCastrado.Enabled = habilitar_941lp;
+                txtDieta.Enabled = !habilitar_941lp;
+                txtObservaciones.Enabled = !habilitar_941lp;
+                groupBoxCastrado.Enabled = !habilitar_941lp;
+                groupBoxEstadoAdopcion.Enabled = !habilitar_941lp;
             }
             AplicarColorControles_941lp();
         }
@@ -194,5 +284,29 @@ namespace GUI
             HabilitarTxt_941lp(false);
             LimpiarTxt_941lp();
         }
+
+        private void dataFichaMedica_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (modo_941lp != ModoOperacion_941lp.Alta)
+                {
+                    if (dataFichaMedica.SelectedRows[0].Cells[3].Value.ToString() == "Si")
+                    {
+                        rbSiCastrado.Checked = true;
+                        rbNoCastrado.Checked = false;
+                    }
+                    else
+                    {
+                        rbSiCastrado.Checked = false;
+                        rbNoCastrado.Checked = true;
+                    }
+                    txtDieta.Text = dataFichaMedica.SelectedRows[0].Cells[4].Value.ToString();
+                    txtObservaciones.Text = dataFichaMedica.SelectedRows[0].Cells[6].Value.ToString();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
     }
 }

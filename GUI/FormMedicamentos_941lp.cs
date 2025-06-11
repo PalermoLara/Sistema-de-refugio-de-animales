@@ -1,0 +1,309 @@
+﻿using BE;
+using BLL;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace GUI
+{
+    public partial class FormMedicamentos_941lp : Form
+    {
+        bllMedicamento_941lp bllMedicamento_941Lp;
+        ModoOperacion_941lp modo_941lp;
+        public FormMedicamentos_941lp()
+        {
+            InitializeComponent();
+            bllMedicamento_941Lp = new bllMedicamento_941lp();
+            modo_941lp = ModoOperacion_941lp.Consulta;
+            btnCancelar.Enabled = false;
+            btnAplicar.Enabled = false;
+        }
+
+        private void FormMedicamentos_941lp_Load(object sender, EventArgs e)
+        {
+            dataMedicamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataMedicamentos.MultiSelect = false;
+            dataMedicamentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            MostrarGrillaMedicamentos_941lp(bllMedicamento_941Lp.RetornarMedicamento_941lp());
+            HabilitarTxt_941lp(true);
+        }
+
+        enum ModoOperacion_941lp
+        {
+            Consulta,
+            Alta,
+            Modificar,
+            Baja
+        }
+
+        private void MostrarGrillaMedicamentos_941lp(List<Medicamento_941lp> medicamentosLista_941lp)
+        {
+            dataMedicamentos.Rows.Clear();
+            if (medicamentosLista_941lp != null)
+            {
+                foreach (Medicamento_941lp m_941lp in medicamentosLista_941lp)
+                {
+                    dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp, m_941lp.animalDestinado_941lp, m_941lp.caducidad_941lp);
+                    dataMedicamentos.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
+                }
+            }
+        }
+
+        private void VisibilidadDeBotones_941lp()
+        {
+            btnAltaMedicamento.Enabled = false;
+            btnModificarMedicamento.Enabled = false;
+            btnBaja.Enabled = false;
+            btnCancelar.Enabled = true;
+            btnAplicar.Enabled = true;
+            btnSalir.Enabled = false;
+            AplicarColorControles_941lp();
+        }
+
+        private void ValidarCargaDeTxt_941lp()
+        {
+            if (string.IsNullOrWhiteSpace(txtNumero.Text) ||
+                        string.IsNullOrWhiteSpace(txtNombreComercial.Text) ||
+                        string.IsNullOrWhiteSpace(txtNombreGenerico.Text) ||
+                        comboBoxAnimalDestinado.SelectedItem == null ||
+                        comboBoxForma.SelectedItem == null)
+            {
+                throw new Exception("Debe completar todos los campos obligatorios.");
+            }
+        }
+
+        private void LimpiarTxt_941lp()
+        {
+            foreach (Control c_941lp in this.Controls)
+            {
+                if (c_941lp is TextBox t_941lp)
+                {
+                    t_941lp.Text = "";
+                }
+            }
+            comboBoxAnimalDestinado.SelectedItem = null;
+            comboBoxForma.SelectedItem = null;
+        }
+
+        private void ModoAceptarCancelar_941lp()
+        {
+            modo_941lp = ModoOperacion_941lp.Consulta;
+            btnCancelar.Enabled = false;
+            btnAplicar.Enabled = false;
+            btnAltaMedicamento.Enabled = true;
+            btnModificarMedicamento.Enabled = true;
+            btnBaja.Enabled = true;
+            btnSalir.Enabled = true;
+            AplicarColorControles_941lp();
+            HabilitarTxt_941lp(true);
+            LimpiarTxt_941lp();
+        }
+
+        private void HabilitarTxt_941lp(bool habilitar_941lp)
+        {
+            if (modo_941lp == ModoOperacion_941lp.Alta)
+            {
+                txtNumero.Enabled = habilitar_941lp;
+                txtNombreComercial.Enabled = habilitar_941lp;
+                txtNombreGenerico.Enabled = habilitar_941lp;
+                comboBoxAnimalDestinado.Enabled = habilitar_941lp;
+                comboBoxForma.Enabled = habilitar_941lp;
+                dateTimePickerVencimiento.Enabled = habilitar_941lp;
+            }
+            else if (modo_941lp == ModoOperacion_941lp.Modificar)
+            {
+                txtNumero.Enabled = !habilitar_941lp;
+                txtNombreComercial.Enabled = habilitar_941lp;
+                txtNombreGenerico.Enabled = habilitar_941lp;
+                comboBoxAnimalDestinado.Enabled = habilitar_941lp;
+                comboBoxForma.Enabled = habilitar_941lp;
+                dateTimePickerVencimiento.Enabled = habilitar_941lp;
+            }
+            else
+            {
+                txtNumero.Enabled = !habilitar_941lp;
+                txtNombreComercial.Enabled = !habilitar_941lp;
+                txtNombreGenerico.Enabled = !habilitar_941lp;
+                comboBoxAnimalDestinado.Enabled = !habilitar_941lp;
+                comboBoxForma.Enabled = !habilitar_941lp;
+                dateTimePickerVencimiento.Enabled = !habilitar_941lp;
+            }
+            AplicarColorControles_941lp();
+        }
+
+        private void AplicarColorControles_941lp()
+        {
+            var controles_941lp = new Control[]
+            {
+                btnAltaMedicamento, btnBaja, btnModificarMedicamento, btnSalir, btnCancelar,btnAplicar, txtNombreComercial, txtNumero, txtNombreGenerico
+            };
+
+            foreach (var control_941lp in controles_941lp)
+            {
+                if (control_941lp.Enabled == false)
+                {
+
+                    control_941lp.BackColor = Color.LightSteelBlue;
+                }
+                else
+                {
+                    control_941lp.BackColor = Color.White;
+                }
+            }
+        }
+
+        private void ControlDeIngresoDeDatos_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp, string animalDestinado_941lp)
+        {
+            try
+            {
+                var regexNumero_941lp = new Regex(@"^\d{4,6}(\/\d{1,2})?$");
+                var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
+                // Validaciones
+                if (!regexNumero_941lp.IsMatch(numero_941lp))
+                    throw new ArgumentException("El número ingresado es inválido. Solo se permiten números y barras.");
+                if (!regexTexto_941lp.IsMatch(nombreComercial_941lp))
+                    throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras y espacios.");
+                if (!regexTexto_941lp.IsMatch(nombreGenerico_941lp))
+                    throw new ArgumentException("El apellido ingresado es inválido. Solo se permiten letras y espacios.");
+                if (!regexTexto_941lp.IsMatch(forma_941lp))
+                    throw new ArgumentException("La dirección ingresada es inválida.");
+                if (!regexTexto_941lp.IsMatch(animalDestinado_941lp))
+                    throw new ArgumentException("La dirección ingresada es inválida.");
+            }
+            catch (ArgumentException ex)
+            {
+                throw new Exception($"Error de validación: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            modo_941lp = ModoOperacion_941lp.Consulta;
+            this.Close();
+        }
+
+        private void btnAltaMedicamento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.Alta;
+                HabilitarTxt_941lp(true);
+                VisibilidadDeBotones_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnAplicar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (modo_941lp)
+                {
+                    case ModoOperacion_941lp.Alta:
+                        ValidarCargaDeTxt_941lp();
+                        ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text);
+                        bllMedicamento_941Lp.Alta_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text, dateTimePickerVencimiento.Value);
+                        MessageBox.Show("Medicamento dado de alta exitosamente");
+                        break;
+                    case ModoOperacion_941lp.Modificar:
+                        ValidarCargaDeTxt_941lp();
+                        ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text);
+                        bllMedicamento_941Lp.Modificar_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text, dateTimePickerVencimiento.Value);
+                        MessageBox.Show("Medicamento modificado exitosamente");
+                        break;
+                    case ModoOperacion_941lp.Baja:
+                        bllMedicamento_941Lp.Baja_941lp(dataMedicamentos.SelectedRows[0].Cells[0].Value.ToString());
+                        MessageBox.Show("Medicamento dado de baja con exito");
+                        break;
+                    default:
+                        MessageBox.Show("Error en la operación");
+                        break;
+                }
+                MostrarGrillaMedicamentos_941lp(bllMedicamento_941Lp.RetornarMedicamento_941lp());
+                ModoAceptarCancelar_941lp();
+                LimpiarTxt_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ModoAceptarCancelar_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnModificarMedicamento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.Modificar;
+                VisibilidadDeBotones_941lp();
+                HabilitarTxt_941lp(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBaja_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.Baja;
+                HabilitarTxt_941lp(true);
+                VisibilidadDeBotones_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dataMedicamentos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (modo_941lp != ModoOperacion_941lp.Alta)
+                {
+                    txtNumero.Text = dataMedicamentos.SelectedRows[0].Cells[0].Value.ToString();
+                    txtNombreComercial.Text = dataMedicamentos.SelectedRows[0].Cells[1].Value.ToString();
+                    txtNombreGenerico.Text = dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString();
+                    comboBoxForma.SelectedItem = dataMedicamentos.SelectedRows[0].Cells[3].Value.ToString();
+                    comboBoxAnimalDestinado.SelectedItem = dataMedicamentos.SelectedRows[0].Cells[4].Value.ToString();
+                    dateTimePickerVencimiento.Value = Convert.ToDateTime(dataMedicamentos.SelectedRows[0].Cells[5].Value).Date;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void rbAscendente_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MostrarGrillaMedicamentos_941lp(bllMedicamento_941Lp.Ordenar_941lp("Ascendente"));
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void rbDescendente_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MostrarGrillaMedicamentos_941lp(bllMedicamento_941Lp.Ordenar_941lp("Descendente"));
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+    }
+}

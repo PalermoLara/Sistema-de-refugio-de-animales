@@ -91,6 +91,12 @@
     <Compile Include="FormGestorCedentes_941lp.Designer.cs">
       <DependentUpon>FormGestorCedentes_941lp.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMedicamentos_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMedicamentos_941lp.Designer.cs">
+      <DependentUpon>FormMedicamentos_941lp.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRegistroAnimales_941lp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormGestorCedentes_941lp.resx">
       <DependentUpon>FormGestorCedentes_941lp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMedicamentos_941lp.resx">
+      <DependentUpon>FormMedicamentos_941lp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRegistroAnimales_941lp.resx">
       <DependentUpon>FormRegistroAnimales_941lp.cs</DependentUpon>

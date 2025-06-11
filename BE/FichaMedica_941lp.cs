@@ -9,8 +9,13 @@ namespace BE
     public class FichaMedica_941lp
     {
         public FichaMedica_941lp(int pCodigo_941lp, int pCodigoAnimal_941lp, DateTime pFecha_941lp, bool pCastrado_941lp, string pDieta_941lp, string pMedicamentos_941lp, string pObservaciones_941lp)
+       : this(pCodigoAnimal_941lp, pFecha_941lp,  pCastrado_941lp,  pDieta_941lp,  pMedicamentos_941lp,  pObservaciones_941lp)
         {
             codigo_941lp = pCodigo_941lp;
+        }
+
+        public FichaMedica_941lp(int pCodigoAnimal_941lp, DateTime pFecha_941lp, bool pCastrado_941lp, string pDieta_941lp, string pMedicamentos_941lp, string pObservaciones_941lp)
+        {
             codigoAnimal_941lp = pCodigoAnimal_941lp;
             fecha_941lp = pFecha_941lp;
             castrado_941lp = pCastrado_941lp;

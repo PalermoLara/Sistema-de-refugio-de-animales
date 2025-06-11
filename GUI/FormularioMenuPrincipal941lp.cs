@@ -24,6 +24,7 @@ namespace GUI
         private FormGestorCedentes_941lp formGestorCedentes_941Lp;
         private FormFichaDeIngreso_941lp formFichaDeIngreso_941Lp;
         private FormGestionFichaMedica_941lp formGestionFichaMedica_941lp;
+        private FormMedicamentos_941lp formMedicamentos_941lp;
         private List<Panel> submenus_941lp;
 
         public FormularioMenuPrincipal941lp()
@@ -38,6 +39,7 @@ namespace GUI
             formGestorCedentes_941Lp = new FormGestorCedentes_941lp();
             formFichaDeIngreso_941Lp = new FormFichaDeIngreso_941lp();
             formGestionFichaMedica_941lp = new FormGestionFichaMedica_941lp();
+            formMedicamentos_941lp = new FormMedicamentos_941lp();
         }
 
         private void InicializarSubmenus_941lp()
@@ -187,6 +189,11 @@ namespace GUI
         private void btnFichaMedica_Click(object sender, EventArgs e)
         {
             formGestionFichaMedica_941lp.ShowDialog();
+        }
+
+        private void btnABMMedicamentos_Click(object sender, EventArgs e)
+        {
+            formMedicamentos_941lp.ShowDialog();
         }
     }
 }

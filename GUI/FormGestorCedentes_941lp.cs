@@ -24,6 +24,7 @@ namespace GUI
             bllCedente_941lp = new bllCedente_941lp();
             btnAplicar.Enabled = false;
             btnCancelar.Enabled = false;
+            AplicarColorControles_941lp();
             modo_941lp = ModoOperacion_941lp.Consulta;
         }
         private void FormGestorCedentes_941lp_Load(object sender, EventArgs e)
@@ -287,7 +288,6 @@ namespace GUI
 
         private void dataCedentes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             try
             {
                 if (modo_941lp != ModoOperacion_941lp.Alta)
