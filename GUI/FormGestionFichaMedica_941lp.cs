@@ -17,9 +17,11 @@ namespace GUI
 {
     public partial class FormGestionFichaMedica_941lp : Form
     {
+        private FormBitocoraFichaMedica_941lp FormBitocoraFichaMedica_941lp; 
         bllRegistroAnimales_941lp bllRegistroAnimales_941Lp;
         bllMedicamento_941lp bllMedicamento_941lp;
         bllFichaMedica_941lp bllFichaMedica_941lp;
+        bllBitacoraFichaMedica_941lp bllBitacora_941lp;
         ModoOperacion_941lp modo_941lp;
         public FormGestionFichaMedica_941lp()
         {
@@ -27,6 +29,8 @@ namespace GUI
             bllRegistroAnimales_941Lp = new bllRegistroAnimales_941lp();
             bllMedicamento_941lp = new bllMedicamento_941lp();
             bllFichaMedica_941lp = new bllFichaMedica_941lp();
+            bllBitacora_941lp = new bllBitacoraFichaMedica_941lp ();
+            FormBitocoraFichaMedica_941lp = new FormBitocoraFichaMedica_941lp();
         }
 
         private void FormGestionFichaMedica_941lp_Load(object sender, EventArgs e)
@@ -54,7 +58,8 @@ namespace GUI
         {
             Consulta,
             Alta,
-            Modificar
+            Modificar,
+            DefinirEstado
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -95,16 +100,14 @@ namespace GUI
             // Mostrar en la grilla
             foreach (Animal_941lp a_941lp in animalLista_941lp)
             {
-                dataAnimales.Rows.Add(
-                    a_941lp.codigoAnimal_941lp,
-                    a_941lp.especie_941lp,
-                    a_941lp.raza_941lp,
-                    a_941lp.nombre_941lp,
-                    a_941lp.tamaño_941lp,
-                    a_941lp.sexo_941lp,
-                    a_941lp.estadoAdopcion_941lp,
-                    a_941lp.vivo_941lp
-                );
+                if(a_941lp.estadoAdopcion_941lp != "Adoptado")
+                {
+                    int rowIndex_941lp = dataAnimales.Rows.Add(a_941lp.codigoAnimal_941lp,a_941lp.especie_941lp,a_941lp.raza_941lp,a_941lp.nombre_941lp,a_941lp.tamaño_941lp,a_941lp.sexo_941lp,a_941lp.estadoAdopcion_941lp, a_941lp.vivo_941lp);
+                    if(a_941lp.vivo_941lp == false)
+                    {
+                        dataAnimales.Rows[rowIndex_941lp].DefaultCellStyle.BackColor = Color.Red;
+                    }
+                }
             }
         }
 
@@ -115,6 +118,7 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Alta;
                 HabilitarTxt_941lp(true);
                 VisibilidadDeBotones_941lp();
+                LimpiarTxt_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -163,24 +167,47 @@ namespace GUI
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Alta:
-                        MessageBox.Show("Debe definir el estado del animal luego de la revisión médica", "ESTADO DE ADOPCIÓN", MessageBoxButtons.OK);
+                        if (bllFichaMedica_941lp.VerificarAnimalVivo_941lp(Convert.ToBoolean(dataAnimales.SelectedRows[0].Cells[7].Value)) == false) throw new Exception("El animal debe estar vivo para realizar la revisión médica");
+                        MessageBox.Show("Debe selecionar un estado al animal", "ESTADO DE ADOPCIÓN", MessageBoxButtons.OK);
+                        break;
+                    case ModoOperacion_941lp.Modificar:
+                        if(bllBitacora_941lp.VerificarCambioValor_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), seleccionado_941lp.ToString())==false)
+                        {
+                            bllBitacora_941lp.Alta_941lp(codigoFicha_941lp: Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), fecha_941lp: DateTime.Now, operacion_941lp: ModoOperacion_941lp.Modificar.ToString(), campoModificado_941lp: "Castrado", valorPrevio_941lp: dataFichaMedica.SelectedRows[0].Cells[3].Value.ToString(),valorNuevo_941lp: seleccionado_941lp.ToString());
+                        }
+                        if (bllBitacora_941lp.VerificarCambioValor_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), txtDieta.Text) == false)
+                        {
+                            bllBitacora_941lp.Alta_941lp(codigoFicha_941lp: Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), fecha_941lp: DateTime.Now, operacion_941lp: ModoOperacion_941lp.Modificar.ToString(), campoModificado_941lp: "Dieta", valorPrevio_941lp: dataFichaMedica.SelectedRows[0].Cells[4].Value.ToString(),valorNuevo_941lp: txtDieta.Text);
+                        }
+                        if (bllBitacora_941lp.VerificarCambioValor_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), txtObservaciones.Text) == false)
+                        {
+                            bllBitacora_941lp.Alta_941lp(codigoFicha_941lp: Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), fecha_941lp: DateTime.Now, operacion_941lp: ModoOperacion_941lp.Modificar.ToString(), campoModificado_941lp: "Dieta", valorPrevio_941lp: dataFichaMedica.SelectedRows[0].Cells[4].Value.ToString(), valorNuevo_941lp: txtDieta.Text);
+                        }
+                        bllFichaMedica_941lp.Modificar_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), seleccionado_941lp.Text == "Si" , txtDieta.Text, dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), txtObservaciones.Text);
+                        MessageBox.Show("Ficha médica modificada exitosamente");
+                        break;
+                    case ModoOperacion_941lp.DefinirEstado:
                         RadioButton estado_941lp = groupBoxEstadoAdopcion.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
                         if (estado_941lp == null) throw new Exception("Debe seleccionar un estado");
                         bllRegistroAnimales_941Lp.Modificar_941lp(codigo_941lp: dataAnimales.SelectedRows[0].Cells[0].Value.ToString(), estadoDeAdopcion_941lp: estado_941lp.Text);
                         MostrarDataAnimales_941lp(bllRegistroAnimales_941Lp.RetornarAnimales_941lp());
-                        bllFichaMedica_941lp.Alta_941lp(Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value), DateTime.Now, seleccionado_941lp.Text=="Si", txtDieta.Text, dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), txtObservaciones.Text);
+                        bllFichaMedica_941lp.Alta_941lp(Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value), DateTime.Now, seleccionado_941lp.Text == "Si", txtDieta.Text, dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), txtObservaciones.Text);
                         MessageBox.Show("Ficha médica dada de alta exitosamente");
-                        break;
-                    case ModoOperacion_941lp.Modificar:
-                        bllFichaMedica_941lp.Modificar_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), seleccionado_941lp.Text == "Si" , txtDieta.Text, dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), txtObservaciones.Text);
-                        MessageBox.Show("Ficha médica modificada exitosamente");
+                        bllBitacora_941lp.Alta_941lp(codigoFicha_941lp: Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), fecha_941lp: DateTime.Now, operacion_941lp: ModoOperacion_941lp.Alta.ToString());
                         break;
                     default:
                         MessageBox.Show("Error en la operación");
                         break;
                 }
-                ModoAceptarCancelar_941lp();
-                MostrarGrillaFicha_941lp(bllFichaMedica_941lp.RetornarFichas_941lp());
+                if(modo_941lp != ModoOperacion_941lp.Alta)
+                {
+                    ModoAceptarCancelar_941lp();
+                    MostrarGrillaFicha_941lp(bllFichaMedica_941lp.RetornarFichas_941lp());
+                }
+                else
+                {
+                    modo_941lp = ModoOperacion_941lp.DefinirEstado;
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -234,6 +261,8 @@ namespace GUI
                     t_941lp.Text = "";
                 }
             }
+            rbNoCastrado.Checked = false;
+            rbSiCastrado.Checked = false;
         }
 
         private void VisibilidadDeBotones_941lp()
@@ -308,5 +337,9 @@ namespace GUI
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
+        private void btnBitacoraFichaMedica_Click(object sender, EventArgs e)
+        {
+            FormBitocoraFichaMedica_941lp.ShowDialog();
+        }
     }
 }

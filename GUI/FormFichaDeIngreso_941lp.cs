@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI
 {
@@ -37,16 +38,44 @@ namespace GUI
             dataCedentes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataCedentes.MultiSelect = false;
             dataCedentes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp()); 
+            MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
             dataAnimales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataAnimales.MultiSelect = false;
             dataAnimales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             listViewFichas.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             MostrarDataAnimales_941lp(bllAnimal_941lp.RetornarAnimales_941lp());
             MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), " ");
-            dataAnimales.Enabled = false;
-            dataCedentes.Enabled = false;
+            HabilitarGrillas(false);
             ModoAceptarCancelar_941lp();
+            AjustarColumnasListView_941lp();
+        }
+
+        private void AjustarColumnasListView_941lp()
+        {
+            int anchoTotal = listViewFichas.ClientSize.Width;
+            int cantidadColumnas = listViewFichas.Columns.Count;
+            int anchoPorColumna = anchoTotal / cantidadColumnas;
+
+            foreach (ColumnHeader col in listViewFichas.Columns)
+            {
+                col.Width = anchoPorColumna;
+            }
+        }
+
+        private void HabilitarGrillas(bool habilitar_941lp)
+        {
+            dataAnimales.Enabled = habilitar_941lp;
+            dataCedentes.Enabled = habilitar_941lp;
+        }
+
+        private void CargarTxt_941lp()
+        {
+            if (listViewFichas.SelectedItems.Count > 0 && modo_941lp != ModoOperacion_941lp.Alta)
+            {
+                var item = listViewFichas.SelectedItems[0];
+                txtRazon.Text = item.SubItems[6].Text;
+                txtZona.Text = item.SubItems[7].Text;
+            }
         }
 
         private void MostrarFichasIngreso_941lp(List<FichaDeIngreso_941lp> listaFichas_941lp, string identificador_941lp)
@@ -75,7 +104,7 @@ namespace GUI
                 item.SubItems.Add(ficha.dni_941lp);
                 item.SubItems.Add(ficha.especie_941lp);
                 item.SubItems.Add(ficha.fecha_941lp.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(ficha.hora_941lp.ToString());
+                item.SubItems.Add(ficha.hora_941lp.ToString(@"hh\:mm\:ss"));
                 item.SubItems.Add(ficha.razon_941lp);
                 item.SubItems.Add(ficha.zona_941lp);
                 listViewFichas.Items.Add(item);
@@ -95,7 +124,14 @@ namespace GUI
             // Mostrar en la grilla
             foreach (Animal_941lp a_941lp in animalLista_941lp)
             {
-                dataAnimales.Rows.Add(a_941lp.codigoAnimal_941lp,a_941lp.especie_941lp,a_941lp.raza_941lp,a_941lp.nombre_941lp,a_941lp.tamaño_941lp,a_941lp.sexo_941lp,a_941lp.estadoAdopcion_941lp,a_941lp.vivo_941lp);
+                if(a_941lp.estadoAdopcion_941lp == "Adoptado")
+                {
+                    int rowIdex_941lp = dataAnimales.Rows.Add(a_941lp.codigoAnimal_941lp,a_941lp.especie_941lp,a_941lp.raza_941lp,a_941lp.nombre_941lp,a_941lp.tamaño_941lp,a_941lp.sexo_941lp,a_941lp.estadoAdopcion_941lp,a_941lp.vivo_941lp);
+                    if(a_941lp.vivo_941lp == false)
+                    {
+                        dataAnimales.Rows[rowIdex_941lp].DefaultCellStyle.BackColor = Color.Red;
+                    }
+                }
             }
         }
 
@@ -106,7 +142,11 @@ namespace GUI
             {
                 foreach (Cedente_941lp c_941lp in cedentesLista_941lp)
                 {
-                    dataCedentes.Rows.Add(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp, c_941lp.direccion_941lp, c_941lp.telefono_941lp, c_941lp.activo_941lp);
+                    int rowIndex_941lp = dataCedentes.Rows.Add(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp, c_941lp.direccion_941lp, c_941lp.telefono_941lp, c_941lp.activo_941lp);
+                    if(c_941lp.activo_941lp == false)
+                    {
+                        dataCedentes.Rows[rowIndex_941lp].DefaultCellStyle.BackColor = Color.Red;
+                    }
                 }
             }
         }
@@ -136,6 +176,7 @@ namespace GUI
                     modo_941lp = ModoOperacion_941lp.Alta;
                     HabilitarTxt_941lp(true);
                     VisibilidadDeBotones_941lp();
+                    HabilitarGrillas(true);
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -223,6 +264,8 @@ namespace GUI
                 {
                     case ModoOperacion_941lp.Alta:
                         if (bllFichaIngreso_941.VerificarCedenteActivo_941lp(dataCedentes.SelectedRows[0].Cells[0].Value.ToString())==false) throw new Exception("El cedente debe estar activo para generar una ficha de ingreso");
+                        if (bllFichaIngreso_941.VerificarAnimalVivo_941lp(Convert.ToBoolean(dataAnimales.SelectedRows[0].Cells[7].Value)) == false) throw new Exception("El animal debe estar vivo para crear una ficha de ingreso");
+                        bllAnimal_941lp.Modificar_941lp(dataAnimales.SelectedRows[0].Cells[7].Value.ToString(), estadoDeAdopcion_941lp : "En evaluacion");
                         bllFichaIngreso_941.Alta_941lp(codigoAnimal_941lp, dni_941lp,especie_941lp, DateTime.Now, DateTime.Now, txtRazon.Text, txtZona.Text);
                         MessageBox.Show("Ficha de ingreso generada exitosamente");
                         break;
@@ -237,6 +280,7 @@ namespace GUI
                 }
                 ModoAceptarCancelar_941lp();
                 MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), " ");
+                MostrarDataAnimales_941lp(bllAnimal_941lp.RetornarAnimales_941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -269,7 +313,7 @@ namespace GUI
         {
             foreach (Control c_941lp in this.Controls)
             {
-                if (c_941lp is TextBox t_941lp)
+                if (c_941lp is System.Windows.Forms.TextBox t_941lp)
                 {
                     t_941lp.Text = "";
                 }
@@ -344,6 +388,8 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Modificar;
                 HabilitarTxt_941lp(true);
                 VisibilidadDeBotones_941lp();
+                CargarTxt_941lp();
+                HabilitarGrillas(false);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -362,6 +408,15 @@ namespace GUI
             try
             {
                 MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void listViewFichas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarTxt_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

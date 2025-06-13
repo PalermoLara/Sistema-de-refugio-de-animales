@@ -44,13 +44,13 @@
             this.btnAltaCedente = new System.Windows.Forms.Button();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.dataCedentes = new System.Windows.Forms.DataGridView();
-            this.btnActDesact = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnActDesact = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataCedentes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@
             this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(316, 31);
-            this.txtDireccion.TabIndex = 61;
+            this.txtDireccion.TabIndex = 5;
             // 
             // btnAplicar
             // 
@@ -90,7 +90,7 @@
             this.txtNOmbreCedente.Margin = new System.Windows.Forms.Padding(4);
             this.txtNOmbreCedente.Name = "txtNOmbreCedente";
             this.txtNOmbreCedente.Size = new System.Drawing.Size(316, 31);
-            this.txtNOmbreCedente.TabIndex = 48;
+            this.txtNOmbreCedente.TabIndex = 1;
             // 
             // labelNombre
             // 
@@ -132,7 +132,7 @@
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(316, 31);
-            this.txtTelefono.TabIndex = 50;
+            this.txtTelefono.TabIndex = 4;
             // 
             // txtApellido
             // 
@@ -140,7 +140,7 @@
             this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(316, 31);
-            this.txtApellido.TabIndex = 49;
+            this.txtApellido.TabIndex = 2;
             // 
             // btnApellido
             // 
@@ -203,7 +203,7 @@
             this.txtDni.Margin = new System.Windows.Forms.Padding(4);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(316, 31);
-            this.txtDni.TabIndex = 62;
+            this.txtDni.TabIndex = 0;
             // 
             // dataCedentes
             // 
@@ -225,17 +225,6 @@
             this.dataCedentes.Size = new System.Drawing.Size(1454, 329);
             this.dataCedentes.TabIndex = 63;
             this.dataCedentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCedentes_CellClick);
-            // 
-            // btnActDesact
-            // 
-            this.btnActDesact.Location = new System.Drawing.Point(1056, 549);
-            this.btnActDesact.Margin = new System.Windows.Forms.Padding(4);
-            this.btnActDesact.Name = "btnActDesact";
-            this.btnActDesact.Size = new System.Drawing.Size(410, 81);
-            this.btnActDesact.TabIndex = 64;
-            this.btnActDesact.Text = "ACTIVAR/DESACTIVAR";
-            this.btnActDesact.UseVisualStyleBackColor = true;
-            this.btnActDesact.Click += new System.EventHandler(this.btnActDesact_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -284,6 +273,17 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 200;
+            // 
+            // btnActDesact
+            // 
+            this.btnActDesact.Location = new System.Drawing.Point(1056, 549);
+            this.btnActDesact.Margin = new System.Windows.Forms.Padding(4);
+            this.btnActDesact.Name = "btnActDesact";
+            this.btnActDesact.Size = new System.Drawing.Size(410, 81);
+            this.btnActDesact.TabIndex = 64;
+            this.btnActDesact.Text = "ACTIVAR/DESACTIVAR";
+            this.btnActDesact.UseVisualStyleBackColor = true;
+            this.btnActDesact.Click += new System.EventHandler(this.btnActDesact_Click);
             // 
             // FormGestorCedentes_941lp
             // 

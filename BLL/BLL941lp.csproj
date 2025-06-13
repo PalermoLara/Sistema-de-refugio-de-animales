@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bllBitacoraFichaMedica_941lp.cs" />
     <Compile Include="bllCedente_941lp.cs" />
     <Compile Include="bllFichaIngreso_941lp.cs" />
     <Compile Include="bllFichaMedica_941lp.cs" />

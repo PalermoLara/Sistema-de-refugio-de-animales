@@ -35,6 +35,11 @@ namespace BLL
             orm_941lp.Modificar_941lp(ficha_941lp);
         }
 
+        public bool VerificarAnimalVivo_941lp(bool vivo_941lp)
+        {
+            return vivo_941lp;
+        }
+
         public List<FichaDeIngreso_941lp> RetornarFichas_941lp()
         {
             return orm_941lp.RetornarFichaIngreso_941lp();

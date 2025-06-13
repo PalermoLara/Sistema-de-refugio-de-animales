@@ -55,6 +55,12 @@
   <ItemGroup>
     <Compile Include="EstadoLogIn941lp.cs" />
     <Compile Include="EstadoMenu941lp.cs" />
+    <Compile Include="FormBitocoraFichaMedica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBitocoraFichaMedica.Designer.cs">
+      <DependentUpon>FormBitocoraFichaMedica.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEstadoDeAdopcion_941lp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBitocoraFichaMedica.resx">
+      <DependentUpon>FormBitocoraFichaMedica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEstadoDeAdopcion_941lp.resx">
       <DependentUpon>FormEstadoDeAdopcion_941lp.cs</DependentUpon>
     </EmbeddedResource>

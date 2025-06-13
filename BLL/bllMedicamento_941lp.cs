@@ -35,6 +35,16 @@ namespace BLL
             orm_941Lp.Modificar_941lp(medicamento_941);
         }
 
+        public bool VerificarExistenciaDeNumero_941lp(string numero_941lp)
+        {
+            return orm_941Lp.VerificarExistenciaDeNumero_941lp(numero_941lp);
+        }
+
+        public bool VencimientoDeProducto_941lp(DateTime caducidad_941lp)
+        {
+            return caducidad_941lp.Date < DateTime.Now.Date;
+        }
+
         public List<Medicamento_941lp> Ordenar_941lp(string tipo_941lp)
         {
             List<Medicamento_941lp> listaOrdenada_941lp = RetornarMedicamento_941lp();

@@ -78,7 +78,7 @@
             this.labelEstadoAnimal.Location = new System.Drawing.Point(72, 693);
             this.labelEstadoAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEstadoAnimal.Name = "labelEstadoAnimal";
-            this.labelEstadoAnimal.Size = new System.Drawing.Size(101, 17);
+            this.labelEstadoAnimal.Size = new System.Drawing.Size(204, 31);
             this.labelEstadoAnimal.TabIndex = 73;
             this.labelEstadoAnimal.Text = "VENCIMIENTO";
             // 
@@ -127,7 +127,7 @@
             this.rbDescendente.Location = new System.Drawing.Point(80, 102);
             this.rbDescendente.Margin = new System.Windows.Forms.Padding(6);
             this.rbDescendente.Name = "rbDescendente";
-            this.rbDescendente.Size = new System.Drawing.Size(180, 24);
+            this.rbDescendente.Size = new System.Drawing.Size(353, 41);
             this.rbDescendente.TabIndex = 1;
             this.rbDescendente.Text = "Nombre descendente";
             this.rbDescendente.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             this.rbAscendente.Location = new System.Drawing.Point(80, 49);
             this.rbAscendente.Margin = new System.Windows.Forms.Padding(6);
             this.rbAscendente.Name = "rbAscendente";
-            this.rbAscendente.Size = new System.Drawing.Size(171, 24);
+            this.rbAscendente.Size = new System.Drawing.Size(336, 41);
             this.rbAscendente.TabIndex = 0;
             this.rbAscendente.TabStop = true;
             this.rbAscendente.Text = "Nombre ascendente";
@@ -175,7 +175,7 @@
             this.txtNumero.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(316, 31);
-            this.txtNumero.TabIndex = 56;
+            this.txtNumero.TabIndex = 0;
             // 
             // labelNumero
             // 
@@ -184,7 +184,7 @@
             this.labelNumero.Location = new System.Drawing.Point(70, 427);
             this.labelNumero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNumero.Name = "labelNumero";
-            this.labelNumero.Size = new System.Drawing.Size(69, 17);
+            this.labelNumero.Size = new System.Drawing.Size(135, 31);
             this.labelNumero.TabIndex = 69;
             this.labelNumero.Text = "NÚMERO";
             // 
@@ -206,7 +206,7 @@
             this.labelAnimalDestinado.Location = new System.Drawing.Point(72, 639);
             this.labelAnimalDestinado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAnimalDestinado.Name = "labelAnimalDestinado";
-            this.labelAnimalDestinado.Size = new System.Drawing.Size(142, 17);
+            this.labelAnimalDestinado.Size = new System.Drawing.Size(282, 31);
             this.labelAnimalDestinado.TabIndex = 68;
             this.labelAnimalDestinado.Text = "ANIMAL DESTINADO";
             // 
@@ -216,7 +216,7 @@
             this.txtNombreGenerico.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreGenerico.Name = "txtNombreGenerico";
             this.txtNombreGenerico.Size = new System.Drawing.Size(316, 31);
-            this.txtNombreGenerico.TabIndex = 59;
+            this.txtNombreGenerico.TabIndex = 3;
             // 
             // txtNombreComercial
             // 
@@ -224,7 +224,7 @@
             this.txtNombreComercial.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreComercial.Name = "txtNombreComercial";
             this.txtNombreComercial.Size = new System.Drawing.Size(316, 31);
-            this.txtNombreComercial.TabIndex = 57;
+            this.txtNombreComercial.TabIndex = 1;
             // 
             // btnRazaRegistroAnimal
             // 
@@ -233,7 +233,7 @@
             this.btnRazaRegistroAnimal.Location = new System.Drawing.Point(72, 477);
             this.btnRazaRegistroAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnRazaRegistroAnimal.Name = "btnRazaRegistroAnimal";
-            this.btnRazaRegistroAnimal.Size = new System.Drawing.Size(151, 17);
+            this.btnRazaRegistroAnimal.Size = new System.Drawing.Size(302, 31);
             this.btnRazaRegistroAnimal.TabIndex = 66;
             this.btnRazaRegistroAnimal.Text = "NOMBRE COMERICAL";
             // 
@@ -244,7 +244,7 @@
             this.labelForma.Location = new System.Drawing.Point(70, 585);
             this.labelForma.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelForma.Name = "labelForma";
-            this.labelForma.Size = new System.Drawing.Size(57, 17);
+            this.labelForma.Size = new System.Drawing.Size(112, 31);
             this.labelForma.TabIndex = 63;
             this.labelForma.Text = "FORMA";
             // 
@@ -255,7 +255,7 @@
             this.labelNombreRegistroAnimal.Location = new System.Drawing.Point(72, 529);
             this.labelNombreRegistroAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNombreRegistroAnimal.Name = "labelNombreRegistroAnimal";
-            this.labelNombreRegistroAnimal.Size = new System.Drawing.Size(144, 17);
+            this.labelNombreRegistroAnimal.Size = new System.Drawing.Size(286, 31);
             this.labelNombreRegistroAnimal.TabIndex = 60;
             this.labelNombreRegistroAnimal.Text = "NOMBRE GENERICO";
             // 

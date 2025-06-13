@@ -63,6 +63,17 @@ namespace ORM
             return medicamento_941lp.FirstOrDefault();
         }
 
+        public bool VerificarExistenciaDeNumero_941lp(string numero_941lp)
+        {
+            string query_941lp = "SELECT COUNT (*) FROM Medicamento_941lp WHERE numeroOficial_941lp = @numeroOficial_941lp";
+            var prop_941lp = new Dictionary<string, object>
+            { 
+                {"@numeroOficial_941lp" , numero_941lp } 
+            };
+            int count_941lp = Convert.ToInt32(dao_941lp.EjecutarEscalar_941lp(query_941lp, prop_941lp));
+            return count_941lp > 0;
+        }
+
         public List<Medicamento_941lp> RetornarMedicamento_941lp()
         {
             List<Medicamento_941lp> medicamento_941lp = dao_941lp.RetornarLista_941lp("SELECT * FROM Medicamento_941lp", MapearMedicamento_941lp);

@@ -81,7 +81,11 @@ namespace GUI
             {
                 foreach (Cedente_941lp c_941lp in cedentesLista_941lp)
                 {
-                    dataCedentes.Rows.Add(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp,  c_941lp.direccion_941lp, c_941lp.telefono_941lp, c_941lp.activo_941lp);
+                    int intIndex_941lp = dataCedentes.Rows.Add(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp,  c_941lp.direccion_941lp, c_941lp.telefono_941lp, c_941lp.activo_941lp);
+                    if(c_941lp.activo_941lp==false)
+                    {
+                        dataCedentes.Rows[intIndex_941lp].DefaultCellStyle.BackColor = Color.Red;
+                    }
                 }
             }
         }
@@ -139,7 +143,7 @@ namespace GUI
             var controles_941lp = new Control[]
             {
                 btnActDesact, btnAltaCedente, btnModificarCedente, btnAplicar, btnCancelar, txtDni,
-                txtNOmbreCedente, txtApellido, txtDireccion, txtTelefono
+                txtNOmbreCedente, txtApellido, txtDireccion, txtTelefono, btnSalir
             };
 
             foreach (var control_941lp in controles_941lp)
@@ -213,6 +217,7 @@ namespace GUI
             try
             {
                 modo_941lp = ModoOperacion_941lp.Modificar;
+                CargarTxtConGrilla_941lp();
                 VisibilidadDeBotones_941lp();
                 HabilitarTxt_941lp(true);
             }
@@ -290,17 +295,22 @@ namespace GUI
         {
             try
             {
-                if (modo_941lp != ModoOperacion_941lp.Alta)
-                {
-                    txtDni.Text = dataCedentes.SelectedRows[0].Cells[0].Value.ToString();
-                    //nombre real
-                    txtNOmbreCedente.Text = dataCedentes.SelectedRows[0].Cells[1].Value.ToString();
-                    txtApellido.Text = dataCedentes.SelectedRows[0].Cells[2].Value.ToString();
-                    txtDireccion.Text = dataCedentes.SelectedRows[0].Cells[3].Value.ToString();
-                    txtTelefono.Text = dataCedentes.SelectedRows[0].Cells[4].Value.ToString();
-                }
+                CargarTxtConGrilla_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void CargarTxtConGrilla_941lp()
+        {
+            if (modo_941lp != ModoOperacion_941lp.Alta)
+            {
+                txtDni.Text = dataCedentes.SelectedRows[0].Cells[0].Value.ToString();
+                //nombre real
+                txtNOmbreCedente.Text = dataCedentes.SelectedRows[0].Cells[1].Value.ToString();
+                txtApellido.Text = dataCedentes.SelectedRows[0].Cells[2].Value.ToString();
+                txtDireccion.Text = dataCedentes.SelectedRows[0].Cells[3].Value.ToString();
+                txtTelefono.Text = dataCedentes.SelectedRows[0].Cells[4].Value.ToString();
+            }
         }
     }
 

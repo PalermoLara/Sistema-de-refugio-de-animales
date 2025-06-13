@@ -36,6 +36,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCrearFichaMedica = new System.Windows.Forms.Button();
             this.labelCastrado = new System.Windows.Forms.Label();
             this.txtDieta = new System.Windows.Forms.TextBox();
@@ -67,6 +68,10 @@
             this.groupBoxEstadoAdopcion = new System.Windows.Forms.GroupBox();
             this.rbDisponibleAdopcion = new System.Windows.Forms.RadioButton();
             this.rbEnEvaluacionAdopcion = new System.Windows.Forms.RadioButton();
+            this.labelAnimales = new System.Windows.Forms.Label();
+            this.labelMedicamentos = new System.Windows.Forms.Label();
+            this.labelFichaMedica = new System.Windows.Forms.Label();
+            this.btnBitacoraFichaMedica = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
             this.groupBoxCastrado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataFichaMedica)).BeginInit();
@@ -86,8 +91,9 @@
             this.Column4,
             this.Column5,
             this.Column6,
-            this.Column7});
-            this.dataAnimales.Location = new System.Drawing.Point(12, 12);
+            this.Column7,
+            this.Column8});
+            this.dataAnimales.Location = new System.Drawing.Point(17, 91);
             this.dataAnimales.Margin = new System.Windows.Forms.Padding(4);
             this.dataAnimales.Name = "dataAnimales";
             this.dataAnimales.ReadOnly = true;
@@ -152,10 +158,18 @@
             this.Column7.ReadOnly = true;
             this.Column7.Width = 200;
             // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Vivo";
+            this.Column8.MinimumWidth = 10;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 200;
+            // 
             // btnCrearFichaMedica
             // 
             this.btnCrearFichaMedica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearFichaMedica.Location = new System.Drawing.Point(1156, 349);
+            this.btnCrearFichaMedica.Location = new System.Drawing.Point(1157, 497);
             this.btnCrearFichaMedica.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrearFichaMedica.Name = "btnCrearFichaMedica";
             this.btnCrearFichaMedica.Size = new System.Drawing.Size(436, 68);
@@ -168,55 +182,55 @@
             // 
             this.labelCastrado.AutoSize = true;
             this.labelCastrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCastrado.Location = new System.Drawing.Point(1652, 349);
+            this.labelCastrado.Location = new System.Drawing.Point(1653, 497);
             this.labelCastrado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCastrado.Name = "labelCastrado";
-            this.labelCastrado.Size = new System.Drawing.Size(65, 17);
+            this.labelCastrado.Size = new System.Drawing.Size(125, 31);
             this.labelCastrado.TabIndex = 4;
             this.labelCastrado.Text = "Castrado";
             // 
             // txtDieta
             // 
-            this.txtDieta.Location = new System.Drawing.Point(1722, 467);
+            this.txtDieta.Location = new System.Drawing.Point(1723, 615);
             this.txtDieta.Margin = new System.Windows.Forms.Padding(4);
             this.txtDieta.Name = "txtDieta";
             this.txtDieta.Size = new System.Drawing.Size(376, 31);
-            this.txtDieta.TabIndex = 7;
+            this.txtDieta.TabIndex = 0;
             // 
             // labelDieta
             // 
             this.labelDieta.AutoSize = true;
             this.labelDieta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDieta.Location = new System.Drawing.Point(1661, 443);
+            this.labelDieta.Location = new System.Drawing.Point(1662, 573);
             this.labelDieta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDieta.Name = "labelDieta";
-            this.labelDieta.Size = new System.Drawing.Size(41, 17);
+            this.labelDieta.Size = new System.Drawing.Size(78, 31);
             this.labelDieta.TabIndex = 6;
             this.labelDieta.Text = "Dieta";
             // 
             // txtObservaciones
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(1722, 560);
+            this.txtObservaciones.Location = new System.Drawing.Point(1723, 708);
             this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(376, 31);
-            this.txtObservaciones.TabIndex = 11;
+            this.txtObservaciones.TabIndex = 1;
             // 
             // labelObservaciones
             // 
             this.labelObservaciones.AutoSize = true;
             this.labelObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelObservaciones.Location = new System.Drawing.Point(1652, 523);
+            this.labelObservaciones.Location = new System.Drawing.Point(1653, 656);
             this.labelObservaciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelObservaciones.Name = "labelObservaciones";
-            this.labelObservaciones.Size = new System.Drawing.Size(103, 17);
+            this.labelObservaciones.Size = new System.Drawing.Size(196, 31);
             this.labelObservaciones.TabIndex = 10;
             this.labelObservaciones.Text = "Observaciones";
             // 
             // btnModificarFichaMedica
             // 
             this.btnModificarFichaMedica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarFichaMedica.Location = new System.Drawing.Point(1156, 425);
+            this.btnModificarFichaMedica.Location = new System.Drawing.Point(1157, 573);
             this.btnModificarFichaMedica.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificarFichaMedica.Name = "btnModificarFichaMedica";
             this.btnModificarFichaMedica.Size = new System.Drawing.Size(436, 73);
@@ -228,7 +242,7 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(1156, 684);
+            this.btnSalir.Location = new System.Drawing.Point(1157, 832);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(436, 57);
@@ -241,7 +255,7 @@
             // 
             this.groupBoxCastrado.Controls.Add(this.rbNoCastrado);
             this.groupBoxCastrado.Controls.Add(this.rbSiCastrado);
-            this.groupBoxCastrado.Location = new System.Drawing.Point(1804, 352);
+            this.groupBoxCastrado.Location = new System.Drawing.Point(1805, 500);
             this.groupBoxCastrado.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxCastrado.Name = "groupBoxCastrado";
             this.groupBoxCastrado.Padding = new System.Windows.Forms.Padding(6);
@@ -255,7 +269,7 @@
             this.rbNoCastrado.Location = new System.Drawing.Point(200, 26);
             this.rbNoCastrado.Margin = new System.Windows.Forms.Padding(6);
             this.rbNoCastrado.Name = "rbNoCastrado";
-            this.rbNoCastrado.Size = new System.Drawing.Size(61, 29);
+            this.rbNoCastrado.Size = new System.Drawing.Size(74, 29);
             this.rbNoCastrado.TabIndex = 1;
             this.rbNoCastrado.TabStop = true;
             this.rbNoCastrado.Text = "NO";
@@ -267,7 +281,7 @@
             this.rbSiCastrado.Location = new System.Drawing.Point(58, 26);
             this.rbSiCastrado.Margin = new System.Windows.Forms.Padding(6);
             this.rbSiCastrado.Name = "rbSiCastrado";
-            this.rbSiCastrado.Size = new System.Drawing.Size(49, 29);
+            this.rbSiCastrado.Size = new System.Drawing.Size(62, 29);
             this.rbSiCastrado.TabIndex = 0;
             this.rbSiCastrado.TabStop = true;
             this.rbSiCastrado.Text = "SI";
@@ -276,7 +290,7 @@
             // btnAplicar
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(1156, 508);
+            this.btnAplicar.Location = new System.Drawing.Point(1157, 656);
             this.btnAplicar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(436, 73);
@@ -298,7 +312,7 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
-            this.dataFichaMedica.Location = new System.Drawing.Point(12, 349);
+            this.dataFichaMedica.Location = new System.Drawing.Point(13, 497);
             this.dataFichaMedica.Margin = new System.Windows.Forms.Padding(4);
             this.dataFichaMedica.Name = "dataFichaMedica";
             this.dataFichaMedica.ReadOnly = true;
@@ -367,7 +381,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(1156, 589);
+            this.btnCancelar.Location = new System.Drawing.Point(1157, 737);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(436, 73);
@@ -388,7 +402,7 @@
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13});
-            this.dataMedicamentos.Location = new System.Drawing.Point(1134, 12);
+            this.dataMedicamentos.Location = new System.Drawing.Point(1157, 91);
             this.dataMedicamentos.Margin = new System.Windows.Forms.Padding(4);
             this.dataMedicamentos.Name = "dataMedicamentos";
             this.dataMedicamentos.ReadOnly = true;
@@ -450,22 +464,22 @@
             this.groupBoxEstadoAdopcion.Controls.Add(this.rbDisponibleAdopcion);
             this.groupBoxEstadoAdopcion.Controls.Add(this.rbEnEvaluacionAdopcion);
             this.groupBoxEstadoAdopcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxEstadoAdopcion.Location = new System.Drawing.Point(1626, 643);
+            this.groupBoxEstadoAdopcion.Location = new System.Drawing.Point(1627, 765);
             this.groupBoxEstadoAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxEstadoAdopcion.Name = "groupBoxEstadoAdopcion";
             this.groupBoxEstadoAdopcion.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBoxEstadoAdopcion.Size = new System.Drawing.Size(472, 67);
+            this.groupBoxEstadoAdopcion.Size = new System.Drawing.Size(528, 136);
             this.groupBoxEstadoAdopcion.TabIndex = 60;
             this.groupBoxEstadoAdopcion.TabStop = false;
-            this.groupBoxEstadoAdopcion.Text = "Estado";
+            this.groupBoxEstadoAdopcion.Text = "Estado animal";
             // 
             // rbDisponibleAdopcion
             // 
             this.rbDisponibleAdopcion.AutoSize = true;
-            this.rbDisponibleAdopcion.Location = new System.Drawing.Point(312, 31);
+            this.rbDisponibleAdopcion.Location = new System.Drawing.Point(319, 67);
             this.rbDisponibleAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.rbDisponibleAdopcion.Name = "rbDisponibleAdopcion";
-            this.rbDisponibleAdopcion.Size = new System.Drawing.Size(101, 24);
+            this.rbDisponibleAdopcion.Size = new System.Drawing.Size(197, 41);
             this.rbDisponibleAdopcion.TabIndex = 1;
             this.rbDisponibleAdopcion.Text = "Disponible";
             this.rbDisponibleAdopcion.UseVisualStyleBackColor = true;
@@ -473,20 +487,63 @@
             // rbEnEvaluacionAdopcion
             // 
             this.rbEnEvaluacionAdopcion.AutoSize = true;
-            this.rbEnEvaluacionAdopcion.Location = new System.Drawing.Point(126, 31);
+            this.rbEnEvaluacionAdopcion.Location = new System.Drawing.Point(41, 67);
             this.rbEnEvaluacionAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.rbEnEvaluacionAdopcion.Name = "rbEnEvaluacionAdopcion";
-            this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(126, 24);
+            this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(248, 41);
             this.rbEnEvaluacionAdopcion.TabIndex = 0;
             this.rbEnEvaluacionAdopcion.Text = "En evaluación";
             this.rbEnEvaluacionAdopcion.UseVisualStyleBackColor = true;
+            // 
+            // labelAnimales
+            // 
+            this.labelAnimales.AutoSize = true;
+            this.labelAnimales.Location = new System.Drawing.Point(12, 37);
+            this.labelAnimales.Name = "labelAnimales";
+            this.labelAnimales.Size = new System.Drawing.Size(124, 25);
+            this.labelAnimales.TabIndex = 61;
+            this.labelAnimales.Text = "ANIMALES:";
+            // 
+            // labelMedicamentos
+            // 
+            this.labelMedicamentos.AutoSize = true;
+            this.labelMedicamentos.Location = new System.Drawing.Point(1152, 37);
+            this.labelMedicamentos.Name = "labelMedicamentos";
+            this.labelMedicamentos.Size = new System.Drawing.Size(189, 25);
+            this.labelMedicamentos.TabIndex = 62;
+            this.labelMedicamentos.Text = "MEDICAMENTOS:";
+            // 
+            // labelFichaMedica
+            // 
+            this.labelFichaMedica.AutoSize = true;
+            this.labelFichaMedica.Location = new System.Drawing.Point(12, 443);
+            this.labelFichaMedica.Name = "labelFichaMedica";
+            this.labelFichaMedica.Size = new System.Drawing.Size(195, 25);
+            this.labelFichaMedica.TabIndex = 63;
+            this.labelFichaMedica.Text = "FICHAS MÉDICAS:";
+            // 
+            // btnBitacoraFichaMedica
+            // 
+            this.btnBitacoraFichaMedica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBitacoraFichaMedica.Location = new System.Drawing.Point(13, 907);
+            this.btnBitacoraFichaMedica.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBitacoraFichaMedica.Name = "btnBitacoraFichaMedica";
+            this.btnBitacoraFichaMedica.Size = new System.Drawing.Size(436, 68);
+            this.btnBitacoraFichaMedica.TabIndex = 64;
+            this.btnBitacoraFichaMedica.Text = "Ver bitacora";
+            this.btnBitacoraFichaMedica.UseVisualStyleBackColor = true;
+            this.btnBitacoraFichaMedica.Click += new System.EventHandler(this.btnBitacoraFichaMedica_Click);
             // 
             // FormGestionFichaMedica_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(2200, 931);
+            this.ClientSize = new System.Drawing.Size(2842, 1157);
+            this.Controls.Add(this.btnBitacoraFichaMedica);
+            this.Controls.Add(this.labelFichaMedica);
+            this.Controls.Add(this.labelMedicamentos);
+            this.Controls.Add(this.labelAnimales);
             this.Controls.Add(this.groupBoxEstadoAdopcion);
             this.Controls.Add(this.dataMedicamentos);
             this.Controls.Add(this.btnCancelar);
@@ -521,13 +578,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataAnimales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button btnCrearFichaMedica;
         private System.Windows.Forms.Label labelCastrado;
         private System.Windows.Forms.TextBox txtDieta;
@@ -559,5 +609,17 @@
         private System.Windows.Forms.GroupBox groupBoxEstadoAdopcion;
         private System.Windows.Forms.RadioButton rbDisponibleAdopcion;
         private System.Windows.Forms.RadioButton rbEnEvaluacionAdopcion;
+        private System.Windows.Forms.Label labelAnimales;
+        private System.Windows.Forms.Label labelMedicamentos;
+        private System.Windows.Forms.Label labelFichaMedica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.Button btnBitacoraFichaMedica;
     }
 }

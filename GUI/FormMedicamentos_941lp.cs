@@ -28,6 +28,7 @@ namespace GUI
 
         private void FormMedicamentos_941lp_Load(object sender, EventArgs e)
         {
+            LimpiarTxt_941lp();
             dataMedicamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataMedicamentos.MultiSelect = false;
             dataMedicamentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -50,8 +51,13 @@ namespace GUI
             {
                 foreach (Medicamento_941lp m_941lp in medicamentosLista_941lp)
                 {
-                    dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp, m_941lp.animalDestinado_941lp, m_941lp.caducidad_941lp);
+                    int rowIndex = dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp, m_941lp.animalDestinado_941lp, m_941lp.caducidad_941lp);
                     dataMedicamentos.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
+                    if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(m_941lp.caducidad_941lp))
+                    {
+                        MessageBox.Show("Hay medicamentos vencidos. Se mostraran en rojo");
+                        dataMedicamentos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    }
                 }
             }
         }
@@ -69,11 +75,17 @@ namespace GUI
 
         private void ValidarCargaDeTxt_941lp()
         {
-            if (string.IsNullOrWhiteSpace(txtNumero.Text) ||
-                        string.IsNullOrWhiteSpace(txtNombreComercial.Text) ||
-                        string.IsNullOrWhiteSpace(txtNombreGenerico.Text) ||
-                        comboBoxAnimalDestinado.SelectedItem == null ||
-                        comboBoxForma.SelectedItem == null)
+            bool camposObligatoriosIncompletos =
+                string.IsNullOrWhiteSpace(txtNombreComercial.Text) ||
+                string.IsNullOrWhiteSpace(txtNombreGenerico.Text) ||
+                comboBoxAnimalDestinado.SelectedItem == null ||
+                comboBoxForma.SelectedItem == null;
+            if (modo_941lp == ModoOperacion_941lp.Alta)
+            {
+                //Si camposObligatoriosIncompletos ya era true, se queda en true. Si era false, toma el valor de la expresión de la derecha (string.IsNullOrWhiteSpace(...)).
+                camposObligatoriosIncompletos |= string.IsNullOrWhiteSpace(txtNumero.Text);
+            }
+            if (camposObligatoriosIncompletos)
             {
                 throw new Exception("Debe completar todos los campos obligatorios.");
             }
@@ -198,6 +210,7 @@ namespace GUI
             try
             {
                 modo_941lp = ModoOperacion_941lp.Alta;
+                LimpiarTxt_941lp();
                 HabilitarTxt_941lp(true);
                 VisibilidadDeBotones_941lp();
             }
@@ -213,12 +226,15 @@ namespace GUI
                     case ModoOperacion_941lp.Alta:
                         ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text);
+                        if(bllMedicamento_941Lp.VerificarExistenciaDeNumero_941lp(txtNumero.Text))throw new Exception("Número repetido");
+                        if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(dateTimePickerVencimiento.Value)) throw new Exception("Medicamento vencido");
                         bllMedicamento_941Lp.Alta_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text, dateTimePickerVencimiento.Value);
                         MessageBox.Show("Medicamento dado de alta exitosamente");
                         break;
                     case ModoOperacion_941lp.Modificar:
                         ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text);
+                        if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(dateTimePickerVencimiento.Value)) throw new Exception("Medicamento vencido");
                         bllMedicamento_941Lp.Modificar_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text, dateTimePickerVencimiento.Value);
                         MessageBox.Show("Medicamento modificado exitosamente");
                         break;
@@ -230,9 +246,9 @@ namespace GUI
                         MessageBox.Show("Error en la operación");
                         break;
                 }
-                MostrarGrillaMedicamentos_941lp(bllMedicamento_941Lp.RetornarMedicamento_941lp());
                 ModoAceptarCancelar_941lp();
                 LimpiarTxt_941lp();
+                MostrarGrillaMedicamentos_941lp(bllMedicamento_941Lp.RetornarMedicamento_941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -251,6 +267,7 @@ namespace GUI
             try
             {
                 modo_941lp = ModoOperacion_941lp.Modificar;
+                CargarTxtConGrilla_941lp();
                 VisibilidadDeBotones_941lp();
                 HabilitarTxt_941lp(true);
             }
@@ -275,17 +292,22 @@ namespace GUI
         {
             try
             {
-                if (modo_941lp != ModoOperacion_941lp.Alta)
-                {
-                    txtNumero.Text = dataMedicamentos.SelectedRows[0].Cells[0].Value.ToString();
-                    txtNombreComercial.Text = dataMedicamentos.SelectedRows[0].Cells[1].Value.ToString();
-                    txtNombreGenerico.Text = dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString();
-                    comboBoxForma.SelectedItem = dataMedicamentos.SelectedRows[0].Cells[3].Value.ToString();
-                    comboBoxAnimalDestinado.SelectedItem = dataMedicamentos.SelectedRows[0].Cells[4].Value.ToString();
-                    dateTimePickerVencimiento.Value = Convert.ToDateTime(dataMedicamentos.SelectedRows[0].Cells[5].Value).Date;
-                }
+                CargarTxtConGrilla_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void CargarTxtConGrilla_941lp()
+        {
+            if (modo_941lp != ModoOperacion_941lp.Alta)
+            {
+                txtNumero.Text = dataMedicamentos.SelectedRows[0].Cells[0].Value.ToString();
+                txtNombreComercial.Text = dataMedicamentos.SelectedRows[0].Cells[1].Value.ToString();
+                txtNombreGenerico.Text = dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString();
+                comboBoxForma.SelectedItem = dataMedicamentos.SelectedRows[0].Cells[3].Value.ToString();
+                comboBoxAnimalDestinado.SelectedItem = dataMedicamentos.SelectedRows[0].Cells[4].Value.ToString();
+                dateTimePickerVencimiento.Value = Convert.ToDateTime(dataMedicamentos.SelectedRows[0].Cells[5].Value).Date;
+            }
         }
 
         private void rbAscendente_CheckedChanged(object sender, EventArgs e)
