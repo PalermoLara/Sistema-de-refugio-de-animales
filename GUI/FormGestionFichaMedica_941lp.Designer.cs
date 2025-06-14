@@ -72,6 +72,11 @@
             this.labelMedicamentos = new System.Windows.Forms.Label();
             this.labelFichaMedica = new System.Windows.Forms.Label();
             this.btnBitacoraFichaMedica = new System.Windows.Forms.Button();
+            this.labelObligatorio = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelOpcional = new System.Windows.Forms.Label();
+            this.labelOpcional1 = new System.Windows.Forms.Label();
+            this.checkBoxMedicamentos = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
             this.groupBoxCastrado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataFichaMedica)).BeginInit();
@@ -318,7 +323,7 @@
             this.dataFichaMedica.ReadOnly = true;
             this.dataFichaMedica.RowHeadersWidth = 82;
             this.dataFichaMedica.RowTemplate.Height = 33;
-            this.dataFichaMedica.Size = new System.Drawing.Size(1114, 392);
+            this.dataFichaMedica.Size = new System.Drawing.Size(1118, 392);
             this.dataFichaMedica.TabIndex = 20;
             this.dataFichaMedica.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFichaMedica_CellClick);
             // 
@@ -408,7 +413,7 @@
             this.dataMedicamentos.ReadOnly = true;
             this.dataMedicamentos.RowHeadersWidth = 82;
             this.dataMedicamentos.RowTemplate.Height = 33;
-            this.dataMedicamentos.Size = new System.Drawing.Size(1020, 329);
+            this.dataMedicamentos.Size = new System.Drawing.Size(1292, 329);
             this.dataMedicamentos.TabIndex = 59;
             // 
             // dataGridViewTextBoxColumn8
@@ -534,12 +539,63 @@
             this.btnBitacoraFichaMedica.UseVisualStyleBackColor = true;
             this.btnBitacoraFichaMedica.Click += new System.EventHandler(this.btnBitacoraFichaMedica_Click);
             // 
+            // labelObligatorio
+            // 
+            this.labelObligatorio.AutoSize = true;
+            this.labelObligatorio.Location = new System.Drawing.Point(2146, 522);
+            this.labelObligatorio.Name = "labelObligatorio";
+            this.labelObligatorio.Size = new System.Drawing.Size(126, 25);
+            this.labelObligatorio.TabIndex = 65;
+            this.labelObligatorio.Text = "(obligatorio)";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(2188, 832);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 25);
+            this.label1.TabIndex = 66;
+            this.label1.Text = "(obligatorio)";
+            // 
+            // labelOpcional
+            // 
+            this.labelOpcional.AutoSize = true;
+            this.labelOpcional.Location = new System.Drawing.Point(2146, 615);
+            this.labelOpcional.Name = "labelOpcional";
+            this.labelOpcional.Size = new System.Drawing.Size(107, 25);
+            this.labelOpcional.TabIndex = 67;
+            this.labelOpcional.Text = "(opcional)";
+            // 
+            // labelOpcional1
+            // 
+            this.labelOpcional1.AutoSize = true;
+            this.labelOpcional1.Location = new System.Drawing.Point(2146, 708);
+            this.labelOpcional1.Name = "labelOpcional1";
+            this.labelOpcional1.Size = new System.Drawing.Size(107, 25);
+            this.labelOpcional1.TabIndex = 68;
+            this.labelOpcional1.Text = "(opcional)";
+            // 
+            // checkBoxMedicamentos
+            // 
+            this.checkBoxMedicamentos.AutoSize = true;
+            this.checkBoxMedicamentos.Location = new System.Drawing.Point(1157, 439);
+            this.checkBoxMedicamentos.Name = "checkBoxMedicamentos";
+            this.checkBoxMedicamentos.Size = new System.Drawing.Size(220, 29);
+            this.checkBoxMedicamentos.TabIndex = 69;
+            this.checkBoxMedicamentos.Text = "Sin medicamentos";
+            this.checkBoxMedicamentos.UseVisualStyleBackColor = true;
+            // 
             // FormGestionFichaMedica_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(2842, 1157);
+            this.ClientSize = new System.Drawing.Size(2564, 1157);
+            this.Controls.Add(this.checkBoxMedicamentos);
+            this.Controls.Add(this.labelOpcional1);
+            this.Controls.Add(this.labelOpcional);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelObligatorio);
             this.Controls.Add(this.btnBitacoraFichaMedica);
             this.Controls.Add(this.labelFichaMedica);
             this.Controls.Add(this.labelMedicamentos);
@@ -621,5 +677,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.Button btnBitacoraFichaMedica;
+        private System.Windows.Forms.Label labelObligatorio;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelOpcional;
+        private System.Windows.Forms.Label labelOpcional1;
+        private System.Windows.Forms.CheckBox checkBoxMedicamentos;
     }
 }

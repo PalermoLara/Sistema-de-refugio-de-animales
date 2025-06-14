@@ -18,7 +18,7 @@ namespace BLL
             orm_941lp = new ormFichaMedica_941lp();
         }
 
-        public void Alta_941lp(int codigoAnimal_941lp, DateTime fecha_941lp, bool castrado_941lp, string dieta_941lp, string medicamento_941lp, string observaciones_941lp = null)
+        public void Alta_941lp(int codigoAnimal_941lp, DateTime fecha_941lp, bool castrado_941lp, string dieta_941lp = null, string medicamento_941lp = null, string observaciones_941lp = null)
         {
             DateTime soloFecha_941lp = fecha_941lp.Date;
             FichaMedica_941lp ficha_941lp = new FichaMedica_941lp(codigoAnimal_941lp, soloFecha_941lp,castrado_941lp,  dieta_941lp, medicamento_941lp, observaciones_941lp);
