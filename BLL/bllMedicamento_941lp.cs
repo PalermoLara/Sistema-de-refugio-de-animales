@@ -17,20 +17,19 @@ namespace BLL
             orm_941Lp = new ormMedicamento_941lp();
         }
 
-        public void Alta_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp, string amnimalDestina_941llp, DateTime caducidad_941lp)
+        public void Alta_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp,  DateTime caducidad_941lp)
         {
             DateTime soloFecha_941lp = caducidad_941lp.Date;
-            Medicamento_941lp medicamento_941lp = new Medicamento_941lp(numero_941lp, nombreComercial_941lp, nombreGenerico_941lp, forma_941lp, amnimalDestina_941llp, soloFecha_941lp);
+            Medicamento_941lp medicamento_941lp = new Medicamento_941lp(numero_941lp, nombreComercial_941lp, nombreGenerico_941lp, forma_941lp, soloFecha_941lp);
             orm_941Lp.Alta_941lp(medicamento_941lp);
         }
 
-        public void Modificar_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp, string amnimalDestina_941llp, DateTime caducidad_941lp)
+        public void Modificar_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp,  DateTime caducidad_941lp)
         {
             Medicamento_941lp medicamento_941 = BuscarPorNumero(numero_941lp);
             medicamento_941.nombreComercial_941lp = nombreComercial_941lp;
             medicamento_941.nombreGenerico_941lp = nombreGenerico_941lp;
             medicamento_941.forma_941lp = forma_941lp;
-            medicamento_941.animalDestinado_941lp = amnimalDestina_941llp;
             medicamento_941.caducidad_941lp = caducidad_941lp;
             orm_941Lp.Modificar_941lp(medicamento_941);
         }

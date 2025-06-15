@@ -66,6 +66,8 @@
             this.Hora = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Razón = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Zona = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.labelAniamles = new System.Windows.Forms.Label();
+            this.labelCedentes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataCedentes)).BeginInit();
             this.groupBoxFiltro.SuspendLayout();
@@ -74,9 +76,10 @@
             // btnModificarFichaMedica
             // 
             this.btnModificarFichaMedica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarFichaMedica.Location = new System.Drawing.Point(1322, 606);
+            this.btnModificarFichaMedica.Location = new System.Drawing.Point(662, 357);
+            this.btnModificarFichaMedica.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificarFichaMedica.Name = "btnModificarFichaMedica";
-            this.btnModificarFichaMedica.Size = new System.Drawing.Size(437, 82);
+            this.btnModificarFichaMedica.Size = new System.Drawing.Size(218, 43);
             this.btnModificarFichaMedica.TabIndex = 28;
             this.btnModificarFichaMedica.Text = "Modificar ficha de ingreso";
             this.btnModificarFichaMedica.UseVisualStyleBackColor = true;
@@ -84,44 +87,49 @@
             // 
             // txtZona
             // 
-            this.txtZona.Location = new System.Drawing.Point(1355, 563);
+            this.txtZona.Location = new System.Drawing.Point(680, 326);
+            this.txtZona.Margin = new System.Windows.Forms.Padding(2);
             this.txtZona.Name = "txtZona";
-            this.txtZona.Size = new System.Drawing.Size(376, 31);
+            this.txtZona.Size = new System.Drawing.Size(190, 20);
             this.txtZona.TabIndex = 1;
             // 
             // labelMedicamento
             // 
             this.labelMedicamento.AutoSize = true;
             this.labelMedicamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMedicamento.Location = new System.Drawing.Point(1319, 529);
+            this.labelMedicamento.Location = new System.Drawing.Point(662, 308);
+            this.labelMedicamento.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMedicamento.Name = "labelMedicamento";
-            this.labelMedicamento.Size = new System.Drawing.Size(76, 31);
+            this.labelMedicamento.Size = new System.Drawing.Size(41, 17);
             this.labelMedicamento.TabIndex = 23;
             this.labelMedicamento.Text = "Zona";
             // 
             // txtRazon
             // 
-            this.txtRazon.Location = new System.Drawing.Point(1355, 483);
+            this.txtRazon.Location = new System.Drawing.Point(680, 284);
+            this.txtRazon.Margin = new System.Windows.Forms.Padding(2);
             this.txtRazon.Name = "txtRazon";
-            this.txtRazon.Size = new System.Drawing.Size(376, 31);
+            this.txtRazon.Size = new System.Drawing.Size(190, 20);
             this.txtRazon.TabIndex = 0;
             // 
             // labelDieta
             // 
             this.labelDieta.AutoSize = true;
             this.labelDieta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDieta.Location = new System.Drawing.Point(1323, 448);
+            this.labelDieta.Location = new System.Drawing.Point(664, 266);
+            this.labelDieta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDieta.Name = "labelDieta";
-            this.labelDieta.Size = new System.Drawing.Size(229, 31);
+            this.labelDieta.Size = new System.Drawing.Size(122, 17);
             this.labelDieta.TabIndex = 21;
             this.labelDieta.Text = "Razón de entrega";
             // 
             // btnCrearFichaDeIngreso
             // 
             this.btnCrearFichaDeIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearFichaDeIngreso.Location = new System.Drawing.Point(1322, 359);
+            this.btnCrearFichaDeIngreso.Location = new System.Drawing.Point(662, 214);
+            this.btnCrearFichaDeIngreso.Margin = new System.Windows.Forms.Padding(2);
             this.btnCrearFichaDeIngreso.Name = "btnCrearFichaDeIngreso";
-            this.btnCrearFichaDeIngreso.Size = new System.Drawing.Size(437, 82);
+            this.btnCrearFichaDeIngreso.Size = new System.Drawing.Size(218, 43);
             this.btnCrearFichaDeIngreso.TabIndex = 19;
             this.btnCrearFichaDeIngreso.Text = "Crear ficha de ingreso";
             this.btnCrearFichaDeIngreso.UseVisualStyleBackColor = true;
@@ -141,12 +149,13 @@
             this.Column6,
             this.Column7,
             this.Column9});
-            this.dataAnimales.Location = new System.Drawing.Point(12, 12);
+            this.dataAnimales.Location = new System.Drawing.Point(6, 39);
+            this.dataAnimales.Margin = new System.Windows.Forms.Padding(2);
             this.dataAnimales.Name = "dataAnimales";
             this.dataAnimales.ReadOnly = true;
             this.dataAnimales.RowHeadersWidth = 82;
             this.dataAnimales.RowTemplate.Height = 33;
-            this.dataAnimales.Size = new System.Drawing.Size(1747, 329);
+            this.dataAnimales.Size = new System.Drawing.Size(874, 171);
             this.dataAnimales.TabIndex = 17;
             this.dataAnimales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataAnimales_CellClick_1);
             // 
@@ -217,9 +226,10 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(1322, 873);
+            this.btnSalir.Location = new System.Drawing.Point(662, 496);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(437, 82);
+            this.btnSalir.Size = new System.Drawing.Size(218, 43);
             this.btnSalir.TabIndex = 29;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -237,12 +247,13 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.Column8});
-            this.dataCedentes.Location = new System.Drawing.Point(12, 359);
+            this.dataCedentes.Location = new System.Drawing.Point(11, 244);
+            this.dataCedentes.Margin = new System.Windows.Forms.Padding(2);
             this.dataCedentes.Name = "dataCedentes";
             this.dataCedentes.ReadOnly = true;
             this.dataCedentes.RowHeadersWidth = 82;
             this.dataCedentes.RowTemplate.Height = 33;
-            this.dataCedentes.Size = new System.Drawing.Size(1242, 329);
+            this.dataCedentes.Size = new System.Drawing.Size(621, 171);
             this.dataCedentes.TabIndex = 30;
             this.dataCedentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCedentes_CellClick_1);
             // 
@@ -297,9 +308,10 @@
             // btnAplicar
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(1322, 697);
+            this.btnAplicar.Location = new System.Drawing.Point(662, 404);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(437, 82);
+            this.btnAplicar.Size = new System.Drawing.Size(218, 43);
             this.btnAplicar.TabIndex = 31;
             this.btnAplicar.Text = "Aplicar";
             this.btnAplicar.UseVisualStyleBackColor = true;
@@ -308,9 +320,10 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(1322, 785);
+            this.btnCancelar.Location = new System.Drawing.Point(662, 450);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(437, 82);
+            this.btnCancelar.Size = new System.Drawing.Size(218, 43);
             this.btnCancelar.TabIndex = 32;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -322,11 +335,9 @@
             this.groupBoxFiltro.Controls.Add(this.rbCedente);
             this.groupBoxFiltro.Controls.Add(this.rbAnimal);
             this.groupBoxFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxFiltro.Location = new System.Drawing.Point(1322, 955);
-            this.groupBoxFiltro.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBoxFiltro.Location = new System.Drawing.Point(662, 544);
             this.groupBoxFiltro.Name = "groupBoxFiltro";
-            this.groupBoxFiltro.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBoxFiltro.Size = new System.Drawing.Size(635, 105);
+            this.groupBoxFiltro.Size = new System.Drawing.Size(318, 55);
             this.groupBoxFiltro.TabIndex = 46;
             this.groupBoxFiltro.TabStop = false;
             this.groupBoxFiltro.Text = "Buscar fichas por:";
@@ -335,10 +346,9 @@
             // 
             this.rbTodos.AutoSize = true;
             this.rbTodos.Checked = true;
-            this.rbTodos.Location = new System.Drawing.Point(461, 50);
-            this.rbTodos.Margin = new System.Windows.Forms.Padding(6);
+            this.rbTodos.Location = new System.Drawing.Point(230, 26);
             this.rbTodos.Name = "rbTodos";
-            this.rbTodos.Size = new System.Drawing.Size(138, 41);
+            this.rbTodos.Size = new System.Drawing.Size(71, 24);
             this.rbTodos.TabIndex = 2;
             this.rbTodos.TabStop = true;
             this.rbTodos.Text = "Todos";
@@ -348,10 +358,9 @@
             // rbCedente
             // 
             this.rbCedente.AutoSize = true;
-            this.rbCedente.Location = new System.Drawing.Point(261, 49);
-            this.rbCedente.Margin = new System.Windows.Forms.Padding(6);
+            this.rbCedente.Location = new System.Drawing.Point(130, 25);
             this.rbCedente.Name = "rbCedente";
-            this.rbCedente.Size = new System.Drawing.Size(167, 41);
+            this.rbCedente.Size = new System.Drawing.Size(88, 24);
             this.rbCedente.TabIndex = 1;
             this.rbCedente.Text = "Cedente";
             this.rbCedente.UseVisualStyleBackColor = true;
@@ -360,10 +369,9 @@
             // rbAnimal
             // 
             this.rbAnimal.AutoSize = true;
-            this.rbAnimal.Location = new System.Drawing.Point(80, 50);
-            this.rbAnimal.Margin = new System.Windows.Forms.Padding(6);
+            this.rbAnimal.Location = new System.Drawing.Point(40, 26);
             this.rbAnimal.Name = "rbAnimal";
-            this.rbAnimal.Size = new System.Drawing.Size(147, 41);
+            this.rbAnimal.Size = new System.Drawing.Size(75, 24);
             this.rbAnimal.TabIndex = 0;
             this.rbAnimal.Text = "Animal";
             this.rbAnimal.UseVisualStyleBackColor = true;
@@ -383,10 +391,11 @@
             this.listViewFichas.FullRowSelect = true;
             this.listViewFichas.GridLines = true;
             this.listViewFichas.HideSelection = false;
-            this.listViewFichas.Location = new System.Drawing.Point(21, 725);
+            this.listViewFichas.Location = new System.Drawing.Point(11, 431);
+            this.listViewFichas.Margin = new System.Windows.Forms.Padding(2);
             this.listViewFichas.MultiSelect = false;
             this.listViewFichas.Name = "listViewFichas";
-            this.listViewFichas.Size = new System.Drawing.Size(1233, 324);
+            this.listViewFichas.Size = new System.Drawing.Size(618, 170);
             this.listViewFichas.TabIndex = 47;
             this.listViewFichas.UseCompatibleStateImageBehavior = false;
             this.listViewFichas.View = System.Windows.Forms.View.Details;
@@ -425,12 +434,32 @@
             this.Zona.Text = "Zona";
             this.Zona.Width = 89;
             // 
+            // labelAniamles
+            // 
+            this.labelAniamles.AutoSize = true;
+            this.labelAniamles.Location = new System.Drawing.Point(8, 24);
+            this.labelAniamles.Name = "labelAniamles";
+            this.labelAniamles.Size = new System.Drawing.Size(64, 13);
+            this.labelAniamles.TabIndex = 48;
+            this.labelAniamles.Text = "ANIMALES:";
+            // 
+            // labelCedentes
+            // 
+            this.labelCedentes.AutoSize = true;
+            this.labelCedentes.Location = new System.Drawing.Point(12, 229);
+            this.labelCedentes.Name = "labelCedentes";
+            this.labelCedentes.Size = new System.Drawing.Size(68, 13);
+            this.labelCedentes.TabIndex = 49;
+            this.labelCedentes.Text = "CEDENTES:";
+            // 
             // FormFichaDeIngreso_941lp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(2052, 1061);
+            this.ClientSize = new System.Drawing.Size(1125, 669);
+            this.Controls.Add(this.labelCedentes);
+            this.Controls.Add(this.labelAniamles);
             this.Controls.Add(this.listViewFichas);
             this.Controls.Add(this.groupBoxFiltro);
             this.Controls.Add(this.btnCancelar);
@@ -444,6 +473,7 @@
             this.Controls.Add(this.labelDieta);
             this.Controls.Add(this.btnCrearFichaDeIngreso);
             this.Controls.Add(this.dataAnimales);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormFichaDeIngreso_941lp";
             this.Text = "FormFichaDeIngreso_941lp";
             this.Load += new System.EventHandler(this.FormFichaDeIngreso_941lp_Load);
@@ -496,5 +526,7 @@
         private System.Windows.Forms.ColumnHeader Hora;
         private System.Windows.Forms.ColumnHeader Razón;
         private System.Windows.Forms.ColumnHeader Zona;
+        private System.Windows.Forms.Label labelAniamles;
+        private System.Windows.Forms.Label labelCedentes;
     }
 }

@@ -55,7 +55,7 @@ namespace BLL
 
         public List<BitacoraFichaMedica_941lp> RetornarBitacora_941lp()
         {
-            return orm_941lp.RetornarFichaIngreso_941lp();
+            return orm_941lp.RetornarBitacora_941lp();
         }
     }
 }

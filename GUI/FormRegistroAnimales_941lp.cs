@@ -68,16 +68,11 @@ namespace GUI
             // Mostrar en la grilla
             foreach (Animal_941lp a_941lp in animalesFiltrados_941lp)
             {
-                dataAnimales.Rows.Add(
-                    a_941lp.codigoAnimal_941lp,
-                    a_941lp.especie_941lp,
-                    a_941lp.raza_941lp,
-                    a_941lp.nombre_941lp,
-                    a_941lp.tamaño_941lp,
-                    a_941lp.sexo_941lp,
-                    a_941lp.estadoAdopcion_941lp,
-                    a_941lp.vivo_941lp
-                );
+                int rowIdex_941lp = dataAnimales.Rows.Add(a_941lp.codigoAnimal_941lp,a_941lp.especie_941lp,a_941lp.raza_941lp,a_941lp.nombre_941lp,a_941lp.tamaño_941lp,a_941lp.sexo_941lp,a_941lp.estadoAdopcion_941lp,a_941lp.vivo_941lp);
+                if (a_941lp.vivo_941lp == false)
+                {
+                    dataAnimales.Rows[rowIdex_941lp].DefaultCellStyle.BackColor = Color.Red;
+                }
             }
         }
 
@@ -169,8 +164,8 @@ namespace GUI
             else if (modo_941lp == ModoOperacion_941lp.Reingreso)
             {
                 txtCodigo.Enabled = !habilitar_941lp;
-                comboBoxEstado.Enabled = !habilitar_941lp;
-                comboBoxVivo.Enabled = !habilitar_941lp;
+                comboBoxEstado.Enabled = habilitar_941lp;
+                comboBoxVivo.Enabled = habilitar_941lp;
             }
             else
             {
@@ -250,12 +245,15 @@ namespace GUI
                         bllRegistroAnimales_941lp.AltaAnimal_941lp(especieIngresada_941lp, razaIngresada_941lp, nombreIngresado_941lp, tamañoIngresado_941lp, sexoIngresado_941lp, estadoDeAdopcionIngresado_941lp, vivoIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Modificar:
+                        if (bllRegistroAnimales_941lp.VerificarAnimalVivo_941lp(txtCodigo.Text) == false) throw new Exception("El animal debe estar vivo");
                         bllRegistroAnimales_941lp.Modificar_941lp(dataAnimales.SelectedRows[0].Cells[0].Value.ToString(),especieIngresada_941lp, razaIngresada_941lp, nombreIngresado_941lp, tamañoIngresado_941lp, sexoIngresado_941lp, estadoDeAdopcionIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Reingreso:
                         codigoIngresado_941lp = txtCodigo.Text;
                         ControlDeIngresoDeDatos_941lp(codigo_941lp : codigoIngresado_941lp);
                         if (bllRegistroAnimales_941lp.ValidarExistenciaAnimal_941lp(txtCodigo.Text) == false) throw new Exception("El animal no se encuentra registrado");
+                        if (bllRegistroAnimales_941lp.VerificarAnimalAdoptado_941lp(txtCodigo.Text) == false) throw new Exception("El animal no esta adoptado");
+                        if (bllRegistroAnimales_941lp.VerificarAnimalVivo_941lp(txtCodigo.Text) == false) throw new Exception("El animal debe estar vivo");
                         bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp : codigoIngresado_941lp,estadoDeAdopcion_941lp : estadoDeAdopcionIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Baja:
@@ -360,6 +358,8 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Reingreso;
                 HabilitarControlesDeIngresoDeDatos_941lp(false);
                 HabilitarBotones_941lp();
+                comboBoxEstado.SelectedIndex = 0;
+                comboBoxVivo.SelectedIndex = 0;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

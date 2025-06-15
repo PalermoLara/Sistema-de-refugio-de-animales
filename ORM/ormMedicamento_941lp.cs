@@ -19,17 +19,17 @@ namespace ORM
         public void Alta_941lp(Medicamento_941lp medicamento_941lp)
         {
             string query_941lp = "INSERT INTO Medicamento_941lp " +
-                         "(numeroOficial_941lp, nombreComercial_941lp, nombreGenerico_941lp, forma_941lp, animalDestinado_941lp, caducidad_941lp) " +
-                         "VALUES (@numeroOficial_941lp, @nombreComercial_941lp, @nombreGenerico_941lp, @forma_941lp, @animalDestinado_941lp, @caducidad_941lp)";
+                         "(numeroOficial_941lp, nombreComercial_941lp, nombreGenerico_941lp, forma_941lp,  caducidad_941lp) " +
+                         "VALUES (@numeroOficial_941lp, @nombreComercial_941lp, @nombreGenerico_941lp, @forma_941lp,  @caducidad_941lp)";
             EjecutarQueryConEntidad_941lp(medicamento_941lp, query_941lp);
         }
 
         public void Modificar_941lp(Medicamento_941lp medicamento_941lp)
         {
-            string query_941lp = "UPDATE Medicamento_941lp SET nombreComercial_941lp = @nombreComercial_941lp, nombreGenerico_941lp = @nombreGenerico_941lp, forma_941lp = @forma_941lp, animalDestinado_941lp = @animalDestinado_941lp, caducidad_941lp = @caducidad_941lp WHERE numeroOficial_941lp = @numeroOficial_941lp";
+            string query_941lp = "UPDATE Medicamento_941lp SET nombreComercial_941lp = @nombreComercial_941lp, nombreGenerico_941lp = @nombreGenerico_941lp, forma_941lp = @forma_941lp,  caducidad_941lp = @caducidad_941lp WHERE numeroOficial_941lp = @numeroOficial_941lp";
             var props = new List<string>
             {
-                "nombreComercial_941lp", "nombreGenerico_941lp", "forma_941lp", "animalDestinado_941lp", "caducidad_941lp", "numeroOficial_941lp"
+                "nombreComercial_941lp", "nombreGenerico_941lp", "forma_941lp",  "caducidad_941lp", "numeroOficial_941lp"
             };
             EjecutarQueryConEntidad_941lp(medicamento_941lp, query_941lp, props);
         }
@@ -88,7 +88,6 @@ namespace ORM
                 reader["nombreComercial_941lp"].ToString(),
                 reader["nombreGenerico_941lp"].ToString(),
                 reader["forma_941lp"].ToString(),
-                reader["animalDestinado_941lp"].ToString(),
                 Convert.ToDateTime(reader["caducidad_941lp"])
             );
         }

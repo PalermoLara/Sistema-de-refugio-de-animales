@@ -25,7 +25,7 @@ namespace ORM
                          "VALUES ( @codigoFicha_941lp,@fecha_941lp, @operacion_941lp, @campoModificado_941lp, @valorPrevio_941lp, @valorNuevo_941lp)";
             var propiedadesIncluir_941lp = new List<string>
             {
-                 "codigoFicha_941lp","fecha_941lp", "operacion_941lp", "campoModificado_941lp", "valorPrevio_941lp", "valorNuevo_941lp", "codigo_941lp"
+                 "codigoFicha_941lp","fecha_941lp", "operacion_941lp", "campoModificado_941lp", "valorPrevio_941lp", "valorNuevo_941lp"
             };
             EjecutarQueryConEntidad_941lp(ficha_941lp, query_941lp, propiedadesIncluir_941lp);
         }
@@ -41,7 +41,7 @@ namespace ORM
             return bitacora_941lp.FirstOrDefault();
         }
 
-        public List<BitacoraFichaMedica_941lp> RetornarFichaIngreso_941lp()
+        public List<BitacoraFichaMedica_941lp> RetornarBitacora_941lp()
         {
             List<BitacoraFichaMedica_941lp> ficha_941lp = dao_941lp.RetornarLista_941lp("SELECT * FROM BitacoraFichaMedica_941lp", MapearBitacora_941lp);
             return ficha_941lp;

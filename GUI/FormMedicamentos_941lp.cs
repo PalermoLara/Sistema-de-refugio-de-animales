@@ -51,8 +51,8 @@ namespace GUI
             {
                 foreach (Medicamento_941lp m_941lp in medicamentosLista_941lp)
                 {
-                    int rowIndex = dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp, m_941lp.animalDestinado_941lp, m_941lp.caducidad_941lp);
-                    dataMedicamentos.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
+                    int rowIndex = dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp,  m_941lp.caducidad_941lp);
+                    dataMedicamentos.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
                     if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(m_941lp.caducidad_941lp))
                     {
                         MessageBox.Show("Hay medicamentos vencidos. Se mostraran en rojo");
@@ -78,7 +78,6 @@ namespace GUI
             bool camposObligatoriosIncompletos =
                 string.IsNullOrWhiteSpace(txtNombreComercial.Text) ||
                 string.IsNullOrWhiteSpace(txtNombreGenerico.Text) ||
-                comboBoxAnimalDestinado.SelectedItem == null ||
                 comboBoxForma.SelectedItem == null;
             if (modo_941lp == ModoOperacion_941lp.Alta)
             {
@@ -100,7 +99,6 @@ namespace GUI
                     t_941lp.Text = "";
                 }
             }
-            comboBoxAnimalDestinado.SelectedItem = null;
             comboBoxForma.SelectedItem = null;
         }
 
@@ -125,7 +123,6 @@ namespace GUI
                 txtNumero.Enabled = habilitar_941lp;
                 txtNombreComercial.Enabled = habilitar_941lp;
                 txtNombreGenerico.Enabled = habilitar_941lp;
-                comboBoxAnimalDestinado.Enabled = habilitar_941lp;
                 comboBoxForma.Enabled = habilitar_941lp;
                 dateTimePickerVencimiento.Enabled = habilitar_941lp;
             }
@@ -134,7 +131,6 @@ namespace GUI
                 txtNumero.Enabled = !habilitar_941lp;
                 txtNombreComercial.Enabled = habilitar_941lp;
                 txtNombreGenerico.Enabled = habilitar_941lp;
-                comboBoxAnimalDestinado.Enabled = habilitar_941lp;
                 comboBoxForma.Enabled = habilitar_941lp;
                 dateTimePickerVencimiento.Enabled = habilitar_941lp;
             }
@@ -143,7 +139,6 @@ namespace GUI
                 txtNumero.Enabled = !habilitar_941lp;
                 txtNombreComercial.Enabled = !habilitar_941lp;
                 txtNombreGenerico.Enabled = !habilitar_941lp;
-                comboBoxAnimalDestinado.Enabled = !habilitar_941lp;
                 comboBoxForma.Enabled = !habilitar_941lp;
                 dateTimePickerVencimiento.Enabled = !habilitar_941lp;
             }
@@ -171,7 +166,7 @@ namespace GUI
             }
         }
 
-        private void ControlDeIngresoDeDatos_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp, string animalDestinado_941lp)
+        private void ControlDeIngresoDeDatos_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp)
         {
             try
             {
@@ -181,13 +176,9 @@ namespace GUI
                 if (!regexNumero_941lp.IsMatch(numero_941lp))
                     throw new ArgumentException("El número ingresado es inválido. Solo se permiten números y barras.");
                 if (!regexTexto_941lp.IsMatch(nombreComercial_941lp))
-                    throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras y espacios.");
+                    throw new ArgumentException("El nombre comercial ingresado es inválido. Solo se permiten letras y espacios.");
                 if (!regexTexto_941lp.IsMatch(nombreGenerico_941lp))
-                    throw new ArgumentException("El apellido ingresado es inválido. Solo se permiten letras y espacios.");
-                if (!regexTexto_941lp.IsMatch(forma_941lp))
-                    throw new ArgumentException("La dirección ingresada es inválida.");
-                if (!regexTexto_941lp.IsMatch(animalDestinado_941lp))
-                    throw new ArgumentException("La dirección ingresada es inválida.");
+                    throw new ArgumentException("El nombre genérico ingresado es inválido. Solo se permiten letras y espacios.");
             }
             catch (ArgumentException ex)
             {
@@ -221,21 +212,19 @@ namespace GUI
         {
             try
             {
+                ValidarCargaDeTxt_941lp();
+                ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text);
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Alta:
-                        ValidarCargaDeTxt_941lp();
-                        ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text);
                         if(bllMedicamento_941Lp.VerificarExistenciaDeNumero_941lp(txtNumero.Text))throw new Exception("Número repetido");
                         if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(dateTimePickerVencimiento.Value)) throw new Exception("Medicamento vencido");
-                        bllMedicamento_941Lp.Alta_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text, dateTimePickerVencimiento.Value);
+                        bllMedicamento_941Lp.Alta_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, dateTimePickerVencimiento.Value);
                         MessageBox.Show("Medicamento dado de alta exitosamente");
                         break;
                     case ModoOperacion_941lp.Modificar:
-                        ValidarCargaDeTxt_941lp();
-                        ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text);
                         if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(dateTimePickerVencimiento.Value)) throw new Exception("Medicamento vencido");
-                        bllMedicamento_941Lp.Modificar_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, comboBoxAnimalDestinado.Text, dateTimePickerVencimiento.Value);
+                        bllMedicamento_941Lp.Modificar_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, dateTimePickerVencimiento.Value);
                         MessageBox.Show("Medicamento modificado exitosamente");
                         break;
                     case ModoOperacion_941lp.Baja:
@@ -305,8 +294,7 @@ namespace GUI
                 txtNombreComercial.Text = dataMedicamentos.SelectedRows[0].Cells[1].Value.ToString();
                 txtNombreGenerico.Text = dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString();
                 comboBoxForma.SelectedItem = dataMedicamentos.SelectedRows[0].Cells[3].Value.ToString();
-                comboBoxAnimalDestinado.SelectedItem = dataMedicamentos.SelectedRows[0].Cells[4].Value.ToString();
-                dateTimePickerVencimiento.Value = Convert.ToDateTime(dataMedicamentos.SelectedRows[0].Cells[5].Value).Date;
+                dateTimePickerVencimiento.Value = Convert.ToDateTime(dataMedicamentos.SelectedRows[0].Cells[4].Value).Date;
             }
         }
 

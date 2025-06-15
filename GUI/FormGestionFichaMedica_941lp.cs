@@ -75,8 +75,8 @@ namespace GUI
             {
                 foreach (Medicamento_941lp m_941lp in medicamentosLista_941lp)
                 {
-                    dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp, m_941lp.animalDestinado_941lp, m_941lp.caducidad_941lp);
-                    dataMedicamentos.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
+                    dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp,  m_941lp.caducidad_941lp);
+                    dataMedicamentos.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
                 }
             }
         }
@@ -174,7 +174,6 @@ namespace GUI
                         MessageBox.Show("Debe selecionar un estado al animal", "ESTADO DE ADOPCIÓN", MessageBoxButtons.OK);
                         break;
                     case ModoOperacion_941lp.Modificar:
-                        bllFichaMedica_941lp.Modificar_941lp(codigo_941lp: Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), castrado_941lp: seleccionado_941lp.Text == "Si", dieta_941lp: txtDieta.Text, medicamento_941lp: checkBoxMedicamentos.Checked ? null : dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), observaciones_941lp: txtObservaciones.Text);
                         if (bllBitacora_941lp.VerificarCambioValor_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value),"Medicamento", checkBoxMedicamentos.Checked ? "" : dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString())) 
                         {
                             bllBitacora_941lp.Alta_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), DateTime.Now, ModoOperacion_941lp.Modificar.ToString(), "Medicamento", dataFichaMedica.SelectedRows[0].Cells[5].Value.ToString(), txtDieta.Text);
@@ -191,6 +190,7 @@ namespace GUI
                         {
                             bllBitacora_941lp.Alta_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), DateTime.Now, ModoOperacion_941lp.Modificar.ToString(), "Observaciones", dataFichaMedica.SelectedRows[0].Cells[6].Value.ToString(), txtObservaciones.Text);
                         }
+                        bllFichaMedica_941lp.Modificar_941lp(codigo_941lp: Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), castrado_941lp: seleccionado_941lp.Text == "Si", dieta_941lp: txtDieta.Text, medicamento_941lp: checkBoxMedicamentos.Checked ? null : dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), observaciones_941lp: txtObservaciones.Text);
                         MessageBox.Show("Ficha médica modificada exitosamente");
                         break;
                     case ModoOperacion_941lp.DefinirEstado:
