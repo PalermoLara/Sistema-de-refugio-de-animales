@@ -25,6 +25,11 @@ namespace BLL
             orm_941lp.Alta_941lp(ficha_941lp);
         }
 
+        public bool VerificarQueTengaFichaMedica_941lp(string codigoAnimal_941lp)
+        {
+            return orm_941lp.VerificarQueTengaFichaMedica_941lp(codigoAnimal_941lp);
+        }
+
         public void Modificar_941lp(int codigo_941lp, bool castrado_941lp, string dieta_941lp, string medicamento_941lp, string observaciones_941lp = null)
         {
             FichaMedica_941lp ficha_941lp = RetornarFichas_941lp().Find(x => x.codigo_941lp == codigo_941lp);

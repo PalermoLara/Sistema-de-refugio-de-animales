@@ -47,6 +47,17 @@ namespace ORM
             dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
 
+        public bool VerificarQueTengaFichaMedica_941lp(string codigoAnimal_941lp)
+        {
+            string query_941lp = "SELECT * FROM FichaMedica_941lp WHERE codigoAnimal_941lp = @codigoAnimal_941lp";
+            var parametros_941lp = new Dictionary<string, object>
+            {
+                { "@codigoAnimal_941lp", codigoAnimal_941lp }
+            };
+            int count = Convert.ToInt32(dao_941lp.EjecutarEscalar_941lp(query_941lp, parametros_941lp));
+            return count > 0 ;
+        }
+
         public List<FichaMedica_941lp> RetornarFichaMedica_941lp()
         {
             List<FichaMedica_941lp> ficha_941lp = dao_941lp.RetornarLista_941lp("SELECT * FROM FichaMedica_941lp", MapearFicha_941lp);
