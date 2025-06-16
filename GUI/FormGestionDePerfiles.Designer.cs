@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnAsignar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // treeViewPermisos
@@ -70,7 +71,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(112, 600);
+            this.btnSalir.Location = new System.Drawing.Point(327, 83);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(171, 48);
             this.btnSalir.TabIndex = 3;
@@ -85,6 +86,7 @@
             this.comboBoxRolFamilia.Name = "comboBoxRolFamilia";
             this.comboBoxRolFamilia.Size = new System.Drawing.Size(453, 33);
             this.comboBoxRolFamilia.TabIndex = 4;
+            this.comboBoxRolFamilia.SelectedIndexChanged += new System.EventHandler(this.comboBoxRolFamilia_SelectedIndexChanged);
             // 
             // labelRolFamilia
             // 
@@ -119,6 +121,7 @@
             this.btnCrearRolFamilia.TabIndex = 8;
             this.btnCrearRolFamilia.Text = "Crear";
             this.btnCrearRolFamilia.UseVisualStyleBackColor = true;
+            this.btnCrearRolFamilia.Click += new System.EventHandler(this.btnCrearRolFamilia_Click);
             // 
             // rbRol
             // 
@@ -150,6 +153,7 @@
             this.btnQuitar.TabIndex = 11;
             this.btnQuitar.Text = "Quitar";
             this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // label1
             // 
@@ -168,6 +172,7 @@
             this.btnAplicar.TabIndex = 13;
             this.btnAplicar.Text = "Aplicar";
             this.btnAplicar.UseVisualStyleBackColor = true;
+            this.btnAplicar.Click += new System.EventHandler(this.btnAplicar_Click);
             // 
             // btnAsignar
             // 
@@ -177,13 +182,25 @@
             this.btnAsignar.TabIndex = 14;
             this.btnAsignar.Text = "Asignar";
             this.btnAsignar.UseVisualStyleBackColor = true;
+            this.btnAsignar.Click += new System.EventHandler(this.btnAsignar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(112, 600);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(171, 48);
+            this.btnEliminar.TabIndex = 15;
+            this.btnEliminar.Text = "Eliminar ";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // FormGestionDePerfiles_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1642, 738);
+            this.ClientSize = new System.Drawing.Size(1642, 808);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAsignar);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.label1);
@@ -224,5 +241,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.Button btnAsignar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

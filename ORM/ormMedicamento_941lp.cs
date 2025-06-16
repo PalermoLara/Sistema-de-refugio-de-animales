@@ -37,7 +37,6 @@ namespace ORM
         public void Eliminar_941lp(string numeroOficial_941lp)
         {
             string query_941lp = "DELETE FROM Medicamento_941lp WHERE numeroOficial_941lp = @numeroOficial_941lp";
-
             Dictionary<string, object> parametros_941lp = new Dictionary<string, object>
             {
                 { "@numeroOficial_941lp", numeroOficial_941lp }
