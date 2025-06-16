@@ -24,7 +24,7 @@ namespace BLL
         {
             try
             {
-                string direccionEncriptada_941lp = EncriptarDireccion_941lp(direccion_941lp); ; // lógica de negocio: dirección encriptada
+                string direccionEncriptada_941lp = EncriptarDireccion_941lp(direccion_941lp); // lógica de negocio: dirección encriptada
                 Cedente_941lp nuevoCedente_941lp = new Cedente_941lp(dni_941lp, nombre_941lp, apellido_941lp, direccionEncriptada_941lp, telefono_941lp, true);
                 orm_941lp.Alta_941lp(nuevoCedente_941lp);
             }
@@ -33,7 +33,7 @@ namespace BLL
 
         public string EncriptarDireccion_941lp(string direccion_941lp)
         {
-            return seguridad_941lp.Encrypt(direccion_941lp);
+            return seguridad_941lp.Encrypt_941lp(direccion_941lp);
         }
 
         public bool ValidarDNI_941lp(string dni_941lp)

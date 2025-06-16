@@ -30,10 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioMenuPrincipal941lp));
             this.btnGestionDeUsuario = new System.Windows.Forms.Button();
-            this.btnRestore = new System.Windows.Forms.Button();
-            this.btnBackUp = new System.Windows.Forms.Button();
-            this.btnBitacora = new System.Windows.Forms.Button();
-            this.btnAdministrarPermisos = new System.Windows.Forms.Button();
+            this.btnGestionarPerfiles = new System.Windows.Forms.Button();
             this.panelMenuPrincipal = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
             this.panelSubMenuAdopcion = new System.Windows.Forms.Panel();
@@ -68,58 +65,25 @@
             // btnGestionDeUsuario
             // 
             this.btnGestionDeUsuario.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGestionDeUsuario.Location = new System.Drawing.Point(0, 188);
+            this.btnGestionDeUsuario.Location = new System.Drawing.Point(0, 47);
             this.btnGestionDeUsuario.Name = "btnGestionDeUsuario";
-            this.btnGestionDeUsuario.Size = new System.Drawing.Size(266, 47);
+            this.btnGestionDeUsuario.Size = new System.Drawing.Size(283, 47);
             this.btnGestionDeUsuario.TabIndex = 1;
             this.btnGestionDeUsuario.Tag = "Acceder a administración de usuarios";
             this.btnGestionDeUsuario.Text = "Gestión de usuarios";
             this.btnGestionDeUsuario.UseVisualStyleBackColor = true;
             this.btnGestionDeUsuario.Click += new System.EventHandler(this.btnGestionDeUsuario_Click);
             // 
-            // btnRestore
+            // btnGestionarPerfiles
             // 
-            this.btnRestore.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRestore.Location = new System.Drawing.Point(0, 47);
-            this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(266, 47);
-            this.btnRestore.TabIndex = 3;
-            this.btnRestore.Tag = "Realizar restore";
-            this.btnRestore.Text = "Restore";
-            this.btnRestore.UseVisualStyleBackColor = true;
-            // 
-            // btnBackUp
-            // 
-            this.btnBackUp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBackUp.Location = new System.Drawing.Point(0, 0);
-            this.btnBackUp.Name = "btnBackUp";
-            this.btnBackUp.Size = new System.Drawing.Size(266, 47);
-            this.btnBackUp.TabIndex = 4;
-            this.btnBackUp.Tag = "Realizar back up";
-            this.btnBackUp.Text = "Back up";
-            this.btnBackUp.UseVisualStyleBackColor = true;
-            // 
-            // btnBitacora
-            // 
-            this.btnBitacora.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBitacora.Location = new System.Drawing.Point(0, 141);
-            this.btnBitacora.Name = "btnBitacora";
-            this.btnBitacora.Size = new System.Drawing.Size(266, 47);
-            this.btnBitacora.TabIndex = 5;
-            this.btnBitacora.Tag = "Acceder a bitacora";
-            this.btnBitacora.Text = "Bitacora";
-            this.btnBitacora.UseVisualStyleBackColor = true;
-            // 
-            // btnAdministrarPermisos
-            // 
-            this.btnAdministrarPermisos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdministrarPermisos.Location = new System.Drawing.Point(0, 94);
-            this.btnAdministrarPermisos.Name = "btnAdministrarPermisos";
-            this.btnAdministrarPermisos.Size = new System.Drawing.Size(266, 47);
-            this.btnAdministrarPermisos.TabIndex = 8;
-            this.btnAdministrarPermisos.Tag = "Acceder a permisos";
-            this.btnAdministrarPermisos.Text = "Gestion de permisos";
-            this.btnAdministrarPermisos.UseVisualStyleBackColor = true;
+            this.btnGestionarPerfiles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGestionarPerfiles.Location = new System.Drawing.Point(0, 0);
+            this.btnGestionarPerfiles.Name = "btnGestionarPerfiles";
+            this.btnGestionarPerfiles.Size = new System.Drawing.Size(283, 47);
+            this.btnGestionarPerfiles.TabIndex = 8;
+            this.btnGestionarPerfiles.Tag = "Acceder a permisos";
+            this.btnGestionarPerfiles.Text = "Gestionar perfiles";
+            this.btnGestionarPerfiles.UseVisualStyleBackColor = true;
             // 
             // panelMenuPrincipal
             // 
@@ -145,9 +109,9 @@
             // btnHelp
             // 
             this.btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHelp.Location = new System.Drawing.Point(0, 1386);
+            this.btnHelp.Location = new System.Drawing.Point(0, 1248);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(266, 71);
+            this.btnHelp.Size = new System.Drawing.Size(283, 71);
             this.btnHelp.TabIndex = 18;
             this.btnHelp.Text = "Help";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -157,17 +121,17 @@
             // panelSubMenuAdopcion
             // 
             this.panelSubMenuAdopcion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuAdopcion.Location = new System.Drawing.Point(0, 1286);
+            this.panelSubMenuAdopcion.Location = new System.Drawing.Point(0, 1148);
             this.panelSubMenuAdopcion.Name = "panelSubMenuAdopcion";
-            this.panelSubMenuAdopcion.Size = new System.Drawing.Size(266, 100);
+            this.panelSubMenuAdopcion.Size = new System.Drawing.Size(283, 100);
             this.panelSubMenuAdopcion.TabIndex = 17;
             // 
             // btnAdopcion
             // 
             this.btnAdopcion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdopcion.Location = new System.Drawing.Point(0, 1215);
+            this.btnAdopcion.Location = new System.Drawing.Point(0, 1077);
             this.btnAdopcion.Name = "btnAdopcion";
-            this.btnAdopcion.Size = new System.Drawing.Size(266, 71);
+            this.btnAdopcion.Size = new System.Drawing.Size(283, 71);
             this.btnAdopcion.TabIndex = 16;
             this.btnAdopcion.Text = "Adopción";
             this.btnAdopcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -177,17 +141,17 @@
             // panelSubMenuReportes
             // 
             this.panelSubMenuReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuReportes.Location = new System.Drawing.Point(0, 1088);
+            this.panelSubMenuReportes.Location = new System.Drawing.Point(0, 950);
             this.panelSubMenuReportes.Name = "panelSubMenuReportes";
-            this.panelSubMenuReportes.Size = new System.Drawing.Size(266, 127);
+            this.panelSubMenuReportes.Size = new System.Drawing.Size(283, 127);
             this.panelSubMenuReportes.TabIndex = 15;
             // 
             // btnReportes
             // 
             this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReportes.Location = new System.Drawing.Point(0, 1017);
+            this.btnReportes.Location = new System.Drawing.Point(0, 879);
             this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(266, 71);
+            this.btnReportes.Size = new System.Drawing.Size(283, 71);
             this.btnReportes.TabIndex = 14;
             this.btnReportes.Text = "Reportes";
             this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -202,9 +166,9 @@
             this.panelSubMenuMaestro.Controls.Add(this.btnAbrirRegistroCedentes);
             this.panelSubMenuMaestro.Controls.Add(this.btnAnimales);
             this.panelSubMenuMaestro.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuMaestro.Location = new System.Drawing.Point(0, 663);
+            this.panelSubMenuMaestro.Location = new System.Drawing.Point(0, 525);
             this.panelSubMenuMaestro.Name = "panelSubMenuMaestro";
-            this.panelSubMenuMaestro.Size = new System.Drawing.Size(266, 354);
+            this.panelSubMenuMaestro.Size = new System.Drawing.Size(283, 354);
             this.panelSubMenuMaestro.TabIndex = 13;
             // 
             // btnABMMedicamentos
@@ -212,9 +176,9 @@
             this.btnABMMedicamentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnABMMedicamentos.Location = new System.Drawing.Point(0, 268);
             this.btnABMMedicamentos.Name = "btnABMMedicamentos";
-            this.btnABMMedicamentos.Size = new System.Drawing.Size(266, 86);
+            this.btnABMMedicamentos.Size = new System.Drawing.Size(283, 86);
             this.btnABMMedicamentos.TabIndex = 20;
-            this.btnABMMedicamentos.Text = "Medicamentos";
+            this.btnABMMedicamentos.Text = "Registrar medicamentos";
             this.btnABMMedicamentos.UseVisualStyleBackColor = true;
             this.btnABMMedicamentos.Click += new System.EventHandler(this.btnABMMedicamentos_Click);
             // 
@@ -223,7 +187,7 @@
             this.btnFichaMedica.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnFichaMedica.Location = new System.Drawing.Point(0, 201);
             this.btnFichaMedica.Name = "btnFichaMedica";
-            this.btnFichaMedica.Size = new System.Drawing.Size(266, 67);
+            this.btnFichaMedica.Size = new System.Drawing.Size(283, 67);
             this.btnFichaMedica.TabIndex = 16;
             this.btnFichaMedica.Text = "Generar F. Médica";
             this.btnFichaMedica.UseVisualStyleBackColor = true;
@@ -234,7 +198,7 @@
             this.btnFichaIngreso.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnFichaIngreso.Location = new System.Drawing.Point(0, 134);
             this.btnFichaIngreso.Name = "btnFichaIngreso";
-            this.btnFichaIngreso.Size = new System.Drawing.Size(266, 67);
+            this.btnFichaIngreso.Size = new System.Drawing.Size(283, 67);
             this.btnFichaIngreso.TabIndex = 17;
             this.btnFichaIngreso.Text = "Generar F. Ingreso";
             this.btnFichaIngreso.UseVisualStyleBackColor = true;
@@ -245,9 +209,9 @@
             this.btnAbrirRegistroCedentes.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAbrirRegistroCedentes.Location = new System.Drawing.Point(0, 67);
             this.btnAbrirRegistroCedentes.Name = "btnAbrirRegistroCedentes";
-            this.btnAbrirRegistroCedentes.Size = new System.Drawing.Size(266, 67);
+            this.btnAbrirRegistroCedentes.Size = new System.Drawing.Size(283, 67);
             this.btnAbrirRegistroCedentes.TabIndex = 18;
-            this.btnAbrirRegistroCedentes.Text = "Cedentes";
+            this.btnAbrirRegistroCedentes.Text = "Registrar cedentes";
             this.btnAbrirRegistroCedentes.UseVisualStyleBackColor = true;
             this.btnAbrirRegistroCedentes.Click += new System.EventHandler(this.btnAbrirRegistroCedentes_Click);
             // 
@@ -257,18 +221,18 @@
             this.btnAnimales.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAnimales.Location = new System.Drawing.Point(0, 0);
             this.btnAnimales.Name = "btnAnimales";
-            this.btnAnimales.Size = new System.Drawing.Size(266, 67);
+            this.btnAnimales.Size = new System.Drawing.Size(283, 67);
             this.btnAnimales.TabIndex = 19;
-            this.btnAnimales.Text = "Animales";
+            this.btnAnimales.Text = "Registrar animales";
             this.btnAnimales.UseVisualStyleBackColor = false;
             this.btnAnimales.Click += new System.EventHandler(this.btnAnimales_Click);
             // 
             // btnMaestroMenuPrincipal
             // 
             this.btnMaestroMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMaestroMenuPrincipal.Location = new System.Drawing.Point(0, 592);
+            this.btnMaestroMenuPrincipal.Location = new System.Drawing.Point(0, 454);
             this.btnMaestroMenuPrincipal.Name = "btnMaestroMenuPrincipal";
-            this.btnMaestroMenuPrincipal.Size = new System.Drawing.Size(266, 71);
+            this.btnMaestroMenuPrincipal.Size = new System.Drawing.Size(283, 71);
             this.btnMaestroMenuPrincipal.TabIndex = 10;
             this.btnMaestroMenuPrincipal.Text = "Maestro";
             this.btnMaestroMenuPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -278,14 +242,11 @@
             // panelSubMenuAdministrador
             // 
             this.panelSubMenuAdministrador.Controls.Add(this.btnGestionDeUsuario);
-            this.panelSubMenuAdministrador.Controls.Add(this.btnBitacora);
-            this.panelSubMenuAdministrador.Controls.Add(this.btnAdministrarPermisos);
-            this.panelSubMenuAdministrador.Controls.Add(this.btnRestore);
-            this.panelSubMenuAdministrador.Controls.Add(this.btnBackUp);
+            this.panelSubMenuAdministrador.Controls.Add(this.btnGestionarPerfiles);
             this.panelSubMenuAdministrador.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuAdministrador.Location = new System.Drawing.Point(0, 355);
             this.panelSubMenuAdministrador.Name = "panelSubMenuAdministrador";
-            this.panelSubMenuAdministrador.Size = new System.Drawing.Size(266, 237);
+            this.panelSubMenuAdministrador.Size = new System.Drawing.Size(283, 99);
             this.panelSubMenuAdministrador.TabIndex = 12;
             // 
             // btnAdministradorMenuPrincipal
@@ -293,7 +254,7 @@
             this.btnAdministradorMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAdministradorMenuPrincipal.Location = new System.Drawing.Point(0, 280);
             this.btnAdministradorMenuPrincipal.Name = "btnAdministradorMenuPrincipal";
-            this.btnAdministradorMenuPrincipal.Size = new System.Drawing.Size(266, 75);
+            this.btnAdministradorMenuPrincipal.Size = new System.Drawing.Size(283, 75);
             this.btnAdministradorMenuPrincipal.TabIndex = 10;
             this.btnAdministradorMenuPrincipal.Text = "Administrador";
             this.btnAdministradorMenuPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -309,7 +270,7 @@
             this.panelSubMenuUsuario.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuUsuario.Location = new System.Drawing.Point(0, 75);
             this.panelSubMenuUsuario.Name = "panelSubMenuUsuario";
-            this.panelSubMenuUsuario.Size = new System.Drawing.Size(266, 205);
+            this.panelSubMenuUsuario.Size = new System.Drawing.Size(283, 205);
             this.panelSubMenuUsuario.TabIndex = 11;
             // 
             // comboBoxIdiomas
@@ -321,7 +282,7 @@
             "es"});
             this.comboBoxIdiomas.Location = new System.Drawing.Point(0, 165);
             this.comboBoxIdiomas.Name = "comboBoxIdiomas";
-            this.comboBoxIdiomas.Size = new System.Drawing.Size(266, 33);
+            this.comboBoxIdiomas.Size = new System.Drawing.Size(283, 33);
             this.comboBoxIdiomas.TabIndex = 7;
             // 
             // btnCambiarIdioma
@@ -329,7 +290,7 @@
             this.btnCambiarIdioma.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCambiarIdioma.Location = new System.Drawing.Point(0, 110);
             this.btnCambiarIdioma.Name = "btnCambiarIdioma";
-            this.btnCambiarIdioma.Size = new System.Drawing.Size(266, 55);
+            this.btnCambiarIdioma.Size = new System.Drawing.Size(283, 55);
             this.btnCambiarIdioma.TabIndex = 6;
             this.btnCambiarIdioma.Tag = "";
             this.btnCambiarIdioma.Text = "Cambiar idioma ";
@@ -340,7 +301,7 @@
             this.btnCambiarContraseña.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCambiarContraseña.Location = new System.Drawing.Point(0, 55);
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
-            this.btnCambiarContraseña.Size = new System.Drawing.Size(266, 55);
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(283, 55);
             this.btnCambiarContraseña.TabIndex = 2;
             this.btnCambiarContraseña.Tag = "";
             this.btnCambiarContraseña.Text = "Cambiar contraseña";
@@ -352,7 +313,7 @@
             this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCerrarSesion.Location = new System.Drawing.Point(0, 0);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(266, 55);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(283, 55);
             this.btnCerrarSesion.TabIndex = 0;
             this.btnCerrarSesion.Text = "Cerrar Sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
@@ -363,7 +324,7 @@
             this.btnUsuarioMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnUsuarioMenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.btnUsuarioMenuPrincipal.Name = "btnUsuarioMenuPrincipal";
-            this.btnUsuarioMenuPrincipal.Size = new System.Drawing.Size(266, 75);
+            this.btnUsuarioMenuPrincipal.Size = new System.Drawing.Size(283, 75);
             this.btnUsuarioMenuPrincipal.TabIndex = 10;
             this.btnUsuarioMenuPrincipal.Text = "Usuario";
             this.btnUsuarioMenuPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -386,7 +347,7 @@
             this.labelWhiskerWare.Font = new System.Drawing.Font("Tahoma", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWhiskerWare.Location = new System.Drawing.Point(776, 579);
             this.labelWhiskerWare.Name = "labelWhiskerWare";
-            this.labelWhiskerWare.Size = new System.Drawing.Size(332, 45);
+            this.labelWhiskerWare.Size = new System.Drawing.Size(172, 23);
             this.labelWhiskerWare.TabIndex = 11;
             this.labelWhiskerWare.Text = "WHISKER-WARE";
             // 
@@ -425,10 +386,7 @@
 
         #endregion
         private System.Windows.Forms.Button btnGestionDeUsuario;
-        private System.Windows.Forms.Button btnRestore;
-        private System.Windows.Forms.Button btnBackUp;
-        private System.Windows.Forms.Button btnBitacora;
-        private System.Windows.Forms.Button btnAdministrarPermisos;
+        private System.Windows.Forms.Button btnGestionarPerfiles;
         private System.Windows.Forms.Panel panelMenuPrincipal;
         private System.Windows.Forms.Button btnUsuarioMenuPrincipal;
         private System.Windows.Forms.Panel panelSubMenuUsuario;

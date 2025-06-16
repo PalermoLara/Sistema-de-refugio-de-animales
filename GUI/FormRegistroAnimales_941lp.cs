@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Drawing; 
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -237,7 +237,7 @@ namespace GUI
                     sexoIngresado_941lp = comboBoxSexo.SelectedItem.ToString();
                     estadoDeAdopcionIngresado_941lp = comboBoxEstado.SelectedItem.ToString();
                 }
-                    ControlDeIngresoDeDatos_941lp(especie_941lp: especieIngresada_941lp, raza_941lp: razaIngresada_941lp, nombre_941lp: nombreIngresado_941lp);
+                ControlDeIngresoDeDatos_941lp(especie_941lp: especieIngresada_941lp, raza_941lp: razaIngresada_941lp, nombre_941lp: nombreIngresado_941lp);
                 HabilitarBotones_941lp();
                 switch (modo_941lp)
                 {

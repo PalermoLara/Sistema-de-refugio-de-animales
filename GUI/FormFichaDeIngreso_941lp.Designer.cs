@@ -76,10 +76,10 @@
             // btnModificarFichaMedica
             // 
             this.btnModificarFichaMedica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarFichaMedica.Location = new System.Drawing.Point(662, 357);
-            this.btnModificarFichaMedica.Margin = new System.Windows.Forms.Padding(2);
+            this.btnModificarFichaMedica.Location = new System.Drawing.Point(1324, 687);
+            this.btnModificarFichaMedica.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnModificarFichaMedica.Name = "btnModificarFichaMedica";
-            this.btnModificarFichaMedica.Size = new System.Drawing.Size(218, 43);
+            this.btnModificarFichaMedica.Size = new System.Drawing.Size(436, 83);
             this.btnModificarFichaMedica.TabIndex = 28;
             this.btnModificarFichaMedica.Text = "Modificar ficha de ingreso";
             this.btnModificarFichaMedica.UseVisualStyleBackColor = true;
@@ -87,18 +87,18 @@
             // 
             // txtZona
             // 
-            this.txtZona.Location = new System.Drawing.Point(680, 326);
-            this.txtZona.Margin = new System.Windows.Forms.Padding(2);
+            this.txtZona.Location = new System.Drawing.Point(1360, 627);
+            this.txtZona.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtZona.Name = "txtZona";
-            this.txtZona.Size = new System.Drawing.Size(190, 20);
+            this.txtZona.Size = new System.Drawing.Size(376, 31);
             this.txtZona.TabIndex = 1;
             // 
             // labelMedicamento
             // 
             this.labelMedicamento.AutoSize = true;
             this.labelMedicamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMedicamento.Location = new System.Drawing.Point(662, 308);
-            this.labelMedicamento.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMedicamento.Location = new System.Drawing.Point(1324, 592);
+            this.labelMedicamento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMedicamento.Name = "labelMedicamento";
             this.labelMedicamento.Size = new System.Drawing.Size(41, 17);
             this.labelMedicamento.TabIndex = 23;
@@ -106,18 +106,18 @@
             // 
             // txtRazon
             // 
-            this.txtRazon.Location = new System.Drawing.Point(680, 284);
-            this.txtRazon.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRazon.Location = new System.Drawing.Point(1360, 546);
+            this.txtRazon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRazon.Name = "txtRazon";
-            this.txtRazon.Size = new System.Drawing.Size(190, 20);
+            this.txtRazon.Size = new System.Drawing.Size(376, 31);
             this.txtRazon.TabIndex = 0;
             // 
             // labelDieta
             // 
             this.labelDieta.AutoSize = true;
             this.labelDieta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDieta.Location = new System.Drawing.Point(664, 266);
-            this.labelDieta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDieta.Location = new System.Drawing.Point(1328, 512);
+            this.labelDieta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDieta.Name = "labelDieta";
             this.labelDieta.Size = new System.Drawing.Size(122, 17);
             this.labelDieta.TabIndex = 21;
@@ -126,12 +126,12 @@
             // btnCrearFichaDeIngreso
             // 
             this.btnCrearFichaDeIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearFichaDeIngreso.Location = new System.Drawing.Point(662, 214);
-            this.btnCrearFichaDeIngreso.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCrearFichaDeIngreso.Location = new System.Drawing.Point(1324, 412);
+            this.btnCrearFichaDeIngreso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCrearFichaDeIngreso.Name = "btnCrearFichaDeIngreso";
-            this.btnCrearFichaDeIngreso.Size = new System.Drawing.Size(218, 43);
+            this.btnCrearFichaDeIngreso.Size = new System.Drawing.Size(436, 83);
             this.btnCrearFichaDeIngreso.TabIndex = 19;
-            this.btnCrearFichaDeIngreso.Text = "Crear ficha de ingreso";
+            this.btnCrearFichaDeIngreso.Text = "Generar ficha de ingreso";
             this.btnCrearFichaDeIngreso.UseVisualStyleBackColor = true;
             this.btnCrearFichaDeIngreso.Click += new System.EventHandler(this.btnCrearFichaDeIngreso_Click);
             // 
@@ -149,13 +149,13 @@
             this.Column6,
             this.Column7,
             this.Column9});
-            this.dataAnimales.Location = new System.Drawing.Point(6, 39);
-            this.dataAnimales.Margin = new System.Windows.Forms.Padding(2);
+            this.dataAnimales.Location = new System.Drawing.Point(12, 75);
+            this.dataAnimales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataAnimales.Name = "dataAnimales";
             this.dataAnimales.ReadOnly = true;
             this.dataAnimales.RowHeadersWidth = 82;
             this.dataAnimales.RowTemplate.Height = 33;
-            this.dataAnimales.Size = new System.Drawing.Size(874, 171);
+            this.dataAnimales.Size = new System.Drawing.Size(1748, 329);
             this.dataAnimales.TabIndex = 17;
             this.dataAnimales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataAnimales_CellClick_1);
             // 
@@ -226,10 +226,10 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(662, 496);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalir.Location = new System.Drawing.Point(1324, 954);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(218, 43);
+            this.btnSalir.Size = new System.Drawing.Size(436, 83);
             this.btnSalir.TabIndex = 29;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -247,13 +247,13 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.Column8});
-            this.dataCedentes.Location = new System.Drawing.Point(11, 244);
-            this.dataCedentes.Margin = new System.Windows.Forms.Padding(2);
+            this.dataCedentes.Location = new System.Drawing.Point(22, 469);
+            this.dataCedentes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataCedentes.Name = "dataCedentes";
             this.dataCedentes.ReadOnly = true;
             this.dataCedentes.RowHeadersWidth = 82;
             this.dataCedentes.RowTemplate.Height = 33;
-            this.dataCedentes.Size = new System.Drawing.Size(621, 171);
+            this.dataCedentes.Size = new System.Drawing.Size(1242, 329);
             this.dataCedentes.TabIndex = 30;
             this.dataCedentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCedentes_CellClick_1);
             // 
@@ -308,10 +308,10 @@
             // btnAplicar
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(662, 404);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAplicar.Location = new System.Drawing.Point(1324, 777);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(218, 43);
+            this.btnAplicar.Size = new System.Drawing.Size(436, 83);
             this.btnAplicar.TabIndex = 31;
             this.btnAplicar.Text = "Aplicar";
             this.btnAplicar.UseVisualStyleBackColor = true;
@@ -320,10 +320,10 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(662, 450);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelar.Location = new System.Drawing.Point(1324, 865);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(218, 43);
+            this.btnCancelar.Size = new System.Drawing.Size(436, 83);
             this.btnCancelar.TabIndex = 32;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -335,9 +335,11 @@
             this.groupBoxFiltro.Controls.Add(this.rbCedente);
             this.groupBoxFiltro.Controls.Add(this.rbAnimal);
             this.groupBoxFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxFiltro.Location = new System.Drawing.Point(662, 544);
+            this.groupBoxFiltro.Location = new System.Drawing.Point(1324, 1046);
+            this.groupBoxFiltro.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBoxFiltro.Name = "groupBoxFiltro";
-            this.groupBoxFiltro.Size = new System.Drawing.Size(318, 55);
+            this.groupBoxFiltro.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBoxFiltro.Size = new System.Drawing.Size(636, 106);
             this.groupBoxFiltro.TabIndex = 46;
             this.groupBoxFiltro.TabStop = false;
             this.groupBoxFiltro.Text = "Buscar fichas por:";
@@ -346,7 +348,8 @@
             // 
             this.rbTodos.AutoSize = true;
             this.rbTodos.Checked = true;
-            this.rbTodos.Location = new System.Drawing.Point(230, 26);
+            this.rbTodos.Location = new System.Drawing.Point(460, 50);
+            this.rbTodos.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbTodos.Name = "rbTodos";
             this.rbTodos.Size = new System.Drawing.Size(71, 24);
             this.rbTodos.TabIndex = 2;
@@ -358,7 +361,8 @@
             // rbCedente
             // 
             this.rbCedente.AutoSize = true;
-            this.rbCedente.Location = new System.Drawing.Point(130, 25);
+            this.rbCedente.Location = new System.Drawing.Point(260, 48);
+            this.rbCedente.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbCedente.Name = "rbCedente";
             this.rbCedente.Size = new System.Drawing.Size(88, 24);
             this.rbCedente.TabIndex = 1;
@@ -369,7 +373,8 @@
             // rbAnimal
             // 
             this.rbAnimal.AutoSize = true;
-            this.rbAnimal.Location = new System.Drawing.Point(40, 26);
+            this.rbAnimal.Location = new System.Drawing.Point(80, 50);
+            this.rbAnimal.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbAnimal.Name = "rbAnimal";
             this.rbAnimal.Size = new System.Drawing.Size(75, 24);
             this.rbAnimal.TabIndex = 0;
@@ -391,11 +396,11 @@
             this.listViewFichas.FullRowSelect = true;
             this.listViewFichas.GridLines = true;
             this.listViewFichas.HideSelection = false;
-            this.listViewFichas.Location = new System.Drawing.Point(11, 431);
-            this.listViewFichas.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewFichas.Location = new System.Drawing.Point(22, 829);
+            this.listViewFichas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listViewFichas.MultiSelect = false;
             this.listViewFichas.Name = "listViewFichas";
-            this.listViewFichas.Size = new System.Drawing.Size(618, 170);
+            this.listViewFichas.Size = new System.Drawing.Size(1232, 323);
             this.listViewFichas.TabIndex = 47;
             this.listViewFichas.UseCompatibleStateImageBehavior = false;
             this.listViewFichas.View = System.Windows.Forms.View.Details;
@@ -437,27 +442,29 @@
             // labelAniamles
             // 
             this.labelAniamles.AutoSize = true;
-            this.labelAniamles.Location = new System.Drawing.Point(8, 24);
+            this.labelAniamles.Location = new System.Drawing.Point(16, 46);
+            this.labelAniamles.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelAniamles.Name = "labelAniamles";
-            this.labelAniamles.Size = new System.Drawing.Size(64, 13);
+            this.labelAniamles.Size = new System.Drawing.Size(124, 25);
             this.labelAniamles.TabIndex = 48;
             this.labelAniamles.Text = "ANIMALES:";
             // 
             // labelCedentes
             // 
             this.labelCedentes.AutoSize = true;
-            this.labelCedentes.Location = new System.Drawing.Point(12, 229);
+            this.labelCedentes.Location = new System.Drawing.Point(24, 440);
+            this.labelCedentes.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelCedentes.Name = "labelCedentes";
-            this.labelCedentes.Size = new System.Drawing.Size(68, 13);
+            this.labelCedentes.Size = new System.Drawing.Size(132, 25);
             this.labelCedentes.TabIndex = 49;
             this.labelCedentes.Text = "CEDENTES:";
             // 
             // FormFichaDeIngreso_941lp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1125, 669);
+            this.ClientSize = new System.Drawing.Size(2250, 1061);
             this.Controls.Add(this.labelCedentes);
             this.Controls.Add(this.labelAniamles);
             this.Controls.Add(this.listViewFichas);
@@ -473,7 +480,7 @@
             this.Controls.Add(this.labelDieta);
             this.Controls.Add(this.btnCrearFichaDeIngreso);
             this.Controls.Add(this.dataAnimales);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormFichaDeIngreso_941lp";
             this.Text = "FormFichaDeIngreso_941lp";
             this.Load += new System.EventHandler(this.FormFichaDeIngreso_941lp_Load);

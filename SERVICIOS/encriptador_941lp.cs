@@ -36,7 +36,7 @@ namespace SERVICIOS
         0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F
         };
 
-        public string Encrypt(string plainText)
+        public string Encrypt_941lp(string plainText)
         {
             using (Aes aes = Aes.Create())
             {
