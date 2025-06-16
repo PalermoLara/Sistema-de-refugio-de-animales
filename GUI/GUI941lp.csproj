@@ -73,6 +73,12 @@
     <Compile Include="FormFichaDeIngreso_941lp.Designer.cs">
       <DependentUpon>FormFichaDeIngreso_941lp.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGestionDePerfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGestionDePerfiles.Designer.cs">
+      <DependentUpon>FormGestionDePerfiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGestionFichaMedica_941lp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormFichaDeIngreso_941lp.resx">
       <DependentUpon>FormFichaDeIngreso_941lp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGestionDePerfiles.resx">
+      <DependentUpon>FormGestionDePerfiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGestionFichaMedica_941lp.resx">
       <DependentUpon>FormGestionFichaMedica_941lp.cs</DependentUpon>

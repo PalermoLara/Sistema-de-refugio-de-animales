@@ -69,7 +69,7 @@
             this.btnGestionDeUsuario.Name = "btnGestionDeUsuario";
             this.btnGestionDeUsuario.Size = new System.Drawing.Size(283, 47);
             this.btnGestionDeUsuario.TabIndex = 1;
-            this.btnGestionDeUsuario.Tag = "Acceder a administración de usuarios";
+            this.btnGestionDeUsuario.Tag = "Gestion de usuarios";
             this.btnGestionDeUsuario.Text = "Gestión de usuarios";
             this.btnGestionDeUsuario.UseVisualStyleBackColor = true;
             this.btnGestionDeUsuario.Click += new System.EventHandler(this.btnGestionDeUsuario_Click);
@@ -81,9 +81,10 @@
             this.btnGestionarPerfiles.Name = "btnGestionarPerfiles";
             this.btnGestionarPerfiles.Size = new System.Drawing.Size(283, 47);
             this.btnGestionarPerfiles.TabIndex = 8;
-            this.btnGestionarPerfiles.Tag = "Acceder a permisos";
+            this.btnGestionarPerfiles.Tag = "Gestionar perfiles";
             this.btnGestionarPerfiles.Text = "Gestionar perfiles";
             this.btnGestionarPerfiles.UseVisualStyleBackColor = true;
+            this.btnGestionarPerfiles.Click += new System.EventHandler(this.btnGestionarPerfiles_Click);
             // 
             // panelMenuPrincipal
             // 
@@ -178,6 +179,7 @@
             this.btnABMMedicamentos.Name = "btnABMMedicamentos";
             this.btnABMMedicamentos.Size = new System.Drawing.Size(283, 86);
             this.btnABMMedicamentos.TabIndex = 20;
+            this.btnABMMedicamentos.Tag = "Registrar medicamentos";
             this.btnABMMedicamentos.Text = "Registrar medicamentos";
             this.btnABMMedicamentos.UseVisualStyleBackColor = true;
             this.btnABMMedicamentos.Click += new System.EventHandler(this.btnABMMedicamentos_Click);
@@ -189,6 +191,7 @@
             this.btnFichaMedica.Name = "btnFichaMedica";
             this.btnFichaMedica.Size = new System.Drawing.Size(283, 67);
             this.btnFichaMedica.TabIndex = 16;
+            this.btnFichaMedica.Tag = "Generar ficha medica";
             this.btnFichaMedica.Text = "Generar F. Médica";
             this.btnFichaMedica.UseVisualStyleBackColor = true;
             this.btnFichaMedica.Click += new System.EventHandler(this.btnFichaMedica_Click);
@@ -200,6 +203,7 @@
             this.btnFichaIngreso.Name = "btnFichaIngreso";
             this.btnFichaIngreso.Size = new System.Drawing.Size(283, 67);
             this.btnFichaIngreso.TabIndex = 17;
+            this.btnFichaIngreso.Tag = "Generar ficha de ingreso";
             this.btnFichaIngreso.Text = "Generar F. Ingreso";
             this.btnFichaIngreso.UseVisualStyleBackColor = true;
             this.btnFichaIngreso.Click += new System.EventHandler(this.btnFichaIngreso_Click);
@@ -211,6 +215,7 @@
             this.btnAbrirRegistroCedentes.Name = "btnAbrirRegistroCedentes";
             this.btnAbrirRegistroCedentes.Size = new System.Drawing.Size(283, 67);
             this.btnAbrirRegistroCedentes.TabIndex = 18;
+            this.btnAbrirRegistroCedentes.Tag = "Registrar cedentes";
             this.btnAbrirRegistroCedentes.Text = "Registrar cedentes";
             this.btnAbrirRegistroCedentes.UseVisualStyleBackColor = true;
             this.btnAbrirRegistroCedentes.Click += new System.EventHandler(this.btnAbrirRegistroCedentes_Click);
@@ -223,6 +228,7 @@
             this.btnAnimales.Name = "btnAnimales";
             this.btnAnimales.Size = new System.Drawing.Size(283, 67);
             this.btnAnimales.TabIndex = 19;
+            this.btnAnimales.Tag = "Registrar animales";
             this.btnAnimales.Text = "Registrar animales";
             this.btnAnimales.UseVisualStyleBackColor = false;
             this.btnAnimales.Click += new System.EventHandler(this.btnAnimales_Click);
@@ -234,6 +240,7 @@
             this.btnMaestroMenuPrincipal.Name = "btnMaestroMenuPrincipal";
             this.btnMaestroMenuPrincipal.Size = new System.Drawing.Size(283, 71);
             this.btnMaestroMenuPrincipal.TabIndex = 10;
+            this.btnMaestroMenuPrincipal.Tag = "Maestro";
             this.btnMaestroMenuPrincipal.Text = "Maestro";
             this.btnMaestroMenuPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMaestroMenuPrincipal.UseVisualStyleBackColor = true;
@@ -256,6 +263,7 @@
             this.btnAdministradorMenuPrincipal.Name = "btnAdministradorMenuPrincipal";
             this.btnAdministradorMenuPrincipal.Size = new System.Drawing.Size(283, 75);
             this.btnAdministradorMenuPrincipal.TabIndex = 10;
+            this.btnAdministradorMenuPrincipal.Tag = "Administrador";
             this.btnAdministradorMenuPrincipal.Text = "Administrador";
             this.btnAdministradorMenuPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdministradorMenuPrincipal.UseVisualStyleBackColor = true;
@@ -326,6 +334,7 @@
             this.btnUsuarioMenuPrincipal.Name = "btnUsuarioMenuPrincipal";
             this.btnUsuarioMenuPrincipal.Size = new System.Drawing.Size(283, 75);
             this.btnUsuarioMenuPrincipal.TabIndex = 10;
+            this.btnUsuarioMenuPrincipal.Tag = "";
             this.btnUsuarioMenuPrincipal.Text = "Usuario";
             this.btnUsuarioMenuPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsuarioMenuPrincipal.UseVisualStyleBackColor = true;
