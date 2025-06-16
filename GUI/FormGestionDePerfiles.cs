@@ -61,6 +61,7 @@ namespace GUI
             }
         }
 
+
         private void MostrarPermisosTreeRolFamilia_941lp(Familia_941lp f_941lp)
         {
             treeViewFamiliaRol.Nodes.Clear();
@@ -102,8 +103,6 @@ namespace GUI
 
         private void HabilitarControles_941lp()
         {
-            btnAsignar.Enabled = true;
-            btnQuitar.Enabled = true;
             if (modo_941lp == ModoOperacion_941lp.Crear)
             {
                 rbFamilia.Enabled = true;
@@ -113,9 +112,15 @@ namespace GUI
                 txRolFamiliaNombre.Enabled = true;
                 comboBoxRolFamilia.Enabled = false;
                 btnSalir.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnAsignar.Enabled = false;
+                btnCrearRolFamilia.Enabled=false;
+                btnQuitar.Enabled = false;
             }
             else
             {
+                btnAsignar.Enabled = true;
+                btnQuitar.Enabled = true;
                 rbFamilia.Enabled = false;
                 rbRol.Enabled = false;
                 btnAplicar.Enabled = false;
@@ -123,13 +128,17 @@ namespace GUI
                 txRolFamiliaNombre.Enabled = false;
                 comboBoxRolFamilia.Enabled = true;
                 btnSalir.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnCrearRolFamilia.Enabled = true;
             }
+            AplicarColorControles_941lp();
         }
 
         private void btnAplicar_Click(object sender, EventArgs e)
         {
             try
             {
+                if (bllPermisos_941lp.VerificarNombreDeRolFamlia_941lp(txRolFamiliaNombre.Text)) throw new Exception("Nombre repetido");
                 HabilitarControles_941lp();
                 List<string> seleccionados_941lp = ObtenerPermisosSeleccionadosDelTreeView(treeViewPermisos);
                 string nombrePermiso_941lp = ObtenerNombreFamiliaRol();
@@ -194,6 +203,27 @@ namespace GUI
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
+        private void AplicarColorControles_941lp()
+        {
+            var controles_941lp = new Control[]
+            {
+                txRolFamiliaNombre, btnCancelar, btnCrearRolFamilia, btnAplicar, btnSalir, btnEliminar, btnAsignar, btnQuitar, btnCrearRolFamilia
+            };
+
+            foreach (var control_941lp in controles_941lp)
+            {
+                if (control_941lp.Enabled == false)
+                {
+
+                    control_941lp.BackColor = Color.LightSteelBlue;
+                }
+                else
+                {
+                    control_941lp.BackColor = Color.White;
+                }
+            }
+        }
+
         private void comboBoxRolFamilia_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -224,6 +254,16 @@ namespace GUI
                 MostrarPermisosTreePermisos_941lp(bllPermisos_941lp.RetornarPermisos_941lp());
                 LlenarComboBoxCompuestos_941lp(comboBoxRolFamilia, bllPermisos_941lp.RetornarPermisos_941lp());
                 treeViewFamiliaRol.Nodes.Clear();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.Consulta;
+                HabilitarControles_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

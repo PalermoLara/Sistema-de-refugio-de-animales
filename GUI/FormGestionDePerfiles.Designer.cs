@@ -68,6 +68,7 @@
             this.btnCancelar.TabIndex = 2;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalir
             // 
@@ -126,6 +127,7 @@
             // rbRol
             // 
             this.rbRol.AutoSize = true;
+            this.rbRol.Checked = true;
             this.rbRol.Location = new System.Drawing.Point(748, 646);
             this.rbRol.Name = "rbRol";
             this.rbRol.Size = new System.Drawing.Size(62, 29);
@@ -141,7 +143,6 @@
             this.rbFamilia.Name = "rbFamilia";
             this.rbFamilia.Size = new System.Drawing.Size(99, 29);
             this.rbFamilia.TabIndex = 10;
-            this.rbFamilia.TabStop = true;
             this.rbFamilia.Text = "Familia";
             this.rbFamilia.UseVisualStyleBackColor = true;
             // 

@@ -63,6 +63,17 @@ namespace ORM
             EjecutarQueryConEntidadIntermedio_941lp(permisoIntermedio_941lp, query_941lp);
         }
 
+        public bool VerificarNombreDeRolFamilia_941lp(string nombrePermiso_941lp)
+        {
+            string query_941lp = "SELECT COUNT (*) FROM Permisos_941lp WHERE nombrePermiso_941lp = @nombrePermiso_941lp";
+            var prop_941lp = new Dictionary<string, object>
+            {
+                {"@nombrePermiso_941lp" , nombrePermiso_941lp }
+            };
+            int count_941lp = Convert.ToInt32(dao_941lp.EjecutarEscalar_941lp(query_941lp, prop_941lp));
+            return count_941lp > 0;
+        }
+
         public Permiso_941lp ObtenerPermiso_941lp(string nombrePermiso_941lp)
         {
             string query_941lp = "SELECT * FROM Permisos_941lp WHERE nombrePermiso_941lp = @nombrePermiso_941lp";

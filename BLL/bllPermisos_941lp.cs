@@ -49,6 +49,11 @@ namespace BLL
             return ObtenerPermiso_941lp(nombrePermiso_941lp).esCompuesto_941lp;
         }
 
+        public bool VerificarNombreDeRolFamlia_941lp(string nombrePermiso_941lp)
+        {
+            return orm_941lp.VerificarNombreDeRolFamilia_941lp(nombrePermiso_941lp);
+        }
+
         public void EliminarFamiliar_941lp(string nombrePermiso_941lp)
         {
             Permiso_941lp p_941lp = RetornarPermisos_941lp().Find(x => x.nombrePermiso_941lp == nombrePermiso_941lp);
