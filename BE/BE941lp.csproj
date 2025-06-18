@@ -51,7 +51,6 @@
     <Compile Include="FichaDeIngreso_941lp.cs" />
     <Compile Include="FichaMedica_941lp.cs" />
     <Compile Include="Medicamento_941lp.cs" />
-    <Compile Include="permisoIntermedio_941lp.cs" />
     <Compile Include="PermisoSimple_941lp.cs" />
     <Compile Include="Permiso_941lp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

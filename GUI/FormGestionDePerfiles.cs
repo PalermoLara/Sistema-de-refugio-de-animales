@@ -34,9 +34,25 @@ namespace GUI
         {
             treeViewFamiliaRol.CheckBoxes = true;
             treeViewPermisos.CheckBoxes = true;
+            bllPermisos_941lp.CargarEstructura();
             MostrarPermisosTreePermisos_941lp(bllPermisos_941lp.RetornarPermisos_941lp());
             LlenarComboBoxCompuestos_941lp(comboBoxRolFamilia, bllPermisos_941lp.RetornarPermisos_941lp());
-            MostrarPermisosTreeRolFamilia_941lp((Familia_941lp)bllPermisos_941lp.ObtenerPermiso_941lp(comboBoxRolFamilia.Text));
+            // Mostrar árbol del permiso seleccionado (si existe)
+            if (comboBoxRolFamilia.Items.Count > 0)
+            {
+                comboBoxRolFamilia.SelectedIndex = 0; 
+                MostrarPermisosTreeRolFamilia_941lp(bllPermisos_941lp.ObtenerPermiso_941lp(comboBoxRolFamilia.Text));
+            }
+        }
+
+        private void MostrarPermisosTreeRolFamilia_941lp(Permiso_941lp f_941lp)
+        {
+            treeViewFamiliaRol.Nodes.Clear();
+            if (f_941lp != null && f_941lp is Familia_941lp)
+            {
+                TreeNode nodoRaiz = CrearNodoDesdePermiso(f_941lp);
+                treeViewFamiliaRol.Nodes.Add(nodoRaiz);
+            }
         }
 
         private void LlenarComboBoxCompuestos_941lp(System.Windows.Forms.ComboBox comboBox_941lp, List<Permiso_941lp> listaPermisos_941lp)
@@ -61,17 +77,6 @@ namespace GUI
             }
         }
 
-
-        private void MostrarPermisosTreeRolFamilia_941lp(Familia_941lp f_941lp)
-        {
-            treeViewFamiliaRol.Nodes.Clear();
-            if (f_941lp != null)
-            {
-                TreeNode nodoRaiz = CrearNodoDesdePermiso(f_941lp);
-                treeViewFamiliaRol.Nodes.Add(nodoRaiz);
-            }
-        }
-
         private TreeNode CrearNodoDesdePermiso(Permiso_941lp permiso_941lp)
         {
             TreeNode nodo_941lp = new TreeNode(permiso_941lp.nombrePermiso_941lp); // siempre muestra el nombre
@@ -88,6 +93,8 @@ namespace GUI
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            modo_941lp = ModoOperacion_941lp.Consulta;
+            HabilitarControles_941lp();
             this.Close();
         }
 
@@ -115,12 +122,10 @@ namespace GUI
                 btnEliminar.Enabled = false;
                 btnAsignar.Enabled = false;
                 btnCrearRolFamilia.Enabled=false;
-                btnQuitar.Enabled = false;
             }
             else
             {
                 btnAsignar.Enabled = true;
-                btnQuitar.Enabled = true;
                 rbFamilia.Enabled = false;
                 rbRol.Enabled = false;
                 btnAplicar.Enabled = false;
@@ -199,6 +204,7 @@ namespace GUI
                 string nombrePermiso_941lp = ObtenerNombreFamiliaRol();
                 bllPermisos_941lp.AltaIntermedia_941lp(nombrePermiso_941lp, seleccionados_941lp);
                 MostrarPermisosTreeRolFamilia_941lp((Familia_941lp)bllPermisos_941lp.ObtenerPermiso_941lp(comboBoxRolFamilia.Text));
+                MostrarPermisosTreePermisos_941lp(bllPermisos_941lp.RetornarPermisos_941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -207,7 +213,7 @@ namespace GUI
         {
             var controles_941lp = new Control[]
             {
-                txRolFamiliaNombre, btnCancelar, btnCrearRolFamilia, btnAplicar, btnSalir, btnEliminar, btnAsignar, btnQuitar, btnCrearRolFamilia
+                txRolFamiliaNombre, btnCancelar, btnCrearRolFamilia, btnAplicar, btnSalir, btnEliminar, btnAsignar,  btnCrearRolFamilia
             };
 
             foreach (var control_941lp in controles_941lp)
@@ -233,26 +239,39 @@ namespace GUI
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void btnQuitar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                foreach(string s_941lp in ObtenerPermisosSeleccionadosDelTreeView(treeViewFamiliaRol))
+                List<string> noEliminados_941lp = new List<string>();
+                RadioButton seleccionado_941lp = groupBoxQuitar.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
+                System.Windows.Forms.TreeView treeView_941lp = rbTablaPermisos.Checked ? treeViewPermisos : treeViewFamiliaRol;
+                foreach (string s_941lp in ObtenerPermisosSeleccionadosDelTreeView(treeView_941lp))
                 {
-                    if (bllPermisos_941lp.VerificarSiEsCompuesto(s_941lp) == false) throw new Exception("No se puede eliminar un permiso simple");
-                    bllPermisos_941lp.EliminarFamiliar_941lp(s_941lp);
+                    if (rbTablaPermisos.Checked)
+                    {
+                        if (!bllPermisos_941lp.VerificarSiEsCompuesto(s_941lp))
+                        {
+                            noEliminados_941lp.Add(s_941lp); continue;
+                        }
+                        bllPermisos_941lp.EliminarDeIntermediaPermanente_941lp(comboBoxRolFamilia.Text, s_941lp);
+                        bllPermisos_941lp.EliminarPermiso_941lp(s_941lp);
+                    }
+                    else
+                    {
+                        bllPermisos_941lp.EliminarIntermedia_941lp(comboBoxRolFamilia.Text, s_941lp);
+                    }
                 }
+                if (noEliminados_941lp.Any())
+                {
+                    MessageBox.Show("No se pudieron eliminar los siguientes permisos simples:\n" +
+                                     string.Join("\n", noEliminados_941lp),
+                                    "Permisos simples", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                comboBoxRolFamilia.SelectedIndex = 0;
                 MostrarPermisosTreePermisos_941lp(bllPermisos_941lp.RetornarPermisos_941lp());
                 LlenarComboBoxCompuestos_941lp(comboBoxRolFamilia, bllPermisos_941lp.RetornarPermisos_941lp());
+                MostrarPermisosTreeRolFamilia_941lp(bllPermisos_941lp.ObtenerPermiso_941lp(comboBoxRolFamilia.Text));
                 treeViewFamiliaRol.Nodes.Clear();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

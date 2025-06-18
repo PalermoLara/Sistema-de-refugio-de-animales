@@ -39,11 +39,14 @@
             this.btnCrearRolFamilia = new System.Windows.Forms.Button();
             this.rbRol = new System.Windows.Forms.RadioButton();
             this.rbFamilia = new System.Windows.Forms.RadioButton();
-            this.btnQuitar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnAsignar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.groupBoxQuitar = new System.Windows.Forms.GroupBox();
+            this.rbTablaRolFamilia = new System.Windows.Forms.RadioButton();
+            this.rbTablaPermisos = new System.Windows.Forms.RadioButton();
+            this.groupBoxQuitar.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeViewPermisos
@@ -146,16 +149,6 @@
             this.rbFamilia.Text = "Familia";
             this.rbFamilia.UseVisualStyleBackColor = true;
             // 
-            // btnQuitar
-            // 
-            this.btnQuitar.Location = new System.Drawing.Point(112, 663);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(171, 48);
-            this.btnQuitar.TabIndex = 11;
-            this.btnQuitar.Text = "Quitar";
-            this.btnQuitar.UseVisualStyleBackColor = true;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -191,9 +184,42 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(171, 48);
             this.btnEliminar.TabIndex = 15;
-            this.btnEliminar.Text = "Eliminar ";
+            this.btnEliminar.Text = "Quitar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // groupBoxQuitar
+            // 
+            this.groupBoxQuitar.Controls.Add(this.rbTablaRolFamilia);
+            this.groupBoxQuitar.Controls.Add(this.rbTablaPermisos);
+            this.groupBoxQuitar.Location = new System.Drawing.Point(117, 657);
+            this.groupBoxQuitar.Name = "groupBoxQuitar";
+            this.groupBoxQuitar.Size = new System.Drawing.Size(200, 100);
+            this.groupBoxQuitar.TabIndex = 16;
+            this.groupBoxQuitar.TabStop = false;
+            this.groupBoxQuitar.Text = "Tabla:";
+            // 
+            // rbTablaRolFamilia
+            // 
+            this.rbTablaRolFamilia.AutoSize = true;
+            this.rbTablaRolFamilia.Location = new System.Drawing.Point(47, 65);
+            this.rbTablaRolFamilia.Name = "rbTablaRolFamilia";
+            this.rbTablaRolFamilia.Size = new System.Drawing.Size(137, 29);
+            this.rbTablaRolFamilia.TabIndex = 18;
+            this.rbTablaRolFamilia.Text = "Rol/Familia";
+            this.rbTablaRolFamilia.UseVisualStyleBackColor = true;
+            // 
+            // rbTablaPermisos
+            // 
+            this.rbTablaPermisos.AutoSize = true;
+            this.rbTablaPermisos.Checked = true;
+            this.rbTablaPermisos.Location = new System.Drawing.Point(47, 30);
+            this.rbTablaPermisos.Name = "rbTablaPermisos";
+            this.rbTablaPermisos.Size = new System.Drawing.Size(119, 29);
+            this.rbTablaPermisos.TabIndex = 17;
+            this.rbTablaPermisos.TabStop = true;
+            this.rbTablaPermisos.Text = "Permisos";
+            this.rbTablaPermisos.UseVisualStyleBackColor = true;
             // 
             // FormGestionDePerfiles_941lp
             // 
@@ -201,11 +227,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1642, 808);
+            this.Controls.Add(this.groupBoxQuitar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAsignar);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.rbFamilia);
             this.Controls.Add(this.rbRol);
             this.Controls.Add(this.btnCrearRolFamilia);
@@ -220,6 +246,8 @@
             this.Name = "FormGestionDePerfiles_941lp";
             this.Text = "FormGestionDePerfiles";
             this.Load += new System.EventHandler(this.FormGestionDePerfiles_Load);
+            this.groupBoxQuitar.ResumeLayout(false);
+            this.groupBoxQuitar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,10 +266,12 @@
         private System.Windows.Forms.Button btnCrearRolFamilia;
         private System.Windows.Forms.RadioButton rbRol;
         private System.Windows.Forms.RadioButton rbFamilia;
-        private System.Windows.Forms.Button btnQuitar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.Button btnAsignar;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.GroupBox groupBoxQuitar;
+        private System.Windows.Forms.RadioButton rbTablaRolFamilia;
+        private System.Windows.Forms.RadioButton rbTablaPermisos;
     }
 }

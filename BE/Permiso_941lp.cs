@@ -12,11 +12,11 @@ namespace BE
         {
             nombrePermiso_941lp = pNombrePermiso_941lp;
             esRol_941lp = pEsRol_941lp;
-            esCompuesto_941lp = pEsCompuesto_941lp;
+            compuesto_941lp = pEsCompuesto_941lp;
         }
 
         public string nombrePermiso_941lp { get; set; }
         public bool esRol_941lp { get; set; }
-        public bool esCompuesto_941lp { get; set; }
+        public bool compuesto_941lp { get; set; }
     }
 }
