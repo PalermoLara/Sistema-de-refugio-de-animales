@@ -55,7 +55,6 @@ namespace GUI
                     dataMedicamentos.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
                     if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(m_941lp.caducidad_941lp))
                     {
-                        MessageBox.Show("Hay medicamentos vencidos. Se mostraran en rojo");
                         dataMedicamentos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
                     }
                 }
