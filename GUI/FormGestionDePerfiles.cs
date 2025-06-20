@@ -188,7 +188,8 @@ namespace GUI
                 if(bllPerfil_941Lp.VerificarNombreDePerfil_941lp(txtCrear.Text)) throw new Exception("Nombre igual al nombre de un perfil");
                 if (bllFamilia_941lp.VerificarNombreDeFamilia_941lp(txtCrear.Text)) throw new Exception("Nombre igual al nombre de una familia");
                 if(bllPermisos_941lp.VerificarNombreDePatente_941lp(txtCrear.Text)) throw new Exception("Nombre igual al nombre de una patente");
-                if (bllPerfil_941Lp.VerificarDuplicados_941lp(seleccionados_941lp)) throw new Exception("Permisos repetidos");
+                //if (bllPerfil_941Lp.VerificarDuplicados_941lp(seleccionados_941lp)) throw new Exception("Permisos repetidos");
+                if (bllPerfil_941Lp.VerificarDuplicadosTotal_941lp(comboBoxRolFamilia.Text,seleccionados_941lp)) throw new Exception("Permisos repetidos");
                 if (rbRol.Checked)
                 {
                     bllPerfil_941Lp.AltaPerfil_941lp(txtCrear.Text);
@@ -197,7 +198,7 @@ namespace GUI
                 if(rbFamilia.Checked)
                 {
                     if (seleccionados_941lp.Count == 0 ) throw new Exception("No puede crear una familia vacia");
-                    bllFamilia_941lp.AltaFamilia_941lp(txtCrear.Text);
+                   // bllFamilia_941lp.AltaFamilia_941lp(txtCrear.Text);
                     LlenarComboBoxCompuestos_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
                 }
                 //HabilitarControles_941lp();
