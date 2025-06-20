@@ -24,12 +24,12 @@ namespace ORM
             dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
 
-        public void AltaFamilia_941lp(string familia_941lp)
+        public void AltaFamilia_941lp(Familia_941lp familia_941lp)
         {
             string query_941lp = "INSERT INTO Familia_941lp (nombreFamilia_941lp) VALUES ( @nombreFamilia_941lp)";
             var parametros_941lp = new Dictionary<string, object>
             {
-                { "@nombreFamilia_941lp", familia_941lp}
+                { "@nombreFamilia_941lp", familia_941lp.nombrePermiso_941lp}
             };
             dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
@@ -37,7 +37,11 @@ namespace ORM
         public void Eliminar_941lp(Familia_941lp familia_941lp)
         {
             string query_941lp = "DELETE FROM Familia_941lp WHERE nombreFamilia_941lp = @nombreFamilia_941lp";
-            EjecutarQueryConEntidad_941lp(familia_941lp, query_941lp);
+            var parametros_941lp = new Dictionary<string, object>
+            {
+                { "@nombreFamilia_941lp", familia_941lp.nombrePermiso_941lp}
+            };
+            dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
 
         public bool VerificarNombreDeFamilia_941lp(string nombreFamilia_941lp)

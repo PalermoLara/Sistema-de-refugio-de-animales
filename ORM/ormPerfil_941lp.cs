@@ -19,12 +19,6 @@ namespace ORM
             dao_941lp = new dao_941lp();
         }
 
-        private void EjecutarQueryConEntidad_941lp(Perfil_941lp perfil_941lp, string query_941lp, List<string> propiedadesIncluir_941lp = null)
-        {
-            Dictionary<string, object> parametros_941lp = ParametroHelper_941lp.CrearParametros_941lp(perfil_941lp, propiedadesIncluir_941lp);
-            dao_941lp.Query_941lp(query_941lp, parametros_941lp);
-        }
-
         public void AltaPerfil_941lp(Familia_941lp perfil_941lp)
         {
             string query_941lp = "INSERT INTO Perfil_941lp (nombrePerfil_941lp) VALUES ( @nombrePerfil_941lp)";
@@ -35,10 +29,14 @@ namespace ORM
             dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
 
-        public void Eliminar_941lp(Familia_941lp permiso_941lp)
+        public void Eliminar_941lp(Familia_941lp perfil_941lp)
         {
             string query_941lp = "DELETE FROM Perfil_941lp WHERE nombrePerfil_941lp = @nombrePerfil_941lp";
-            EjecutarQueryConEntidad_941lp(permiso_941lp, query_941lp);
+            var parametros_941lp = new Dictionary<string, object>
+            {
+                { "@nombrePerfil_941lp", perfil_941lp.nombrePermiso_941lp}
+            };
+            dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
 
         public bool VerificarNombreDePerfil_941lp(string nombrePerfil_941lp)

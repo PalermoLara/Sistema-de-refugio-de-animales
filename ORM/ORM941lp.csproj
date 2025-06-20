@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ormIntemedia_941lp.cs" />
+    <Compile Include="ormPerfilPermiso_941lp.cs" />
     <Compile Include="estruturaFamilia_941lp.cs" />
     <Compile Include="ormBitacoraFichaMedica_941lp.cs" />
     <Compile Include="ormCedente_941lp.cs" />

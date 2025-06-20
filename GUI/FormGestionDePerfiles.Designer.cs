@@ -36,22 +36,18 @@
             this.txtCrear = new System.Windows.Forms.TextBox();
             this.labelNombre = new System.Windows.Forms.Label();
             this.btnCrearRolFamilia = new System.Windows.Forms.Button();
-            this.rbRol = new System.Windows.Forms.RadioButton();
-            this.rbFamilia = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnAsignar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.groupBoxQuitar = new System.Windows.Forms.GroupBox();
-            this.rbFamiliaQuitar = new System.Windows.Forms.RadioButton();
-            this.rbTablaPerfil = new System.Windows.Forms.RadioButton();
-            this.rbTablaPermisos = new System.Windows.Forms.RadioButton();
             this.labelFamilia = new System.Windows.Forms.Label();
             this.treeViewFamilia = new System.Windows.Forms.TreeView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbVerFamilias = new System.Windows.Forms.RadioButton();
-            this.rbVerPerfiles = new System.Windows.Forms.RadioButton();
-            this.groupBoxQuitar.SuspendLayout();
+            this.rbFamilias = new System.Windows.Forms.RadioButton();
+            this.rbPerfiles = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,19 +55,19 @@
             // 
             this.treeViewPermisos.Location = new System.Drawing.Point(113, 94);
             this.treeViewPermisos.Name = "treeViewPermisos";
-            this.treeViewPermisos.Size = new System.Drawing.Size(386, 424);
+            this.treeViewPermisos.Size = new System.Drawing.Size(386, 437);
             this.treeViewPermisos.TabIndex = 0;
             // 
             // treeViewFamiliaRol
             // 
             this.treeViewFamiliaRol.Location = new System.Drawing.Point(1076, 94);
             this.treeViewFamiliaRol.Name = "treeViewFamiliaRol";
-            this.treeViewFamiliaRol.Size = new System.Drawing.Size(453, 424);
+            this.treeViewFamiliaRol.Size = new System.Drawing.Size(453, 437);
             this.treeViewFamiliaRol.TabIndex = 1;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(1568, 243);
+            this.btnCancelar.Location = new System.Drawing.Point(1568, 283);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(171, 64);
             this.btnCancelar.TabIndex = 2;
@@ -92,15 +88,15 @@
             // comboBoxRolFamilia
             // 
             this.comboBoxRolFamilia.FormattingEnabled = true;
-            this.comboBoxRolFamilia.Location = new System.Drawing.Point(1076, 47);
+            this.comboBoxRolFamilia.Location = new System.Drawing.Point(1568, 498);
             this.comboBoxRolFamilia.Name = "comboBoxRolFamilia";
-            this.comboBoxRolFamilia.Size = new System.Drawing.Size(453, 33);
+            this.comboBoxRolFamilia.Size = new System.Drawing.Size(367, 33);
             this.comboBoxRolFamilia.TabIndex = 4;
             this.comboBoxRolFamilia.SelectedIndexChanged += new System.EventHandler(this.comboBoxRolFamilia_SelectedIndexChanged);
             // 
             // txtCrear
             // 
-            this.txtCrear.Location = new System.Drawing.Point(1568, 136);
+            this.txtCrear.Location = new System.Drawing.Point(1568, 126);
             this.txtCrear.Name = "txtCrear";
             this.txtCrear.Size = new System.Drawing.Size(367, 31);
             this.txtCrear.TabIndex = 0;
@@ -113,39 +109,16 @@
             this.labelNombre.Size = new System.Drawing.Size(190, 25);
             this.labelNombre.TabIndex = 7;
             this.labelNombre.Text = "Ingrese el nombre:";
-            this.labelNombre.Click += new System.EventHandler(this.labelNombre_Click);
             // 
             // btnCrearRolFamilia
             // 
-            this.btnCrearRolFamilia.Location = new System.Drawing.Point(1764, 172);
+            this.btnCrearRolFamilia.Location = new System.Drawing.Point(1764, 173);
             this.btnCrearRolFamilia.Name = "btnCrearRolFamilia";
-            this.btnCrearRolFamilia.Size = new System.Drawing.Size(171, 65);
+            this.btnCrearRolFamilia.Size = new System.Drawing.Size(171, 94);
             this.btnCrearRolFamilia.TabIndex = 8;
             this.btnCrearRolFamilia.Text = "Crear";
             this.btnCrearRolFamilia.UseVisualStyleBackColor = true;
             this.btnCrearRolFamilia.Click += new System.EventHandler(this.btnCrearRolFamilia_Click);
-            // 
-            // rbRol
-            // 
-            this.rbRol.AutoSize = true;
-            this.rbRol.Checked = true;
-            this.rbRol.Location = new System.Drawing.Point(1568, 173);
-            this.rbRol.Name = "rbRol";
-            this.rbRol.Size = new System.Drawing.Size(62, 29);
-            this.rbRol.TabIndex = 9;
-            this.rbRol.TabStop = true;
-            this.rbRol.Text = "Rol";
-            this.rbRol.UseVisualStyleBackColor = true;
-            // 
-            // rbFamilia
-            // 
-            this.rbFamilia.AutoSize = true;
-            this.rbFamilia.Location = new System.Drawing.Point(1568, 208);
-            this.rbFamilia.Name = "rbFamilia";
-            this.rbFamilia.Size = new System.Drawing.Size(99, 29);
-            this.rbFamilia.TabIndex = 10;
-            this.rbFamilia.Text = "Familia";
-            this.rbFamilia.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -158,7 +131,7 @@
             // 
             // btnAplicar
             // 
-            this.btnAplicar.Location = new System.Drawing.Point(1764, 243);
+            this.btnAplicar.Location = new System.Drawing.Point(1764, 283);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(171, 64);
             this.btnAplicar.TabIndex = 13;
@@ -168,7 +141,7 @@
             // 
             // btnAsignar
             // 
-            this.btnAsignar.Location = new System.Drawing.Point(1764, 313);
+            this.btnAsignar.Location = new System.Drawing.Point(1764, 353);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(171, 64);
             this.btnAsignar.TabIndex = 14;
@@ -178,55 +151,13 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(1568, 313);
+            this.btnEliminar.Location = new System.Drawing.Point(1568, 353);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(171, 64);
             this.btnEliminar.TabIndex = 15;
-            this.btnEliminar.Text = "Quitar";
+            this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // groupBoxQuitar
-            // 
-            this.groupBoxQuitar.Controls.Add(this.rbFamiliaQuitar);
-            this.groupBoxQuitar.Controls.Add(this.rbTablaPerfil);
-            this.groupBoxQuitar.Controls.Add(this.rbTablaPermisos);
-            this.groupBoxQuitar.Location = new System.Drawing.Point(1573, 386);
-            this.groupBoxQuitar.Name = "groupBoxQuitar";
-            this.groupBoxQuitar.Size = new System.Drawing.Size(362, 94);
-            this.groupBoxQuitar.TabIndex = 16;
-            this.groupBoxQuitar.TabStop = false;
-            this.groupBoxQuitar.Text = "Tabla:";
-            // 
-            // rbFamiliaQuitar
-            // 
-            this.rbFamiliaQuitar.AutoSize = true;
-            this.rbFamiliaQuitar.Location = new System.Drawing.Point(83, 54);
-            this.rbFamiliaQuitar.Name = "rbFamiliaQuitar";
-            this.rbFamiliaQuitar.Size = new System.Drawing.Size(99, 29);
-            this.rbFamiliaQuitar.TabIndex = 19;
-            this.rbFamiliaQuitar.Text = "Familia";
-            this.rbFamiliaQuitar.UseVisualStyleBackColor = true;
-            // 
-            // rbTablaPerfil
-            // 
-            this.rbTablaPerfil.AutoSize = true;
-            this.rbTablaPerfil.Location = new System.Drawing.Point(246, 19);
-            this.rbTablaPerfil.Name = "rbTablaPerfil";
-            this.rbTablaPerfil.Size = new System.Drawing.Size(79, 29);
-            this.rbTablaPerfil.TabIndex = 18;
-            this.rbTablaPerfil.Text = "Perfil";
-            this.rbTablaPerfil.UseVisualStyleBackColor = true;
-            // 
-            // rbTablaPermisos
-            // 
-            this.rbTablaPermisos.AutoSize = true;
-            this.rbTablaPermisos.Location = new System.Drawing.Point(83, 19);
-            this.rbTablaPermisos.Name = "rbTablaPermisos";
-            this.rbTablaPermisos.Size = new System.Drawing.Size(119, 29);
-            this.rbTablaPermisos.TabIndex = 17;
-            this.rbTablaPermisos.Text = "Permisos";
-            this.rbTablaPermisos.UseVisualStyleBackColor = true;
             // 
             // labelFamilia
             // 
@@ -241,60 +172,86 @@
             // 
             this.treeViewFamilia.Location = new System.Drawing.Point(572, 94);
             this.treeViewFamilia.Name = "treeViewFamilia";
-            this.treeViewFamilia.Size = new System.Drawing.Size(453, 424);
+            this.treeViewFamilia.Size = new System.Drawing.Size(453, 437);
             this.treeViewFamilia.TabIndex = 17;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.rbVerFamilias);
-            this.groupBox2.Controls.Add(this.rbVerPerfiles);
-            this.groupBox2.Location = new System.Drawing.Point(1076, 524);
+            this.groupBox2.Controls.Add(this.rbFamilias);
+            this.groupBox2.Controls.Add(this.rbPerfiles);
+            this.groupBox2.Location = new System.Drawing.Point(1568, 163);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(453, 59);
+            this.groupBox2.Size = new System.Drawing.Size(149, 104);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ver:";
             // 
-            // rbVerFamilias
+            // rbFamilias
             // 
-            this.rbVerFamilias.AutoSize = true;
-            this.rbVerFamilias.Location = new System.Drawing.Point(231, 19);
-            this.rbVerFamilias.Name = "rbVerFamilias";
-            this.rbVerFamilias.Size = new System.Drawing.Size(99, 29);
-            this.rbVerFamilias.TabIndex = 19;
-            this.rbVerFamilias.Text = "Familia";
-            this.rbVerFamilias.UseVisualStyleBackColor = true;
-            this.rbVerFamilias.CheckedChanged += new System.EventHandler(this.rbVerFamilias_CheckedChanged);
+            this.rbFamilias.AutoSize = true;
+            this.rbFamilias.Location = new System.Drawing.Point(18, 69);
+            this.rbFamilias.Name = "rbFamilias";
+            this.rbFamilias.Size = new System.Drawing.Size(112, 29);
+            this.rbFamilias.TabIndex = 19;
+            this.rbFamilias.Text = "Familia";
+            this.rbFamilias.UseVisualStyleBackColor = true;
+            this.rbFamilias.CheckedChanged += new System.EventHandler(this.rbVerFamilias_CheckedChanged);
             // 
-            // rbVerPerfiles
+            // rbPerfiles
             // 
-            this.rbVerPerfiles.AutoSize = true;
-            this.rbVerPerfiles.Checked = true;
-            this.rbVerPerfiles.Location = new System.Drawing.Point(103, 19);
-            this.rbVerPerfiles.Name = "rbVerPerfiles";
-            this.rbVerPerfiles.Size = new System.Drawing.Size(79, 29);
-            this.rbVerPerfiles.TabIndex = 17;
-            this.rbVerPerfiles.TabStop = true;
-            this.rbVerPerfiles.Text = "Perfil";
-            this.rbVerPerfiles.UseVisualStyleBackColor = true;
-            this.rbVerPerfiles.CheckedChanged += new System.EventHandler(this.rbVerPerfiles_CheckedChanged);
+            this.rbPerfiles.AutoSize = true;
+            this.rbPerfiles.Checked = true;
+            this.rbPerfiles.Location = new System.Drawing.Point(18, 19);
+            this.rbPerfiles.Name = "rbPerfiles";
+            this.rbPerfiles.Size = new System.Drawing.Size(92, 29);
+            this.rbPerfiles.TabIndex = 17;
+            this.rbPerfiles.TabStop = true;
+            this.rbPerfiles.Text = "Perfil";
+            this.rbPerfiles.UseVisualStyleBackColor = true;
+            this.rbPerfiles.CheckedChanged += new System.EventHandler(this.rbVerPerfiles_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1579, 445);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 50);
+            this.label2.TabIndex = 22;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1569, 445);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 25);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Opciones:";
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(1764, 423);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(171, 64);
+            this.btnModificar.TabIndex = 24;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // FormGestionDePerfiles_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(2007, 738);
+            this.ClientSize = new System.Drawing.Size(2216, 747);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.labelFamilia);
             this.Controls.Add(this.treeViewFamilia);
-            this.Controls.Add(this.groupBoxQuitar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAsignar);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.rbFamilia);
-            this.Controls.Add(this.rbRol);
             this.Controls.Add(this.btnCrearRolFamilia);
             this.Controls.Add(this.labelNombre);
             this.Controls.Add(this.txtCrear);
@@ -306,8 +263,6 @@
             this.Name = "FormGestionDePerfiles_941lp";
             this.Text = "FormGestionDePerfiles";
             this.Load += new System.EventHandler(this.FormGestionDePerfiles_Load);
-            this.groupBoxQuitar.ResumeLayout(false);
-            this.groupBoxQuitar.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -325,20 +280,17 @@
         private System.Windows.Forms.TextBox txtCrear;
         private System.Windows.Forms.Label labelNombre;
         private System.Windows.Forms.Button btnCrearRolFamilia;
-        private System.Windows.Forms.RadioButton rbRol;
-        private System.Windows.Forms.RadioButton rbFamilia;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.Button btnAsignar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.GroupBox groupBoxQuitar;
-        private System.Windows.Forms.RadioButton rbTablaPerfil;
-        private System.Windows.Forms.RadioButton rbTablaPermisos;
         private System.Windows.Forms.Label labelFamilia;
         private System.Windows.Forms.TreeView treeViewFamilia;
-        private System.Windows.Forms.RadioButton rbFamiliaQuitar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton rbVerFamilias;
-        private System.Windows.Forms.RadioButton rbVerPerfiles;
+        private System.Windows.Forms.RadioButton rbFamilias;
+        private System.Windows.Forms.RadioButton rbPerfiles;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnModificar;
     }
 }
