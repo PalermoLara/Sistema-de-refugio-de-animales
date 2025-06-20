@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class PermisoSimple_941lp : Permiso_941lp
+    public class PermisoSimple_941lp : Perfil_941lp
     {
-        public PermisoSimple_941lp(string pNombrePermiso_941lp) : base(pNombrePermiso_941lp, false, false)
+        public PermisoSimple_941lp(string pNombrePermiso_941lp) : base(pNombrePermiso_941lp)
         {
         }
     }

@@ -45,12 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="estruturaFamilia_941lp.cs" />
     <Compile Include="ormBitacoraFichaMedica_941lp.cs" />
     <Compile Include="ormCedente_941lp.cs" />
+    <Compile Include="ormFamiliaPermiso_941lp.cs" />
+    <Compile Include="ormFamilia_941lp.cs" />
     <Compile Include="ormFichaIngreso_941lp.cs" />
     <Compile Include="ormFichaMedica_941lp.cs" />
     <Compile Include="ormMedicamento_941lp.cs" />
-    <Compile Include="ormPermisos_941lp.cs" />
+    <Compile Include="ormPerfilFamilia_941lp.cs" />
+    <Compile Include="ormPerfil_941lp.cs" />
+    <Compile Include="ormPermiso_941lp.cs" />
     <Compile Include="ormRegistroAnimales_941lp.cs" />
     <Compile Include="ormUsuario_941lp.cs" />
     <Compile Include="ParametroHelper_941lp.cs" />

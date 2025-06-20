@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Familia_941lp : Permiso_941lp
+    public class Familia_941lp : Perfil_941lp
     {
-        private List<Permiso_941lp> listaPermisos_941lp;
+        private List<Perfil_941lp> listaPermisos_941lp;
 
-        public Familia_941lp(string pNombrePermiso_941lp, bool pEsRol_941lp) : base(pNombrePermiso_941lp, pEsRol_941lp, true)
+        public Familia_941lp(string pNombrePermiso_941lp) : base(pNombrePermiso_941lp)
         {
-            listaPermisos_941lp = new List<Permiso_941lp>();
+            listaPermisos_941lp = new List<Perfil_941lp>();
         }
 
-        public List<Permiso_941lp> ObtenerPermisos() => listaPermisos_941lp;
+        public List<Perfil_941lp> ObtenerPermisos() => listaPermisos_941lp;
 
-        public void AgregarPermiso(Permiso_941lp permiso) => listaPermisos_941lp.Add(permiso);
-        public void EliminarPermiso(Permiso_941lp permiso) => listaPermisos_941lp.Remove(permiso);
+        public void AgregarPermiso(Perfil_941lp permiso) => listaPermisos_941lp.Add(permiso);
+        public void EliminarPermiso(Perfil_941lp permiso) => listaPermisos_941lp.Remove(permiso);
     }
 }
