@@ -21,11 +21,13 @@ namespace GUI
     public partial class FormGestionUsuario941lp : Form
     {
         bllUsuario_941lp bllUsuario_941lp;
+        bllPerfil_941lp bllPerfil_941lp;
         ModoOperacion_941lp modo_941lp;
         public FormGestionUsuario941lp()
         {
             InitializeComponent();
             bllUsuario_941lp = new bllUsuario_941lp();
+            bllPerfil_941lp = new bllPerfil_941lp();
             btnAplicar.Enabled = false;
             btnCancelar.Enabled = false;
             modo_941lp = ModoOperacion_941lp.Consulta;
@@ -40,6 +42,17 @@ namespace GUI
             MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
             HabilitarTxt_941lp(false);
             DefinirModoEnTxt_941lp();
+            LlenarComboBoxCompuestos_941lp(bllPerfil_941lp.RetornarPerfiles_941lp());
+        }
+
+        private void LlenarComboBoxCompuestos_941lp(List<Perfil_941lp> listaPermisos_941lp)
+        {
+            comboBoxRoles.Items.Clear();
+            foreach (var permiso_941lp in listaPermisos_941lp)
+            {
+                if (permiso_941lp.GetType() == typeof(Familia_941lp))
+                    comboBoxRoles.Items.Add(permiso_941lp.nombrePermiso_941lp);
+            }
         }
 
         enum ModoOperacion_941lp
