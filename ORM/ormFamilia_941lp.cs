@@ -18,12 +18,6 @@ namespace ORM
             dao_941lp = new dao_941lp();
         }
 
-        private void EjecutarQueryConEntidad_941lp(Familia_941lp familia_941lp, string query_941lp, List<string> propiedadesIncluir_941lp = null)
-        {
-            Dictionary<string, object> parametros_941lp = ParametroHelper_941lp.CrearParametros_941lp(familia_941lp, propiedadesIncluir_941lp);
-            dao_941lp.Query_941lp(query_941lp, parametros_941lp);
-        }
-
         public void AltaFamilia_941lp(Familia_941lp familia_941lp)
         {
             string query_941lp = "INSERT INTO Familia_941lp (nombreFamilia_941lp) VALUES ( @nombreFamilia_941lp)";

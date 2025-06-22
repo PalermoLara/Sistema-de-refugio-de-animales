@@ -15,9 +15,9 @@ namespace BE
             listaPermisos_941lp = new List<Perfil_941lp>();
         }
 
-        public List<Perfil_941lp> ObtenerPermisos() => listaPermisos_941lp;
+        public List<Perfil_941lp> ObtenerPermisos_941lp() => listaPermisos_941lp;
 
-        public void AgregarPermiso(Perfil_941lp permiso) => listaPermisos_941lp.Add(permiso);
-        public void EliminarPermiso(Perfil_941lp permiso) => listaPermisos_941lp.Remove(permiso);
+        public void AgregarPermiso_941lp(Perfil_941lp permiso_941lp) => listaPermisos_941lp.Add(permiso_941lp);
+        public void EliminarPermiso_941lp(Perfil_941lp permiso_941lp) => listaPermisos_941lp.Remove(permiso_941lp);
     }
 }

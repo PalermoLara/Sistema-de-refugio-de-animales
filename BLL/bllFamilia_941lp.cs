@@ -70,7 +70,7 @@ namespace BLL
             // Agregar simples
             foreach (var simple in listaSimples_941lp)
             {
-                f_941lp.AgregarPermiso(simple);
+                f_941lp.AgregarPermiso_941lp(simple);
                 ormFamiliaPermiso_941Lp.AltaIntermedia_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
                 OrmIntemedia_941Lp.AltaIntermedia_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
             }
@@ -78,7 +78,7 @@ namespace BLL
             // Agregar familias
             foreach (var familia in listaFamilia_941lp)
             {
-                f_941lp.AgregarPermiso(familia);
+                f_941lp.AgregarPermiso_941lp(familia);
                 OrmIntemedia_941Lp.AltaIntermedia_941lp(f_941lp.nombrePermiso_941lp, familia.nombrePermiso_941lp);
             }
 
@@ -88,7 +88,7 @@ namespace BLL
         // Método auxiliar
         private void ExpandirFamiliasInternas(Familia_941lp familia, HashSet<string> acumulador)
         {
-            foreach (var permiso in familia.ObtenerPermisos())
+            foreach (var permiso in familia.ObtenerPermisos_941lp())
             {
                 if (permiso is Familia_941lp fHija)
                 {
@@ -102,7 +102,7 @@ namespace BLL
 
         private void ExpandirPermisos(Familia_941lp familia, HashSet<string> acumulador)
         {
-            foreach (var hijo in familia.ObtenerPermisos())
+            foreach (var hijo in familia.ObtenerPermisos_941lp())
             {
                 if (hijo is PermisoSimple_941lp simple)
                 {
@@ -129,7 +129,7 @@ namespace BLL
             var f_941lp = (Familia_941lp)familiaBase;
 
             // 2. Recorrer su estructura interna para eliminar relaciones
-            foreach (var permiso in f_941lp.ObtenerPermisos())
+            foreach (var permiso in f_941lp.ObtenerPermisos_941lp())
             {
                 if (permiso is PermisoSimple_941lp simple)
                 {

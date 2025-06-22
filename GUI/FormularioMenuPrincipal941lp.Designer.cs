@@ -47,7 +47,6 @@
             this.panelSubMenuAdministrador = new System.Windows.Forms.Panel();
             this.btnAdministradorMenuPrincipal = new System.Windows.Forms.Button();
             this.panelSubMenuUsuario = new System.Windows.Forms.Panel();
-            this.comboBoxIdiomas = new System.Windows.Forms.ComboBox();
             this.btnCambiarIdioma = new System.Windows.Forms.Button();
             this.btnCambiarContraseña = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
@@ -110,7 +109,7 @@
             // btnHelp
             // 
             this.btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHelp.Location = new System.Drawing.Point(0, 1248);
+            this.btnHelp.Location = new System.Drawing.Point(0, 1211);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(283, 71);
             this.btnHelp.TabIndex = 18;
@@ -122,7 +121,7 @@
             // panelSubMenuAdopcion
             // 
             this.panelSubMenuAdopcion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuAdopcion.Location = new System.Drawing.Point(0, 1148);
+            this.panelSubMenuAdopcion.Location = new System.Drawing.Point(0, 1111);
             this.panelSubMenuAdopcion.Name = "panelSubMenuAdopcion";
             this.panelSubMenuAdopcion.Size = new System.Drawing.Size(283, 100);
             this.panelSubMenuAdopcion.TabIndex = 17;
@@ -130,7 +129,7 @@
             // btnAdopcion
             // 
             this.btnAdopcion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdopcion.Location = new System.Drawing.Point(0, 1077);
+            this.btnAdopcion.Location = new System.Drawing.Point(0, 1040);
             this.btnAdopcion.Name = "btnAdopcion";
             this.btnAdopcion.Size = new System.Drawing.Size(283, 71);
             this.btnAdopcion.TabIndex = 16;
@@ -142,7 +141,7 @@
             // panelSubMenuReportes
             // 
             this.panelSubMenuReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuReportes.Location = new System.Drawing.Point(0, 950);
+            this.panelSubMenuReportes.Location = new System.Drawing.Point(0, 913);
             this.panelSubMenuReportes.Name = "panelSubMenuReportes";
             this.panelSubMenuReportes.Size = new System.Drawing.Size(283, 127);
             this.panelSubMenuReportes.TabIndex = 15;
@@ -150,7 +149,7 @@
             // btnReportes
             // 
             this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReportes.Location = new System.Drawing.Point(0, 879);
+            this.btnReportes.Location = new System.Drawing.Point(0, 842);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Size = new System.Drawing.Size(283, 71);
             this.btnReportes.TabIndex = 14;
@@ -167,7 +166,7 @@
             this.panelSubMenuMaestro.Controls.Add(this.btnAbrirRegistroCedentes);
             this.panelSubMenuMaestro.Controls.Add(this.btnAnimales);
             this.panelSubMenuMaestro.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuMaestro.Location = new System.Drawing.Point(0, 525);
+            this.panelSubMenuMaestro.Location = new System.Drawing.Point(0, 488);
             this.panelSubMenuMaestro.Name = "panelSubMenuMaestro";
             this.panelSubMenuMaestro.Size = new System.Drawing.Size(283, 354);
             this.panelSubMenuMaestro.TabIndex = 13;
@@ -236,7 +235,7 @@
             // btnMaestroMenuPrincipal
             // 
             this.btnMaestroMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMaestroMenuPrincipal.Location = new System.Drawing.Point(0, 454);
+            this.btnMaestroMenuPrincipal.Location = new System.Drawing.Point(0, 417);
             this.btnMaestroMenuPrincipal.Name = "btnMaestroMenuPrincipal";
             this.btnMaestroMenuPrincipal.Size = new System.Drawing.Size(283, 71);
             this.btnMaestroMenuPrincipal.TabIndex = 10;
@@ -251,7 +250,7 @@
             this.panelSubMenuAdministrador.Controls.Add(this.btnGestionDeUsuario);
             this.panelSubMenuAdministrador.Controls.Add(this.btnGestionarPerfiles);
             this.panelSubMenuAdministrador.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuAdministrador.Location = new System.Drawing.Point(0, 355);
+            this.panelSubMenuAdministrador.Location = new System.Drawing.Point(0, 318);
             this.panelSubMenuAdministrador.Name = "panelSubMenuAdministrador";
             this.panelSubMenuAdministrador.Size = new System.Drawing.Size(283, 99);
             this.panelSubMenuAdministrador.TabIndex = 12;
@@ -259,7 +258,7 @@
             // btnAdministradorMenuPrincipal
             // 
             this.btnAdministradorMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdministradorMenuPrincipal.Location = new System.Drawing.Point(0, 280);
+            this.btnAdministradorMenuPrincipal.Location = new System.Drawing.Point(0, 243);
             this.btnAdministradorMenuPrincipal.Name = "btnAdministradorMenuPrincipal";
             this.btnAdministradorMenuPrincipal.Size = new System.Drawing.Size(283, 75);
             this.btnAdministradorMenuPrincipal.TabIndex = 10;
@@ -271,27 +270,14 @@
             // 
             // panelSubMenuUsuario
             // 
-            this.panelSubMenuUsuario.Controls.Add(this.comboBoxIdiomas);
             this.panelSubMenuUsuario.Controls.Add(this.btnCambiarIdioma);
             this.panelSubMenuUsuario.Controls.Add(this.btnCambiarContraseña);
             this.panelSubMenuUsuario.Controls.Add(this.btnCerrarSesion);
             this.panelSubMenuUsuario.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuUsuario.Location = new System.Drawing.Point(0, 75);
             this.panelSubMenuUsuario.Name = "panelSubMenuUsuario";
-            this.panelSubMenuUsuario.Size = new System.Drawing.Size(283, 205);
+            this.panelSubMenuUsuario.Size = new System.Drawing.Size(283, 168);
             this.panelSubMenuUsuario.TabIndex = 11;
-            // 
-            // comboBoxIdiomas
-            // 
-            this.comboBoxIdiomas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comboBoxIdiomas.FormattingEnabled = true;
-            this.comboBoxIdiomas.Items.AddRange(new object[] {
-            "en",
-            "es"});
-            this.comboBoxIdiomas.Location = new System.Drawing.Point(0, 165);
-            this.comboBoxIdiomas.Name = "comboBoxIdiomas";
-            this.comboBoxIdiomas.Size = new System.Drawing.Size(283, 33);
-            this.comboBoxIdiomas.TabIndex = 7;
             // 
             // btnCambiarIdioma
             // 
@@ -402,7 +388,6 @@
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button btnCambiarIdioma;
         private System.Windows.Forms.Button btnCambiarContraseña;
-        private System.Windows.Forms.ComboBox comboBoxIdiomas;
         private System.Windows.Forms.Button btnAdministradorMenuPrincipal;
         private System.Windows.Forms.Panel panelSubMenuAdministrador;
         private System.Windows.Forms.Button btnMaestroMenuPrincipal;

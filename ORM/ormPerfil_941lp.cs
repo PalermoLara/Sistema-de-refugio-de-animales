@@ -75,6 +75,12 @@ namespace ORM
             return estruturaFamilia_941lp.ObtenerCompositeFamilias_941lp(RetornarFamilias_941lp(), RetornarPermisosSimple_941lp(), RetornarRelaciones_941lp());
         }
 
+        public void ReconstruirComposite_941lp()
+        {
+            ObtenerCompositeFamilias_941lp();
+            ObtenerCompositePerfiles_941lp();
+        }
+
         public Dictionary<string, Perfil_941lp> ObtenerCompositePerfiles_941lp()
         {
             // 1. Obtener los perfiles reales (roles) desde la tabla Perfil_941lp
@@ -106,7 +112,7 @@ namespace ORM
                     dicPermisosSimples.TryGetValue(nombrePermiso, out var permisoSimple))
                 {
                     if(perfil is Familia_941lp familia_941lp)
-                        familia_941lp.AgregarPermiso(permisoSimple);
+                        familia_941lp.AgregarPermiso_941lp(permisoSimple);
                 }
             }
 
@@ -125,7 +131,7 @@ namespace ORM
                     dicFamilias.TryGetValue(nombreFamilia, out var familiaArmada))
                 {
                     if (perfil is Familia_941lp familia_941lp)
-                        familia_941lp.AgregarPermiso(familiaArmada);
+                        familia_941lp.AgregarPermiso_941lp(familiaArmada);
                 }
             }
 

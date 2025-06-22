@@ -130,7 +130,7 @@ namespace GUI
 
             if (permiso_941lp is Familia_941lp compuesto_941lp)
             {
-                foreach (var hijo_941lp in compuesto_941lp.ObtenerPermisos())
+                foreach (var hijo_941lp in compuesto_941lp.ObtenerPermisos_941lp())
                 {
                     nodo_941lp.Nodes.Add(CrearNodoDesdePermiso(hijo_941lp)); 
                 }
@@ -270,7 +270,6 @@ namespace GUI
                 }
                 modo_941lp = ModoOperacion_941lp.Consulta;
                 HabilitarControles_941lp();
-                HabilitarControles_941lp();
                 MostrarPermisosTreeFamilia_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
                 MostrarTreeViewPerfil_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
             }
@@ -364,7 +363,7 @@ namespace GUI
         {
             var controles_941lp = new Control[]
             {
-                txtCrear, btnCancelar, btnCrearRolFamilia, btnAplicar, btnSalir, btnEliminar, btnAsignar,  btnCrearRolFamilia
+                txtCrear, btnCancelar, btnCrearRolFamilia, btnAplicar, btnSalir, btnEliminar, btnAsignar,  btnCrearRolFamilia, btnModificar
             };
 
             foreach (var control_941lp in controles_941lp)

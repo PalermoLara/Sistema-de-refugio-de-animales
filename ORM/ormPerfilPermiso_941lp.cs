@@ -29,24 +29,24 @@ namespace ORM
         }
 
         //eliminando completamente un permiso o familia del sistema
-        public void EliminarDeIntermediaPermanente_941lp(string nombrePerfil_941lp, string nombreFamilia_941lp)
+        public void EliminarDeIntermediaPermanente_941lp(string nombrePerfil_941lp, string nombrePermiso_941lp)
         {
-            string queryIntermedia_941lp = "DELETE FROM Perfil_Familia_941lp WHERE nombrePerfil_941lp = @nombrePerfil_941lp OR nombreFamilia_941lp = @nombreFamilia_941lp";
+            string queryIntermedia_941lp = "DELETE FROM Perfil_Permiso_941lp WHERE nombrePerfil_941lp = @nombrePerfil_941lp OR nombrePermiso_941lp = @nombrePermiso_941lp";
             var parametros_941lp = new Dictionary<string, object>
             {
                 { "@nombrePerfil_941lp", nombrePerfil_941lp},
-                { "@nombreFamilia_941lp", nombreFamilia_941lp }
+                { "@nombrePermiso_941lp", nombrePermiso_941lp }
             };
             dao_941lp.Query_941lp(queryIntermedia_941lp, parametros_941lp);
         }
 
-        public void EliminarDeIntermedia_941lp(string nombrePerfil_941lp, string nombreFamilia_941lp)
+        public void EliminarDeIntermedia_941lp(string nombrePerfil_941lp, string nombrePermiso_941lp)
         {
-            string queryIntermedia_941lp = "DELETE FROM Perfil_Familia_941lp WHERE nombrePerfil_941lp = @nombrePerfil_941lp AND nombreFamilia_941lp = @nombreFamilia_941lp";
+            string queryIntermedia_941lp = "DELETE FROM Perfil_Permiso_941lp WHERE nombrePerfil_941lp = @nombrePerfil_941lp AND nombrePermiso_941lp = @nombrePermiso_941lp";
             var parametros_941lp = new Dictionary<string, object>
             {
                 { "@nombrePerfil_941lp", nombrePerfil_941lp},
-                { "@nombreFamilia_941lp", nombreFamilia_941lp }
+                { "@nombrePermiso_941lp", nombrePermiso_941lp }
             };
             dao_941lp.Query_941lp(queryIntermedia_941lp, parametros_941lp);
         }

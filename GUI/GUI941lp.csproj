@@ -61,6 +61,12 @@
     <Compile Include="FormBitocoraFichaMedica.Designer.cs">
       <DependentUpon>FormBitocoraFichaMedica.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCambioDeIdioma_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCambioDeIdioma_941lp.Designer.cs">
+      <DependentUpon>FormCambioDeIdioma_941lp.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEstadoDeAdopcion_941lp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBitocoraFichaMedica.resx">
       <DependentUpon>FormBitocoraFichaMedica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCambioDeIdioma_941lp.resx">
+      <DependentUpon>FormCambioDeIdioma_941lp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEstadoDeAdopcion_941lp.resx">
       <DependentUpon>FormEstadoDeAdopcion_941lp.cs</DependentUpon>

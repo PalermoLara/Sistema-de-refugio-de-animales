@@ -25,7 +25,7 @@ namespace ORM
                     nodoFamilia_941lp is Familia_941lp padreFamilia &&
                     permisos_941lp.TryGetValue(permiso_941lp, out Perfil_941lp nodoAñadido_941lp))
                 {
-                    padreFamilia.AgregarPermiso(nodoAñadido_941lp);
+                    padreFamilia.AgregarPermiso_941lp(nodoAñadido_941lp);
                 }
             }
             return permisos_941lp;

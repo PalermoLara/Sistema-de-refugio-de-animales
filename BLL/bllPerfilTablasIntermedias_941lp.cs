@@ -24,6 +24,47 @@ namespace BLL
             ormPerfilPermiso_941lp = new ormPerfilPermiso_941lp();
         }
 
+        private void QuitarPermisoDeOtrasFamilias(Perfil_941lp permiso,List<Familia_941lp> familiasIncluidas)
+        {
+            foreach (var familia in familiasIncluidas)
+            {
+                QuitarPermisoRecursivo(familia, permiso);
+            }
+        }
+
+        private void QuitarPermisoRecursivo(Familia_941lp familia, Perfil_941lp permisoABuscar)
+        {
+            var hijos = familia.ObtenerPermisos_941lp().ToList(); // Evitamos modificar mientras iteramos
+
+            foreach (var hijo in hijos)
+            {
+                // Comparar por nombre (ya que todos los permisos tienen nombre único)
+                if (hijo.nombrePermiso_941lp == permisoABuscar.nombrePermiso_941lp)
+                {
+                    familia.EliminarPermiso_941lp(hijo);
+
+                    // Remover de la BD según tipo
+                    if (hijo is PermisoSimple_941lp)
+                    {
+                        ormPerfilPermiso_941lp.EliminarDeIntermedia_941lp(familia.nombrePermiso_941lp, hijo.nombrePermiso_941lp);
+                    }
+                    else if (hijo is Familia_941lp)
+                    {
+                        ormPerfilFamilia_941lp.EliminarDeIntermedia_941lp(familia.nombrePermiso_941lp, hijo.nombrePermiso_941lp);
+                    }
+
+                    return; // Ya lo eliminamos, no seguimos recorriendo
+                }
+
+                // Si es otra familia, seguir buscando recursivamente
+                if (hijo is Familia_941lp subFamilia)
+                {
+                    QuitarPermisoRecursivo(subFamilia, permisoABuscar);
+                }
+            }
+        }
+
+
         public void AltaPerfilIntermedias_941lp(string nombrePerfil_941lp, List<string> permisosAñadir_941lp)
         {
             Familia_941lp f_941lp = new Familia_941lp(nombrePerfil_941lp);
@@ -68,34 +109,20 @@ namespace BLL
             // Eliminar familias hijas ya incluidas en otras
             listaFamilia_941lp.RemoveAll(f => familiasYaIncluidas.Contains(f.nombrePermiso_941lp));
 
-            string[] permisosPorDefecto = { "Cambiar contraseña", "Cambiar idioma", "Cerrar sesion" };
-
-            foreach (string permisoDefecto in permisosPorDefecto)
-            {
-                // Si no está ya heredado ni agregado directamente
-                bool yaEsta = listaSimples_941lp.Any(p => p.nombrePermiso_941lp == permisoDefecto)
-                           || permisosYaAsignados.Contains(permisoDefecto);
-
-                if (!yaEsta)
-                {
-                    if (permisosSimples.TryGetValue(permisoDefecto, out var pDefecto))
-                    {
-                        listaSimples_941lp.Add(pDefecto);
-                    }
-                }
-            }
 
             // Agregar simples
             foreach (var simple in listaSimples_941lp)
             {
-                f_941lp.AgregarPermiso(simple);
+                QuitarPermisoDeOtrasFamilias(simple, listaFamilia_941lp);
+                f_941lp.AgregarPermiso_941lp(simple);
                 ormPerfilPermiso_941lp.AltaIntermedia_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
             }
 
             // Agregar familias
             foreach (var familia in listaFamilia_941lp)
             {
-                f_941lp.AgregarPermiso(familia);
+                QuitarPermisoDeOtrasFamilias(familia, listaFamilia_941lp);
+                f_941lp.AgregarPermiso_941lp(familia);
                 ormPerfilFamilia_941lp.AltaIntermedia_941lp(f_941lp.nombrePermiso_941lp, familia.nombrePermiso_941lp);
             }
         }
@@ -103,7 +130,7 @@ namespace BLL
         // Método auxiliar
         private void ExpandirFamiliasInternas(Familia_941lp familia, HashSet<string> acumulador)
         {
-            foreach (var permiso in familia.ObtenerPermisos())
+            foreach (var permiso in familia.ObtenerPermisos_941lp())
             {
                 if (permiso is Familia_941lp fHija)
                 {
@@ -117,7 +144,7 @@ namespace BLL
 
         private void ExpandirPermisos(Familia_941lp familia, HashSet<string> acumulador)
         {
-            foreach (var hijo in familia.ObtenerPermisos())
+            foreach (var hijo in familia.ObtenerPermisos_941lp())
             {
                 if (hijo is PermisoSimple_941lp simple)
                 {
@@ -180,14 +207,14 @@ namespace BLL
             // Agregar simples
             foreach (var simple in listaSimples_941lp)
             {
-                f_941lp.AgregarPermiso(simple);
+                f_941lp.AgregarPermiso_941lp(simple);
                 ormPerfilPermiso_941lp.EliminarDeIntermediaPermanente_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
             }
 
             // Agregar familias
             foreach (var familia in listaFamilia_941lp)
             {
-                f_941lp.AgregarPermiso(familia);
+                f_941lp.AgregarPermiso_941lp(familia);
                 ormPerfilFamilia_941lp.EliminarDeIntermediaPermanente_941lp(f_941lp.nombrePermiso_941lp, familia.nombrePermiso_941lp);
             }
         }
