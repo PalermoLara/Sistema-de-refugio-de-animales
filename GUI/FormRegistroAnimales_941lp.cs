@@ -34,7 +34,9 @@ namespace GUI
         }
 
         private void FormRegistroAnimales_941lp_Load(object sender, EventArgs e)
+        
         {
+            modo_941lp = ModoOperacion_941lp.Consulta;
             dataAnimales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataAnimales.MultiSelect = false;
             dataAnimales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -257,12 +259,14 @@ namespace GUI
                         bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp : codigoIngresado_941lp,estadoDeAdopcion_941lp : estadoDeAdopcionIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Baja:
-                        codigoIngresado_941lp = txtCodigo.Text;
-                        if (comboBoxVivo.Text == "No")
+                        if (dataAnimales.SelectedRows[0].Cells[7].Value.ToString() == "False") throw new Exception("El animal ya esta dado de baja");
+                        DialogResult dr_941lp = MessageBox.Show("¿Está seguro que desea dar de baja al animal?", "FALLECIMIENTO", MessageBoxButtons.YesNo);
+                        if (dr_941lp == DialogResult.Yes)
                         {
+                            codigoIngresado_941lp = txtCodigo.Text;
                             vivoIngresado_941lp = false;
+                            bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp: codigoIngresado_941lp, vivo_941lp: vivoIngresado_941lp);
                         }
-                        bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp: codigoIngresado_941lp, vivo_941lp :  vivoIngresado_941lp);
                         break;
                     default:
                         MessageBox.Show("Error");
@@ -298,8 +302,7 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Consulta;
                 HabilitarBotones_941lp();
                 HabilitarControlesDeIngresoDeDatos_941lp(false);
-                comboBoxVivo.SelectedItem = null;
-                comboBoxEstado.SelectedItem = null;
+                MostrarDatosEnTxt_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -311,12 +314,18 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Modificar;
                 HabilitarControlesDeIngresoDeDatos_941lp(true);
                 HabilitarBotones_941lp();
+                MostrarDatosEnTxt_941lp();
                 comboBoxEstado.Enabled = true;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void dataAnimales_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MostrarDatosEnTxt_941lp();
+        }
+
+        private void MostrarDatosEnTxt_941lp()
         {
             try
             {
@@ -329,7 +338,7 @@ namespace GUI
                     comboBoxTamaño.SelectedItem = dataAnimales.SelectedRows[0].Cells[4].Value.ToString();
                     comboBoxSexo.SelectedItem = dataAnimales.SelectedRows[0].Cells[5].Value.ToString();
                     comboBoxEstado.SelectedItem = dataAnimales.SelectedRows[0].Cells[6].Value.ToString();
-                    if (dataAnimales.SelectedRows[0].Cells[7].Value.ToString()=="True")
+                    if (dataAnimales.SelectedRows[0].Cells[7].Value.ToString() == "True")
                     {
                         comboBoxVivo.SelectedIndex = 0;
                     }
@@ -337,7 +346,7 @@ namespace GUI
                     {
                         comboBoxVivo.SelectedIndex = 1;
                     }
-                } 
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -368,13 +377,11 @@ namespace GUI
         {
             try
             {
-                DialogResult dr_941lp = MessageBox.Show("¿Está seguro que desea dar de baja al animal?", "FALLECIMIENTO", MessageBoxButtons.YesNo);
-                if(dr_941lp == DialogResult.Yes)
-                {
-                    modo_941lp = ModoOperacion_941lp.Baja;
-                    HabilitarControlesDeIngresoDeDatos_941lp(false);
-                    HabilitarBotones_941lp();
-                }
+                
+                modo_941lp = ModoOperacion_941lp.Baja;
+                HabilitarControlesDeIngresoDeDatos_941lp(false);
+                HabilitarBotones_941lp();
+                MostrarDatosEnTxt_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

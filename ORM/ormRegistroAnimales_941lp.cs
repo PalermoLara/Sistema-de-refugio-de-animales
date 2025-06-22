@@ -43,7 +43,6 @@ namespace ORM
             return codigo_941lp;
         }
 
-
         public void Modificar_941lp(Animal_941lp animal_941lp)
         {
             string query_941lp = "UPDATE Animal_941lp SET especie_941lp = @especie_941lp, raza_941lp = @raza_941lp,nombre_941lp = @nombre_941lp, tamaño_941lp = @tamaño_941lp, sexo_941lp = @sexo_941lp, estadoAdopcion_941lp = @estadoAdopcion_941lp, vivo_941lp = @vivo_941lp" +

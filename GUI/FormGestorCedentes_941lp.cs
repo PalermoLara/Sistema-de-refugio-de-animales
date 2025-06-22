@@ -27,8 +27,10 @@ namespace GUI
             AplicarColorControles_941lp();
             modo_941lp = ModoOperacion_941lp.Consulta;
         }
+
         private void FormGestorCedentes_941lp_Load(object sender, EventArgs e)
         {
+            modo_941lp = ModoOperacion_941lp.Consulta;
             dataCedentes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataCedentes.MultiSelect = false;
             dataCedentes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

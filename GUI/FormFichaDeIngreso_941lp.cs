@@ -124,7 +124,7 @@ namespace GUI
             // Mostrar en la grilla
             foreach (Animal_941lp a_941lp in animalLista_941lp)
             {
-                if(a_941lp.estadoAdopcion_941lp == "Adoptado")
+                if(a_941lp.estadoAdopcion_941lp != "Adoptado")
                 {
                     int rowIdex_941lp = dataAnimales.Rows.Add(a_941lp.codigoAnimal_941lp,a_941lp.especie_941lp,a_941lp.raza_941lp,a_941lp.nombre_941lp,a_941lp.tamaño_941lp,a_941lp.sexo_941lp,a_941lp.estadoAdopcion_941lp,a_941lp.vivo_941lp);
                     if(a_941lp.vivo_941lp == false)
@@ -161,6 +161,7 @@ namespace GUI
         {
             try
             {
+                if (dataAnimales.Rows.Count == 0) throw new Exception("No hay animales a los que hacerle la ficha de ingreso");
                 DialogResult drAnimal_941lp = MessageBox.Show("¿Nuevo animal?", "Generar ficha médica", MessageBoxButtons.YesNo);
                 if(drAnimal_941lp == DialogResult.Yes)
                 {

@@ -51,6 +51,10 @@ namespace GUI
             HabilitarTxt_941lp(true);
             btnCancelar.Enabled = false;
             btnAplicar.Enabled = false;
+            rbDisponibleAdopcion.Enabled = false;
+            rbEnEvaluacionAdopcion.Enabled = false;
+            rbDisponibleAdopcion.Checked = false;
+            rbEnEvaluacionAdopcion.Checked = false;
             AplicarColorControles_941lp();
         }
 
@@ -215,6 +219,8 @@ namespace GUI
                 else
                 {
                     modo_941lp = ModoOperacion_941lp.DefinirEstado;
+                    rbDisponibleAdopcion.Enabled = true;
+                    rbEnEvaluacionAdopcion.Enabled = true;
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -315,6 +321,10 @@ namespace GUI
             btnAplicar.Enabled = false;
             btnCrearFichaMedica.Enabled = true;
             btnModificarFichaMedica.Enabled = true;
+            rbDisponibleAdopcion.Enabled = false;
+            rbEnEvaluacionAdopcion.Enabled = false;
+            rbDisponibleAdopcion.Checked = false;
+            rbEnEvaluacionAdopcion.Checked = false;
             btnSalir.Enabled = true;
             AplicarColorControles_941lp();
             HabilitarTxt_941lp(false);
