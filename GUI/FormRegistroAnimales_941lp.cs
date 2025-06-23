@@ -259,13 +259,14 @@ namespace GUI
                         bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp : codigoIngresado_941lp,estadoDeAdopcion_941lp : estadoDeAdopcionIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Baja:
-                        if (dataAnimales.SelectedRows[0].Cells[7].Value.ToString() == "False") throw new Exception("El animal ya esta dado de baja");
+                        if (dataAnimales.SelectedRows[0].Cells[7].Value.ToString() == "False") { modo_941lp = ModoOperacion_941lp.Consulta; throw new Exception("El animal ya esta dado de baja"); };
                         DialogResult dr_941lp = MessageBox.Show("¿Está seguro que desea dar de baja al animal?", "FALLECIMIENTO", MessageBoxButtons.YesNo);
                         if (dr_941lp == DialogResult.Yes)
                         {
                             codigoIngresado_941lp = txtCodigo.Text;
                             vivoIngresado_941lp = false;
-                            bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp: codigoIngresado_941lp, vivo_941lp: vivoIngresado_941lp);
+                            estadoDeAdopcionIngresado_941lp = "Muerto";
+                            bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp: codigoIngresado_941lp,estadoDeAdopcion_941lp : estadoDeAdopcionIngresado_941lp, vivo_941lp: vivoIngresado_941lp);
                         }
                         break;
                     default:
@@ -277,6 +278,7 @@ namespace GUI
                 MostrarDataAnimales_941lp(bllRegistroAnimales_941lp.RetornarAnimales_941lp());
                 HabilitarControlesDeIngresoDeDatos_941lp(false);
                 HabilitarBotones_941lp();
+                
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

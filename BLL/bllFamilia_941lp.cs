@@ -13,10 +13,12 @@ namespace BLL
         ormFamilia_941lp orm_941lp;
         ormPermiso_941lp ormPermiso_941Lp;
         ormIntemedia_941lp OrmIntemedia_941Lp;
+        ormPerfil_941lp OrmPerfil_941lp;
         ormFamiliaPermiso_941lp ormFamiliaPermiso_941Lp;
 
         public bllFamilia_941lp()
         {
+            OrmPerfil_941lp = new ormPerfil_941lp();
             orm_941lp = new ormFamilia_941lp();
             ormPermiso_941Lp = new ormPermiso_941lp();
             OrmIntemedia_941Lp = new ormIntemedia_941lp();
@@ -118,8 +120,54 @@ namespace BLL
             }
         }
 
+        private bool EstaContenidaEnOtraEstructura_941lp(string nombreFamiliaBuscada_941lp)
+        {
+            var familias_941lp = orm_941lp.ObtenerCompositeFamilias_941lp(); // Diccionario<string, Familia_941lp>
+            var perfiles_941lp = OrmPerfil_941lp.ObtenerCompositePerfiles_941lp(); // Diccionario<string, Perfil_941lp>
+
+            var estructuras_941lp = familias_941lp.Values.Cast<Perfil_941lp>()
+                                  .Concat(perfiles_941lp.Values);
+
+            foreach (var estructura_941lp in estructuras_941lp)
+            {
+                // Evitar que se analice a sí misma
+                if (estructura_941lp is Familia_941lp familiaEstructura &&
+                    familiaEstructura.nombrePermiso_941lp != nombreFamiliaBuscada_941lp)
+                {
+                    if (ContieneComoHijaRecursivo_941lp(familiaEstructura, nombreFamiliaBuscada_941lp))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool ContieneComoHijaRecursivo_941lp(Familia_941lp perfil_941lp, string nombreContenidaBuscada_941lp)
+        {
+            foreach (var permiso_941lp in perfil_941lp.ObtenerPermisos_941lp())
+            {
+                if (permiso_941lp is Familia_941lp familia_941lp)
+                {
+                    if (familia_941lp.nombrePermiso_941lp == nombreContenidaBuscada_941lp)
+                        return true;
+
+                    if (ContieneComoHijaRecursivo_941lp(familia_941lp, nombreContenidaBuscada_941lp))
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+
         public void EliminarFamilia_941lp(string nombreFamilia_941lp)
         {
+            if (EstaContenidaEnOtraEstructura_941lp(nombreFamilia_941lp))
+            {
+                throw new InvalidOperationException($"La familia '{nombreFamilia_941lp}' no puede eliminarse porque está contenida dentro de otra familia o perfil.");
+            }
             // 1. Obtener la familia compuesta desde la estructura en memoria
             var familiasEstructuradas = orm_941lp.ObtenerCompositeFamilias_941lp();
 
@@ -129,16 +177,16 @@ namespace BLL
             var f_941lp = (Familia_941lp)familiaBase;
 
             // 2. Recorrer su estructura interna para eliminar relaciones
-            foreach (var permiso in f_941lp.ObtenerPermisos_941lp())
+            foreach (var permiso_941lp in f_941lp.ObtenerPermisos_941lp())
             {
-                if (permiso is PermisoSimple_941lp simple)
+                if (permiso_941lp is PermisoSimple_941lp simple)
                 {
-                    ormFamiliaPermiso_941Lp.EliminarDeIntermediaPermanente_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
-                    OrmIntemedia_941Lp.EliminarDeIntermediaPermanente_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
+                    ormFamiliaPermiso_941Lp.EliminarDeIntermedia_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
+                    OrmIntemedia_941Lp.EliminarDeIntermedia_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
                 }
-                else if (permiso is Familia_941lp subFamilia)
+                else if (permiso_941lp is Familia_941lp subFamilia)
                 {
-                    OrmIntemedia_941Lp.EliminarDeIntermediaPermanente_941lp(f_941lp.nombrePermiso_941lp, subFamilia.nombrePermiso_941lp);
+                    OrmIntemedia_941Lp.EliminarDeIntermedia_941lp(f_941lp.nombrePermiso_941lp, subFamilia.nombrePermiso_941lp);
                 }
             }
 

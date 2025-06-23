@@ -48,6 +48,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.labelPerfiles = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,7 +191,7 @@
             this.rbFamilias.AutoSize = true;
             this.rbFamilias.Location = new System.Drawing.Point(18, 69);
             this.rbFamilias.Name = "rbFamilias";
-            this.rbFamilias.Size = new System.Drawing.Size(112, 29);
+            this.rbFamilias.Size = new System.Drawing.Size(99, 29);
             this.rbFamilias.TabIndex = 19;
             this.rbFamilias.Text = "Familia";
             this.rbFamilias.UseVisualStyleBackColor = true;
@@ -202,7 +203,7 @@
             this.rbPerfiles.Checked = true;
             this.rbPerfiles.Location = new System.Drawing.Point(18, 19);
             this.rbPerfiles.Name = "rbPerfiles";
-            this.rbPerfiles.Size = new System.Drawing.Size(92, 29);
+            this.rbPerfiles.Size = new System.Drawing.Size(79, 29);
             this.rbPerfiles.TabIndex = 17;
             this.rbPerfiles.TabStop = true;
             this.rbPerfiles.Text = "Perfil";
@@ -214,7 +215,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(1579, 445);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 50);
+            this.label2.Size = new System.Drawing.Size(0, 25);
             this.label2.TabIndex = 22;
             // 
             // label3
@@ -236,12 +237,22 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // labelPerfiles
+            // 
+            this.labelPerfiles.AutoSize = true;
+            this.labelPerfiles.Location = new System.Drawing.Point(1071, 63);
+            this.labelPerfiles.Name = "labelPerfiles";
+            this.labelPerfiles.Size = new System.Drawing.Size(90, 25);
+            this.labelPerfiles.TabIndex = 25;
+            this.labelPerfiles.Text = "Perfiles:";
+            // 
             // FormGestionDePerfiles_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(2216, 747);
+            this.Controls.Add(this.labelPerfiles);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -292,5 +303,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Label labelPerfiles;
     }
 }

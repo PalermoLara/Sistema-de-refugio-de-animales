@@ -172,13 +172,10 @@ namespace GUI
                 {
                     formGestorCedentes_941lp.ShowDialog();
                 }
-                if (drAnimal_941lp == DialogResult.No && drCedente_941lp == DialogResult.No)
-                {
-                    modo_941lp = ModoOperacion_941lp.Alta;
-                    HabilitarTxt_941lp(true);
-                    VisibilidadDeBotones_941lp();
-                    HabilitarGrillas(true);
-                }
+                modo_941lp = ModoOperacion_941lp.Alta;
+                HabilitarTxt_941lp(true);
+                VisibilidadDeBotones_941lp();
+                HabilitarGrillas(true);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -420,6 +417,11 @@ namespace GUI
                 CargarTxt_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dataAnimales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

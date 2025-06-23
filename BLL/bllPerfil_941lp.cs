@@ -256,15 +256,15 @@ namespace BLL
             var f_941lp = (Familia_941lp)familiaBase;
 
             // 2. Recorrer su estructura interna para eliminar relaciones
-            foreach (var permiso in f_941lp.ObtenerPermisos_941lp())
+            foreach (var permiso_941lp in f_941lp.ObtenerPermisos_941lp())
             {
-                if (permiso is PermisoSimple_941lp simple)
+                if (permiso_941lp is PermisoSimple_941lp simple_941lp)
                 {
-                    ormPerfilPermiso_941lp.EliminarDeIntermedia_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
+                    ormPerfilPermiso_941lp.EliminarDeIntermedia_941lp(f_941lp.nombrePermiso_941lp, simple_941lp.nombrePermiso_941lp);
                 }
-                else if (permiso is Familia_941lp subFamilia)
+                else if (permiso_941lp is Familia_941lp subFamilia_941lp)
                 {
-                    bllPerfilFamilia_941lp.EliminarDeIntermediaPermanente_941lp(f_941lp.nombrePermiso_941lp, subFamilia.nombrePermiso_941lp);
+                    bllPerfilFamilia_941lp.EliminarDeIntermedia_941lp(f_941lp.nombrePermiso_941lp, subFamilia_941lp.nombrePermiso_941lp);
                 }
             }
 
