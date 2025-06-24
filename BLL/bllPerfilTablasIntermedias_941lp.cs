@@ -171,8 +171,7 @@ namespace BLL
             var permisosSimples = ormPermiso_941Lp.RetornarPermisos_941lp()
                 .ToDictionary(p => p.nombrePermiso_941lp);
 
-            var familiasSinEstructura = orm_941lp.RetornarFamilias_941lp()
-                .ToDictionary(f => f.nombrePermiso_941lp);
+            var familiasSinEstructura = orm_941lp.ObtenerCompositeFamilias_941lp();
 
             var familiasEstructuradas = orm_941lp.ObtenerCompositePerfiles_941lp();
 
