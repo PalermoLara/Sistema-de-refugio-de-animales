@@ -191,7 +191,7 @@
             this.labelCastrado.Location = new System.Drawing.Point(1652, 496);
             this.labelCastrado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCastrado.Name = "labelCastrado";
-            this.labelCastrado.Size = new System.Drawing.Size(65, 17);
+            this.labelCastrado.Size = new System.Drawing.Size(125, 31);
             this.labelCastrado.TabIndex = 4;
             this.labelCastrado.Text = "Castrado";
             // 
@@ -210,7 +210,7 @@
             this.labelDieta.Location = new System.Drawing.Point(1662, 573);
             this.labelDieta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDieta.Name = "labelDieta";
-            this.labelDieta.Size = new System.Drawing.Size(41, 17);
+            this.labelDieta.Size = new System.Drawing.Size(78, 31);
             this.labelDieta.TabIndex = 6;
             this.labelDieta.Text = "Dieta";
             // 
@@ -229,7 +229,7 @@
             this.labelObservaciones.Location = new System.Drawing.Point(1652, 656);
             this.labelObservaciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelObservaciones.Name = "labelObservaciones";
-            this.labelObservaciones.Size = new System.Drawing.Size(103, 17);
+            this.labelObservaciones.Size = new System.Drawing.Size(196, 31);
             this.labelObservaciones.TabIndex = 10;
             this.labelObservaciones.Text = "Observaciones";
             // 
@@ -275,7 +275,7 @@
             this.rbNoCastrado.Location = new System.Drawing.Point(200, 27);
             this.rbNoCastrado.Margin = new System.Windows.Forms.Padding(6);
             this.rbNoCastrado.Name = "rbNoCastrado";
-            this.rbNoCastrado.Size = new System.Drawing.Size(61, 29);
+            this.rbNoCastrado.Size = new System.Drawing.Size(74, 29);
             this.rbNoCastrado.TabIndex = 1;
             this.rbNoCastrado.TabStop = true;
             this.rbNoCastrado.Text = "NO";
@@ -287,7 +287,7 @@
             this.rbSiCastrado.Location = new System.Drawing.Point(58, 27);
             this.rbSiCastrado.Margin = new System.Windows.Forms.Padding(6);
             this.rbSiCastrado.Name = "rbSiCastrado";
-            this.rbSiCastrado.Size = new System.Drawing.Size(49, 29);
+            this.rbSiCastrado.Size = new System.Drawing.Size(62, 29);
             this.rbSiCastrado.TabIndex = 0;
             this.rbSiCastrado.TabStop = true;
             this.rbSiCastrado.Text = "SI";
@@ -476,7 +476,7 @@
             this.rbDisponibleAdopcion.Location = new System.Drawing.Point(320, 67);
             this.rbDisponibleAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.rbDisponibleAdopcion.Name = "rbDisponibleAdopcion";
-            this.rbDisponibleAdopcion.Size = new System.Drawing.Size(101, 24);
+            this.rbDisponibleAdopcion.Size = new System.Drawing.Size(197, 41);
             this.rbDisponibleAdopcion.TabIndex = 1;
             this.rbDisponibleAdopcion.Text = "Disponible";
             this.rbDisponibleAdopcion.UseVisualStyleBackColor = true;
@@ -487,7 +487,7 @@
             this.rbEnEvaluacionAdopcion.Location = new System.Drawing.Point(40, 67);
             this.rbEnEvaluacionAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.rbEnEvaluacionAdopcion.Name = "rbEnEvaluacionAdopcion";
-            this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(126, 24);
+            this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(248, 41);
             this.rbEnEvaluacionAdopcion.TabIndex = 0;
             this.rbEnEvaluacionAdopcion.Text = "En evaluación";
             this.rbEnEvaluacionAdopcion.UseVisualStyleBackColor = true;
@@ -580,7 +580,7 @@
             this.checkBoxMedicamentos.Location = new System.Drawing.Point(1156, 438);
             this.checkBoxMedicamentos.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxMedicamentos.Name = "checkBoxMedicamentos";
-            this.checkBoxMedicamentos.Size = new System.Drawing.Size(207, 29);
+            this.checkBoxMedicamentos.Size = new System.Drawing.Size(220, 29);
             this.checkBoxMedicamentos.TabIndex = 69;
             this.checkBoxMedicamentos.Text = "Sin medicamentos";
             this.checkBoxMedicamentos.UseVisualStyleBackColor = true;
@@ -590,7 +590,7 @@
             this.checkBoxBuscarFichaSegunAnimal.AutoSize = true;
             this.checkBoxBuscarFichaSegunAnimal.Location = new System.Drawing.Point(846, 442);
             this.checkBoxBuscarFichaSegunAnimal.Name = "checkBoxBuscarFichaSegunAnimal";
-            this.checkBoxBuscarFichaSegunAnimal.Size = new System.Drawing.Size(284, 29);
+            this.checkBoxBuscarFichaSegunAnimal.Size = new System.Drawing.Size(297, 29);
             this.checkBoxBuscarFichaSegunAnimal.TabIndex = 71;
             this.checkBoxBuscarFichaSegunAnimal.Text = "Buscar ficha según animal";
             this.checkBoxBuscarFichaSegunAnimal.UseVisualStyleBackColor = true;
@@ -601,7 +601,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(2456, 954);
+            this.ClientSize = new System.Drawing.Size(2456, 986);
             this.Controls.Add(this.checkBoxBuscarFichaSegunAnimal);
             this.Controls.Add(this.checkBoxMedicamentos);
             this.Controls.Add(this.labelOpcional1);
