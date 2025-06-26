@@ -33,14 +33,12 @@
             this.btnGestionarPerfiles = new System.Windows.Forms.Button();
             this.panelMenuPrincipal = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
-            this.panelSubMenuAdopcion = new System.Windows.Forms.Panel();
-            this.btnAdopcion = new System.Windows.Forms.Button();
-            this.panelSubMenuReportes = new System.Windows.Forms.Panel();
+            this.panelSubMenuResportes = new System.Windows.Forms.Panel();
             this.btnReportes = new System.Windows.Forms.Button();
+            this.panelSubMenuFichas = new System.Windows.Forms.Panel();
+            this.btnFichas = new System.Windows.Forms.Button();
             this.panelSubMenuMaestro = new System.Windows.Forms.Panel();
             this.btnABMMedicamentos = new System.Windows.Forms.Button();
-            this.btnFichaMedica = new System.Windows.Forms.Button();
-            this.btnFichaIngreso = new System.Windows.Forms.Button();
             this.btnAbrirRegistroCedentes = new System.Windows.Forms.Button();
             this.btnAnimales = new System.Windows.Forms.Button();
             this.btnMaestroMenuPrincipal = new System.Windows.Forms.Button();
@@ -51,10 +49,14 @@
             this.btnCambiarContraseña = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnUsuarioMenuPrincipal = new System.Windows.Forms.Button();
+            this.btnFichaMedica = new System.Windows.Forms.Button();
+            this.btnFichaIngreso = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelWhiskerWare = new System.Windows.Forms.Label();
             this.btnIniciarSesion2 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenuPrincipal.SuspendLayout();
+            this.panelSubMenuFichas.SuspendLayout();
             this.panelSubMenuMaestro.SuspendLayout();
             this.panelSubMenuAdministrador.SuspendLayout();
             this.panelSubMenuUsuario.SuspendLayout();
@@ -64,9 +66,9 @@
             // btnGestionDeUsuario
             // 
             this.btnGestionDeUsuario.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGestionDeUsuario.Location = new System.Drawing.Point(0, 47);
+            this.btnGestionDeUsuario.Location = new System.Drawing.Point(0, 60);
             this.btnGestionDeUsuario.Name = "btnGestionDeUsuario";
-            this.btnGestionDeUsuario.Size = new System.Drawing.Size(283, 47);
+            this.btnGestionDeUsuario.Size = new System.Drawing.Size(283, 66);
             this.btnGestionDeUsuario.TabIndex = 1;
             this.btnGestionDeUsuario.Tag = "Gestion de usuarios";
             this.btnGestionDeUsuario.Text = "Gestión de usuarios";
@@ -78,7 +80,7 @@
             this.btnGestionarPerfiles.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGestionarPerfiles.Location = new System.Drawing.Point(0, 0);
             this.btnGestionarPerfiles.Name = "btnGestionarPerfiles";
-            this.btnGestionarPerfiles.Size = new System.Drawing.Size(283, 47);
+            this.btnGestionarPerfiles.Size = new System.Drawing.Size(283, 60);
             this.btnGestionarPerfiles.TabIndex = 8;
             this.btnGestionarPerfiles.Tag = "Gestionar perfiles";
             this.btnGestionarPerfiles.Text = "Gestionar perfiles";
@@ -90,10 +92,10 @@
             this.panelMenuPrincipal.AutoScroll = true;
             this.panelMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.panelMenuPrincipal.Controls.Add(this.btnHelp);
-            this.panelMenuPrincipal.Controls.Add(this.panelSubMenuAdopcion);
-            this.panelMenuPrincipal.Controls.Add(this.btnAdopcion);
-            this.panelMenuPrincipal.Controls.Add(this.panelSubMenuReportes);
+            this.panelMenuPrincipal.Controls.Add(this.panelSubMenuResportes);
             this.panelMenuPrincipal.Controls.Add(this.btnReportes);
+            this.panelMenuPrincipal.Controls.Add(this.panelSubMenuFichas);
+            this.panelMenuPrincipal.Controls.Add(this.btnFichas);
             this.panelMenuPrincipal.Controls.Add(this.panelSubMenuMaestro);
             this.panelMenuPrincipal.Controls.Add(this.btnMaestroMenuPrincipal);
             this.panelMenuPrincipal.Controls.Add(this.panelSubMenuAdministrador);
@@ -109,7 +111,7 @@
             // btnHelp
             // 
             this.btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHelp.Location = new System.Drawing.Point(0, 1211);
+            this.btnHelp.Location = new System.Drawing.Point(0, 1122);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(283, 71);
             this.btnHelp.TabIndex = 18;
@@ -118,94 +120,70 @@
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
-            // panelSubMenuAdopcion
+            // panelSubMenuResportes
             // 
-            this.panelSubMenuAdopcion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuAdopcion.Location = new System.Drawing.Point(0, 1111);
-            this.panelSubMenuAdopcion.Name = "panelSubMenuAdopcion";
-            this.panelSubMenuAdopcion.Size = new System.Drawing.Size(283, 100);
-            this.panelSubMenuAdopcion.TabIndex = 17;
-            // 
-            // btnAdopcion
-            // 
-            this.btnAdopcion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdopcion.Location = new System.Drawing.Point(0, 1040);
-            this.btnAdopcion.Name = "btnAdopcion";
-            this.btnAdopcion.Size = new System.Drawing.Size(283, 71);
-            this.btnAdopcion.TabIndex = 16;
-            this.btnAdopcion.Text = "Adopción";
-            this.btnAdopcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdopcion.UseVisualStyleBackColor = true;
-            this.btnAdopcion.Click += new System.EventHandler(this.btnAdopcion_Click);
-            // 
-            // panelSubMenuReportes
-            // 
-            this.panelSubMenuReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuReportes.Location = new System.Drawing.Point(0, 913);
-            this.panelSubMenuReportes.Name = "panelSubMenuReportes";
-            this.panelSubMenuReportes.Size = new System.Drawing.Size(283, 127);
-            this.panelSubMenuReportes.TabIndex = 15;
+            this.panelSubMenuResportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSubMenuResportes.Location = new System.Drawing.Point(0, 1022);
+            this.panelSubMenuResportes.Name = "panelSubMenuResportes";
+            this.panelSubMenuResportes.Size = new System.Drawing.Size(283, 100);
+            this.panelSubMenuResportes.TabIndex = 17;
             // 
             // btnReportes
             // 
             this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReportes.Location = new System.Drawing.Point(0, 842);
+            this.btnReportes.Location = new System.Drawing.Point(0, 951);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Size = new System.Drawing.Size(283, 71);
-            this.btnReportes.TabIndex = 14;
+            this.btnReportes.TabIndex = 16;
             this.btnReportes.Text = "Reportes";
             this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReportes.UseVisualStyleBackColor = true;
             this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
+            // panelSubMenuFichas
+            // 
+            this.panelSubMenuFichas.Controls.Add(this.btnFichaMedica);
+            this.panelSubMenuFichas.Controls.Add(this.btnFichaIngreso);
+            this.panelSubMenuFichas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSubMenuFichas.Location = new System.Drawing.Point(0, 803);
+            this.panelSubMenuFichas.Name = "panelSubMenuFichas";
+            this.panelSubMenuFichas.Size = new System.Drawing.Size(283, 148);
+            this.panelSubMenuFichas.TabIndex = 15;
+            // 
+            // btnFichas
+            // 
+            this.btnFichas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFichas.Location = new System.Drawing.Point(0, 732);
+            this.btnFichas.Name = "btnFichas";
+            this.btnFichas.Size = new System.Drawing.Size(283, 71);
+            this.btnFichas.TabIndex = 14;
+            this.btnFichas.Text = "Fichas";
+            this.btnFichas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFichas.UseVisualStyleBackColor = true;
+            this.btnFichas.Click += new System.EventHandler(this.btnFichas_Click);
+            // 
             // panelSubMenuMaestro
             // 
             this.panelSubMenuMaestro.Controls.Add(this.btnABMMedicamentos);
-            this.panelSubMenuMaestro.Controls.Add(this.btnFichaMedica);
-            this.panelSubMenuMaestro.Controls.Add(this.btnFichaIngreso);
             this.panelSubMenuMaestro.Controls.Add(this.btnAbrirRegistroCedentes);
             this.panelSubMenuMaestro.Controls.Add(this.btnAnimales);
             this.panelSubMenuMaestro.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuMaestro.Location = new System.Drawing.Point(0, 488);
+            this.panelSubMenuMaestro.Location = new System.Drawing.Point(0, 515);
             this.panelSubMenuMaestro.Name = "panelSubMenuMaestro";
-            this.panelSubMenuMaestro.Size = new System.Drawing.Size(283, 354);
+            this.panelSubMenuMaestro.Size = new System.Drawing.Size(283, 217);
             this.panelSubMenuMaestro.TabIndex = 13;
             // 
             // btnABMMedicamentos
             // 
-            this.btnABMMedicamentos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnABMMedicamentos.Location = new System.Drawing.Point(0, 268);
+            this.btnABMMedicamentos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnABMMedicamentos.Location = new System.Drawing.Point(0, 134);
             this.btnABMMedicamentos.Name = "btnABMMedicamentos";
-            this.btnABMMedicamentos.Size = new System.Drawing.Size(283, 86);
+            this.btnABMMedicamentos.Size = new System.Drawing.Size(283, 78);
             this.btnABMMedicamentos.TabIndex = 20;
             this.btnABMMedicamentos.Tag = "Registrar medicamentos";
             this.btnABMMedicamentos.Text = "Registrar medicamentos";
             this.btnABMMedicamentos.UseVisualStyleBackColor = true;
             this.btnABMMedicamentos.Click += new System.EventHandler(this.btnABMMedicamentos_Click);
-            // 
-            // btnFichaMedica
-            // 
-            this.btnFichaMedica.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFichaMedica.Location = new System.Drawing.Point(0, 201);
-            this.btnFichaMedica.Name = "btnFichaMedica";
-            this.btnFichaMedica.Size = new System.Drawing.Size(283, 67);
-            this.btnFichaMedica.TabIndex = 16;
-            this.btnFichaMedica.Tag = "Generar ficha medica";
-            this.btnFichaMedica.Text = "Generar F. Médica";
-            this.btnFichaMedica.UseVisualStyleBackColor = true;
-            this.btnFichaMedica.Click += new System.EventHandler(this.btnFichaMedica_Click);
-            // 
-            // btnFichaIngreso
-            // 
-            this.btnFichaIngreso.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFichaIngreso.Location = new System.Drawing.Point(0, 134);
-            this.btnFichaIngreso.Name = "btnFichaIngreso";
-            this.btnFichaIngreso.Size = new System.Drawing.Size(283, 67);
-            this.btnFichaIngreso.TabIndex = 17;
-            this.btnFichaIngreso.Tag = "Generar ficha de ingreso";
-            this.btnFichaIngreso.Text = "Generar F. Ingreso";
-            this.btnFichaIngreso.UseVisualStyleBackColor = true;
-            this.btnFichaIngreso.Click += new System.EventHandler(this.btnFichaIngreso_Click);
             // 
             // btnAbrirRegistroCedentes
             // 
@@ -235,7 +213,7 @@
             // btnMaestroMenuPrincipal
             // 
             this.btnMaestroMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMaestroMenuPrincipal.Location = new System.Drawing.Point(0, 417);
+            this.btnMaestroMenuPrincipal.Location = new System.Drawing.Point(0, 444);
             this.btnMaestroMenuPrincipal.Name = "btnMaestroMenuPrincipal";
             this.btnMaestroMenuPrincipal.Size = new System.Drawing.Size(283, 71);
             this.btnMaestroMenuPrincipal.TabIndex = 10;
@@ -252,7 +230,7 @@
             this.panelSubMenuAdministrador.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuAdministrador.Location = new System.Drawing.Point(0, 318);
             this.panelSubMenuAdministrador.Name = "panelSubMenuAdministrador";
-            this.panelSubMenuAdministrador.Size = new System.Drawing.Size(283, 99);
+            this.panelSubMenuAdministrador.Size = new System.Drawing.Size(283, 126);
             this.panelSubMenuAdministrador.TabIndex = 12;
             // 
             // btnAdministradorMenuPrincipal
@@ -326,6 +304,30 @@
             this.btnUsuarioMenuPrincipal.UseVisualStyleBackColor = true;
             this.btnUsuarioMenuPrincipal.Click += new System.EventHandler(this.btnUsuarioMenuPrincipal_Click);
             // 
+            // btnFichaMedica
+            // 
+            this.btnFichaMedica.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFichaMedica.Location = new System.Drawing.Point(0, 75);
+            this.btnFichaMedica.Name = "btnFichaMedica";
+            this.btnFichaMedica.Size = new System.Drawing.Size(283, 72);
+            this.btnFichaMedica.TabIndex = 16;
+            this.btnFichaMedica.Tag = "Generar ficha medica";
+            this.btnFichaMedica.Text = "Generar F. Médica";
+            this.btnFichaMedica.UseVisualStyleBackColor = true;
+            this.btnFichaMedica.Click += new System.EventHandler(this.btnFichaMedica_Click);
+            // 
+            // btnFichaIngreso
+            // 
+            this.btnFichaIngreso.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFichaIngreso.Location = new System.Drawing.Point(0, 0);
+            this.btnFichaIngreso.Name = "btnFichaIngreso";
+            this.btnFichaIngreso.Size = new System.Drawing.Size(283, 75);
+            this.btnFichaIngreso.TabIndex = 17;
+            this.btnFichaIngreso.Tag = "Generar ficha de ingreso";
+            this.btnFichaIngreso.Text = "Generar F. Ingreso";
+            this.btnFichaIngreso.UseVisualStyleBackColor = true;
+            this.btnFichaIngreso.Click += new System.EventHandler(this.btnFichaIngreso_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -356,12 +358,20 @@
             this.btnIniciarSesion2.UseVisualStyleBackColor = true;
             this.btnIniciarSesion2.Click += new System.EventHandler(this.btnIniciarSesion2_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(1124, 144);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 18;
+            // 
             // FormularioMenuPrincipal941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1666, 1061);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnIniciarSesion2);
             this.Controls.Add(this.labelWhiskerWare);
             this.Controls.Add(this.pictureBox1);
@@ -370,6 +380,7 @@
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.FormularioMenu_Load);
             this.panelMenuPrincipal.ResumeLayout(false);
+            this.panelSubMenuFichas.ResumeLayout(false);
             this.panelSubMenuMaestro.ResumeLayout(false);
             this.panelSubMenuAdministrador.ResumeLayout(false);
             this.panelSubMenuUsuario.ResumeLayout(false);
@@ -397,13 +408,14 @@
         private System.Windows.Forms.Button btnFichaMedica;
         private System.Windows.Forms.Button btnFichaIngreso;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnFichas;
+        private System.Windows.Forms.Panel panelSubMenuResportes;
         private System.Windows.Forms.Button btnReportes;
-        private System.Windows.Forms.Panel panelSubMenuAdopcion;
-        private System.Windows.Forms.Button btnAdopcion;
         private System.Windows.Forms.Label labelWhiskerWare;
         private System.Windows.Forms.Button btnIniciarSesion2;
-        private System.Windows.Forms.Panel panelSubMenuReportes;
+        private System.Windows.Forms.Panel panelSubMenuFichas;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnABMMedicamentos;
+        private System.Windows.Forms.Panel panel1;
     }
 }

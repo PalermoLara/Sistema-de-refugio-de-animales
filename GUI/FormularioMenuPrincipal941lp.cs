@@ -51,8 +51,8 @@ namespace GUI
                 panelSubMenuAdministrador,
                 panelSubMenuMaestro,
                 panelSubMenuUsuario,
-                panelSubMenuAdopcion,
-                panelSubMenuReportes
+                panelSubMenuResportes,
+                panelSubMenuFichas
             };
             OcultarSubmenus_941lp();
         }
@@ -137,20 +137,20 @@ namespace GUI
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void btnReportes_Click(object sender, EventArgs e)
+        private void btnFichas_Click(object sender, EventArgs e)
         {
             try
             {
-                MostrarSubMenu_941lp(panelSubMenuReportes);
+                MostrarSubMenu_941lp(panelSubMenuFichas);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void btnAdopcion_Click(object sender, EventArgs e)
+        private void btnReportes_Click(object sender, EventArgs e)
         {
             try
             {
-                MostrarSubMenu_941lp(panelSubMenuAdopcion);
+                MostrarSubMenu_941lp(panelSubMenuResportes);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

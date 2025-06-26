@@ -32,7 +32,7 @@
             this.treeViewFamiliaRol = new System.Windows.Forms.TreeView();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.comboBoxRolFamilia = new System.Windows.Forms.ComboBox();
+            this.comboBoxPerfiles = new System.Windows.Forms.ComboBox();
             this.txtCrear = new System.Windows.Forms.TextBox();
             this.labelNombre = new System.Windows.Forms.Label();
             this.btnCrearRolFamilia = new System.Windows.Forms.Button();
@@ -46,9 +46,9 @@
             this.rbFamilias = new System.Windows.Forms.RadioButton();
             this.rbPerfiles = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnModificar = new System.Windows.Forms.Button();
             this.labelPerfiles = new System.Windows.Forms.Label();
+            this.comboBoxFamilia = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,14 +86,14 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // comboBoxRolFamilia
+            // comboBoxPerfiles
             // 
-            this.comboBoxRolFamilia.FormattingEnabled = true;
-            this.comboBoxRolFamilia.Location = new System.Drawing.Point(1568, 498);
-            this.comboBoxRolFamilia.Name = "comboBoxRolFamilia";
-            this.comboBoxRolFamilia.Size = new System.Drawing.Size(367, 33);
-            this.comboBoxRolFamilia.TabIndex = 4;
-            this.comboBoxRolFamilia.SelectedIndexChanged += new System.EventHandler(this.comboBoxRolFamilia_SelectedIndexChanged);
+            this.comboBoxPerfiles.FormattingEnabled = true;
+            this.comboBoxPerfiles.Location = new System.Drawing.Point(1076, 537);
+            this.comboBoxPerfiles.Name = "comboBoxPerfiles";
+            this.comboBoxPerfiles.Size = new System.Drawing.Size(453, 33);
+            this.comboBoxPerfiles.TabIndex = 4;
+            this.comboBoxPerfiles.SelectedIndexChanged += new System.EventHandler(this.comboBoxRolFamilia_SelectedIndexChanged);
             // 
             // txtCrear
             // 
@@ -195,7 +195,6 @@
             this.rbFamilias.TabIndex = 19;
             this.rbFamilias.Text = "Familia";
             this.rbFamilias.UseVisualStyleBackColor = true;
-            this.rbFamilias.CheckedChanged += new System.EventHandler(this.rbVerFamilias_CheckedChanged);
             // 
             // rbPerfiles
             // 
@@ -208,7 +207,6 @@
             this.rbPerfiles.TabStop = true;
             this.rbPerfiles.Text = "Perfil";
             this.rbPerfiles.UseVisualStyleBackColor = true;
-            this.rbPerfiles.CheckedChanged += new System.EventHandler(this.rbVerPerfiles_CheckedChanged);
             // 
             // label2
             // 
@@ -218,22 +216,13 @@
             this.label2.Size = new System.Drawing.Size(0, 25);
             this.label2.TabIndex = 22;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1569, 445);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 25);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Opciones:";
-            // 
             // btnModificar
             // 
             this.btnModificar.Location = new System.Drawing.Point(1764, 423);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(171, 64);
             this.btnModificar.TabIndex = 24;
-            this.btnModificar.Text = "Modificar";
+            this.btnModificar.Text = "Desasignar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
@@ -246,15 +235,24 @@
             this.labelPerfiles.TabIndex = 25;
             this.labelPerfiles.Text = "Perfiles:";
             // 
+            // comboBoxFamilia
+            // 
+            this.comboBoxFamilia.FormattingEnabled = true;
+            this.comboBoxFamilia.Location = new System.Drawing.Point(572, 537);
+            this.comboBoxFamilia.Name = "comboBoxFamilia";
+            this.comboBoxFamilia.Size = new System.Drawing.Size(453, 33);
+            this.comboBoxFamilia.TabIndex = 27;
+            this.comboBoxFamilia.SelectedIndexChanged += new System.EventHandler(this.comboBoxFamilia_SelectedIndexChanged);
+            // 
             // FormGestionDePerfiles_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(2216, 747);
+            this.Controls.Add(this.comboBoxFamilia);
             this.Controls.Add(this.labelPerfiles);
             this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.labelFamilia);
@@ -266,7 +264,7 @@
             this.Controls.Add(this.btnCrearRolFamilia);
             this.Controls.Add(this.labelNombre);
             this.Controls.Add(this.txtCrear);
-            this.Controls.Add(this.comboBoxRolFamilia);
+            this.Controls.Add(this.comboBoxPerfiles);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.treeViewFamiliaRol);
@@ -287,7 +285,7 @@
         private System.Windows.Forms.TreeView treeViewFamiliaRol;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.ComboBox comboBoxRolFamilia;
+        private System.Windows.Forms.ComboBox comboBoxPerfiles;
         private System.Windows.Forms.TextBox txtCrear;
         private System.Windows.Forms.Label labelNombre;
         private System.Windows.Forms.Button btnCrearRolFamilia;
@@ -301,8 +299,8 @@
         private System.Windows.Forms.RadioButton rbFamilias;
         private System.Windows.Forms.RadioButton rbPerfiles;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Label labelPerfiles;
+        private System.Windows.Forms.ComboBox comboBoxFamilia;
     }
 }

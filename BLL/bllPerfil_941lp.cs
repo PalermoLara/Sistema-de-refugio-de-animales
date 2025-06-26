@@ -229,11 +229,10 @@ namespace BLL
         {
             foreach (var permiso_941lp in perfil_941lp.ObtenerPermisos_941lp())
             {
+                if (permiso_941lp.nombrePermiso_941lp == nombreContenidaBuscada_941lp)
+                    return true;
                 if (permiso_941lp is Familia_941lp familia_941lp)
                 {
-                    if (familia_941lp.nombrePermiso_941lp == nombreContenidaBuscada_941lp)
-                        return true;
-
                     if (ContieneComoHijaRecursivo_941lp(familia_941lp, nombreContenidaBuscada_941lp))
                         return true;
                 }
@@ -321,7 +320,6 @@ namespace BLL
 
             // Construyo los objetos a asignar
             var permisosSimples = ormPermiso_941Lp.RetornarPermisos_941lp().ToDictionary(p => p.nombrePermiso_941lp);
-            var familiasEstructuradas = orm_941lp.ObtenerCompositeFamilias_941lp();
 
             var permisosAAsignar = new List<Perfil_941lp>();
             foreach (var nombre in nuevosSeleccionados)
@@ -330,7 +328,7 @@ namespace BLL
                 {
                     permisosAAsignar.Add(simple);
                 }
-                else if (familiasEstructuradas.TryGetValue(nombre, out var fam))
+                else if (familias.TryGetValue(nombre, out var fam))
                 {
                     permisosAAsignar.Add(fam);
                 }

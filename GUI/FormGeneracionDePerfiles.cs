@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace GUI
 {
@@ -43,22 +44,13 @@ namespace GUI
 
         private void FormGestionDePerfiles_Load(object sender, EventArgs e)
         {
+            modo_941lp = ModoOperacion_941lp.Consulta;
             treeViewFamiliaRol.CheckBoxes = true;
             treeViewFamilia.CheckBoxes = true;
             treeViewPermisos.CheckBoxes = true;
             MostrarPermisosTreePermisos_941lp(bllPermisos_941lp.RetornarPermisos_941lp());
-            if (comboBoxRolFamilia.Items.Count > 0)
-            {
-                comboBoxRolFamilia.SelectedIndex = 0;
-            }
-            if(rbFamilias.Checked)
-            {
-                LlenarComboBoxCompuestos_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
-            }
-            else
-            {
-                LlenarComboBoxCompuestos_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
-            }
+            LlenarComboBoxCompuestos_941lp(comboBoxFamilia,bllFamilia_941lp.RetornarFamilias_941lp());
+            LlenarComboBoxCompuestos_941lp(comboBoxPerfiles,bllPerfil_941Lp.RetornarPerfiles_941lp());
             MostrarTreeViewPerfil_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
             MostrarPermisosTreeFamilia_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
         }
@@ -101,7 +93,16 @@ namespace GUI
                 TreeNode nodoRaiz = CrearNodoDesdePermiso(familia);
                 treeViewFamiliaRol.Nodes.Add(nodoRaiz);
             }
-            
+        }
+
+        private void MostrarTreeViewFamiliaUnico_941lp(Perfil_941lp perfil_941lp)
+        {
+            treeViewFamilia.Nodes.Clear();
+            if (perfil_941lp is Familia_941lp familia)
+            {
+                TreeNode nodoRaiz = CrearNodoDesdePermiso(familia);
+                treeViewFamilia.Nodes.Add(nodoRaiz);
+            }
         }
 
         private void MostrarPermisosTreePermisos_941lp(List<PermisoSimple_941lp> listaPermisos_941lp)
@@ -113,13 +114,13 @@ namespace GUI
             }
         }
 
-        private void LlenarComboBoxCompuestos_941lp(List<Perfil_941lp> listaPermisos_941lp)
+        private void LlenarComboBoxCompuestos_941lp(ComboBox comboBox_941lp,List<Perfil_941lp> listaPermisos_941lp)
         {
-            comboBoxRolFamilia.Items.Clear();
+            comboBox_941lp.Items.Clear();
             foreach (var permiso_941lp in listaPermisos_941lp)
             {
                 if(permiso_941lp.GetType() == typeof(Familia_941lp))
-                comboBoxRolFamilia.Items.Add(permiso_941lp.nombrePermiso_941lp);
+                comboBox_941lp.Items.Add(permiso_941lp.nombrePermiso_941lp);
             }
         }
 
@@ -162,7 +163,8 @@ namespace GUI
                 btnAplicar.Enabled = true;
                 btnCancelar.Enabled = true;
                 txtCrear.Enabled = true;
-                comboBoxRolFamilia.Enabled = false;
+                comboBoxPerfiles.Enabled = false;
+                comboBoxFamilia.Enabled = false;
                 btnSalir.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnModificar.Enabled = false;
@@ -176,7 +178,8 @@ namespace GUI
                 btnCrearRolFamilia.Enabled = false;
                 btnAsignar.Enabled=false;
                 btnEliminar.Enabled=false;
-                comboBoxRolFamilia.Enabled = true;
+                comboBoxPerfiles.Enabled = true;
+                comboBoxFamilia.Enabled = true;
                 btnAplicar.Enabled = true;
                 btnCancelar.Enabled = true;
                 btnSalir.Enabled=false;
@@ -185,7 +188,7 @@ namespace GUI
                 treeViewFamilia.Enabled = true;
                 if(modo_941lp == ModoOperacion_941lp.Asignar)
                 {
-                    treeViewFamiliaRol.Enabled=false;
+                    treeViewFamiliaRol.Enabled=true;
                 }
                 if (modo_941lp == ModoOperacion_941lp.Quitar)
                 {
@@ -206,7 +209,8 @@ namespace GUI
                 btnAplicar.Enabled = false;
                 btnCancelar.Enabled = false;
                 txtCrear.Enabled = false;
-                comboBoxRolFamilia.Enabled = true;
+                comboBoxPerfiles.Enabled = false;
+                comboBoxFamilia.Enabled = false;
                 btnSalir.Enabled = true;
                 btnEliminar.Enabled = true;
                 btnCrearRolFamilia.Enabled = true;
@@ -227,66 +231,63 @@ namespace GUI
                 if (bllFamilia_941lp.VerificarNombreDeFamilia_941lp(txtCrear.Text)) throw new Exception("Nombre igual al nombre de una familia");
                 if(bllPermisos_941lp.VerificarNombreDePatente_941lp(txtCrear.Text)) throw new Exception("Nombre igual al nombre de una patente");
                 bllPerfil_941Lp.VerificarDuplicados_941lp(seleccionados_941lp);
-                string nombrePermisoDestino_941lp = comboBoxRolFamilia.Text;
+                string nombrePerfilDestino_941lp = comboBoxPerfiles.Text;
+                string nombreFamiliaDestino_941lp = comboBoxFamilia.Text;
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Crear:
+                        if (txtCrear.Text == "") throw new Exception("Error. Debe ingresar todos los datos");
                         if (rbPerfiles.Checked)
                         {
                             bllPerfil_941Lp.AltaPerfil_941lp(txtCrear.Text, seleccionados_941lp);
-                            LlenarComboBoxCompuestos_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
                         }
                         if (rbFamilias.Checked)
                         {
                             if (seleccionados_941lp.Count == 0) throw new Exception("No puede crear una familia vacia");
                             bllFamilia_941lp.AltaFamilia_941lp(txtCrear.Text, seleccionados_941lp);
-                            LlenarComboBoxCompuestos_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
                         }
                         break;
                     case ModoOperacion_941lp.Asignar:
-                        if (bllPerfil_941Lp.ValidarContraEstructuraEnMemoria_941lp(comboBoxRolFamilia.Text, seleccionados_941lp) == false) throw new Exception("Permisos repetidos");
                         if (rbPerfiles.Checked)
                         {
-                            bllPerfilTablasIntermedias_941lp.AltaPerfilIntermedias_941lp(nombrePermisoDestino_941lp, seleccionados_941lp);
+                            if (bllPerfil_941Lp.ValidarContraEstructuraEnMemoria_941lp(nombrePerfilDestino_941lp, seleccionados_941lp) == false) throw new Exception("Permisos repetidos");
+                            bllPerfilTablasIntermedias_941lp.AltaPerfilIntermedias_941lp(nombrePerfilDestino_941lp, seleccionados_941lp);
                         }
                         if (rbFamilias.Checked)
                         {
-                            bllFamiliaTablasIntermedias_941lp.AltaFamiliaIntermedia_941lp(nombrePermisoDestino_941lp, seleccionados_941lp);
+                            if (bllPerfil_941Lp.ValidarContraEstructuraEnMemoria_941lp(nombreFamiliaDestino_941lp, seleccionados_941lp) == false) throw new Exception("Permisos repetidos");
+                            bllFamiliaTablasIntermedias_941lp.AltaFamiliaIntermedia_941lp(nombreFamiliaDestino_941lp, seleccionados_941lp);
                         }
                         break;
                     case ModoOperacion_941lp.Quitar:
                         if (rbPerfiles.Checked)
                         {
-                            bllPerfil_941Lp.EliminarPerfil_941lp(nombrePermisoDestino_941lp);
+                            bllPerfil_941Lp.EliminarPerfil_941lp(nombrePerfilDestino_941lp);
                         }
                         if (rbFamilias.Checked)
                         {
-                            bllFamilia_941lp.EliminarFamilia_941lp(nombrePermisoDestino_941lp);
+                            bllFamilia_941lp.EliminarFamilia_941lp(nombreFamiliaDestino_941lp);
                         }
                         break;
                     case ModoOperacion_941lp.Modificar:
-                        List<string> listaModificar_941lp = ObtenerPermisosSeleccionadosDelTreeViewParaModificar();
                         if (rbPerfiles.Checked)
                         {
-                            bllPerfilTablasIntermedias_941lp.EliminarPerfilIntermedia_941lp(nombrePermisoDestino_941lp, listaModificar_941lp);
+                            List<string> listaModificarPerfil_941lp = ObtenerPermisosSeleccionadosDelTreeViewPerfilesParaModificar();
+                            bllPerfilTablasIntermedias_941lp.EliminarPerfilIntermedia_941lp(nombrePerfilDestino_941lp, listaModificarPerfil_941lp);
                         }
                         if (rbFamilias.Checked)
                         {
-                            bllFamiliaTablasIntermedias_941lp.EliminarFamiliaIntermedia_941lp(nombrePermisoDestino_941lp, listaModificar_941lp);
+                            List<string> listaModificarFamilia_941lp = ObtenerPermisosSeleccionadosDelTreeViewFamiliaParaModificar();
+                            bllFamiliaTablasIntermedias_941lp.EliminarFamiliaIntermedia_941lp(nombreFamiliaDestino_941lp, listaModificarFamilia_941lp);
                         }
                         break;
                 }
                 modo_941lp = ModoOperacion_941lp.Consulta;
                 HabilitarControles_941lp();
-                comboBoxRolFamilia.SelectedItem = null;
+                comboBoxPerfiles.SelectedItem = null;
                 if (rbPerfiles.Checked)
-                {
-                    LlenarComboBoxCompuestos_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
-                }
-                if (rbFamilias.Checked)
-                {
-                    LlenarComboBoxCompuestos_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
-                }
+                LlenarComboBoxCompuestos_941lp(comboBoxPerfiles,bllPerfil_941Lp.RetornarPerfiles_941lp());
+                LlenarComboBoxCompuestos_941lp(comboBoxFamilia, bllFamilia_941lp.RetornarFamilias_941lp());
                 MostrarPermisosTreeFamilia_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
                 MostrarTreeViewPerfil_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
                 DescheckearTodosLosNodos_941lp(treeViewPermisos);
@@ -329,15 +330,25 @@ namespace GUI
                 if (nodo.Checked)
                 seleccionados_941lp.Add(nodo.Text);
             }
-
             return seleccionados_941lp;
         }
 
-        private List<string> ObtenerPermisosSeleccionadosDelTreeViewParaModificar()
+        private List<string> ObtenerPermisosSeleccionadosDelTreeViewPerfilesParaModificar()
         {
             List<string> seleccionados_941lp = new List<string>();
 
             foreach (TreeNode nodo in treeViewFamiliaRol.Nodes)
+            {
+                ProcesarNodoSeleccionado(nodo, seleccionados_941lp, esRaiz: true);
+            }
+            return seleccionados_941lp;
+        }
+
+        private List<string> ObtenerPermisosSeleccionadosDelTreeViewFamiliaParaModificar()
+        {
+            List<string> seleccionados_941lp = new List<string>();
+
+            foreach (TreeNode nodo in treeViewFamilia.Nodes)
             {
                 ProcesarNodoSeleccionado(nodo, seleccionados_941lp, esRaiz: true);
             }
@@ -423,14 +434,7 @@ namespace GUI
             {
                 if(modo_941lp == ModoOperacion_941lp.Modificar)
                 {
-                    if (rbPerfiles.Checked)
-                    {
-                        MostrarTreeViewPerfilUnico_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp().Find(x => x.nombrePermiso_941lp == comboBoxRolFamilia.Text));
-                    }
-                    if (rbFamilias.Checked)
-                    {
-                        MostrarTreeViewPerfilUnico_941lp(bllFamilia_941lp.RetornarFamilias_941lp().Find(x => x.nombrePermiso_941lp == comboBoxRolFamilia.Text));
-                    }
+                    MostrarTreeViewPerfilUnico_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp().Find(x => x.nombrePermiso_941lp == comboBoxPerfiles.Text));
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -459,30 +463,24 @@ namespace GUI
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void rbVerPerfiles_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                LlenarComboBoxCompuestos_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
-        private void rbVerFamilias_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                LlenarComboBoxCompuestos_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             try
             {
                 modo_941lp = ModoOperacion_941lp.Modificar;
                 HabilitarControles_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void comboBoxFamilia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(modo_941lp == ModoOperacion_941lp.Modificar)
+                {
+                    MostrarTreeViewFamiliaUnico_941lp(bllFamilia_941lp.RetornarFamilias_941lp().Find(x => x.nombrePermiso_941lp == comboBoxFamilia.Text));
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
