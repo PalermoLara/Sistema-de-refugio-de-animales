@@ -36,6 +36,8 @@
             this.panelSubMenuResportes = new System.Windows.Forms.Panel();
             this.btnReportes = new System.Windows.Forms.Button();
             this.panelSubMenuFichas = new System.Windows.Forms.Panel();
+            this.btnFichaMedica = new System.Windows.Forms.Button();
+            this.btnFichaIngreso = new System.Windows.Forms.Button();
             this.btnFichas = new System.Windows.Forms.Button();
             this.panelSubMenuMaestro = new System.Windows.Forms.Panel();
             this.btnABMMedicamentos = new System.Windows.Forms.Button();
@@ -49,12 +51,9 @@
             this.btnCambiarContraseña = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnUsuarioMenuPrincipal = new System.Windows.Forms.Button();
-            this.btnFichaMedica = new System.Windows.Forms.Button();
-            this.btnFichaIngreso = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelWhiskerWare = new System.Windows.Forms.Label();
             this.btnIniciarSesion2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenuPrincipal.SuspendLayout();
             this.panelSubMenuFichas.SuspendLayout();
             this.panelSubMenuMaestro.SuspendLayout();
@@ -149,6 +148,30 @@
             this.panelSubMenuFichas.Name = "panelSubMenuFichas";
             this.panelSubMenuFichas.Size = new System.Drawing.Size(283, 148);
             this.panelSubMenuFichas.TabIndex = 15;
+            // 
+            // btnFichaMedica
+            // 
+            this.btnFichaMedica.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFichaMedica.Location = new System.Drawing.Point(0, 75);
+            this.btnFichaMedica.Name = "btnFichaMedica";
+            this.btnFichaMedica.Size = new System.Drawing.Size(283, 72);
+            this.btnFichaMedica.TabIndex = 16;
+            this.btnFichaMedica.Tag = "Generar ficha medica";
+            this.btnFichaMedica.Text = "Generar F. Médica";
+            this.btnFichaMedica.UseVisualStyleBackColor = true;
+            this.btnFichaMedica.Click += new System.EventHandler(this.btnFichaMedica_Click);
+            // 
+            // btnFichaIngreso
+            // 
+            this.btnFichaIngreso.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFichaIngreso.Location = new System.Drawing.Point(0, 0);
+            this.btnFichaIngreso.Name = "btnFichaIngreso";
+            this.btnFichaIngreso.Size = new System.Drawing.Size(283, 75);
+            this.btnFichaIngreso.TabIndex = 17;
+            this.btnFichaIngreso.Tag = "Generar ficha de ingreso";
+            this.btnFichaIngreso.Text = "Generar F. Ingreso";
+            this.btnFichaIngreso.UseVisualStyleBackColor = true;
+            this.btnFichaIngreso.Click += new System.EventHandler(this.btnFichaIngreso_Click);
             // 
             // btnFichas
             // 
@@ -304,30 +327,6 @@
             this.btnUsuarioMenuPrincipal.UseVisualStyleBackColor = true;
             this.btnUsuarioMenuPrincipal.Click += new System.EventHandler(this.btnUsuarioMenuPrincipal_Click);
             // 
-            // btnFichaMedica
-            // 
-            this.btnFichaMedica.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFichaMedica.Location = new System.Drawing.Point(0, 75);
-            this.btnFichaMedica.Name = "btnFichaMedica";
-            this.btnFichaMedica.Size = new System.Drawing.Size(283, 72);
-            this.btnFichaMedica.TabIndex = 16;
-            this.btnFichaMedica.Tag = "Generar ficha medica";
-            this.btnFichaMedica.Text = "Generar F. Médica";
-            this.btnFichaMedica.UseVisualStyleBackColor = true;
-            this.btnFichaMedica.Click += new System.EventHandler(this.btnFichaMedica_Click);
-            // 
-            // btnFichaIngreso
-            // 
-            this.btnFichaIngreso.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFichaIngreso.Location = new System.Drawing.Point(0, 0);
-            this.btnFichaIngreso.Name = "btnFichaIngreso";
-            this.btnFichaIngreso.Size = new System.Drawing.Size(283, 75);
-            this.btnFichaIngreso.TabIndex = 17;
-            this.btnFichaIngreso.Tag = "Generar ficha de ingreso";
-            this.btnFichaIngreso.Text = "Generar F. Ingreso";
-            this.btnFichaIngreso.UseVisualStyleBackColor = true;
-            this.btnFichaIngreso.Click += new System.EventHandler(this.btnFichaIngreso_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -358,20 +357,12 @@
             this.btnIniciarSesion2.UseVisualStyleBackColor = true;
             this.btnIniciarSesion2.Click += new System.EventHandler(this.btnIniciarSesion2_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(1124, 144);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 18;
-            // 
             // FormularioMenuPrincipal941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1666, 1061);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnIniciarSesion2);
             this.Controls.Add(this.labelWhiskerWare);
             this.Controls.Add(this.pictureBox1);
@@ -416,6 +407,5 @@
         private System.Windows.Forms.Panel panelSubMenuFichas;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnABMMedicamentos;
-        private System.Windows.Forms.Panel panel1;
     }
 }
