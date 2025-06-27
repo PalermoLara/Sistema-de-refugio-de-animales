@@ -310,8 +310,29 @@ namespace GUI
                 //nombre real
                 txtNOmbreCedente.Text = dataCedentes.SelectedRows[0].Cells[1].Value.ToString();
                 txtApellido.Text = dataCedentes.SelectedRows[0].Cells[2].Value.ToString();
-                txtDireccion.Text = dataCedentes.SelectedRows[0].Cells[3].Value.ToString();
+                Desencriptar_941lp();
                 txtTelefono.Text = dataCedentes.SelectedRows[0].Cells[4].Value.ToString();
+            }
+        }
+
+        private void checkBoxDesencriptar_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Desencriptar_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void Desencriptar_941lp()
+        {
+            if (checkBoxDesencriptar.Checked)
+            {
+                txtDireccion.Text = bllCedente_941lp.DireccionDesencriptada(dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            else
+            {
+                txtDireccion.Text = dataCedentes.SelectedRows[0].Cells[3].Value.ToString();
             }
         }
     }

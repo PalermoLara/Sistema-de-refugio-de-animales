@@ -51,6 +51,11 @@ namespace BLL
             return BuscarAnimalPorCodigo_941lp(codigo_941lp).estadoAdopcion_941lp == "Adoptado";
         }
 
+        public string RetornarEstadoDelAnimal_941lp(string codigo_941lp)
+        {
+            return BuscarAnimalPorCodigo_941lp(codigo_941lp).estadoAdopcion_941lp;
+        }
+
         public bool VerificarAnimalVivo_941lp(string codigo_941lp)
         {
             return BuscarAnimalPorCodigo_941lp(codigo_941lp).vivo_941lp;

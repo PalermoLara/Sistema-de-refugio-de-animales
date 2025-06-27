@@ -120,7 +120,7 @@ namespace GUI
             try
             {
                 if (bllFichaMedica_941lp.VerificarAnimalVivo_941lp(Convert.ToBoolean(dataAnimales.SelectedRows[0].Cells[7].Value)) == false) throw new Exception("El animal debe estar vivo para realizar la revisión médica");
-                if (bllFichaMedica_941lp.VerificarQueTengaFichaMedica_941lp(dataAnimales.SelectedRows[0].Cells[0].Value.ToString())) throw new Exception("El animal seleccionado ya tiene ficha de ingreso.");
+                if (bllFichaMedica_941lp.VerificarQueTengaFichaMedica_941lp(dataAnimales.SelectedRows[0].Cells[0].Value.ToString())) throw new Exception("El animal seleccionado ya tiene ficha médica.");
                 modo_941lp = ModoOperacion_941lp.Alta;
                 HabilitarTxt_941lp(true);
                 VisibilidadDeBotones_941lp();
@@ -196,6 +196,7 @@ namespace GUI
                             bllBitacora_941lp.Alta_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), DateTime.Now, ModoOperacion_941lp.Modificar.ToString(), "Observaciones", dataFichaMedica.SelectedRows[0].Cells[6].Value.ToString(), txtObservaciones.Text);
                         }
                         bllFichaMedica_941lp.Modificar_941lp(codigo_941lp: Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), castrado_941lp: seleccionado_941lp.Text == "SI", dieta_941lp: txtDieta.Text, medicamento_941lp: checkBoxMedicamentos.Checked ? null : dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), observaciones_941lp: txtObservaciones.Text);
+                        bllRegistroAnimales_941Lp.Modificar_941lp(dataFichaMedica.SelectedRows[0].Cells[1].Value.ToString(),estadoDeAdopcion_941lp : rbDisponibleAdopcion.Checked ? "Disponible" : "En evaluacion");
                         MessageBox.Show("Ficha médica modificada exitosamente");
                         break;
                     case ModoOperacion_941lp.DefinirEstado:
@@ -219,9 +220,9 @@ namespace GUI
                 else
                 {
                     modo_941lp = ModoOperacion_941lp.DefinirEstado;
-                    rbDisponibleAdopcion.Enabled = true;
-                    rbEnEvaluacionAdopcion.Enabled = true;
                 }
+                modo_941lp = ModoOperacion_941lp.Consulta;
+                HabilitarTxt_941lp(true);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -295,14 +296,10 @@ namespace GUI
                 txtDieta.Enabled = habilitar_941lp;
                 txtObservaciones.Enabled = habilitar_941lp;
                 groupBoxCastrado.Enabled = habilitar_941lp;
-                if(modo_941lp == ModoOperacion_941lp.Alta)
-                {
-                    groupBoxEstadoAdopcion.Enabled = habilitar_941lp;
-                }
-                else
-                {
-                    groupBoxEstadoAdopcion.Enabled = !habilitar_941lp;
-                }
+                groupBoxEstadoAdopcion.Enabled = habilitar_941lp;
+                rbEnEvaluacionAdopcion.Enabled = habilitar_941lp;
+                rbDisponibleAdopcion.Enabled = habilitar_941lp;
+                checkBoxMedicamentos.Enabled = habilitar_941lp;
             }
             else
             {
@@ -310,6 +307,9 @@ namespace GUI
                 txtObservaciones.Enabled = !habilitar_941lp;
                 groupBoxCastrado.Enabled = !habilitar_941lp;
                 groupBoxEstadoAdopcion.Enabled = !habilitar_941lp;
+                checkBoxMedicamentos.Enabled = !habilitar_941lp;
+                rbEnEvaluacionAdopcion.Enabled = !habilitar_941lp;
+                rbDisponibleAdopcion.Enabled = !habilitar_941lp;
             }
             AplicarColorControles_941lp();
         }
@@ -327,7 +327,7 @@ namespace GUI
             rbEnEvaluacionAdopcion.Checked = false;
             btnSalir.Enabled = true;
             AplicarColorControles_941lp();
-            HabilitarTxt_941lp(false);
+            HabilitarTxt_941lp(true);
             LimpiarTxt_941lp();
         }
 
@@ -349,6 +349,16 @@ namespace GUI
                     }
                     txtDieta.Text = dataFichaMedica.SelectedRows[0].Cells[4].Value.ToString();
                     txtObservaciones.Text = dataFichaMedica.SelectedRows[0].Cells[6].Value.ToString();
+                    if(bllRegistroAnimales_941Lp.RetornarEstadoDelAnimal_941lp(dataFichaMedica.SelectedRows[0].Cells[1].Value.ToString())=="Disponible")
+                    {
+                        rbDisponibleAdopcion.Checked = true;
+                        rbEnEvaluacionAdopcion.Checked = false;
+                    }
+                    else if (bllRegistroAnimales_941Lp.RetornarEstadoDelAnimal_941lp(dataFichaMedica.SelectedRows[0].Cells[1].Value.ToString()) == "En evaluacion")
+                    {
+                        rbDisponibleAdopcion.Checked = false;
+                        rbEnEvaluacionAdopcion.Checked = true;
+                    }
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

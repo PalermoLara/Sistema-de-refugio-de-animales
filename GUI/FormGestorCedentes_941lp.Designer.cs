@@ -51,6 +51,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActDesact = new System.Windows.Forms.Button();
+            this.checkBoxDesencriptar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataCedentes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,7 +100,7 @@
             this.labelNombre.Location = new System.Drawing.Point(19, 436);
             this.labelNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNombre.Name = "labelNombre";
-            this.labelNombre.Size = new System.Drawing.Size(133, 31);
+            this.labelNombre.Size = new System.Drawing.Size(68, 17);
             this.labelNombre.TabIndex = 60;
             this.labelNombre.Text = "NOMBRE";
             this.labelNombre.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -122,7 +123,7 @@
             this.labelDNI.Location = new System.Drawing.Point(21, 385);
             this.labelDNI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDNI.Name = "labelDNI";
-            this.labelDNI.Size = new System.Drawing.Size(62, 31);
+            this.labelDNI.Size = new System.Drawing.Size(31, 17);
             this.labelDNI.TabIndex = 59;
             this.labelDNI.Text = "DNI";
             // 
@@ -149,7 +150,7 @@
             this.btnApellido.Location = new System.Drawing.Point(21, 486);
             this.btnApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnApellido.Name = "btnApellido";
-            this.btnApellido.Size = new System.Drawing.Size(147, 31);
+            this.btnApellido.Size = new System.Drawing.Size(75, 17);
             this.btnApellido.TabIndex = 57;
             this.btnApellido.Text = "APELLIDO";
             // 
@@ -160,7 +161,7 @@
             this.labelDireccion.Location = new System.Drawing.Point(19, 594);
             this.labelDireccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDireccion.Name = "labelDireccion";
-            this.labelDireccion.Size = new System.Drawing.Size(169, 31);
+            this.labelDireccion.Size = new System.Drawing.Size(82, 17);
             this.labelDireccion.TabIndex = 54;
             this.labelDireccion.Text = "DIRECCIÓN";
             // 
@@ -171,7 +172,7 @@
             this.labelTelefono.Location = new System.Drawing.Point(21, 538);
             this.labelTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTelefono.Name = "labelTelefono";
-            this.labelTelefono.Size = new System.Drawing.Size(161, 31);
+            this.labelTelefono.Size = new System.Drawing.Size(83, 17);
             this.labelTelefono.TabIndex = 51;
             this.labelTelefono.Text = "TELEFONO";
             // 
@@ -285,12 +286,24 @@
             this.btnActDesact.UseVisualStyleBackColor = true;
             this.btnActDesact.Click += new System.EventHandler(this.btnActDesact_Click);
             // 
+            // checkBoxDesencriptar
+            // 
+            this.checkBoxDesencriptar.AutoSize = true;
+            this.checkBoxDesencriptar.Location = new System.Drawing.Point(251, 634);
+            this.checkBoxDesencriptar.Name = "checkBoxDesencriptar";
+            this.checkBoxDesencriptar.Size = new System.Drawing.Size(153, 29);
+            this.checkBoxDesencriptar.TabIndex = 66;
+            this.checkBoxDesencriptar.Text = "Desencriptar";
+            this.checkBoxDesencriptar.UseVisualStyleBackColor = true;
+            this.checkBoxDesencriptar.CheckedChanged += new System.EventHandler(this.checkBoxDesencriptar_CheckedChanged);
+            // 
             // FormGestorCedentes_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1636, 749);
+            this.Controls.Add(this.checkBoxDesencriptar);
             this.Controls.Add(this.btnActDesact);
             this.Controls.Add(this.dataCedentes);
             this.Controls.Add(this.txtDni);
@@ -342,5 +355,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.CheckBox checkBoxDesencriptar;
     }
 }

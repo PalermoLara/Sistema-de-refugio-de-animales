@@ -62,12 +62,12 @@ namespace BLL
                 Cedente_941lp cedente_941lp = BuscarCedentePorDNI_941lp(dni_941lp);
                 if (cedente_941lp == null)
                 {
-                    MessageBox.Show("Usuario no encontrado");
+                    MessageBox.Show("Cedente no encontrado");
                     return;
                 }
                 //Invierte el valor actual del campo activo_941lp
                 cedente_941lp.activo_941lp = !cedente_941lp.activo_941lp;
-                string mensaje = cedente_941lp.activo_941lp ? "Se ha activado al usuario con éxito" : "Se ha desactivado al usuario con éxito";
+                string mensaje = cedente_941lp.activo_941lp ? "Se ha activado al cedente con éxito" : "Se ha desactivado al cedente con éxito";
                 orm_941lp.Modificar_941lp(cedente_941lp);
                 MessageBox.Show(mensaje);
             }
@@ -84,10 +84,15 @@ namespace BLL
             List<Cedente_941lp> aux_941lp = new List<Cedente_941lp>();
             foreach(Cedente_941lp c_941lp in orm_941lp.RetornarCedentes_941lp())
             {
-                string direccionDesencriptada = seguridad_941lp.Decrypt(c_941lp.direccion_941lp);
-                aux_941lp.Add(new Cedente_941lp(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp, direccionDesencriptada, c_941lp.telefono_941lp, c_941lp.activo_941lp));
+                aux_941lp.Add(new Cedente_941lp(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp, c_941lp.direccion_941lp, c_941lp.telefono_941lp, c_941lp.activo_941lp));
             }
             return aux_941lp;
+        }
+
+        public string DireccionDesencriptada(string dni_941lp)
+        {
+            Cedente_941lp cedente_941lp = BuscarCedentePorDNI_941lp(dni_941lp);
+            return  seguridad_941lp.Decrypt(cedente_941lp.direccion_941lp);
         }
     }
 }
