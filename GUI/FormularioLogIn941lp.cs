@@ -53,6 +53,12 @@ namespace GUI
                                         MessageBox.Show("Primer inicio de sesión. Debe cambiar su contraseña", "CAMBIO DE CONTRASEÑA REQUERIDO", MessageBoxButtons.OK);
                                         formularioCambiarContraseña_941lp.ShowDialog();
                                     }
+                                    var usuario = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
+                                    var perfilNombre = usuario.rol_941lp; // string desde la DB
+                                    var permisosSimples = bllUsuario_941lp.ObtenerPermisosSimplesDeUsuario_941lp(perfilNombre);
+
+                                    // Guardás los permisos en sesión para usarlos en todos los formularios
+                                    sessionManager941lp.Gestor_941lp.SetPermisosUsuario_941lp(permisosSimples);
                                     GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoMenu941lp());
                                 }
                                 else

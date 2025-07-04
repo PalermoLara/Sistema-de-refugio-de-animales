@@ -24,6 +24,18 @@ namespace SERVICIOS
             }
         }
 
+        private HashSet<string> permisosUsuario_941lp;
+
+        public void SetPermisosUsuario_941lp(HashSet<string> permisos_941lp)
+        {
+            permisosUsuario_941lp = permisos_941lp;
+        }
+
+        public HashSet<string> RetornarPermisosUsuario_941lp()
+        {
+            return permisosUsuario_941lp;
+        }
+
         public Usuario_941lp RetornarUsuarioSession_941lp()
         {
             return usuarioSession_941lp;

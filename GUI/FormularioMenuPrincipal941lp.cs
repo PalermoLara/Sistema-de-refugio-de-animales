@@ -108,6 +108,16 @@ namespace GUI
             {
                 btnCambiarContraseña.Enabled = false;
             }
+            var permisos = sessionManager941lp.Gestor_941lp.RetornarPermisosUsuario_941lp();
+            var perfil = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().rol_941lp;
+            AplicarPermisosAFormulario_941lp(this, permisos, perfil);
+        }
+
+        public void RefrescarPermisos_941lp()
+        {
+            var usuario = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
+            var permisos = bllUsuario_941lp.ObtenerPermisosSimplesDeUsuario_941lp(usuario.rol_941lp);
+            AplicarPermisosAFormulario_941lp(this, permisos, usuario.rol_941lp);
         }
 
         private void btnUsuarioMenuPrincipal_Click(object sender, EventArgs e)
@@ -200,7 +210,41 @@ namespace GUI
 
         private void btnGestionarPerfiles_Click(object sender, EventArgs e)
         {
+            formGestionDePerfiles_941lp.Owner = this;
             formGestionDePerfiles_941lp.ShowDialog();
         }
+
+        public void AplicarPermisosAFormulario_941lp(Form formulario, HashSet<string> permisosSimples, string nombrePerfil)
+        {
+            foreach (Control control in formulario.Controls)
+            {
+                AplicarPermisosRecursivo_941lp(control, permisosSimples, nombrePerfil);
+            }
+        }
+
+        private void AplicarPermisosRecursivo_941lp(Control control, HashSet<string> permisos, string nombrePerfil)
+        {
+            if (control is Button btn)
+            {
+                if (btn.Tag == null || btn.Tag == "")
+                {
+                    btn.Enabled = true; // Siempre habilitado si no tiene tag
+                }
+                else
+                {
+                    string tag = btn.Tag.ToString().Trim();
+
+                    // Habilitar si el tag está en los permisos simples o es el nombre del perfil
+                    btn.Enabled = permisos.Contains(tag) || tag.Equals(nombrePerfil, StringComparison.OrdinalIgnoreCase);
+                }
+            }
+
+            // Recorrer hijos (como Paneles, GroupBoxes, etc.)
+            foreach (Control hijo in control.Controls)
+            {
+                AplicarPermisosRecursivo_941lp(hijo, permisos, nombrePerfil);
+            }
+        }
+
     }
 }

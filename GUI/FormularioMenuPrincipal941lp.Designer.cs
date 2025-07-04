@@ -81,8 +81,8 @@
             this.btnGestionarPerfiles.Name = "btnGestionarPerfiles";
             this.btnGestionarPerfiles.Size = new System.Drawing.Size(283, 60);
             this.btnGestionarPerfiles.TabIndex = 8;
-            this.btnGestionarPerfiles.Tag = "Gestionar perfiles";
-            this.btnGestionarPerfiles.Text = "Gestionar perfiles";
+            this.btnGestionarPerfiles.Tag = "Generacion de perfiles";
+            this.btnGestionarPerfiles.Text = "Generacion de perfiles";
             this.btnGestionarPerfiles.UseVisualStyleBackColor = true;
             this.btnGestionarPerfiles.Click += new System.EventHandler(this.btnGestionarPerfiles_Click);
             // 
@@ -180,6 +180,7 @@
             this.btnFichas.Name = "btnFichas";
             this.btnFichas.Size = new System.Drawing.Size(283, 71);
             this.btnFichas.TabIndex = 14;
+            this.btnFichas.Tag = "";
             this.btnFichas.Text = "Fichas";
             this.btnFichas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFichas.UseVisualStyleBackColor = true;
@@ -203,7 +204,7 @@
             this.btnABMMedicamentos.Name = "btnABMMedicamentos";
             this.btnABMMedicamentos.Size = new System.Drawing.Size(283, 78);
             this.btnABMMedicamentos.TabIndex = 20;
-            this.btnABMMedicamentos.Tag = "Registrar medicamentos";
+            this.btnABMMedicamentos.Tag = "Registrar medicamento";
             this.btnABMMedicamentos.Text = "Registrar medicamentos";
             this.btnABMMedicamentos.UseVisualStyleBackColor = true;
             this.btnABMMedicamentos.Click += new System.EventHandler(this.btnABMMedicamentos_Click);
@@ -215,7 +216,7 @@
             this.btnAbrirRegistroCedentes.Name = "btnAbrirRegistroCedentes";
             this.btnAbrirRegistroCedentes.Size = new System.Drawing.Size(283, 67);
             this.btnAbrirRegistroCedentes.TabIndex = 18;
-            this.btnAbrirRegistroCedentes.Tag = "Registrar cedentes";
+            this.btnAbrirRegistroCedentes.Tag = "Registrar cedente";
             this.btnAbrirRegistroCedentes.Text = "Registrar cedentes";
             this.btnAbrirRegistroCedentes.UseVisualStyleBackColor = true;
             this.btnAbrirRegistroCedentes.Click += new System.EventHandler(this.btnAbrirRegistroCedentes_Click);
@@ -228,7 +229,7 @@
             this.btnAnimales.Name = "btnAnimales";
             this.btnAnimales.Size = new System.Drawing.Size(283, 67);
             this.btnAnimales.TabIndex = 19;
-            this.btnAnimales.Tag = "Registrar animales";
+            this.btnAnimales.Tag = "Registrar animal";
             this.btnAnimales.Text = "Registrar animales";
             this.btnAnimales.UseVisualStyleBackColor = false;
             this.btnAnimales.Click += new System.EventHandler(this.btnAnimales_Click);
@@ -240,7 +241,7 @@
             this.btnMaestroMenuPrincipal.Name = "btnMaestroMenuPrincipal";
             this.btnMaestroMenuPrincipal.Size = new System.Drawing.Size(283, 71);
             this.btnMaestroMenuPrincipal.TabIndex = 10;
-            this.btnMaestroMenuPrincipal.Tag = "Maestro";
+            this.btnMaestroMenuPrincipal.Tag = "";
             this.btnMaestroMenuPrincipal.Text = "Maestro";
             this.btnMaestroMenuPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMaestroMenuPrincipal.UseVisualStyleBackColor = true;
@@ -263,7 +264,7 @@
             this.btnAdministradorMenuPrincipal.Name = "btnAdministradorMenuPrincipal";
             this.btnAdministradorMenuPrincipal.Size = new System.Drawing.Size(283, 75);
             this.btnAdministradorMenuPrincipal.TabIndex = 10;
-            this.btnAdministradorMenuPrincipal.Tag = "Administrador";
+            this.btnAdministradorMenuPrincipal.Tag = "";
             this.btnAdministradorMenuPrincipal.Text = "Administrador";
             this.btnAdministradorMenuPrincipal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdministradorMenuPrincipal.UseVisualStyleBackColor = true;
@@ -287,7 +288,7 @@
             this.btnCambiarIdioma.Name = "btnCambiarIdioma";
             this.btnCambiarIdioma.Size = new System.Drawing.Size(283, 55);
             this.btnCambiarIdioma.TabIndex = 6;
-            this.btnCambiarIdioma.Tag = "";
+            this.btnCambiarIdioma.Tag = "Cambiar idioma";
             this.btnCambiarIdioma.Text = "Cambiar idioma ";
             this.btnCambiarIdioma.UseVisualStyleBackColor = true;
             // 
@@ -298,7 +299,7 @@
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
             this.btnCambiarContraseña.Size = new System.Drawing.Size(283, 55);
             this.btnCambiarContraseña.TabIndex = 2;
-            this.btnCambiarContraseña.Tag = "";
+            this.btnCambiarContraseña.Tag = "Cambiar contraseña";
             this.btnCambiarContraseña.Text = "Cambiar contraseña";
             this.btnCambiarContraseña.UseVisualStyleBackColor = true;
             this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
@@ -310,6 +311,7 @@
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(283, 55);
             this.btnCerrarSesion.TabIndex = 0;
+            this.btnCerrarSesion.Tag = "Cerrar sesion";
             this.btnCerrarSesion.Text = "Cerrar Sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);

@@ -195,6 +195,7 @@
             this.rbFamilias.TabIndex = 19;
             this.rbFamilias.Text = "Familia";
             this.rbFamilias.UseVisualStyleBackColor = true;
+            this.rbFamilias.CheckedChanged += new System.EventHandler(this.rbFamilias_CheckedChanged);
             // 
             // rbPerfiles
             // 
@@ -207,6 +208,7 @@
             this.rbPerfiles.TabStop = true;
             this.rbPerfiles.Text = "Perfil";
             this.rbPerfiles.UseVisualStyleBackColor = true;
+            this.rbPerfiles.CheckedChanged += new System.EventHandler(this.rbPerfiles_CheckedChanged);
             // 
             // label2
             // 

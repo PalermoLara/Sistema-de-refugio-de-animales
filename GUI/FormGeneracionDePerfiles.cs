@@ -142,6 +142,12 @@ namespace GUI
         {
             modo_941lp = ModoOperacion_941lp.Consulta;
             HabilitarControles_941lp();
+
+            // Refrescar permisos en el form padre (asumiendo que es FormMenuPrincipal)
+            if (this.Owner is FormularioMenuPrincipal941lp menuForm)
+            {
+                menuForm.RefrescarPermisos_941lp();
+            }
             this.Close();
         }
 
@@ -285,6 +291,7 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Consulta;
                 HabilitarControles_941lp();
                 comboBoxPerfiles.SelectedItem = null;
+                comboBoxFamilia.SelectedItem = null;
                 if (rbPerfiles.Checked)
                 LlenarComboBoxCompuestos_941lp(comboBoxPerfiles,bllPerfil_941Lp.RetornarPerfiles_941lp());
                 LlenarComboBoxCompuestos_941lp(comboBoxFamilia, bllFamilia_941lp.RetornarFamilias_941lp());
@@ -455,7 +462,11 @@ namespace GUI
             try
             {
                 modo_941lp = ModoOperacion_941lp.Consulta;
+                comboBoxPerfiles.SelectedItem = null;
+                comboBoxFamilia.SelectedItem = null;
                 HabilitarControles_941lp();
+                MostrarPermisosTreeFamilia_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
+                MostrarTreeViewPerfil_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
                 DescheckearTodosLosNodos_941lp(treeViewPermisos);
                 DescheckearTodosLosNodos_941lp(treeViewFamilia);
                 DescheckearTodosLosNodos_941lp(treeViewFamiliaRol);
@@ -481,6 +492,26 @@ namespace GUI
                 {
                     MostrarTreeViewFamiliaUnico_941lp(bllFamilia_941lp.RetornarFamilias_941lp().Find(x => x.nombrePermiso_941lp == comboBoxFamilia.Text));
                 }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void rbPerfiles_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                comboBoxFamilia.Enabled = false;
+                comboBoxPerfiles.Enabled = true;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void rbFamilias_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                comboBoxPerfiles.Enabled = false;
+                comboBoxFamilia.Enabled = true;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

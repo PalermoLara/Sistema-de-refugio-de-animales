@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ORM
 {
@@ -29,6 +30,22 @@ namespace ORM
             };
             EjecutarQueryConEntidad_941lp(ficha_941lp, query_941lp, propiedadesIncluir_941lp);
         }
+
+        public int ObtenerUltimoCodigoInsertado_941lp()
+        {
+            string query = "SELECT TOP 1 codigo_941lp FROM FichaDeIngreso_941lp ORDER BY codigo_941lp DESC";
+            object result = dao_941lp.EjecutarEscalar_941lp(query);
+
+            if (result != null && int.TryParse(result.ToString(), out int codigo))
+            {
+                return codigo;
+            }
+            else
+            {
+                throw new Exception("No se pudo obtener el último código de ficha.");
+            }
+        }
+
 
         public void Modificar_941lp(FichaDeIngreso_941lp ficha_941lp)
         {

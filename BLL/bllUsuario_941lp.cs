@@ -11,10 +11,12 @@ namespace BLL
     {
         ormUsuario_941lp orm_941lp;
         encriptador_941lp seguridad_941lp;
+        ormPerfil_941lp ormPerfil_941lp;
         public bllUsuario_941lp()
         {
             orm_941lp = new ormUsuario_941lp();
             seguridad_941lp = new encriptador_941lp();
+            ormPerfil_941lp = new ormPerfil_941lp();
         }
 
         public void Alta_941lp(string dni_941lp, string nombre_941lp, string apellido_941lp,string rol_941lp, string email_941lp)
@@ -191,6 +193,32 @@ namespace BLL
             return orm_941lp.RetornarUsuarios_941lp();
         }
 
+        public HashSet<string> ObtenerPermisosSimplesDeUsuario_941lp(string nombrePerfil)
+        {
+            var perfilComposite = ormPerfil_941lp.ObtenerCompositePerfiles_941lp(); 
+
+            if (!perfilComposite.TryGetValue(nombrePerfil, out var perfil))
+                throw new Exception($"Perfil '{nombrePerfil}' no encontrado.");
+
+            var permisosSimples = new HashSet<string>();
+            ExpandirPermisosSimplesRecursivo_941lp((Familia_941lp)perfil, permisosSimples);
+            return permisosSimples;
+        }
+
+        private void ExpandirPermisosSimplesRecursivo_941lp(Familia_941lp familia, HashSet<string> acumulador)
+        {
+            foreach (var permiso in familia.ObtenerPermisos_941lp())
+            {
+                if (permiso is PermisoSimple_941lp simple)
+                {
+                    acumulador.Add(simple.nombrePermiso_941lp);
+                }
+                else if (permiso is Familia_941lp subFamilia)
+                {
+                    ExpandirPermisosSimplesRecursivo_941lp(subFamilia, acumulador);
+                }
+            }
+        }
 
     }
 }

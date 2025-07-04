@@ -224,8 +224,6 @@ namespace BLL
                 }
             }
 
-            EliminarPermisosRepetidosDePadres(contenedoresDeLaFamilia_941lp, permisosAAsignar_941lp);
-
             // Agregar simples
             foreach (var simple_941lp in listaSimples_941lp)
             {

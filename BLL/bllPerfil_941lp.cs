@@ -202,8 +202,7 @@ namespace BLL
             }
         }
 
-
-        private List<Perfil_941lp> BuscarContenedoresDeFamilia_941lp(string nombreFamiliaBuscada_941lp)
+        private List<Perfil_941lp> BuscarContenedoresQueIncluyen_941lp(string nombreElemento_941lp)
         {
             var contenedores_941lp = new List<Perfil_941lp>();
 
@@ -211,19 +210,44 @@ namespace BLL
             var perfiles_941lp = orm_941lp.ObtenerCompositePerfiles_941lp(); // Diccionario<string, Perfil_941lp>
 
             var estructuras_941lp = familias_941lp.Values.Cast<Perfil_941lp>()
-                              .Concat(perfiles_941lp.Values); // Unificamos ambas listas
+                .Concat(perfiles_941lp.Values); // Unificamos ambas listas
 
             foreach (var estructura_941lp in estructuras_941lp)
             {
-                if (estructura_941lp.GetType() != typeof(PermisoSimple_941lp))
-                    if (ContieneComoHijaRecursivo_941lp((Familia_941lp)estructura_941lp, nombreFamiliaBuscada_941lp))
+                if (estructura_941lp is Familia_941lp familia)
+                {
+                    if (ContieneComoHijaRecursivo_941lp(familia, nombreElemento_941lp))
                     {
-                        contenedores_941lp.Add(estructura_941lp);
+                        contenedores_941lp.Add(familia);
                     }
+                }
             }
 
             return contenedores_941lp;
         }
+
+        private void VerificarContraContenedores_941lp(string nombreDestino, List<string> nuevosSeleccionados)
+        {
+            var contenedores = BuscarContenedoresQueIncluyen_941lp(nombreDestino);
+
+            if (!contenedores.Any()) return;
+
+            var familias = ormFamilia_941Lp.ObtenerCompositeFamilias_941lp();
+            var perfiles = orm_941lp.ObtenerCompositePerfiles_941lp();
+            var permisosSimples = ormPermiso_941Lp.RetornarPermisos_941lp().ToDictionary(p => p.nombrePermiso_941lp);
+
+            foreach (var nombreNuevo in nuevosSeleccionados)
+            {
+                foreach (var contenedor in contenedores)
+                {
+                    if (ContieneComoHijaRecursivo_941lp((Familia_941lp)contenedor, nombreNuevo))
+                    {
+                        throw new Exception($"El permiso '{nombreNuevo}' ya existe en la estructura del contenedor '{contenedor.nombrePermiso_941lp}'.");
+                    }
+                }
+            }
+        }
+
 
         private bool ContieneComoHijaRecursivo_941lp(Familia_941lp perfil_941lp, string nombreContenidaBuscada_941lp)
         {
@@ -237,43 +261,6 @@ namespace BLL
                         return true;
                 }
             }
-
-            return false;
-        }
-
-        private bool PermisoYaExisteEnHermanosOHijos_941lp(Familia_941lp familiaNueva_941lp, Perfil_941lp permiso_941lp)
-        {
-            string nombrePermiso_941lp = permiso_941lp.nombrePermiso_941lp;
-
-            // Buscar todos los perfiles (familias y perfiles) que contienen a la nueva familia como hija
-            var contenedores_941lp = BuscarContenedoresDeFamilia_941lp(familiaNueva_941lp.nombrePermiso_941lp);
-
-            foreach (var c_941lp in contenedores_941lp)
-            {
-                var hijos = ((Familia_941lp)c_941lp).ObtenerPermisos_941lp();
-
-                foreach (var hermano in hijos)
-                {
-                    if (hermano is Familia_941lp famHermano &&
-                        famHermano.nombrePermiso_941lp != familiaNueva_941lp.nombrePermiso_941lp)
-                    {
-                        // El permiso está directo en el hermano
-                        if (famHermano.ObtenerPermisos_941lp().Any(p => p.nombrePermiso_941lp == nombrePermiso_941lp))
-                            return true;
-
-                        // El permiso está en los descendientes del hermano
-                        if (ContieneComoHijaRecursivo_941lp(famHermano, nombrePermiso_941lp))
-                            return true;
-                    }
-                }
-            }
-
-            // También revisamos hijos propios (evita que lo tenga un subrol)
-            if (familiaNueva_941lp.ObtenerPermisos_941lp().Any(p => p.nombrePermiso_941lp == nombrePermiso_941lp))
-                return true;
-
-            if (ContieneComoHijaRecursivo_941lp(familiaNueva_941lp, nombrePermiso_941lp))
-                return true;
 
             return false;
         }
@@ -318,10 +305,9 @@ namespace BLL
                 throw new Exception($"No se encontró '{nombreDestino}' en memoria.");
             }
 
-            // Construyo los objetos a asignar
             var permisosSimples = ormPermiso_941Lp.RetornarPermisos_941lp().ToDictionary(p => p.nombrePermiso_941lp);
-
             var permisosAAsignar = new List<Perfil_941lp>();
+
             foreach (var nombre in nuevosSeleccionados)
             {
                 if (permisosSimples.TryGetValue(nombre, out var simple))
@@ -334,25 +320,29 @@ namespace BLL
                 }
             }
 
-            // 1. Validar si algún permiso ya está en hermanos o hijos
+            // Verificación 1: en el propio contenedor
             foreach (var permiso in permisosAAsignar)
             {
-                if (PermisoYaExisteEnHermanosOHijos_941lp(estructuraBase, permiso))
+                if (PermisoYaExisteEnContenedor_941lp(estructuraBase, permiso))
                 {
-                    throw new InvalidOperationException($"El permiso '{permiso.nombrePermiso_941lp}' ya existe en un hermano o hijo de la familia '{estructuraBase.nombrePermiso_941lp}'.");
+                    throw new InvalidOperationException($"El permiso '{permiso.nombrePermiso_941lp}' ya existe en la estructura del contenedor '{estructuraBase.nombrePermiso_941lp}'.");
                 }
             }
 
-            // 2. Eliminar de los padres repetidos (si hay)
-            var padres = BuscarContenedoresDeFamilia_941lp(nombreDestino);
-            if (padres.Count > 0)
-            {
-                EliminarPermisosRepetidosDePadres(padres, permisosAAsignar);
-            }
+            // Verificación 2: en los contenedores ascendentes
+            VerificarContraContenedores_941lp(nombreDestino, nuevosSeleccionados);
 
             return true;
         }
 
+
+        private bool PermisoYaExisteEnContenedor_941lp(Familia_941lp contenedor, Perfil_941lp permisoAValidar)
+        {
+            string nombrePermiso = permisoAValidar.nombrePermiso_941lp;
+
+            return ContieneComoHijaRecursivo_941lp(contenedor, nombrePermiso)
+                   || contenedor.ObtenerPermisos_941lp().Any(p => p.nombrePermiso_941lp == nombrePermiso);
+        }
 
         private void ExpandirPermisos_941lp(Familia_941lp familia, HashSet<string> acumulador)
         {

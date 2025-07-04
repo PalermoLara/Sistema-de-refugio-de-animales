@@ -264,7 +264,7 @@ namespace GUI
                         if (bllFichaIngreso_941.VerificarCedenteActivo_941lp(dataCedentes.SelectedRows[0].Cells[0].Value.ToString())==false) throw new Exception("El cedente debe estar activo para generar una ficha de ingreso");
                         if (bllFichaIngreso_941.VerificarAnimalVivo_941lp(Convert.ToBoolean(dataAnimales.SelectedRows[0].Cells[7].Value)) == false) throw new Exception("El animal debe estar vivo para crear una ficha de ingreso");
                         bllAnimal_941lp.Modificar_941lp(codigo_941lp:dataAnimales.SelectedRows[0].Cells[0].Value.ToString(), estadoDeAdopcion_941lp : "En evaluacion");
-                        bllFichaIngreso_941.Alta_941lp(codigoAnimal_941lp, dni_941lp,especie_941lp, DateTime.Now, DateTime.Now, txtRazon.Text, txtZona.Text);
+                        bllFichaIngreso_941.Alta_941lp(codigoAnimal_941lp, dni_941lp, dataCedentes.SelectedRows[0].Cells[1].Value.ToString(), dataCedentes.SelectedRows[0].Cells[2].Value.ToString(), dataCedentes.SelectedRows[0].Cells[4].Value.ToString(),especie_941lp, DateTime.Now, DateTime.Now, txtRazon.Text, txtZona.Text);
                         MessageBox.Show("Ficha de ingreso generada exitosamente");
                         break;
                     case ModoOperacion_941lp.Modificar:
