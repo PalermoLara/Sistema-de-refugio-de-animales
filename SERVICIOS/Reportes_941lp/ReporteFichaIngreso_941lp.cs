@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -52,19 +53,34 @@ namespace SERVICIOS.Reportes_941lp
             Paragraph subtitulo = new Paragraph("Ficha de Ingreso", fuenteSubtitulo);
             subtitulo.Alignment = Element.ALIGN_CENTER;
             doc.Add(subtitulo);
+            Paragraph linea = new Paragraph(new Chunk(new LineSeparator(0.5f, 80f, BaseColor.GRAY, Element.ALIGN_CENTER, -2)));
+            doc.Add(linea);
 
             doc.Add(new Paragraph("\n"));
 
             // Datos
             PdfPTable tabla = new PdfPTable(2);
             tabla.WidthPercentage = 90;
-            tabla.DefaultCell.Border = Rectangle.NO_BORDER;
-            tabla.SetWidths(new float[] { 1.5f, 4f });
+            tabla.SpacingBefore = 10f;
+            tabla.SpacingAfter = 10f;
+            tabla.SetWidths(new float[] { 2f, 4f });
 
             void AgregarFila(string etiqueta, string valor)
             {
-                tabla.AddCell(new Phrase(etiqueta, fuenteSubtitulo));
-                tabla.AddCell(new Phrase(valor, fuenteNormal));
+                PdfPCell celdaEtiqueta = new PdfPCell(new Phrase(etiqueta, fuenteSubtitulo));
+                celdaEtiqueta.Border = Rectangle.BOTTOM_BORDER;
+                celdaEtiqueta.BorderColor = BaseColor.LIGHT_GRAY;
+                celdaEtiqueta.PaddingBottom = 8f;
+                celdaEtiqueta.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                PdfPCell celdaValor = new PdfPCell(new Phrase(valor, fuenteNormal));
+                celdaValor.Border = Rectangle.BOTTOM_BORDER;
+                celdaValor.BorderColor = BaseColor.LIGHT_GRAY;
+                celdaValor.PaddingBottom = 8f;
+                celdaValor.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                tabla.AddCell(celdaEtiqueta);
+                tabla.AddCell(celdaValor);
             }
 
             AgregarFila("Código Animal:", dni);
