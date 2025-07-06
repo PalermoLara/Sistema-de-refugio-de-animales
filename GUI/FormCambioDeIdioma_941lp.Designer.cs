@@ -42,6 +42,7 @@
             this.btnAceptar.TabIndex = 17;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnSalir
             // 
@@ -51,6 +52,7 @@
             this.btnSalir.TabIndex = 16;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // labelCambioDeIdioma
             // 
@@ -71,19 +73,21 @@
             this.comboBoxIdiomas.Name = "comboBoxIdiomas";
             this.comboBoxIdiomas.Size = new System.Drawing.Size(283, 33);
             this.comboBoxIdiomas.TabIndex = 19;
+            this.comboBoxIdiomas.SelectedIndexChanged += new System.EventHandler(this.comboBoxIdiomas_SelectedIndexChanged);
             // 
             // FormCambioDeIdioma_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(802, 371);
+            this.ClientSize = new System.Drawing.Size(802, 601);
             this.Controls.Add(this.comboBoxIdiomas);
             this.Controls.Add(this.labelCambioDeIdioma);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnSalir);
             this.Name = "FormCambioDeIdioma_941lp";
             this.Text = "FormCambioDeIdioma_941lp";
+            this.Load += new System.EventHandler(this.FormCambioDeIdioma_941lp_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

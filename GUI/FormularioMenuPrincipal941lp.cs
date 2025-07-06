@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormularioMenuPrincipal941lp : Form
+    public partial class FormularioMenuPrincipal941lp : Form, IObserver_941lp
     {
         bllUsuario_941lp bllUsuario_941lp;
         private readonly FormGestionUsuario941lp formularioAdministradorUsuario_941lp;
@@ -26,6 +26,7 @@ namespace GUI
         private FormGestionFichaMedica_941lp formGestionFichaMedica_941lp;
         private FormMedicamentos_941lp formMedicamentos_941lp;
         private FormGestionDePerfiles_941lp formGestionDePerfiles_941lp;
+        private FormCambioDeIdioma_941lp FormCambioDeIdioma_941lp;
         private List<Panel> submenus_941lp;
 
         public FormularioMenuPrincipal941lp()
@@ -42,6 +43,21 @@ namespace GUI
             formGestionFichaMedica_941lp = new FormGestionFichaMedica_941lp();
             formMedicamentos_941lp = new FormMedicamentos_941lp();
             formGestionDePerfiles_941lp = new FormGestionDePerfiles_941lp();
+            FormCambioDeIdioma_941lp = new FormCambioDeIdioma_941lp();
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
         }
 
         private void InicializarSubmenus_941lp()
@@ -74,9 +90,14 @@ namespace GUI
         {
             try
             {
-                DialogResult dr_941lp = MessageBox.Show("¿Desea cerrar la sesión?", "CERRAR SESIÓN...", MessageBoxButtons.OKCancel);
+                string titulo = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_TITULO_CERRAR_SESION", "CERRAR SESIÓN...");
+                string cuerpo = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_PREGUNTA_CERRAR_SESION", "¿Desea cerrar la sesión?");
+                DialogResult dr_941lp = MessageBox.Show(cuerpo, titulo, MessageBoxButtons.OKCancel);
                 if(dr_941lp == DialogResult.OK)
                 {
+                    var usuario = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
+                    usuario.lenguaje_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+                    bllUsuario_941lp.CambiarIdioma_941lp(usuario.dni_941lp, usuario.lenguaje_941lp);
                     sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
                     GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoLogIn941lp());
                 }
@@ -246,5 +267,14 @@ namespace GUI
             }
         }
 
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
+        }
+
+        private void btnCambiarIdioma_Click(object sender, EventArgs e)
+        {
+            FormCambioDeIdioma_941lp.ShowDialog();
+        }
     }
 }

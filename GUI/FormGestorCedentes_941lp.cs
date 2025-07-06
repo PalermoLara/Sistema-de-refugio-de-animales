@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormGestorCedentes_941lp : Form
+    public partial class FormGestorCedentes_941lp : Form, IObserver_941lp
     {
 
         bllCedente_941lp bllCedente_941lp;
@@ -26,6 +27,20 @@ namespace GUI
             btnCancelar.Enabled = false;
             AplicarColorControles_941lp();
             modo_941lp = ModoOperacion_941lp.Consulta;
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
         }
 
         private void FormGestorCedentes_941lp_Load(object sender, EventArgs e)
@@ -334,6 +349,11 @@ namespace GUI
             {
                 txtDireccion.Text = dataCedentes.SelectedRows[0].Cells[3].Value.ToString();
             }
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI
 {
-    public partial class FormFichaDeIngreso_941lp : Form
+    public partial class FormFichaDeIngreso_941lp : Form, IObserver_941lp
     {
         bllCedente_941lp bllCedente_941lp;
         bllRegistroAnimales_941lp bllAnimal_941lp;
@@ -30,7 +31,20 @@ namespace GUI
             bllFichaIngreso_941 = new bllFichaIngreso_941lp();
             formRegistroAnimales_941lp = new FormRegistroAnimales_941lp();
             formGestorCedentes_941lp = new FormGestorCedentes_941lp();
-            modo_941lp = ModoOperacion_941lp.Consulta;
+            modo_941lp = ModoOperacion_941lp.Consulta; TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
         }
 
         private void FormFichaDeIngreso_941lp_Load(object sender, EventArgs e)
@@ -422,6 +436,11 @@ namespace GUI
         private void dataAnimales_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 }

@@ -13,13 +13,27 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormCambiarContraseña_941lp : Form
+    public partial class FormCambiarContraseña_941lp : Form, IObserver_941lp
     {
         bllUsuario_941lp bllUsuario_941lp;
         public FormCambiarContraseña_941lp()
         {
             InitializeComponent();
             bllUsuario_941lp = new bllUsuario_941lp();
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
         }
 
         private void btnAceptarCambioContraseña_Click(object sender, EventArgs e)
@@ -28,7 +42,7 @@ namespace GUI
             {
                 if (txtContraseñaActual.Text == "" || txtContraseñaConfirmacion.Text == "" || txtContraseñaNueva.Text == "")
                 {
-                    throw new Exception("Fantan ingresar contraseñas");
+                    throw new Exception("Faltan ingresar contraseñas");
                 }
                 string contraseñaActual_941lp = txtContraseñaActual.Text;
                 string contraseñaNueva_941lp = txtContraseñaNueva.Text;
@@ -71,6 +85,11 @@ namespace GUI
             txtContraseñaActual.UseSystemPasswordChar = !checkBoxMostrarConstraseñas.Checked;
             txtContraseñaConfirmacion.UseSystemPasswordChar = !checkBoxMostrarConstraseñas.Checked;
             txtContraseñaNueva.UseSystemPasswordChar = !checkBoxMostrarConstraseñas.Checked;
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 }

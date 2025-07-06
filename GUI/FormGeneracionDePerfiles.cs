@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace GUI
 {
-    public partial class FormGestionDePerfiles_941lp : Form
+    public partial class FormGestionDePerfiles_941lp : Form, IObserver_941lp
     {
         bllPermisos_941lp bllPermisos_941lp;
         bllFamilia_941lp bllFamilia_941lp;
@@ -32,7 +33,22 @@ namespace GUI
             bllFamiliaTablasIntermedias_941lp = new bllFamiliaTablasIntermedias_941lp();
             modo_941lp = ModoOperacion_941lp.Consulta;
             HabilitarControles_941lp();
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
         }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
+        }
+
         enum ModoOperacion_941lp
         {
             Consulta, 
@@ -49,8 +65,8 @@ namespace GUI
             treeViewFamilia.CheckBoxes = true;
             treeViewPermisos.CheckBoxes = true;
             MostrarPermisosTreePermisos_941lp(bllPermisos_941lp.RetornarPermisos_941lp());
-            LlenarComboBoxCompuestos_941lp(comboBoxFamilia,bllFamilia_941lp.RetornarFamilias_941lp());
-            LlenarComboBoxCompuestos_941lp(comboBoxPerfiles,bllPerfil_941Lp.RetornarPerfiles_941lp());
+            LlenarComboBoxCompuestos_941lp(comboBoxFamilia, bllFamilia_941lp.RetornarFamilias_941lp());
+            LlenarComboBoxCompuestos_941lp(comboBoxPerfiles, bllPerfil_941Lp.RetornarPerfiles_941lp());
             MostrarTreeViewPerfil_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
             MostrarPermisosTreeFamilia_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
         }
@@ -514,6 +530,11 @@ namespace GUI
                 comboBoxFamilia.Enabled = true;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 }

@@ -87,6 +87,17 @@ namespace BLL
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
+        public void CambiarIdioma_941lp(string dni_941lp, string idioma_941lp)
+        {
+            try
+            {
+                Usuario_941lp nuevoUsuario_941lp = BuscarUsuarioPorDNI_941lp(dni_941lp);
+                nuevoUsuario_941lp.lenguaje_941lp = idioma_941lp;
+                orm_941lp.Modificar_941lp(nuevoUsuario_941lp);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
         public void ActivarDesactivar_941lp(string dni_941lp)
         {
             try

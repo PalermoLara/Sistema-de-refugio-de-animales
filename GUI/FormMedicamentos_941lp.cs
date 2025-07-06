@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormMedicamentos_941lp : Form
+    public partial class FormMedicamentos_941lp : Form, IObserver_941lp
     {
         bllMedicamento_941lp bllMedicamento_941Lp;
         ModoOperacion_941lp modo_941lp;
@@ -24,6 +25,20 @@ namespace GUI
             modo_941lp = ModoOperacion_941lp.Consulta;
             btnCancelar.Enabled = false;
             btnAplicar.Enabled = false;
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
         }
 
         private void FormMedicamentos_941lp_Load(object sender, EventArgs e)
@@ -313,6 +328,11 @@ namespace GUI
                 MostrarGrillaMedicamentos_941lp(bllMedicamento_941Lp.Ordenar_941lp("Descendente"));
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 }

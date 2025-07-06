@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,13 +13,27 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormBitocoraFichaMedica_941lp : Form
+    public partial class FormBitocoraFichaMedica_941lp : Form, IObserver_941lp
     {
         bllBitacoraFichaMedica_941lp bllBitacora_941lp;
         public FormBitocoraFichaMedica_941lp()
         {
             InitializeComponent();
             bllBitacora_941lp = new bllBitacoraFichaMedica_941lp();
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
         }
 
         private void FormBitocoraFichaMedica_Load(object sender, EventArgs e)
@@ -44,6 +59,11 @@ namespace GUI
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 }

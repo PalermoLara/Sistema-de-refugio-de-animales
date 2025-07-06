@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FormRegistroAnimales_941lp : Form
+    public partial class FormRegistroAnimales_941lp : Form, IObserver_941lp
     {
         bllRegistroAnimales_941lp bllRegistroAnimales_941lp;
         ModoOperacion_941lp modo_941lp;
@@ -22,6 +23,20 @@ namespace GUI
             InitializeComponent();
             modo_941lp = ModoOperacion_941lp.Consulta;
             bllRegistroAnimales_941lp = new bllRegistroAnimales_941lp();
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
         }
 
         enum ModoOperacion_941lp
@@ -34,7 +49,7 @@ namespace GUI
         }
 
         private void FormRegistroAnimales_941lp_Load(object sender, EventArgs e)
-        
+
         {
             modo_941lp = ModoOperacion_941lp.Consulta;
             dataAnimales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -386,6 +401,11 @@ namespace GUI
                 MostrarDatosEnTxt_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 }

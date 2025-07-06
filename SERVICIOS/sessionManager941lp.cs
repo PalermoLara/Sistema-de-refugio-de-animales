@@ -12,6 +12,14 @@ namespace SERVICIOS
         public Usuario_941lp usuarioSession_941lp;
         private static sessionManager941lp instance_941lp;
 
+        private string idioma_941lp = "es"; // idioma por defecto
+
+        public string Idioma_941lp
+        {
+            get => idioma_941lp;
+            set => idioma_941lp = value;
+        }
+
         public static sessionManager941lp Gestor_941lp
         {
             get 

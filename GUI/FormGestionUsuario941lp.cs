@@ -18,7 +18,7 @@ using System.Net;
 
 namespace GUI
 {
-    public partial class FormGestionUsuario941lp : Form
+    public partial class FormGestionUsuario941lp : Form, IObserver_941lp
     {
         bllUsuario_941lp bllUsuario_941lp;
         bllPerfil_941lp bllPerfil_941lp;
@@ -31,6 +31,20 @@ namespace GUI
             btnAplicar.Enabled = false;
             btnCancelar.Enabled = false;
             modo_941lp = ModoOperacion_941lp.Consulta;
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
         }
 
         private void FormAdministradorUsuario_Load(object sender, EventArgs e)
@@ -390,6 +404,11 @@ namespace GUI
                 MostrarGrillaUsuarios_941lp(bllUsuario_941lp.RetornarUsuarios_941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 }

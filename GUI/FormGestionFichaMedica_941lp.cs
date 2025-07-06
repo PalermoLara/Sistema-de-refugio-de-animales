@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ using RadioButton = System.Windows.Forms.RadioButton;
 
 namespace GUI
 {
-    public partial class FormGestionFichaMedica_941lp : Form
+    public partial class FormGestionFichaMedica_941lp : Form, IObserver_941lp
     {
         private FormBitocoraFichaMedica_941lp FormBitocoraFichaMedica_941lp; 
         bllRegistroAnimales_941lp bllRegistroAnimales_941Lp;
@@ -30,7 +31,20 @@ namespace GUI
             bllMedicamento_941lp = new bllMedicamento_941lp();
             bllFichaMedica_941lp = new bllFichaMedica_941lp();
             bllBitacora_941lp = new bllBitacoraFichaMedica_941lp ();
-            FormBitocoraFichaMedica_941lp = new FormBitocoraFichaMedica_941lp();
+            FormBitocoraFichaMedica_941lp = new FormBitocoraFichaMedica_941lp(); TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
         }
 
         private void FormGestionFichaMedica_941lp_Load(object sender, EventArgs e)
@@ -56,6 +70,7 @@ namespace GUI
             rbDisponibleAdopcion.Checked = false;
             rbEnEvaluacionAdopcion.Checked = false;
             AplicarColorControles_941lp();
+
         }
 
         enum ModoOperacion_941lp
@@ -400,6 +415,11 @@ namespace GUI
                 dataAnimales_CellClick(null, null);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 }
