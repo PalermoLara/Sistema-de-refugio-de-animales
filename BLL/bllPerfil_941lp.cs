@@ -58,7 +58,7 @@ namespace BLL
                         ExpandirPermisos_941lp(familia_941lp, permisosYaAsignados_941lp);
 
                         // Registrar familias hijas para evitar duplicación
-                        ExpandirFamiliasInternas(familia_941lp, familiasYaIncluidas_941lp);
+                        ExpandirFamiliasInternas_941lp(familia_941lp, familiasYaIncluidas_941lp);
                     }
                 }
             }
@@ -68,23 +68,6 @@ namespace BLL
 
             // Eliminar familias hijas ya incluidas en otras
             listaFamilia_941lp.RemoveAll(f => familiasYaIncluidas_941lp.Contains(f.nombrePermiso_941lp));
-
-            string[] permisosPorDefecto_941lp = { "Cambiar contraseña", "Cambiar idioma", "Cerrar sesion" };
-
-            foreach (string permisoDefecto_941lp in permisosPorDefecto_941lp)
-            {
-                // Si no está ya heredado ni agregado directamente
-                bool yaEsta_941lp = listaSimples_941lp.Any(p => p.nombrePermiso_941lp == permisoDefecto_941lp)
-                           || permisosYaAsignados_941lp.Contains(permisoDefecto_941lp);
-
-                if (!yaEsta_941lp)
-                {
-                    if (permisosSimples_941lp.TryGetValue(permisoDefecto_941lp, out var pDefecto_941lp))
-                    {
-                        listaSimples_941lp.Add(pDefecto_941lp);
-                    }
-                }
-            }
 
             // Agregar simples
             foreach (var simple_941lp in listaSimples_941lp)
@@ -104,7 +87,7 @@ namespace BLL
         }
 
         // Método auxiliar
-        private void ExpandirFamiliasInternas(Familia_941lp familia_941lp, HashSet<string> acumulador_941lp)
+        private void ExpandirFamiliasInternas_941lp(Familia_941lp familia_941lp, HashSet<string> acumulador_941lp)
         {
             foreach (var permiso_941lp in familia_941lp.ObtenerPermisos_941lp())
             {
@@ -112,7 +95,7 @@ namespace BLL
                 {
                     if (acumulador_941lp.Add(fHija_941lp.nombrePermiso_941lp))
                     {
-                        ExpandirFamiliasInternas(fHija_941lp, acumulador_941lp);
+                        ExpandirFamiliasInternas_941lp(fHija_941lp, acumulador_941lp);
                     }
                 }
             }
@@ -161,7 +144,7 @@ namespace BLL
             return true;
         }
 
-        private void EliminarPermisosRepetidosDePadres(List<Perfil_941lp> contenedores_941lp, List<Perfil_941lp> permisosAsignados_941lp)
+        private void EliminarPermisosRepetidosDePadres_941lp(List<Perfil_941lp> contenedores_941lp, List<Perfil_941lp> permisosAsignados_941lp)
         {
             foreach (var contenedor_941lp in contenedores_941lp)
             {

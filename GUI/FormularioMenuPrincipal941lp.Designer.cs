@@ -288,7 +288,7 @@
             this.btnCambiarIdioma.Name = "btnCambiarIdioma";
             this.btnCambiarIdioma.Size = new System.Drawing.Size(266, 55);
             this.btnCambiarIdioma.TabIndex = 6;
-            this.btnCambiarIdioma.Tag = "Cambiar idioma";
+            this.btnCambiarIdioma.Tag = "";
             this.btnCambiarIdioma.Text = "Cambiar idioma ";
             this.btnCambiarIdioma.UseVisualStyleBackColor = true;
             this.btnCambiarIdioma.Click += new System.EventHandler(this.btnCambiarIdioma_Click);
@@ -300,7 +300,7 @@
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
             this.btnCambiarContraseña.Size = new System.Drawing.Size(266, 55);
             this.btnCambiarContraseña.TabIndex = 2;
-            this.btnCambiarContraseña.Tag = "Cambiar contraseña";
+            this.btnCambiarContraseña.Tag = "";
             this.btnCambiarContraseña.Text = "Cambiar contraseña";
             this.btnCambiarContraseña.UseVisualStyleBackColor = true;
             this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
@@ -312,7 +312,7 @@
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(266, 55);
             this.btnCerrarSesion.TabIndex = 0;
-            this.btnCerrarSesion.Tag = "Cerrar sesion";
+            this.btnCerrarSesion.Tag = "";
             this.btnCerrarSesion.Text = "Cerrar Sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);

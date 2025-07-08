@@ -87,7 +87,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="encriptador_941lp.cs" />
+    <Compile Include="Familia_941lp.cs" />
     <Compile Include="IObserver_941lp.cs" />
+    <Compile Include="Perfil_941lp.cs" />
+    <Compile Include="PermisoSimple_941lp.cs" />
     <Compile Include="Reportes_941lp\ReporteFichaIngreso_941lp.cs" />
     <Compile Include="sessionManager941lp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

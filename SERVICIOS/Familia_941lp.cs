@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE
+namespace SERVICIOS
 {
     public class Familia_941lp : Perfil_941lp
     {

@@ -199,8 +199,16 @@ namespace GUI
                 btnCrearRolFamilia.Enabled = false;
                 btnAsignar.Enabled=false;
                 btnEliminar.Enabled=false;
-                comboBoxPerfiles.Enabled = true;
-                comboBoxFamilia.Enabled = true;
+                if (rbFamilias.Checked)
+                {
+                    comboBoxFamilia.Enabled = true;
+                    comboBoxPerfiles.Enabled = false;
+                }
+                else
+                {
+                    comboBoxFamilia.Enabled = false;
+                    comboBoxPerfiles.Enabled = true;
+                }
                 btnAplicar.Enabled = true;
                 btnCancelar.Enabled = true;
                 btnSalir.Enabled=false;

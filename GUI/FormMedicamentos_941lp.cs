@@ -100,7 +100,8 @@ namespace GUI
             }
             if (camposObligatoriosIncompletos)
             {
-                throw new Exception("Debe completar todos los campos obligatorios.");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_FALTA_COMPLETAR_CAMPOS", "Debe completar todos los campos obligatorios.");
+                throw new Exception(exception_941lp);
             }
         }
 
@@ -188,19 +189,30 @@ namespace GUI
                 var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
                 // Validaciones
                 if (!regexNumero_941lp.IsMatch(numero_941lp))
-                    throw new ArgumentException("El número ingresado es inválido. Solo se permiten números y barras.");
+                {
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_NUMERO_INVALIDO", "El número ingresado es inválido. Solo se permiten números y barras.");
+                    throw new ArgumentException(exception_941lp);
+                }
                 if (!regexTexto_941lp.IsMatch(nombreComercial_941lp))
-                    throw new ArgumentException("El nombre comercial ingresado es inválido. Solo se permiten letras y espacios.");
+                {
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_NOMBRE_COMERCIAL_INVALIDO", "El nombre comercial ingresado es inválido. Solo se permiten letras y espacios.");
+                    throw new ArgumentException(exception_941lp);
+                }
                 if (!regexTexto_941lp.IsMatch(nombreGenerico_941lp))
-                    throw new ArgumentException("El nombre genérico ingresado es inválido. Solo se permiten letras y espacios.");
+                {
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_NOMBRE_GENERICO_INVALIDO", "El nombre genérico ingresado es inválido. Solo se permiten letras y espacios.");
+                    throw new ArgumentException(exception_941lp);
+                }
             }
             catch (ArgumentException ex)
             {
-                throw new Exception($"Error de validación: {ex.Message}");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_ERROR_VALIDACIÓN", $"Error de validación: {ex.Message}");
+                throw new Exception(exception_941lp);
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_ERROR_VALIDACIÓN", $"Ocurrió un error inesperado durante la validación de datos.{ex}");
+                throw new Exception(exception_941lp);
             }
         }
 
@@ -231,22 +243,29 @@ namespace GUI
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Alta:
-                        if(bllMedicamento_941Lp.VerificarExistenciaDeNumero_941lp(txtNumero.Text))throw new Exception("Número repetido");
-                        if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(dateTimePickerVencimiento.Value)) throw new Exception("Medicamento vencido");
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_NUMERO_REPETIDO", "Número repetido");
+                        if (bllMedicamento_941Lp.VerificarExistenciaDeNumero_941lp(txtNumero.Text))throw new Exception(exception_941lp);
+                        string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_VENCIDO", "Medicamento vencido");
+                        if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(dateTimePickerVencimiento.Value)) throw new Exception(exception1_941lp);
                         bllMedicamento_941Lp.Alta_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, dateTimePickerVencimiento.Value);
-                        MessageBox.Show("Medicamento dado de alta exitosamente");
+                        string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_ALTA", "Medicamento dado de alta exitosamente");
+                        MessageBox.Show(mensaje_941lp);
                         break;
                     case ModoOperacion_941lp.Modificar:
-                        if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(dateTimePickerVencimiento.Value)) throw new Exception("Medicamento vencido");
+                        string exception2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_VENCIDO", "Medicamento vencido");
+                        if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(dateTimePickerVencimiento.Value)) throw new Exception(exception2_941lp);
                         bllMedicamento_941Lp.Modificar_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, dateTimePickerVencimiento.Value);
-                        MessageBox.Show("Medicamento modificado exitosamente");
+                        string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_MODIFICADO", "Medicamento modificado exitosamente");
+                        MessageBox.Show(mensaje1_941lp);
                         break;
                     case ModoOperacion_941lp.Baja:
                         bllMedicamento_941Lp.Baja_941lp(dataMedicamentos.SelectedRows[0].Cells[0].Value.ToString());
-                        MessageBox.Show("Medicamento dado de baja con exito");
+                        string mensaje2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_BAJA", "Medicamento dado de baja con exito");
+                        MessageBox.Show(mensaje2_941lp);
                         break;
                     default:
-                        MessageBox.Show("Error en la operación");
+                        string error_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_ERROR", "Error en la operación");
+                        MessageBox.Show(error_941lp);
                         break;
                 }
                 ModoAceptarCancelar_941lp();

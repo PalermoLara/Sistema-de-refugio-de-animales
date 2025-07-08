@@ -126,7 +126,8 @@ namespace GUI
                         string.IsNullOrWhiteSpace(txtDireccion.Text) ||
                         string.IsNullOrWhiteSpace(txtTelefono.Text))
             {
-                throw new Exception("Debe completar todos los campos obligatorios.");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_FALTA_COMPLETAR_CAMPOS", "Debe completar todos los campos obligatorios.");
+                throw new Exception(exception_941lp);
             }
         }
 
@@ -181,14 +182,8 @@ namespace GUI
         {
             try
             {
-                // Regex reutilizables
                 var regexDireccion_941lp = new Regex(@"^[\p{L}\d\s\.,°#\-]+$");
-                /*
-                 *  Ejemplos válidos:
-                    Av. Rivadavia 1234
-                    Calle Falsa 123, Piso 2° A
-                    San Martín 4444 - Dpto #3
-                 */
+                
                 var regexTelefonoAR_941lp = new Regex(@"^(\+54|54)?\s?(9)?\s?(11|[2368]\d{2})\s?\d{3,4}[- ]?\d{4}$");
                 var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
                 var regexDni = new Regex(@"^\d{8}$");
@@ -199,21 +194,35 @@ namespace GUI
                     throw new ArgumentException(exception_941lp);
                 }
                 if (!regexTexto_941lp.IsMatch(nombre_941lp))
-                    throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras y espacios.");
+                {
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_NOMBRE_INVALIDO", "El nombre ingresado es inválido. Solo se permiten letras y espacios.");
+                    throw new ArgumentException(exception_941lp);
+                }
                 if (!regexTexto_941lp.IsMatch(apellido_941lp))
-                    throw new ArgumentException("El apellido ingresado es inválido. Solo se permiten letras y espacios.");
+                {
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_APELLIDO_INVALIDO", "El apellido ingresado es inválido. Solo se permiten letras y espacios.");
+                    throw new ArgumentException(exception_941lp);
+                }
                 if (!regexDireccion_941lp.IsMatch(direccion_941lp))
-                    throw new ArgumentException("La dirección ingresada es inválida.");
+                {
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_DIRECCION_INVALIDA", "La dirección ingresada es inválida.");
+                    throw new ArgumentException(exception_941lp);
+                }
                 if (!regexTelefonoAR_941lp.IsMatch(telefono_941lp))
-                    throw new ArgumentException("El telefono ingresado es inválido. Solo se permiten telefonos argentinos.");
+                {
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_TELEFONO_INVALIDO", "El telefono ingresado es inválido. Solo se permiten telefonos argentinos.");
+                    throw new ArgumentException(exception_941lp);
+                }
             }
             catch (ArgumentException ex)
             {
-                throw new Exception($"Error de validación: {ex.Message}");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ERROR_VALIDACIÓN", $"Error de validación: {ex.Message}");
+                throw new Exception(exception_941lp);
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ERROR_VALIDACIÓN", $"Ocurrió un error inesperado durante la validación de datos.{ex}");
+                throw new Exception(exception_941lp);
             }
         }
 
@@ -288,21 +297,25 @@ namespace GUI
                     case ModoOperacion_941lp.Alta:
                         ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNOmbreCedente.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text);
-                        if (bllCedente_941lp.ValidarDNI_941lp(txtDni.Text)) { throw new Exception("DNI repetido"); }
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_DNI_REPETIDO", "DNI repetido");
+                        if (bllCedente_941lp.ValidarDNI_941lp(txtDni.Text)) { throw new Exception(exception_941lp); }
                         bllCedente_941lp.Alta_941lp(txtDni.Text, txtNOmbreCedente.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text);
-                        MessageBox.Show("Cedente dado de alta exitosamente");
+                        string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_CEDENTE_ALTA", "Cedente dado de alta exitosamente");
+                        MessageBox.Show(mensaje_941lp);
                         break;
                     case ModoOperacion_941lp.Modificar:
                         ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNOmbreCedente.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text);
                         bllCedente_941lp.Modificar_941lp(txtDni.Text, txtNOmbreCedente.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text);
-                        MessageBox.Show("Cedente modificado exitosamente");
+                        string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_CEDENTE_MODIFICADO", "Cedente modificado exitosamente");
+                        MessageBox.Show(mensaje1_941lp);
                         break;
                     case ModoOperacion_941lp.ActivarDesactivar:
                         bllCedente_941lp.ActivarDesactivar_941lp(dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
                         break;
                     default:
-                        MessageBox.Show("Error en la operación");
+                        string error_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ERROR", "Error en la operación");
+                        MessageBox.Show(error_941lp);
                         break;
                 }
                 MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
@@ -325,7 +338,6 @@ namespace GUI
             if (modo_941lp != ModoOperacion_941lp.Alta)
             {
                 txtDni.Text = dataCedentes.SelectedRows[0].Cells[0].Value.ToString();
-                //nombre real
                 txtNOmbreCedente.Text = dataCedentes.SelectedRows[0].Cells[1].Value.ToString();
                 txtApellido.Text = dataCedentes.SelectedRows[0].Cells[2].Value.ToString();
                 Desencriptar_941lp();

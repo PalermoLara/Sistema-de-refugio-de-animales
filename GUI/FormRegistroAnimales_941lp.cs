@@ -135,27 +135,41 @@ namespace GUI
                 {
                     var regexCodigo_941lp = new Regex(@"^\d{5}$");
                     if (!regexCodigo_941lp.IsMatch(codigo_941lp))
-                        throw new ArgumentException("El código ingresado es inválido.Solo se permiten cinco números.");
+                    {
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_CODIGO_INVALIDO", "El código ingresado es inválido.Solo se permiten cinco números.");
+                        throw new ArgumentException(exception_941lp);
+                    }
                 }
                 // Regex reutilizables
                 var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
                 if(especie_941lp!=null && raza_941lp != null && nombre_941lp != null)
                 {
                     if (!regexTexto_941lp.IsMatch(especie_941lp))
-                        throw new ArgumentException("La especie ingresada es inválida. Solo se permiten letras.");
+                    {
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ESPECIE_INVALIDO", "La especie ingresada es inválida. Solo se permiten letras.");
+                        throw new ArgumentException(exception_941lp);
+                    }
                     if (!regexTexto_941lp.IsMatch(raza_941lp))
-                        throw new ArgumentException("La raza ingresada es inválida. Solo se permiten letras.");
+                    {
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_RAZA_INVALIDO", "La raza ingresada es inválida. Solo se permiten letras.");
+                        throw new ArgumentException(exception_941lp);
+                    }
                     if (!regexTexto_941lp.IsMatch(nombre_941lp))
-                        throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras.");
+                    {
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_NOMBRE_INVALIDO", "El nombre ingresado es inválido. Solo se permiten letras.");
+                        throw new ArgumentException(exception_941lp);
+                    }
                 }
             }
             catch (ArgumentException ex)
             {
-                throw new Exception($"Error de validación: {ex.Message}");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ERROR_VALIDACIÓN", $"Error de validación: {ex.Message}");
+                throw new Exception(exception_941lp);
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ERROR_VALIDACIÓN", $"Ocurrió un error inesperado durante la validación de datos.{ex}");
+                throw new Exception(exception_941lp);
             }
         }
 
@@ -232,7 +246,11 @@ namespace GUI
         {
             try
             {
-                if(ValidarCargaDeDatos_941lp()==false) throw new Exception("Debe de ingresar todos los datos obligatorios");
+                if (ValidarCargaDeDatos_941lp() == false)
+                {
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_FALTAN_DATOS", "Debe de ingresar todos los datos obligatorios");
+                    throw new Exception(exception_941lp);
+                }
                 string codigoIngresado_941lp = " ";
                 string especieIngresada_941lp = " ";
                 string razaIngresada_941lp= " ";
@@ -262,20 +280,31 @@ namespace GUI
                         bllRegistroAnimales_941lp.AltaAnimal_941lp(especieIngresada_941lp, razaIngresada_941lp, nombreIngresado_941lp, tamañoIngresado_941lp, sexoIngresado_941lp, estadoDeAdopcionIngresado_941lp, vivoIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Modificar:
-                        if (bllRegistroAnimales_941lp.VerificarAnimalVivo_941lp(txtCodigo.Text) == false) throw new Exception("El animal debe estar vivo");
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ANIMAL_MUERTO", "El animal debe estar vivo");
+                        if (bllRegistroAnimales_941lp.VerificarAnimalVivo_941lp(txtCodigo.Text) == false) throw new Exception(exception_941lp);
                         bllRegistroAnimales_941lp.Modificar_941lp(dataAnimales.SelectedRows[0].Cells[0].Value.ToString(),especieIngresada_941lp, razaIngresada_941lp, nombreIngresado_941lp, tamañoIngresado_941lp, sexoIngresado_941lp, estadoDeAdopcionIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Reingreso:
                         codigoIngresado_941lp = txtCodigo.Text;
                         ControlDeIngresoDeDatos_941lp(codigo_941lp : codigoIngresado_941lp);
-                        if (bllRegistroAnimales_941lp.ValidarExistenciaAnimal_941lp(txtCodigo.Text) == false) throw new Exception("El animal no se encuentra registrado");
-                        if (bllRegistroAnimales_941lp.VerificarAnimalAdoptado_941lp(txtCodigo.Text) == false) throw new Exception("El animal no esta adoptado");
-                        if (bllRegistroAnimales_941lp.VerificarAnimalVivo_941lp(txtCodigo.Text) == false) throw new Exception("El animal debe estar vivo");
+                        string exception2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ANIMAL_NO_REGISTRADO", "El animal no se encuentra registrado");
+                        if (bllRegistroAnimales_941lp.ValidarExistenciaAnimal_941lp(txtCodigo.Text) == false) throw new Exception(exception2_941lp);
+                        string exception3_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ANIMAL_NO_ADOPTADO", "El animal no esta adoptado");
+                        if (bllRegistroAnimales_941lp.VerificarAnimalAdoptado_941lp(txtCodigo.Text) == false) throw new Exception(exception3_941lp);
+                        string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ANIMAL_MUERTO", "El animal debe estar vivo");
+                        if (bllRegistroAnimales_941lp.VerificarAnimalVivo_941lp(txtCodigo.Text) == false) throw new Exception(exception1_941lp);
                         bllRegistroAnimales_941lp.Modificar_941lp(codigo_941lp : codigoIngresado_941lp,estadoDeAdopcion_941lp : estadoDeAdopcionIngresado_941lp);
                         break;
                     case ModoOperacion_941lp.Baja:
-                        if (dataAnimales.SelectedRows[0].Cells[7].Value.ToString() == "False") { modo_941lp = ModoOperacion_941lp.Consulta; throw new Exception("El animal ya esta dado de baja"); };
-                        DialogResult dr_941lp = MessageBox.Show("¿Está seguro que desea dar de baja al animal?", "FALLECIMIENTO", MessageBoxButtons.YesNo);
+                        if (dataAnimales.SelectedRows[0].Cells[7].Value.ToString() == "False") 
+                        { 
+                            modo_941lp = ModoOperacion_941lp.Consulta;
+                            string exception4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ANIMAL_YA_MUERTO", "El animal ya esta dado de baja");
+                            throw new Exception("El animal ya esta dado de baja"); 
+                        }
+                        string cuerpo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ANIMAL_BAJA_CONFIRMACION", "¿Está seguro que desea dar de baja al animal?");
+                        string titulo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ANIMAL_BAJA_CONFIRMACION_TITULO", "FALLECIMIENTO");
+                        DialogResult dr_941lp = MessageBox.Show(cuerpo_941lp, titulo_941lp, MessageBoxButtons.YesNo);
                         if (dr_941lp == DialogResult.Yes)
                         {
                             codigoIngresado_941lp = txtCodigo.Text;
@@ -285,7 +314,8 @@ namespace GUI
                         }
                         break;
                     default:
-                        MessageBox.Show("Error");
+                        string error_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ERROR", "Error");
+                        MessageBox.Show(error_941lp);
                         break;
                 }
                 modo_941lp = ModoOperacion_941lp.Consulta;

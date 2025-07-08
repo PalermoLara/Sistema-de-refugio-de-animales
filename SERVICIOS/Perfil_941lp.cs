@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE
+namespace SERVICIOS
 {
     public abstract class Perfil_941lp
     {

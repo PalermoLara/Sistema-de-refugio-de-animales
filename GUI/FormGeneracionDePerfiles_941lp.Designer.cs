@@ -88,6 +88,7 @@
             // 
             // comboBoxPerfiles
             // 
+            this.comboBoxPerfiles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPerfiles.FormattingEnabled = true;
             this.comboBoxPerfiles.Location = new System.Drawing.Point(1076, 537);
             this.comboBoxPerfiles.Name = "comboBoxPerfiles";
@@ -191,7 +192,7 @@
             this.rbFamilias.AutoSize = true;
             this.rbFamilias.Location = new System.Drawing.Point(18, 69);
             this.rbFamilias.Name = "rbFamilias";
-            this.rbFamilias.Size = new System.Drawing.Size(99, 29);
+            this.rbFamilias.Size = new System.Drawing.Size(112, 29);
             this.rbFamilias.TabIndex = 19;
             this.rbFamilias.Text = "Familia";
             this.rbFamilias.UseVisualStyleBackColor = true;
@@ -203,7 +204,7 @@
             this.rbPerfiles.Checked = true;
             this.rbPerfiles.Location = new System.Drawing.Point(18, 19);
             this.rbPerfiles.Name = "rbPerfiles";
-            this.rbPerfiles.Size = new System.Drawing.Size(79, 29);
+            this.rbPerfiles.Size = new System.Drawing.Size(92, 29);
             this.rbPerfiles.TabIndex = 17;
             this.rbPerfiles.TabStop = true;
             this.rbPerfiles.Text = "Perfil";
@@ -239,6 +240,7 @@
             // 
             // comboBoxFamilia
             // 
+            this.comboBoxFamilia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFamilia.FormattingEnabled = true;
             this.comboBoxFamilia.Location = new System.Drawing.Point(572, 537);
             this.comboBoxFamilia.Name = "comboBoxFamilia";
