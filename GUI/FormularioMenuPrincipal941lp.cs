@@ -51,7 +51,7 @@ namespace GUI
         private void AplicarTraduccion_941lp()
         {
             string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
-            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+            RecorrerControlesParaTraducir_941lp.TraducirControles_941lp(this, this.Name, idioma);
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -90,8 +90,8 @@ namespace GUI
         {
             try
             {
-                string titulo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_TITULO_CERRAR_SESION", "CERRAR SESIÓN...");
-                string cuerpo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_PREGUNTA_CERRAR_SESION", "¿Desea cerrar la sesión?");
+                string titulo_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp(this.Name, "MSG_TITULO_CERRAR_SESION", "CERRAR SESIÓN...");
+                string cuerpo_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp(this.Name, "MSG_PREGUNTA_CERRAR_SESION", "¿Desea cerrar la sesión?");
                 DialogResult dr_941lp = MessageBox.Show(cuerpo_941lp, titulo_941lp, MessageBoxButtons.OKCancel);
                 if(dr_941lp == DialogResult.OK)
                 {

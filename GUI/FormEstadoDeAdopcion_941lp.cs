@@ -23,7 +23,7 @@ namespace GUI
         private void AplicarTraduccion_941lp()
         {
             string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
-            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+            RecorrerControlesParaTraducir_941lp.TraducirControles_941lp(this, this.Name, idioma);
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)

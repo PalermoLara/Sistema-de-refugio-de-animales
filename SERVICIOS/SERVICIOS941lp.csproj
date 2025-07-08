@@ -94,8 +94,8 @@
     <Compile Include="Reportes_941lp\ReporteFichaIngreso_941lp.cs" />
     <Compile Include="sessionManager941lp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RraductorSubject_941lp.cs" />
     <Compile Include="TraductorHelper_941lp.cs" />
+    <Compile Include="TraductorSubject_941lp.cs" />
     <Compile Include="Usuario_941lp.cs" />
   </ItemGroup>
   <ItemGroup>

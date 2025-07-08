@@ -38,7 +38,7 @@ namespace SERVICIOS
             else
             {
                 string json_941lp = File.ReadAllText(path_941lp);
-                traducciones_941lp = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, Dictionary<string, string>>>>(json_941lp);
+                traducciones_941lp = JsonConvert.DeserializeObject< Dictionary<string, Dictionary<string, Dictionary<string, string>>>>(json_941lp);
             }
         }
 
@@ -66,23 +66,35 @@ namespace SERVICIOS
                 obs.ActualizarTraduccion_941lp(idioma_941lp);
         }
 
-        public string Traducir_941lp(string formulario_941lp, string controlName_941lp, string idioma_941lp, string valorPorDefecto_941lp)
+        public string Traducir_941lp(string formulario, string control, string idioma, string valorPorDefecto)
         {
-            if (!traducciones_941lp.ContainsKey(idioma_941lp))
-                traducciones_941lp[idioma_941lp] = new Dictionary<string, Dictionary<string, string>>();
-
-            if (!traducciones_941lp[idioma_941lp].ContainsKey(formulario_941lp))
-                traducciones_941lp[idioma_941lp][formulario_941lp] = new Dictionary<string, string>();
-
-            var controles_941lp = traducciones_941lp[idioma_941lp][formulario_941lp];
-
-            if (!controles_941lp.ContainsKey(controlName_941lp))
+            // 1. Verificar si existe el idioma
+            if (!traducciones_941lp.ContainsKey(idioma))
             {
-                controles_941lp[controlName_941lp] = valorPorDefecto_941lp;
-                GuardarJson_941lp();
+                traducciones_941lp[idioma] = new Dictionary<string, Dictionary<string, string>>();
             }
 
-            return controles_941lp[controlName_941lp];
+            // 2. Verificar si existe el formulario en este idioma
+            if (!traducciones_941lp[idioma].ContainsKey(formulario))
+            {
+                // Si no existe el formulario, crear estructura completa
+                traducciones_941lp[idioma][formulario] = new Dictionary<string, string>();
+                traducciones_941lp[idioma][formulario][control] = valorPorDefecto;
+                GuardarJson_941lp();
+                return valorPorDefecto;
+            }
+
+            // 3. Si el formulario existe pero no el control específico
+            if (!traducciones_941lp[idioma][formulario].ContainsKey(control))
+            {
+                // Agregar el control con valor por defecto solo para este formulario
+                traducciones_941lp[idioma][formulario][control] = valorPorDefecto;
+                GuardarJson_941lp();
+                return valorPorDefecto;
+            }
+
+            // 4. Si existe tanto formulario como control, devolver la traducción existente
+            return traducciones_941lp[idioma][formulario][control];
         }
     }
 }

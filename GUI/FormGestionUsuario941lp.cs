@@ -38,7 +38,7 @@ namespace GUI
         private void AplicarTraduccion_941lp()
         {
             string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
-            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+            RecorrerControlesParaTraducir_941lp.TraducirControles_941lp(this, this.Name, idioma);
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -254,7 +254,7 @@ namespace GUI
             {
                 if (modo_941lp != ModoOperacion_941lp.Consulta && modo_941lp != ModoOperacion_941lp.Alta)
                 {
-                    string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_SELECCIONAR_USUARIO_FALTA", "Seleccione un usuario");
+                    string mensaje_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_SELECCIONAR_USUARIO_FALTA", "Seleccione un usuario");
                     if (dataUsuarios.SelectedRows.Count == 0) throw new Exception(mensaje_941lp);
                 }
                 switch (modo_941lp)
@@ -265,21 +265,21 @@ namespace GUI
                     case ModoOperacion_941lp.Alta:
                         ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text, comboBoxRoles.Text, txtEmailUsuario.Text);
-                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_DNI_REPETIDO", "DNI repetido");
+                        string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_DNI_REPETIDO", "DNI repetido");
                         if (bllUsuario_941lp.ValidarDNI_941lp(txtDni.Text)) { throw new Exception(exception_941lp); }
-                        string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_EMAIL_REPETIDO", "Email repetido");
+                        string exception1_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_EMAIL_REPETIDO", "Email repetido");
                         if (bllUsuario_941lp.ValidarEmail_941lp(txtEmailUsuario.Text, txtDni.Text)) throw new Exception(exception1_941lp);
                         bllUsuario_941lp.Alta_941lp(txtDni.Text,txtNombreUsuario.Text,txtApellidoUsuario.Text,comboBoxRoles.Text,txtEmailUsuario.Text);
-                        string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG__USUARIO_ALTA_EXITOSAMENTE", "Usuario dado de alta exitosamente");
+                        string mensaje_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG__USUARIO_ALTA_EXITOSAMENTE", "Usuario dado de alta exitosamente");
                         MessageBox.Show(mensaje_941lp);
                         break;
                     case ModoOperacion_941lp.Modificar:
                         ValidarCargaDeTxt_941lp();
                         ControlDeIngresoDeDatos_941lp(txtDni.Text, txtNombreUsuario.Text, txtApellidoUsuario.Text, comboBoxRoles.Text, txtEmailUsuario.Text);
-                        string exception2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_EMAIL_REPETIDO", "Email repetido");
+                        string exception2_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_EMAIL_REPETIDO", "Email repetido");
                         if (bllUsuario_941lp.ValidarEmail_941lp(txtEmailUsuario.Text, txtDni.Text)) throw new Exception(exception2_941lp);
                         bllUsuario_941lp.Modificar_941lp(txtDni.Text,comboBoxRoles.Text, txtEmailUsuario.Text);
-                        string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG__USUARIO_MODIFICADO_EXITOSAMENTE", "Usuario modificado exitosamente");
+                        string mensaje1_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG__USUARIO_MODIFICADO_EXITOSAMENTE", "Usuario modificado exitosamente");
                         MessageBox.Show(mensaje1_941lp);
                         break;
                     case ModoOperacion_941lp.ActivarDesactivar:
@@ -289,7 +289,7 @@ namespace GUI
                         bllUsuario_941lp.Desbloquear_941lp(dataUsuarios.SelectedRows[0].Cells[0].Value.ToString());
                         break;
                     default:
-                        string mensaje2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ERROR_EN_LA_OPERACION", "Error en la operación");
+                        string mensaje2_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ERROR_EN_LA_OPERACION", "Error en la operación");
                         MessageBox.Show(mensaje2_941lp);
                         break;
                 }
@@ -307,7 +307,7 @@ namespace GUI
                         string.IsNullOrWhiteSpace(txtEmailUsuario.Text) ||
                         comboBoxRoles.SelectedItem == null)
             {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_FALTAN_CAMPOS_OBLIGATORIOS", "Debe completar todos los campos obligatorios.");
+                string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_FALTAN_CAMPOS_OBLIGATORIOS", "Debe completar todos los campos obligatorios.");
                 throw new Exception(exception_941lp);
             }
         }
@@ -377,38 +377,38 @@ namespace GUI
                 // Validaciones
                 if (!regexDni.IsMatch(dni_941lp))
                 {
-                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_DNI_INVALIDO", "El DNI ingresado es inválido. Debe contener exactamente 8 dígitos y solo números.");
+                    string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_DNI_INVALIDO", "El DNI ingresado es inválido. Debe contener exactamente 8 dígitos y solo números.");
                     throw new ArgumentException(exception_941lp);
                 }
                 if (!regexTexto_941lp.IsMatch(nombre_941lp))
                 {
-                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_NOMBRE_INVALIDO", "El nombre ingresado es inválido. Solo se permiten letras y espacios.");
+                    string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_NOMBRE_INVALIDO", "El nombre ingresado es inválido. Solo se permiten letras y espacios.");
                     throw new ArgumentException(exception_941lp);
                 }
                 if (!regexTexto_941lp.IsMatch(apellido_941lp))
                 {
-                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_APELLIDO_INVALIDO", "El apellido ingresado es inválido. Solo se permiten letras y espacios.");
+                    string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_APELLIDO_INVALIDO", "El apellido ingresado es inválido. Solo se permiten letras y espacios.");
                     throw new ArgumentException(exception_941lp);
                 }
                 if (!regexTexto_941lp.IsMatch(rol_941lp))
                 {
-                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ROL_INVALIDO", "El rol ingresado es inválido. Solo se permiten letras y espacios.");
+                    string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ROL_INVALIDO", "El rol ingresado es inválido. Solo se permiten letras y espacios.");
                     throw new ArgumentException(exception_941lp );
                 }
                 if (!regexGmail_941lp.IsMatch(email_941lp))
                 {
-                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_EMAIL_INVALIDO", "El email ingresado debe ser una dirección válida de Gmail.");
+                    string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_EMAIL_INVALIDO", "El email ingresado debe ser una dirección válida de Gmail.");
                     throw new ArgumentException(exception_941lp);
                 }
             }
             catch (ArgumentException ex)
             {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ERROR_VALIDACION", $"Error de validación: {ex.Message}");
+                string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ERROR_VALIDACION", $"Error de validación: {ex.Message}");
                 throw new Exception(exception_941lp);
             }
             catch (Exception ex)
             {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ERROR_INESPERADO", $"Ocurrió un error inesperado durante la validación de datos.{ex}");
+                string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ERROR_INESPERADO", $"Ocurrió un error inesperado durante la validación de datos.{ex}");
                 throw new Exception(exception_941lp);
             }
         }
