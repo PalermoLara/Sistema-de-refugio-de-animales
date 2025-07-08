@@ -198,6 +198,49 @@ namespace BLL
                 }
             }
 
+            // Primero contamos los permisos actuales del perfil
+            int totalPermisosActuales_941lp = 0;
+            var perfilActual_941lp = familiasEstructuradas_941lp.TryGetValue(nombrePerfil_941lp, out var perfil_941lp) ? perfil_941lp : null;
+
+            if (perfilActual_941lp != null)
+            {
+                totalPermisosActuales_941lp = ContarPermisos_941lp((Familia_941lp)perfilActual_941lp);
+            }
+
+            // Contamos los permisos que se van a eliminar
+            int permisosAEliminar_941lp = 0;
+
+            foreach (string nombre_941lp in permisosAñadir_941lp)
+            {
+                if (permisosSimples_941lp.TryGetValue(nombre_941lp, out var simple_941lp))
+                {
+                    listaSimples_941lp.Add(simple_941lp);
+                    permisosAEliminar_941lp++;
+                }
+                else if (familiasSinEstructura_941lp.ContainsKey(nombre_941lp))
+                {
+                    if (familiasSinEstructura_941lp.TryGetValue(nombre_941lp, out var familiaCompuesta_941lp))
+                    {
+                        var familia_941lp = (Familia_941lp)familiaCompuesta_941lp;
+                        listaFamilia_941lp.Add(familia_941lp);
+                        permisosAEliminar_941lp += ContarPermisos_941lp(familia_941lp);
+
+                        // Expandir permisos simples
+                        ExpandirPermisos_941lp(familia_941lp, permisosYaAsignados_941lp);
+
+                        // Registrar familias hijas para evitar duplicación
+                        ExpandirFamiliasInternas(familia_941lp, familiasYaIncluidas_941lp);
+                    }
+                }
+            }
+
+            // Verificar si el perfil quedaría vacío
+            if (perfilActual_941lp != null && totalPermisosActuales_941lp <= permisosAEliminar_941lp)
+            {
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERFIL_VACIO", $"No se puede eliminar los permisos: el perfil '{nombrePerfil_941lp}' quedaría vacío.");
+                throw new InvalidOperationException(exception_941lp);
+            }
+
             // Eliminar permisos simples duplicados
             listaSimples_941lp.RemoveAll(p => permisosYaAsignados_941lp.Contains(p.nombrePermiso_941lp));
 
@@ -217,6 +260,23 @@ namespace BLL
                 f_941lp.EliminarPermiso_941lp(familia_941lp);
                 ormPerfilFamilia_941lp.EliminarDeIntermedia_941lp(f_941lp.nombrePermiso_941lp, familia_941lp.nombrePermiso_941lp);
             }
+        }
+
+        private int ContarPermisos_941lp(Familia_941lp familia_941lp)
+        {
+            int count_941lp = 0;
+            foreach (var permiso_941lp in familia_941lp.ObtenerPermisos_941lp())
+            {
+                if (permiso_941lp is PermisoSimple_941lp)
+                {
+                    count_941lp++;
+                }
+                else if (permiso_941lp is Familia_941lp subFamilia_941lp)
+                {
+                    count_941lp += ContarPermisos_941lp(subFamilia_941lp);
+                }
+            }
+            return count_941lp;
         }
     }
 }

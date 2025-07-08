@@ -92,11 +92,11 @@ namespace BLL
         {
             var contenedores_941lp = new List<Perfil_941lp>();
 
-            var familias_941lp = orm_941lp.ObtenerCompositeFamilias_941lp(); // Diccionario<string, Familia_941lp>
-            var perfiles_941lp = ormPerfil_941Lp.ObtenerCompositePerfiles_941lp(); // Diccionario<string, Perfil_941lp>
+            var familias_941lp = orm_941lp.ObtenerCompositeFamilias_941lp(); 
+            var perfiles_941lp = ormPerfil_941Lp.ObtenerCompositePerfiles_941lp();
 
             var estructuras_941lp = familias_941lp.Values.Cast<Perfil_941lp>()
-                              .Concat(perfiles_941lp.Values); // Unificamos ambas listas
+                              .Concat(perfiles_941lp.Values);
 
             foreach (var estructura_941lp in estructuras_941lp)
             {
@@ -314,6 +314,46 @@ namespace BLL
                 }
             }
 
+            if (!familiasEstructuradas_941lp.TryGetValue(nombreFamilia_941lp, out var familiaActual_941lp))
+            {
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_NO_ENCONTRADO", $"La familia '{nombreFamilia_941lp}' no existe.");
+                throw new InvalidOperationException(exception_941lp);
+            }
+
+            int totalPermisosActuales_941lp = ContarPermisos_941lp((Familia_941lp)familiaActual_941lp);
+            int permisosAEliminar_941lp = 0;
+
+            foreach (string nombre_941lp in permisosAñadir_941lp)
+            {
+                if (permisosSimples_941lp.TryGetValue(nombre_941lp, out var simple_941lp))
+                {
+                    listaSimples_941lp.Add(simple_941lp);
+                    permisosAEliminar_941lp++;
+                }
+                else if (familiasSinEstructura_941lp.ContainsKey(nombre_941lp))
+                {
+                    if (familiasEstructuradas_941lp.TryGetValue(nombre_941lp, out var familiaCompuesta_941lp))
+                    {
+                        var familia_941lp = (Familia_941lp)familiaCompuesta_941lp;
+                        listaFamilia_941lp.Add(familia_941lp);
+                        permisosAEliminar_941lp += ContarPermisos_941lp(familia_941lp);
+
+                        // Expandir permisos simples
+                        ExpandirPermisos_941lp(familia_941lp, permisosYaAsignados_941lp);
+
+                        // Registrar familias hijas para evitar duplicación
+                        ExpandirFamiliasInternas_941lp(familia_941lp, familiasYaIncluidas_941lp);
+                    }
+                }
+            }
+
+            // Verificar si la familia quedaría vacía
+            if (totalPermisosActuales_941lp <= permisosAEliminar_941lp)
+            {
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_VACIA", $"No se pueden eliminar los permisos: la familia '{nombreFamilia_941lp}' quedaría vacía.");
+                throw new InvalidOperationException(exception_941lp);
+            }
+
             // Eliminar permisos simples duplicados
             listaSimples_941lp.RemoveAll(p_941lp => permisosYaAsignados_941lp.Contains(p_941lp.nombrePermiso_941lp));
 
@@ -334,6 +374,23 @@ namespace BLL
                 f_941lp.EliminarPermiso_941lp(familia_941lp);
                 OrmIntemedia_941Lp.EliminarDeIntermedia_941lp(f_941lp.nombrePermiso_941lp, familia_941lp.nombrePermiso_941lp);
             }
+        }
+
+        private int ContarPermisos_941lp(Familia_941lp familia_941lp)
+        {
+            int count_941lp = 0;
+            foreach (var permiso_941lp in familia_941lp.ObtenerPermisos_941lp())
+            {
+                if (permiso_941lp is PermisoSimple_941lp)
+                {
+                    count_941lp++;
+                }
+                else if (permiso_941lp is Familia_941lp subFamilia_941lp)
+                {
+                    count_941lp += ContarPermisos_941lp(subFamilia_941lp);
+                }
+            }
+            return count_941lp;
         }
     }
 }
