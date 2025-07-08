@@ -28,61 +28,61 @@ namespace SERVICIOS
 
         private void CargarTraduccionesDesdeJson_941lp()
         {
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "traducciones.json");
+            string path_941lp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "traducciones.json");
 
-            if (!File.Exists(path))
+            if (!File.Exists(path_941lp))
             {
                 traducciones_941lp = new Dictionary<string, Dictionary<string, Dictionary<string, string>>>();
                 GuardarJson_941lp();
             }
             else
             {
-                string json = File.ReadAllText(path);
-                traducciones_941lp = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, Dictionary<string, string>>>>(json);
+                string json_941lp = File.ReadAllText(path_941lp);
+                traducciones_941lp = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, Dictionary<string, string>>>>(json_941lp);
             }
         }
 
         private void GuardarJson_941lp()
         {
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "traducciones.json");
-            string json = JsonConvert.SerializeObject(traducciones_941lp, Formatting.Indented);
-            File.WriteAllText(path, json);
+            string path_941lp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "traducciones.json");
+            string json_941lp = JsonConvert.SerializeObject(traducciones_941lp, Formatting.Indented);
+            File.WriteAllText(path_941lp, json_941lp);
         }
 
-        public void Suscribir_941lp(IObserver_941lp observador)
+        public void Suscribir_941lp(IObserver_941lp observador_941lp)
         {
-            if (!observadores_941lp.Contains(observador))
-                observadores_941lp.Add(observador);
+            if (!observadores_941lp.Contains(observador_941lp))
+                observadores_941lp.Add(observador_941lp);
         }
 
-        public void Desuscribir_941lp(IObserver_941lp observador)
+        public void Desuscribir_941lp(IObserver_941lp observador_941lp)
         {
-            observadores_941lp.Remove(observador);
+            observadores_941lp.Remove(observador_941lp);
         }
 
-        public void Notificar_941lp(string idioma)
+        public void Notificar_941lp(string idioma_941lp)
         {
             foreach (var obs in observadores_941lp)
-                obs.ActualizarTraduccion_941lp(idioma);
+                obs.ActualizarTraduccion_941lp(idioma_941lp);
         }
 
-        public string Traducir_941lp(string formulario, string controlName, string idioma, string valorPorDefecto)
+        public string Traducir_941lp(string formulario_941lp, string controlName_941lp, string idioma_941lp, string valorPorDefecto_941lp)
         {
-            if (!traducciones_941lp.ContainsKey(idioma))
-                traducciones_941lp[idioma] = new Dictionary<string, Dictionary<string, string>>();
+            if (!traducciones_941lp.ContainsKey(idioma_941lp))
+                traducciones_941lp[idioma_941lp] = new Dictionary<string, Dictionary<string, string>>();
 
-            if (!traducciones_941lp[idioma].ContainsKey(formulario))
-                traducciones_941lp[idioma][formulario] = new Dictionary<string, string>();
+            if (!traducciones_941lp[idioma_941lp].ContainsKey(formulario_941lp))
+                traducciones_941lp[idioma_941lp][formulario_941lp] = new Dictionary<string, string>();
 
-            var controles = traducciones_941lp[idioma][formulario];
+            var controles_941lp = traducciones_941lp[idioma_941lp][formulario_941lp];
 
-            if (!controles.ContainsKey(controlName))
+            if (!controles_941lp.ContainsKey(controlName_941lp))
             {
-                controles[controlName] = valorPorDefecto;
+                controles_941lp[controlName_941lp] = valorPorDefecto_941lp;
                 GuardarJson_941lp();
             }
 
-            return controles[controlName];
+            return controles_941lp[controlName_941lp];
         }
     }
 }

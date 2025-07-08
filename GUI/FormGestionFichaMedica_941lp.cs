@@ -37,8 +37,8 @@ namespace GUI
 
         private void AplicarTraduccion_941lp()
         {
-            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
-            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+            string idioma_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma_941lp);
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -163,21 +163,29 @@ namespace GUI
                 if(dieta_941lp!="")
                 {
                     if (!regexTexto_941lp.IsMatch(dieta_941lp))
-                        throw new ArgumentException("La dieta ingresada es inválida. Solo se permiten letras y espacios.");
+                    {
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_DIETA_INVALIDA", "La dieta ingresada es inválida. Solo se permiten letras y espacios.");
+                        throw new ArgumentException(exception_941lp);
+                    }
                 }
                 if(observaciones_941lp!="")
                 {
                     if (!regexTexto_941lp.IsMatch(observaciones_941lp))
-                        throw new ArgumentException("La observación ingresada es inválida. Solo se permiten letras y espacios.");
+                    {
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_OBSERVACION_INVALIDA", "La observación ingresada es inválida. Solo se permiten letras y espacios.");
+                        throw new ArgumentException(exception_941lp);
+                    }
                 }
             }
             catch (ArgumentException ex)
             {
-                throw new Exception($"Error de validación: {ex.Message}");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_ERROR_VALIDACION", $"Error de validación: {ex.Message}");
+                throw new Exception(exception_941lp);
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocurrió un error inesperado durante la validación de datos.", ex);
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_ERROR_INNESPERADO", $"Ocurrió un error inesperado durante la validación de datos.{ex}");
+                throw new Exception(exception_941lp);
             }
         }
 
@@ -191,7 +199,9 @@ namespace GUI
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Alta:
-                        MessageBox.Show("Debe selecionar un estado al animal", "ESTADO DE ADOPCIÓN", MessageBoxButtons.OK);
+                        string titulo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_ESTADO_DE_ADOPCION_TITULO", "ESTADO DE ADOPCIÓN");
+                        string cuerpo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_ESTADO_DEL_ANIMAL_SELECCION", "Debe selecionar un estado al animal");
+                        MessageBox.Show(cuerpo_941lp, titulo_941lp, MessageBoxButtons.OK);
                         break;
                     case ModoOperacion_941lp.Modificar:
                         if (bllBitacora_941lp.VerificarCambioValor_941lp(Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), "Medicamento", checkBoxMedicamentos.Checked ? "" : dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString()))
@@ -212,19 +222,23 @@ namespace GUI
                         }
                         bllFichaMedica_941lp.Modificar_941lp(codigo_941lp: Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), castrado_941lp: seleccionado_941lp.Text == "SI", dieta_941lp: txtDieta.Text, medicamento_941lp: checkBoxMedicamentos.Checked ? null : dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(), observaciones_941lp: txtObservaciones.Text);
                         bllRegistroAnimales_941Lp.Modificar_941lp(dataFichaMedica.SelectedRows[0].Cells[1].Value.ToString(),estadoDeAdopcion_941lp : rbDisponibleAdopcion.Checked ? "Disponible" : "En evaluacion");
-                        MessageBox.Show("Ficha médica modificada exitosamente");
+                        string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_FICHA_MODIFICADA_EXITOSAMENTE", "Ficha médica modificada exitosamente");
+                        MessageBox.Show(mensaje_941lp);
                         break;
                     case ModoOperacion_941lp.DefinirEstado:
                         RadioButton estado_941lp = groupBoxEstadoAdopcion.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
-                        if (estado_941lp == null) throw new Exception("Debe seleccionar un estado");
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_SELECCIONAR_ESTADO", "Debe seleccionar un estado");
+                        if (estado_941lp == null) throw new Exception(exception_941lp);
                         bllRegistroAnimales_941Lp.Modificar_941lp(codigo_941lp: dataAnimales.SelectedRows[0].Cells[0].Value.ToString(), estadoDeAdopcion_941lp: estado_941lp.Text);
                         bllBitacora_941lp.Alta_941lp(codigoFicha_941lp: Convert.ToInt32(dataFichaMedica.SelectedRows[0].Cells[0].Value), fecha_941lp: DateTime.Now, operacion_941lp: ModoOperacion_941lp.Alta.ToString());
                         bllFichaMedica_941lp.Alta_941lp(codigoAnimal_941lp : Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value),fecha_941lp : DateTime.Now,castrado_941lp : seleccionado_941lp.Text == "Si",dieta_941lp : txtDieta.Text,medicamento_941lp : checkBoxMedicamentos.Checked ? null : dataMedicamentos.SelectedRows[0].Cells[2].Value.ToString(),observaciones_941lp : txtObservaciones.Text);
                         MostrarDataAnimales_941lp(bllRegistroAnimales_941Lp.RetornarAnimales_941lp());
-                        MessageBox.Show("Ficha médica dada de alta exitosamente");
+                        string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_FICHA_CREADA_EXITOSAMENTE", "Ficha médica dada de alta exitosamente");
+                        MessageBox.Show(mensaje1_941lp);
                         break;
                     default:
-                        MessageBox.Show("Error en la operación");
+                        string mensaje2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_ERROR_EN_OPERACION", "Error en la operación");
+                        MessageBox.Show(mensaje2_941lp);
                         break;
                 }
                 if(modo_941lp != ModoOperacion_941lp.Alta)
@@ -247,7 +261,8 @@ namespace GUI
             bool radioSeleccionado = groupBoxCastrado.Controls.OfType<RadioButton>().Any(rb => rb.Checked);
             if (!radioSeleccionado)
             {
-                throw new Exception("Debe completar todos los campos obligatorios.");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionFichaMedica_941lp", "MSG_FALTAN_DATOS", "Debe completar todos los campos obligatorios.");
+                throw new Exception(exception_941lp);
             }
         }
 

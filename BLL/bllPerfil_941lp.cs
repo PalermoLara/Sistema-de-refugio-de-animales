@@ -1,5 +1,6 @@
 ﻿using BE;
 using ORM;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,89 +30,89 @@ namespace BLL
             Familia_941lp f_941lp = new Familia_941lp(nombrePerfil_941lp);
             List<PermisoSimple_941lp> listaSimples_941lp = new List<PermisoSimple_941lp>();
             List<Familia_941lp> listaFamilia_941lp = new List<Familia_941lp>();
-            var permisosYaAsignados = new HashSet<string>();
-            var familiasYaIncluidas = new HashSet<string>();
+            var permisosYaAsignados_941lp = new HashSet<string>();
+            var familiasYaIncluidas_941lp = new HashSet<string>();
 
-            var permisosSimples = ormPermiso_941Lp.RetornarPermisos_941lp()
+            var permisosSimples_941lp = ormPermiso_941Lp.RetornarPermisos_941lp()
                 .ToDictionary(p => p.nombrePermiso_941lp);
 
-            var familiasSinEstructura = ormFamilia_941Lp.RetornarFamilias_941lp()
+            var familiasSinEstructura_941lp = ormFamilia_941Lp.RetornarFamilias_941lp()
                 .ToDictionary(f => f.nombrePermiso_941lp);
 
             var familiasEstructuradas = ormFamilia_941Lp.ObtenerCompositeFamilias_941lp();
 
-            foreach (string nombre in permisosAñadir_941lp)
+            foreach (string nombre_941lp in permisosAñadir_941lp)
             {
-                if (permisosSimples.TryGetValue(nombre, out var simple))
+                if (permisosSimples_941lp.TryGetValue(nombre_941lp, out var simple_941lp))
                 {
-                    listaSimples_941lp.Add(simple);
+                    listaSimples_941lp.Add(simple_941lp);
                 }
-                else if (familiasSinEstructura.ContainsKey(nombre))
+                else if (familiasSinEstructura_941lp.ContainsKey(nombre_941lp))
                 {
-                    if (familiasEstructuradas.TryGetValue(nombre, out var familiaCompuesta))
+                    if (familiasEstructuradas.TryGetValue(nombre_941lp, out var familiaCompuesta_941lp))
                     {
-                        var familia = (Familia_941lp)familiaCompuesta;
-                        listaFamilia_941lp.Add(familia);
+                        var familia_941lp = (Familia_941lp)familiaCompuesta_941lp;
+                        listaFamilia_941lp.Add(familia_941lp);
 
                         // Expandir permisos simples
-                        ExpandirPermisos_941lp(familia, permisosYaAsignados);
+                        ExpandirPermisos_941lp(familia_941lp, permisosYaAsignados_941lp);
 
                         // Registrar familias hijas para evitar duplicación
-                        ExpandirFamiliasInternas(familia, familiasYaIncluidas);
+                        ExpandirFamiliasInternas(familia_941lp, familiasYaIncluidas_941lp);
                     }
                 }
             }
 
             // Eliminar permisos simples duplicados
-            listaSimples_941lp.RemoveAll(p => permisosYaAsignados.Contains(p.nombrePermiso_941lp));
+            listaSimples_941lp.RemoveAll(p => permisosYaAsignados_941lp.Contains(p.nombrePermiso_941lp));
 
             // Eliminar familias hijas ya incluidas en otras
-            listaFamilia_941lp.RemoveAll(f => familiasYaIncluidas.Contains(f.nombrePermiso_941lp));
+            listaFamilia_941lp.RemoveAll(f => familiasYaIncluidas_941lp.Contains(f.nombrePermiso_941lp));
 
-            string[] permisosPorDefecto = { "Cambiar contraseña", "Cambiar idioma", "Cerrar sesion" };
+            string[] permisosPorDefecto_941lp = { "Cambiar contraseña", "Cambiar idioma", "Cerrar sesion" };
 
-            foreach (string permisoDefecto in permisosPorDefecto)
+            foreach (string permisoDefecto_941lp in permisosPorDefecto_941lp)
             {
                 // Si no está ya heredado ni agregado directamente
-                bool yaEsta = listaSimples_941lp.Any(p => p.nombrePermiso_941lp == permisoDefecto)
-                           || permisosYaAsignados.Contains(permisoDefecto);
+                bool yaEsta_941lp = listaSimples_941lp.Any(p => p.nombrePermiso_941lp == permisoDefecto_941lp)
+                           || permisosYaAsignados_941lp.Contains(permisoDefecto_941lp);
 
-                if (!yaEsta)
+                if (!yaEsta_941lp)
                 {
-                    if (permisosSimples.TryGetValue(permisoDefecto, out var pDefecto))
+                    if (permisosSimples_941lp.TryGetValue(permisoDefecto_941lp, out var pDefecto_941lp))
                     {
-                        listaSimples_941lp.Add(pDefecto);
+                        listaSimples_941lp.Add(pDefecto_941lp);
                     }
                 }
             }
 
             // Agregar simples
-            foreach (var simple in listaSimples_941lp)
+            foreach (var simple_941lp in listaSimples_941lp)
             {
-                f_941lp.AgregarPermiso_941lp(simple);
-                ormPerfilPermiso_941lp.AltaIntermedia_941lp(f_941lp.nombrePermiso_941lp, simple.nombrePermiso_941lp);
+                f_941lp.AgregarPermiso_941lp(simple_941lp);
+                ormPerfilPermiso_941lp.AltaIntermedia_941lp(f_941lp.nombrePermiso_941lp, simple_941lp.nombrePermiso_941lp);
             }
 
             // Agregar familias
-            foreach (var familia in listaFamilia_941lp)
+            foreach (var familia_941lp in listaFamilia_941lp)
             {
-                f_941lp.AgregarPermiso_941lp(familia);
-                ormPerfilFamilia_941lp.AltaIntermedia_941lp(f_941lp.nombrePermiso_941lp, familia.nombrePermiso_941lp);
+                f_941lp.AgregarPermiso_941lp(familia_941lp);
+                ormPerfilFamilia_941lp.AltaIntermedia_941lp(f_941lp.nombrePermiso_941lp, familia_941lp.nombrePermiso_941lp);
             }
 
             orm_941lp.AltaPerfil_941lp(f_941lp);
         }
 
         // Método auxiliar
-        private void ExpandirFamiliasInternas(Familia_941lp familia, HashSet<string> acumulador)
+        private void ExpandirFamiliasInternas(Familia_941lp familia_941lp, HashSet<string> acumulador_941lp)
         {
-            foreach (var permiso in familia.ObtenerPermisos_941lp())
+            foreach (var permiso_941lp in familia_941lp.ObtenerPermisos_941lp())
             {
-                if (permiso is Familia_941lp fHija)
+                if (permiso_941lp is Familia_941lp fHija_941lp)
                 {
-                    if (acumulador.Add(fHija.nombrePermiso_941lp))
+                    if (acumulador_941lp.Add(fHija_941lp.nombrePermiso_941lp))
                     {
-                        ExpandirFamiliasInternas(fHija, acumulador);
+                        ExpandirFamiliasInternas(fHija_941lp, acumulador_941lp);
                     }
                 }
             }
@@ -123,32 +124,38 @@ namespace BLL
             var familias_941lp = ormFamilia_941Lp.RetornarFamilias_941lp();
             var familiasDict_941lp = familias_941lp.ToDictionary(f => f.nombrePermiso_941lp);
 
-            var permisosVisitados = new HashSet<string>();
-            var familiasVisitadas = new HashSet<string>();
+            var permisosVisitados_941lp = new HashSet<string>();
+            var familiasVisitadas_941lp = new HashSet<string>();
 
-            foreach (string nombre in listaSeleccionados_941lp)
+            foreach (string nombre_941lp in listaSeleccionados_941lp)
             {
                 // 1. ¿Es permiso simple?
-                var permisoSimple = permisosSimples_941lp.FirstOrDefault(p => p.nombrePermiso_941lp == nombre);
-                if (permisoSimple != null)
+                var permisoSimple_941lp = permisosSimples_941lp.FirstOrDefault(p => p.nombrePermiso_941lp == nombre_941lp);
+                if (permisoSimple_941lp != null)
                 {
-                    if (!permisosVisitados.Add(permisoSimple.nombrePermiso_941lp))
-                        throw new Exception($"Permiso simple duplicado: '{nombre}'");
+                    if (!permisosVisitados_941lp.Add(permisoSimple_941lp.nombrePermiso_941lp))
+                    {
+                        string excepcion1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_DUPLICADO", $"Permiso simple duplicado: '{nombre_941lp}'");
+                        throw new Exception(excepcion1_941lp);
+                    }
                     continue;
                 }
 
                 // 2. ¿Es familia?
-                if (familiasDict_941lp.TryGetValue(nombre, out Familia_941lp familia))
+                if (familiasDict_941lp.TryGetValue(nombre_941lp, out Familia_941lp familia_941lp))
                 {
-                    if (!familiasVisitadas.Add(familia.nombrePermiso_941lp))
-                        throw new Exception($"Familia duplicada: '{nombre}'");
-
-                    VerificarHijosRecursivos(familia, permisosVisitados, familiasVisitadas);
+                    if (!familiasVisitadas_941lp.Add(familia_941lp.nombrePermiso_941lp))
+                    {
+                        string excepcion1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_DUPLICADA", $"Familia duplicada: '{nombre_941lp}'");
+                        throw new Exception(excepcion1_941lp);
+                    }
+                    VerificarHijosRecursivos(familia_941lp, permisosVisitados_941lp, familiasVisitadas_941lp);
                     continue;
                 }
 
                 // 3. No existe
-                throw new Exception($"Elemento no reconocido: '{nombre}'");
+                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_ELEMENTO_NO_RECONOCIDO", $"Elemento no reconocido: '{nombre_941lp}'");
+                throw new Exception(excepcion_941lp);
             }
 
             return true;
@@ -206,19 +213,19 @@ namespace BLL
         {
             var contenedores_941lp = new List<Perfil_941lp>();
 
-            var familias_941lp = orm_941lp.ObtenerCompositeFamilias_941lp(); // Diccionario<string, Familia_941lp>
-            var perfiles_941lp = orm_941lp.ObtenerCompositePerfiles_941lp(); // Diccionario<string, Perfil_941lp>
+            var familias_941lp = orm_941lp.ObtenerCompositeFamilias_941lp(); 
+            var perfiles_941lp = orm_941lp.ObtenerCompositePerfiles_941lp(); 
 
             var estructuras_941lp = familias_941lp.Values.Cast<Perfil_941lp>()
-                .Concat(perfiles_941lp.Values); // Unificamos ambas listas
+                .Concat(perfiles_941lp.Values); 
 
             foreach (var estructura_941lp in estructuras_941lp)
             {
-                if (estructura_941lp is Familia_941lp familia)
+                if (estructura_941lp is Familia_941lp familia_941lp)
                 {
-                    if (ContieneComoHijaRecursivo_941lp(familia, nombreElemento_941lp))
+                    if (ContieneComoHijaRecursivo_941lp(familia_941lp, nombreElemento_941lp))
                     {
-                        contenedores_941lp.Add(familia);
+                        contenedores_941lp.Add(familia_941lp);
                     }
                 }
             }
@@ -226,23 +233,24 @@ namespace BLL
             return contenedores_941lp;
         }
 
-        private void VerificarContraContenedores_941lp(string nombreDestino, List<string> nuevosSeleccionados)
+        private void VerificarContraContenedores_941lp(string nombreDestino_941lp, List<string> nuevosSeleccionados_941lp)
         {
-            var contenedores = BuscarContenedoresQueIncluyen_941lp(nombreDestino);
+            var contenedores_941lp = BuscarContenedoresQueIncluyen_941lp(nombreDestino_941lp);
 
-            if (!contenedores.Any()) return;
+            if (!contenedores_941lp.Any()) return;
 
-            var familias = ormFamilia_941Lp.ObtenerCompositeFamilias_941lp();
-            var perfiles = orm_941lp.ObtenerCompositePerfiles_941lp();
-            var permisosSimples = ormPermiso_941Lp.RetornarPermisos_941lp().ToDictionary(p => p.nombrePermiso_941lp);
+            var familias_941lp = ormFamilia_941Lp.ObtenerCompositeFamilias_941lp();
+            var perfiles_941lp = orm_941lp.ObtenerCompositePerfiles_941lp();
+            var permisosSimples_941lp = ormPermiso_941Lp.RetornarPermisos_941lp().ToDictionary(p => p.nombrePermiso_941lp);
 
-            foreach (var nombreNuevo in nuevosSeleccionados)
+            foreach (var nombreNuevo_941lp in nuevosSeleccionados_941lp)
             {
-                foreach (var contenedor in contenedores)
+                foreach (var contenedor_941lp in contenedores_941lp)
                 {
-                    if (ContieneComoHijaRecursivo_941lp((Familia_941lp)contenedor, nombreNuevo))
+                    if (ContieneComoHijaRecursivo_941lp((Familia_941lp)contenedor_941lp, nombreNuevo_941lp))
                     {
-                        throw new Exception($"El permiso '{nombreNuevo}' ya existe en la estructura del contenedor '{contenedor.nombrePermiso_941lp}'.");
+                        string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_CONTENIDAO_EN_EL_MISMO_CONTENEDOR", $"El permiso '{nombreNuevo_941lp}' ya existe en la estructura del contenedor '{contenedor_941lp.nombrePermiso_941lp}'.");
+                        throw new Exception(excepcion_941lp);
                     }
                 }
             }
@@ -265,98 +273,105 @@ namespace BLL
             return false;
         }
 
-        private void VerificarHijosRecursivos(Familia_941lp familia, HashSet<string> permisosVisitados, HashSet<string> familiasVisitadas)
+        private void VerificarHijosRecursivos(Familia_941lp familia, HashSet<string> permisosVisitados_941LP, HashSet<string> familiasVisitadas_941lp)
         {
-            foreach (var hijo in familia.ObtenerPermisos_941lp())
+            foreach (var hijo_941LP in familia.ObtenerPermisos_941lp())
             {
-                if (hijo is PermisoSimple_941lp simple)
+                if (hijo_941LP is PermisoSimple_941lp simple_941lp)
                 {
-                    if (!permisosVisitados.Add(simple.nombrePermiso_941lp))
-                        throw new Exception($"Permiso simple duplicado dentro de familia: '{simple.nombrePermiso_941lp}'");
+                    if (!permisosVisitados_941LP.Add(simple_941lp.nombrePermiso_941lp))
+                    {
+                        string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_DUPLICADA_DENTRO_DE_OTRA_FAMILIA", $"Permiso simple duplicado dentro de familia: '{simple_941lp.nombrePermiso_941lp}'");
+                        throw new Exception(excepcion_941lp);
+                    }
                 }
-                else if (hijo is Familia_941lp subFamilia)
+                else if (hijo_941LP is Familia_941lp subFamilia_941lp)
                 {
-                    if (!familiasVisitadas.Add(subFamilia.nombrePermiso_941lp))
-                        throw new Exception($"Familia duplicada dentro de otra familia: '{subFamilia.nombrePermiso_941lp}'");
-
-                    VerificarHijosRecursivos(subFamilia, permisosVisitados, familiasVisitadas);
+                    if (!familiasVisitadas_941lp.Add(subFamilia_941lp.nombrePermiso_941lp))
+                    {
+                        string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_DUPLICADA_DENTRO_DE_OTRA_FAMILIA", $"Familia duplicada dentro de otra familia: '{subFamilia_941lp.nombrePermiso_941lp}'");
+                        throw new Exception(excepcion_941lp);
+                    }
+                    VerificarHijosRecursivos(subFamilia_941lp, permisosVisitados_941LP, familiasVisitadas_941lp);
                 }
             }
         }
 
         #region Validar no repeticion de permisos preexistentes
-        public bool ValidarContraEstructuraEnMemoria_941lp(string nombreDestino, List<string> nuevosSeleccionados)
+        public bool ValidarContraEstructuraEnMemoria_941lp(string nombreDestino_941lp, List<string> nuevosSeleccionados_941lp)
         {
-            var perfiles = orm_941lp.ObtenerCompositePerfiles_941lp();
-            var familias = ormFamilia_941Lp.ObtenerCompositeFamilias_941lp();
+            var perfiles_941lp = orm_941lp.ObtenerCompositePerfiles_941lp();
+            var familias_941lp = ormFamilia_941Lp.ObtenerCompositeFamilias_941lp();
 
-            Familia_941lp estructuraBase = null;
+            Familia_941lp estructuraBase_941lp = null;
 
-            if (familias.TryGetValue(nombreDestino, out var familia))
+            if (familias_941lp.TryGetValue(nombreDestino_941lp, out var familia_941lp))
             {
-                estructuraBase = (Familia_941lp)familia;
+                estructuraBase_941lp = (Familia_941lp)familia_941lp;
             }
-            else if (perfiles.TryGetValue(nombreDestino, out var perfil))
+            else if (perfiles_941lp.TryGetValue(nombreDestino_941lp, out var perfil_941lp))
             {
-                estructuraBase = (Familia_941lp)perfil;
+                estructuraBase_941lp = (Familia_941lp)perfil_941lp;
             }
             else
             {
-                throw new Exception($"No se encontró '{nombreDestino}' en memoria.");
+                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERFIL_NO_ENCONTRADO", $"No se encontró '{nombreDestino_941lp}'.");
+                throw new Exception(excepcion_941lp);
             }
 
-            var permisosSimples = ormPermiso_941Lp.RetornarPermisos_941lp().ToDictionary(p => p.nombrePermiso_941lp);
-            var permisosAAsignar = new List<Perfil_941lp>();
+            var permisosSimples_941lp = ormPermiso_941Lp.RetornarPermisos_941lp().ToDictionary(p => p.nombrePermiso_941lp);
+            var permisosAAsignar_941lp = new List<Perfil_941lp>();
 
-            foreach (var nombre in nuevosSeleccionados)
+            foreach (var nombre_941lp in nuevosSeleccionados_941lp)
             {
-                if (permisosSimples.TryGetValue(nombre, out var simple))
+                if (permisosSimples_941lp.TryGetValue(nombre_941lp, out var simple_941lp))
                 {
-                    permisosAAsignar.Add(simple);
+                    permisosAAsignar_941lp.Add(simple_941lp);
                 }
-                else if (familias.TryGetValue(nombre, out var fam))
+                else if (familias_941lp.TryGetValue(nombre_941lp, out var fam_941lp))
                 {
-                    permisosAAsignar.Add(fam);
+                    permisosAAsignar_941lp.Add(fam_941lp);
                 }
             }
 
             // Verificación 1: en el propio contenedor
-            foreach (var permiso in permisosAAsignar)
+            foreach (var permiso_941lp in permisosAAsignar_941lp)
             {
-                if (PermisoYaExisteEnContenedor_941lp(estructuraBase, permiso))
+                if (PermisoYaExisteEnContenedor_941lp(estructuraBase_941lp, permiso_941lp))
                 {
-                    throw new InvalidOperationException($"El permiso '{permiso.nombrePermiso_941lp}' ya existe en la estructura del contenedor '{estructuraBase.nombrePermiso_941lp}'.");
+                    string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_CONTENIDAO_EN_EL_MISMO_CONTENEDOR_PERFIL", $"El permiso '{permiso_941lp.nombrePermiso_941lp}' ya existe en la estructura del contenedor '{estructuraBase_941lp.nombrePermiso_941lp}'.");
+                    throw new InvalidOperationException(excepcion_941lp);
                 }
             }
 
             // Verificación 2: en los contenedores ascendentes
-            VerificarContraContenedores_941lp(nombreDestino, nuevosSeleccionados);
+            VerificarContraContenedores_941lp(nombreDestino_941lp, nuevosSeleccionados_941lp);
 
             return true;
         }
 
 
-        private bool PermisoYaExisteEnContenedor_941lp(Familia_941lp contenedor, Perfil_941lp permisoAValidar)
+        private bool PermisoYaExisteEnContenedor_941lp(Familia_941lp contenedor_941lp, Perfil_941lp permisoAValidar_941lp)
         {
-            string nombrePermiso = permisoAValidar.nombrePermiso_941lp;
+            string nombrePermiso_941lp = permisoAValidar_941lp.nombrePermiso_941lp;
 
-            return ContieneComoHijaRecursivo_941lp(contenedor, nombrePermiso)
-                   || contenedor.ObtenerPermisos_941lp().Any(p => p.nombrePermiso_941lp == nombrePermiso);
+            return ContieneComoHijaRecursivo_941lp(contenedor_941lp, nombrePermiso_941lp)
+                   || contenedor_941lp.ObtenerPermisos_941lp().Any(p => p.nombrePermiso_941lp == nombrePermiso_941lp);
         }
 
-        private void ExpandirPermisos_941lp(Familia_941lp familia, HashSet<string> acumulador)
+        private void ExpandirPermisos_941lp(Familia_941lp familia_941lp, HashSet<string> acumulador_941lp)
         {
-            foreach (var hijo in familia.ObtenerPermisos_941lp())
+            foreach (var hijo_941lp in familia_941lp.ObtenerPermisos_941lp())
             {
-                if (hijo is PermisoSimple_941lp simple)
+                if (hijo_941lp is PermisoSimple_941lp simple_941lp)
                 {
-                    acumulador.Add(simple.nombrePermiso_941lp);
+                    acumulador_941lp.Add(simple_941lp.nombrePermiso_941lp);
                 }
-                else if (hijo is Familia_941lp subFamilia)
+                else if (hijo_941lp is Familia_941lp subFamilia_941lp)
                 {
-                    if (acumulador.Add(subFamilia.nombrePermiso_941lp))
+                    if (acumulador_941lp.Add(subFamilia_941lp.nombrePermiso_941lp))
                     {
-                        ExpandirPermisos_941lp(subFamilia, acumulador);
+                        ExpandirPermisos_941lp(subFamilia_941lp, acumulador_941lp);
                     }
                 }
             }
@@ -376,12 +391,12 @@ namespace BLL
         public void EliminarPerfil_941lp(string nombreFamilia_941lp)
         {
             // 1. Obtener la familia compuesta desde la estructura en memoria
-            var familiasEstructuradas = orm_941lp.ObtenerCompositePerfiles_941lp();
+            var familiasEstructuradas_941lp = orm_941lp.ObtenerCompositePerfiles_941lp();
 
-            if (!familiasEstructuradas.TryGetValue(nombreFamilia_941lp, out var familiaBase))
+            if (!familiasEstructuradas_941lp.TryGetValue(nombreFamilia_941lp, out var familiaBase_941lp))
                 return; // o lanzar excepción si no existe
 
-            var f_941lp = (Familia_941lp)familiaBase;
+            var f_941lp = (Familia_941lp)familiaBase_941lp;
 
             // 2. Recorrer su estructura interna para eliminar relaciones
             foreach (var permiso_941lp in f_941lp.ObtenerPermisos_941lp())

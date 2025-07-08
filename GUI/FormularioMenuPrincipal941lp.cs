@@ -90,14 +90,14 @@ namespace GUI
         {
             try
             {
-                string titulo = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_TITULO_CERRAR_SESION", "CERRAR SESIÓN...");
-                string cuerpo = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_PREGUNTA_CERRAR_SESION", "¿Desea cerrar la sesión?");
-                DialogResult dr_941lp = MessageBox.Show(cuerpo, titulo, MessageBoxButtons.OKCancel);
+                string titulo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_TITULO_CERRAR_SESION", "CERRAR SESIÓN...");
+                string cuerpo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_PREGUNTA_CERRAR_SESION", "¿Desea cerrar la sesión?");
+                DialogResult dr_941lp = MessageBox.Show(cuerpo_941lp, titulo_941lp, MessageBoxButtons.OKCancel);
                 if(dr_941lp == DialogResult.OK)
                 {
-                    var usuario = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
-                    usuario.lenguaje_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
-                    bllUsuario_941lp.CambiarIdioma_941lp(usuario.dni_941lp, usuario.lenguaje_941lp);
+                    var usuario_941lp = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
+                    usuario_941lp.lenguaje_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+                    bllUsuario_941lp.CambiarIdioma_941lp(usuario_941lp.dni_941lp, usuario_941lp.lenguaje_941lp);
                     sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
                     GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoLogIn941lp());
                 }
@@ -129,16 +129,16 @@ namespace GUI
             {
                 btnCambiarContraseña.Enabled = false;
             }
-            var permisos = sessionManager941lp.Gestor_941lp.RetornarPermisosUsuario_941lp();
-            var perfil = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().rol_941lp;
-            AplicarPermisosAFormulario_941lp(this, permisos, perfil);
+            var permisos_941lp = sessionManager941lp.Gestor_941lp.RetornarPermisosUsuario_941lp();
+            var perfil_941lp = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().rol_941lp;
+            AplicarPermisosAFormulario_941lp(this, permisos_941lp, perfil_941lp);
         }
 
         public void RefrescarPermisos_941lp()
         {
-            var usuario = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
-            var permisos = bllUsuario_941lp.ObtenerPermisosSimplesDeUsuario_941lp(usuario.rol_941lp);
-            AplicarPermisosAFormulario_941lp(this, permisos, usuario.rol_941lp);
+            var usuario_941lp = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
+            var permisos_941lp = bllUsuario_941lp.ObtenerPermisosSimplesDeUsuario_941lp(usuario_941lp.rol_941lp);
+            AplicarPermisosAFormulario_941lp(this, permisos_941lp, usuario_941lp.rol_941lp);
         }
 
         private void btnUsuarioMenuPrincipal_Click(object sender, EventArgs e)
@@ -235,35 +235,35 @@ namespace GUI
             formGestionDePerfiles_941lp.ShowDialog();
         }
 
-        public void AplicarPermisosAFormulario_941lp(Form formulario, HashSet<string> permisosSimples, string nombrePerfil)
+        public void AplicarPermisosAFormulario_941lp(Form formulario_941lp, HashSet<string> permisosSimples_941lp, string nombrePerfil_941lp)
         {
-            foreach (Control control in formulario.Controls)
+            foreach (Control control_941lp in formulario_941lp.Controls)
             {
-                AplicarPermisosRecursivo_941lp(control, permisosSimples, nombrePerfil);
+                AplicarPermisosRecursivo_941lp(control_941lp, permisosSimples_941lp, nombrePerfil_941lp);
             }
         }
 
-        private void AplicarPermisosRecursivo_941lp(Control control, HashSet<string> permisos, string nombrePerfil)
+        private void AplicarPermisosRecursivo_941lp(Control control_941lp, HashSet<string> permisos_941lp, string nombrePerfil_941lp)
         {
-            if (control is Button btn)
+            if (control_941lp is Button btn_941lp)
             {
-                if (btn.Tag == null || btn.Tag == "")
+                if (btn_941lp.Tag == null || btn_941lp.Tag == "")
                 {
-                    btn.Enabled = true; // Siempre habilitado si no tiene tag
+                    btn_941lp.Enabled = true; // Siempre habilitado si no tiene tag
                 }
                 else
                 {
-                    string tag = btn.Tag.ToString().Trim();
+                    string tag_941lp = btn_941lp.Tag.ToString().Trim();
 
                     // Habilitar si el tag está en los permisos simples o es el nombre del perfil
-                    btn.Enabled = permisos.Contains(tag) || tag.Equals(nombrePerfil, StringComparison.OrdinalIgnoreCase);
+                    btn_941lp.Enabled = permisos_941lp.Contains(tag_941lp) || tag_941lp.Equals(nombrePerfil_941lp, StringComparison.OrdinalIgnoreCase);
                 }
             }
 
             // Recorrer hijos (como Paneles, GroupBoxes, etc.)
-            foreach (Control hijo in control.Controls)
+            foreach (Control hijo_941lp in control_941lp.Controls)
             {
-                AplicarPermisosRecursivo_941lp(hijo, permisos, nombrePerfil);
+                AplicarPermisosRecursivo_941lp(hijo_941lp, permisos_941lp, nombrePerfil_941lp);
             }
         }
 

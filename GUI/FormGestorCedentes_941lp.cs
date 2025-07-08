@@ -194,7 +194,10 @@ namespace GUI
                 var regexDni = new Regex(@"^\d{8}$");
                 // Validaciones
                 if (!regexDni.IsMatch(dni_941lp))
-                    throw new ArgumentException("El DNI ingresado es inválido. Debe contener exactamente 8 dígitos y solo números.");
+                {
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_DNI_INVALIDO", "El DNI ingresado es inválido. Debe contener exactamente 8 dígitos y solo números.");
+                    throw new ArgumentException(exception_941lp);
+                }
                 if (!regexTexto_941lp.IsMatch(nombre_941lp))
                     throw new ArgumentException("El nombre ingresado es inválido. Solo se permiten letras y espacios.");
                 if (!regexTexto_941lp.IsMatch(apellido_941lp))

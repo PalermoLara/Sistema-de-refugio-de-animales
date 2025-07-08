@@ -39,8 +39,8 @@ namespace GUI
 
         private void AplicarTraduccion_941lp()
         {
-            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
-            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+            string idioma_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma_941lp);
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -78,9 +78,9 @@ namespace GUI
                 return;
             foreach (var perfil_941lp in listaFamilias_941lp)
             {
-                if (perfil_941lp is Familia_941lp familia)
+                if (perfil_941lp is Familia_941lp familia_941lp)
                 {
-                    TreeNode nodoRaiz = CrearNodoDesdePermiso(familia);
+                    TreeNode nodoRaiz = CrearNodoDesdePermiso(familia_941lp);
                     treeViewFamilia.Nodes.Add(nodoRaiz);
                 }
             }
@@ -93,10 +93,10 @@ namespace GUI
                 return;
             foreach (var perfil_941lp in listaFamilias_941lp)
             {
-                if (perfil_941lp is Familia_941lp familia)
+                if (perfil_941lp is Familia_941lp familia_941lp)
                 {
-                    TreeNode nodoRaiz = CrearNodoDesdePermiso(familia);
-                    treeViewFamiliaRol.Nodes.Add(nodoRaiz);
+                    TreeNode nodoRaiz_941lp = CrearNodoDesdePermiso(familia_941lp);
+                    treeViewFamiliaRol.Nodes.Add(nodoRaiz_941lp);
                 }
             }
         }
@@ -104,20 +104,20 @@ namespace GUI
         private void MostrarTreeViewPerfilUnico_941lp(Perfil_941lp perfil_941lp)
         {
             treeViewFamiliaRol.Nodes.Clear();
-            if (perfil_941lp is Familia_941lp familia)
+            if (perfil_941lp is Familia_941lp familia_941lp)
             {
-                TreeNode nodoRaiz = CrearNodoDesdePermiso(familia);
-                treeViewFamiliaRol.Nodes.Add(nodoRaiz);
+                TreeNode nodoRaiz_941lp = CrearNodoDesdePermiso(familia_941lp);
+                treeViewFamiliaRol.Nodes.Add(nodoRaiz_941lp);
             }
         }
 
         private void MostrarTreeViewFamiliaUnico_941lp(Perfil_941lp perfil_941lp)
         {
             treeViewFamilia.Nodes.Clear();
-            if (perfil_941lp is Familia_941lp familia)
+            if (perfil_941lp is Familia_941lp familia_941lp)
             {
-                TreeNode nodoRaiz = CrearNodoDesdePermiso(familia);
-                treeViewFamilia.Nodes.Add(nodoRaiz);
+                TreeNode nodoRaiz_941lp = CrearNodoDesdePermiso(familia_941lp);
+                treeViewFamilia.Nodes.Add(nodoRaiz_941lp);
             }
         }
 
@@ -159,10 +159,9 @@ namespace GUI
             modo_941lp = ModoOperacion_941lp.Consulta;
             HabilitarControles_941lp();
 
-            // Refrescar permisos en el form padre (asumiendo que es FormMenuPrincipal)
-            if (this.Owner is FormularioMenuPrincipal941lp menuForm)
+            if (this.Owner is FormularioMenuPrincipal941lp menuForm_941lp)
             {
-                menuForm.RefrescarPermisos_941lp();
+                menuForm_941lp.RefrescarPermisos_941lp();
             }
             this.Close();
         }
@@ -249,35 +248,42 @@ namespace GUI
             try
             {
                 List<string> seleccionados_941lp = ObtenerPermisosSeleccionadosDelTreeView();
-                if(bllPerfil_941Lp.VerificarNombreDePerfil_941lp(txtCrear.Text)) throw new Exception("Nombre igual al nombre de un perfil");
-                if (bllFamilia_941lp.VerificarNombreDeFamilia_941lp(txtCrear.Text)) throw new Exception("Nombre igual al nombre de una familia");
-                if(bllPermisos_941lp.VerificarNombreDePatente_941lp(txtCrear.Text)) throw new Exception("Nombre igual al nombre de una patente");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_NOMBRE_IGUAL_PERFIL", "Nombre igual al nombre de un perfil");
+                if (bllPerfil_941Lp.VerificarNombreDePerfil_941lp(txtCrear.Text)) throw new Exception(exception_941lp);
+                string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_NOMBRE_IGUAL_FAMILIA", "Nombre igual al nombre de una familia");
+                if (bllFamilia_941lp.VerificarNombreDeFamilia_941lp(txtCrear.Text)) throw new Exception(exception1_941lp);
+                string exception2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_NOMBRE_IGUAL_PERMISO", "Nombre igual al nombre de una patente");
+                if (bllPermisos_941lp.VerificarNombreDePatente_941lp(txtCrear.Text)) throw new Exception(exception2_941lp);
                 bllPerfil_941Lp.VerificarDuplicados_941lp(seleccionados_941lp);
                 string nombrePerfilDestino_941lp = comboBoxPerfiles.Text;
                 string nombreFamiliaDestino_941lp = comboBoxFamilia.Text;
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Crear:
-                        if (txtCrear.Text == "") throw new Exception("Error. Debe ingresar todos los datos");
+                        string exception3_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_DATOS_FALTANTES", "Error. Debe ingresar todos los datos");
+                        if (txtCrear.Text == "") throw new Exception(exception3_941lp);
                         if (rbPerfiles.Checked)
                         {
                             bllPerfil_941Lp.AltaPerfil_941lp(txtCrear.Text, seleccionados_941lp);
                         }
                         if (rbFamilias.Checked)
                         {
-                            if (seleccionados_941lp.Count == 0) throw new Exception("No puede crear una familia vacia");
+                            string exception4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_FAMILIA_VACIA", "No puede crear una familia vacia");
+                            if (seleccionados_941lp.Count == 0) throw new Exception(exception4_941lp);
                             bllFamilia_941lp.AltaFamilia_941lp(txtCrear.Text, seleccionados_941lp);
                         }
                         break;
                     case ModoOperacion_941lp.Asignar:
                         if (rbPerfiles.Checked)
                         {
-                            if (bllPerfil_941Lp.ValidarContraEstructuraEnMemoria_941lp(nombrePerfilDestino_941lp, seleccionados_941lp) == false) throw new Exception("Permisos repetidos");
+                            string exception5_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_PERMISOS_REPETIDOS", "Permisos repetidos");
+                            if (bllPerfil_941Lp.ValidarContraEstructuraEnMemoria_941lp(nombrePerfilDestino_941lp, seleccionados_941lp) == false) throw new Exception(exception5_941lp);
                             bllPerfilTablasIntermedias_941lp.AltaPerfilIntermedias_941lp(nombrePerfilDestino_941lp, seleccionados_941lp);
                         }
                         if (rbFamilias.Checked)
                         {
-                            if (bllPerfil_941Lp.ValidarContraEstructuraEnMemoria_941lp(nombreFamiliaDestino_941lp, seleccionados_941lp) == false) throw new Exception("Permisos repetidos");
+                            string exception6_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_PERMISOS_REPETIDOS", "Permisos repetidos");
+                            if (bllPerfil_941Lp.ValidarContraEstructuraEnMemoria_941lp(nombreFamiliaDestino_941lp, seleccionados_941lp) == false) throw new Exception(exception6_941lp);
                             bllFamiliaTablasIntermedias_941lp.AltaFamiliaIntermedia_941lp(nombreFamiliaDestino_941lp, seleccionados_941lp);
                         }
                         break;
@@ -362,7 +368,7 @@ namespace GUI
 
             foreach (TreeNode nodo in treeViewFamiliaRol.Nodes)
             {
-                ProcesarNodoSeleccionado(nodo, seleccionados_941lp, esRaiz: true);
+                ProcesarNodoSeleccionado(nodo, seleccionados_941lp, esRaiz_941lp: true);
             }
             return seleccionados_941lp;
         }
@@ -373,50 +379,51 @@ namespace GUI
 
             foreach (TreeNode nodo in treeViewFamilia.Nodes)
             {
-                ProcesarNodoSeleccionado(nodo, seleccionados_941lp, esRaiz: true);
+                ProcesarNodoSeleccionado(nodo, seleccionados_941lp, esRaiz_941lp: true);
             }
             return seleccionados_941lp;
         }
 
-        private void ProcesarNodoSeleccionado(TreeNode nodo, List<string> lista, bool esRaiz)
+        private void ProcesarNodoSeleccionado(TreeNode nodo_941lp, List<string> lista_941lp, bool esRaiz_941lp)
         {
-            if (nodo.Checked)
+            if (nodo_941lp.Checked)
             {
-                if (esRaiz)
+                if (esRaiz_941lp)
                 {
-                    throw new InvalidOperationException("No se puede seleccionar el nodo raíz.");
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_NODO_RAIZ_SELECCIONADO", "No se puede seleccionar el nodo raíz.");
+                    throw new InvalidOperationException(exception_941lp);
                 }
 
-                if (nodo.Nodes.Count > 0)
+                if (nodo_941lp.Nodes.Count > 0)
                 {
-                    lista.Add(nodo.Text);
+                    lista_941lp.Add(nodo_941lp.Text);
                     // Agregar todos los hijos
-                    foreach (TreeNode hijo in nodo.Nodes)
+                    foreach (TreeNode hijo_941lp in nodo_941lp.Nodes)
                     {
-                        lista.Add(hijo.Text);
+                        lista_941lp.Add(hijo_941lp.Text);
                     }
                 }
                 else
                 {
-                    lista.Add(nodo.Text);
+                    lista_941lp.Add(nodo_941lp.Text);
                 }
             }
 
             // Recorrer los hijos igualmente
-            foreach (TreeNode hijo in nodo.Nodes)
+            foreach (TreeNode hijo_941lp in nodo_941lp.Nodes)
             {
                 // Ya no es raíz
-                ProcesarNodoSeleccionado(hijo, lista, esRaiz: false);
+                ProcesarNodoSeleccionado(hijo_941lp, lista_941lp, esRaiz_941lp: false);
             }
         }
 
 
-        private void ObtenerSeleccionadosRecursivo(TreeNode nodo, List<string> lista)
+        private void ObtenerSeleccionadosRecursivo(TreeNode nodo_941lp, List<string> lista_941lp)
         {
-            lista.Add(nodo.Text);
-            foreach (TreeNode hijo in nodo.Nodes)
+            lista_941lp.Add(nodo_941lp.Text);
+            foreach (TreeNode hijo_941lp in nodo_941lp.Nodes)
             {
-                ObtenerSeleccionadosRecursivo(hijo, lista); // recursión
+                ObtenerSeleccionadosRecursivo(hijo_941lp, lista_941lp); 
             }
         }
 

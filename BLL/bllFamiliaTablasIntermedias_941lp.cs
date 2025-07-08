@@ -1,5 +1,6 @@
 ﻿using BE;
 using ORM;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -135,19 +136,19 @@ namespace BLL
 
             foreach (var c_941lp in contenedores_941lp)
             {
-                var hijos = ((Familia_941lp)c_941lp).ObtenerPermisos_941lp();
+                var hijos_941LP = ((Familia_941lp)c_941lp).ObtenerPermisos_941lp();
 
-                foreach (var hermano in hijos)
+                foreach (var hermano_941lp in hijos_941LP)
                 {
-                    if (hermano is Familia_941lp famHermano &&
-                        famHermano.nombrePermiso_941lp != familiaNueva_941lp.nombrePermiso_941lp)
+                    if (hermano_941lp is Familia_941lp famHermano_941lp &&
+                        famHermano_941lp.nombrePermiso_941lp != familiaNueva_941lp.nombrePermiso_941lp)
                     {
                         // El permiso está directo en el hermano
-                        if (famHermano.ObtenerPermisos_941lp().Any(p => p.nombrePermiso_941lp == nombrePermiso_941lp))
+                        if (famHermano_941lp.ObtenerPermisos_941lp().Any(p => p.nombrePermiso_941lp == nombrePermiso_941lp))
                             return true;
 
                         // El permiso está en los descendientes del hermano
-                        if (ContieneComoHijaRecursivo_941lp(famHermano, nombrePermiso_941lp))
+                        if (ContieneComoHijaRecursivo_941lp(famHermano_941lp, nombrePermiso_941lp))
                             return true;
                     }
                 }
@@ -220,7 +221,8 @@ namespace BLL
             {
                 if (PermisoYaExisteEnHermanosOHijos_941lp(f_941lp, permiso_941lp))
                 {
-                    throw new InvalidOperationException($"No se puede agregar el permiso '{permiso_941lp.nombrePermiso_941lp}' porque ya existe en un hermano o hijo de la familia '{f_941lp.nombrePermiso_941lp}'.");
+                    string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_REPETIDO_FAMILIA_INTERMEDIA", $"No se puede agregar el permiso '{permiso_941lp.nombrePermiso_941lp}' porque ya existe en un hermano o hijo de la familia '{f_941lp.nombrePermiso_941lp}'.");
+                    throw new InvalidOperationException(excepcion_941lp);
                 }
             }
 

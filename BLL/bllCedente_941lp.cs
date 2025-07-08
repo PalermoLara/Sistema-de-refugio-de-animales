@@ -62,12 +62,15 @@ namespace BLL
                 Cedente_941lp cedente_941lp = BuscarCedentePorDNI_941lp(dni_941lp);
                 if (cedente_941lp == null)
                 {
-                    MessageBox.Show("Cedente no encontrado");
+                    string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_CEDENTE_NO_ENCONTRADO", "Cedente no encontrado");
+                    MessageBox.Show(mensaje_941lp);
                     return;
                 }
                 //Invierte el valor actual del campo activo_941lp
                 cedente_941lp.activo_941lp = !cedente_941lp.activo_941lp;
-                string mensaje = cedente_941lp.activo_941lp ? "Se ha activado al cedente con éxito" : "Se ha desactivado al cedente con éxito";
+                string activado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_CEDENTE_ACTIVADO", "Se ha activado al cedente con éxito");
+                string noActivado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_CEDENTE_NO_ACTIVADO", "Se ha desactivado al cedente con éxito");
+                string mensaje = cedente_941lp.activo_941lp ? activado_941lp : noActivado_941lp;
                 orm_941lp.Modificar_941lp(cedente_941lp);
                 MessageBox.Show(mensaje);
             }

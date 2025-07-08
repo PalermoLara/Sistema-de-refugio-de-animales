@@ -26,8 +26,8 @@ namespace GUI
 
         private void AplicarTraduccion_941lp()
         {
-            string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
-            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma);
+            string idioma_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            TraductorHelper_941lp.TraducirControles_941lp(this, this.Name, idioma_941lp);
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -42,17 +42,23 @@ namespace GUI
             {
                 if (txtContraseñaActual.Text == "" || txtContraseñaConfirmacion.Text == "" || txtContraseñaNueva.Text == "")
                 {
-                    throw new Exception("Faltan ingresar contraseñas");
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_FALTANTES", "Faltan ingresar contraseñas");
+                    throw new Exception(exception_941lp);
                 }
                 string contraseñaActual_941lp = txtContraseñaActual.Text;
                 string contraseñaNueva_941lp = txtContraseñaNueva.Text;
                 string contraseñaConfirmacion_941lp = txtContraseñaConfirmacion.Text;
-                if (bllUsuario_941lp.ValidarContraseñaActual_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp,contraseñaActual_941lp) == false) throw new Exception("Contraseña actual incorrecta");
-                if (contraseñaActual_941lp == contraseñaNueva_941lp) throw new Exception("La nueva contraseña no puede ser igual a la actual");
-                if (contraseñaNueva_941lp != contraseñaConfirmacion_941lp) throw new Exception("La contraseña nueva y la confirmación no coinciden");
-                if (bllUsuario_941lp.VerificarContraseñaNoSeaDNIyApellido(bllUsuario_941lp.HashearContraseña_941lp(contraseñaNueva_941lp))) throw new Exception("La contraseña no puede ser su dni y apellido");
+                string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_ACTUAL_INCORRECTA", "Contraseña actual incorrecta");
+                if (bllUsuario_941lp.ValidarContraseñaActual_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp,contraseñaActual_941lp) == false) throw new Exception(exception1_941lp);
+                string exception2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_ACTUAL_IGUAL_A_CONTRASEÑA_NUEVA", "La nueva contraseña no puede ser igual a la actual");
+                if (contraseñaActual_941lp == contraseñaNueva_941lp) throw new Exception(exception2_941lp);
+                string exception3_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_NUEVA_NO_IGUAL_A_CONTRASEÑA_CONFIRMACION", "La contraseña nueva y la confirmación no coinciden");
+                if (contraseñaNueva_941lp != contraseñaConfirmacion_941lp) throw new Exception(exception3_941lp);
+                string exception4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_NUEVA__IGUAL_A_DNI_APELLIDO", "La contraseña no puede ser su dni y apellido");
+                if (bllUsuario_941lp.VerificarContraseñaNoSeaDNIyApellido(bllUsuario_941lp.HashearContraseña_941lp(contraseñaNueva_941lp))) throw new Exception(exception4_941lp);
                 bllUsuario_941lp.ModificarContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp(), contraseñaNueva_941lp);
-                MessageBox.Show("Su contraseña a sido modificada con exito");
+                string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_MODIFICADA", "Su contraseña a sido modificada con exito");
+                MessageBox.Show(mensaje_941lp);
                 if (btnSalir.Enabled == false) { btnSalir.Enabled = true; }
                 sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
                 GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoLogIn941lp());

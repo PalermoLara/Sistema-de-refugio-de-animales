@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BE;
+using ORM;
+using SERVICIOS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ORM;
 using System.Threading.Tasks;
-using BE;
 
 namespace BLL
 {
@@ -28,7 +29,10 @@ namespace BLL
         {
             Animal_941lp animal_941lp = BuscarAnimalPorCodigo_941lp(codigo_941lp);
             if (animal_941lp == null)
-                throw new Exception("No se encontró un animal con el código proporcionado.");
+            {
+                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ANIMAL_NO_ENCONTRADO", "No se encontró un animal con el código proporcionado.");
+                throw new Exception(excepcion_941lp);
+            }
 
             if (especie_941lp != null) animal_941lp.especie_941lp = especie_941lp;
             if (raza_941lp != null) animal_941lp.raza_941lp = raza_941lp;

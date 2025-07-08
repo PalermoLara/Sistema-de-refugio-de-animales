@@ -105,12 +105,15 @@ namespace BLL
                 Usuario_941lp usuario_941lp = BuscarUsuarioPorDNI_941lp(dni_941lp);
                 if (usuario_941lp == null)
                 {
-                    MessageBox.Show("Usuario no encontrado");
+                    string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_NO_ENCONTRADO", "Usuario no encontrado");
+                    MessageBox.Show(mensaje_941lp);
                     return;
                 }
                 //Invierte el valor actual del campo activo_941lp
                 usuario_941lp.activo_941lp = !usuario_941lp.activo_941lp;
-                string mensaje = usuario_941lp.activo_941lp ? "Se ha activado al usuario con éxito" : "Se ha desactivado al usuario con éxito";
+                string activado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_ACTIVADO", "Se ha activado al usuario con éxito");
+                string noActivado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_NO_ACTIVADO", "Se ha desactivado al usuario con éxito");
+                string mensaje = usuario_941lp.activo_941lp ? activado_941lp: noActivado_941lp;
                 orm_941lp.Modificar_941lp(usuario_941lp);
                 MessageBox.Show(mensaje);
             }
@@ -129,7 +132,8 @@ namespace BLL
                 Usuario_941lp usuario_941lp = BuscarUsuarioPorDNI_941lp(dni_941lp);
                 if (usuario_941lp == null)
                 {
-                    MessageBox.Show("Usuario no encontrado");
+                    string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_NO_ENCONTRADO", "Usuario no encontrado");
+                    MessageBox.Show(mensaje_941lp);
                     return;
                 }
                 else if (usuario_941lp.bloqueo_941lp)
@@ -139,11 +143,13 @@ namespace BLL
                     usuario_941lp.intentos_941lp = 0;
                     usuario_941lp.horaDesbloquear_941lp = null;
                     orm_941lp.Modificar_941lp(usuario_941lp);
-                    MessageBox.Show("Usuario desbloqueado exitosamente");
+                    string desbloqueado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_DESBLOQUEADO", "Usuario desbloqueado exitosamente");
+                    MessageBox.Show(desbloqueado_941lp);
                 }
                 else
                 {
-                    MessageBox.Show("El usuario ya se encuentra desbloqueado");
+                    string desbloqueado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_NO_DESBLOQUEADO", "El usuario ya se encuentra desbloqueado");
+                    MessageBox.Show(desbloqueado_941lp);
                     return;
                 }
             }
@@ -204,29 +210,32 @@ namespace BLL
             return orm_941lp.RetornarUsuarios_941lp();
         }
 
-        public HashSet<string> ObtenerPermisosSimplesDeUsuario_941lp(string nombrePerfil)
+        public HashSet<string> ObtenerPermisosSimplesDeUsuario_941lp(string nombrePerfil_941lp)
         {
-            var perfilComposite = ormPerfil_941lp.ObtenerCompositePerfiles_941lp(); 
+            var perfilComposite_941lp = ormPerfil_941lp.ObtenerCompositePerfiles_941lp(); 
 
-            if (!perfilComposite.TryGetValue(nombrePerfil, out var perfil))
-                throw new Exception($"Perfil '{nombrePerfil}' no encontrado.");
+            if (!perfilComposite_941lp.TryGetValue(nombrePerfil_941lp, out var perfil_941lp))
+            {
+                string perfilEncontrar_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_PERFIL_NO_ENCONTRADO", $"Perfil '{nombrePerfil_941lp}' no encontrado.");
+                throw new Exception(perfilEncontrar_941lp);
+            }
 
-            var permisosSimples = new HashSet<string>();
-            ExpandirPermisosSimplesRecursivo_941lp((Familia_941lp)perfil, permisosSimples);
-            return permisosSimples;
+            var permisosSimples_941lp = new HashSet<string>();
+            ExpandirPermisosSimplesRecursivo_941lp((Familia_941lp)perfil_941lp, permisosSimples_941lp);
+            return permisosSimples_941lp;
         }
 
-        private void ExpandirPermisosSimplesRecursivo_941lp(Familia_941lp familia, HashSet<string> acumulador)
+        private void ExpandirPermisosSimplesRecursivo_941lp(Familia_941lp familia_941lp, HashSet<string> acumulador_941lp)
         {
-            foreach (var permiso in familia.ObtenerPermisos_941lp())
+            foreach (var permiso_941lp in familia_941lp.ObtenerPermisos_941lp())
             {
-                if (permiso is PermisoSimple_941lp simple)
+                if (permiso_941lp is PermisoSimple_941lp simple_941lp)
                 {
-                    acumulador.Add(simple.nombrePermiso_941lp);
+                    acumulador_941lp.Add(simple_941lp.nombrePermiso_941lp);
                 }
-                else if (permiso is Familia_941lp subFamilia)
+                else if (permiso_941lp is Familia_941lp subFamilia_941lp)
                 {
-                    ExpandirPermisosSimplesRecursivo_941lp(subFamilia, acumulador);
+                    ExpandirPermisosSimplesRecursivo_941lp(subFamilia_941lp, acumulador_941lp);
                 }
             }
         }
