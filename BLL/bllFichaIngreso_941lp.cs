@@ -3,6 +3,7 @@ using ORM;
 using SERVICIOS.Reportes_941lp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,19 +29,43 @@ namespace BLL
             TimeSpan soloHora_941lp = hora_941lp.TimeOfDay;
             FichaDeIngreso_941lp ficha_941lp = new FichaDeIngreso_941lp(codigoAnimal_941lp, dni_941lp, especie_941lp, soloFecha_941lp, soloHora_941lp, razon_941lp, zona_941lp);
             int codigo_941lp = orm_941lp.ObtenerUltimoCodigoInsertado_941lp();
-            reporte_941lp.GenerarFichaIngresoPDF(
-            pathSalida: @"C:\Users\paler\OneDrive\Documentos\facu cuarto año\campo\Sistema-de-refugio-de-animales\Reportes\" + codigo_941lp + ".pdf",
-            nombre: nombreCedente_941lp,
-            apellido : apellidoCedente,
-            telefono : telefono_941lp,
-            dni: dni_941lp,
-            especie: especie_941lp,
-            fecha: fecha_941lp,
-            hora: soloHora_941lp,
-            razon: razon_941lp,
-            zona: zona_941lp,
-            rutaLogo: @"C:\Users\paler\OneDrive\Documentos\facu cuarto año\campo\logo.png"
+            // Obtener ruta de Descargas
+            string carpetaDescargas_941lp = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                "Downloads"
             );
+
+            // Subcarpeta "Reportes"
+            string carpetaReportes_941lp = Path.Combine(carpetaDescargas_941lp, "Reportes");
+
+            // Crear carpeta si no existe
+            if (!Directory.Exists(carpetaReportes_941lp))
+            {
+                Directory.CreateDirectory(carpetaReportes_941lp);
+            }
+
+            // Nombre del archivo PDF
+            string nombreArchivo_941lp = $"FichaIngreso_{dni_941lp}_Cod{codigo_941lp}.pdf";
+            string pathSalida = Path.Combine(carpetaReportes_941lp, nombreArchivo_941lp);
+
+            // Ruta del logo dentro de la misma carpeta (asegurate de tenerlo allí)
+            string rutaLogo = Path.Combine(carpetaReportes_941lp, "logo.png");
+
+            // Llamada al método
+            reporte_941lp.GenerarFichaIngresoPDF(
+                pathSalida: pathSalida,
+                nombre: nombreCedente_941lp,
+                apellido: apellidoCedente,
+                telefono: telefono_941lp,
+                dni: dni_941lp,
+                especie: especie_941lp,
+                fecha: fecha_941lp,
+                hora: soloHora_941lp,
+                razon: razon_941lp,
+                zona: zona_941lp,
+                rutaLogo: rutaLogo
+            );
+
             orm_941lp.Alta_941lp(ficha_941lp);
         }
 

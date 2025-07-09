@@ -196,6 +196,8 @@ namespace GUI
                 HabilitarTxt_941lp(true);
                 VisibilidadDeBotones_941lp();
                 HabilitarGrillas(true);
+                MostrarDataAnimales_941lp(bllAnimal_941lp.RetornarAnimales_941lp());
+                MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -272,7 +274,7 @@ namespace GUI
             }
             catch (Exception ex)
             {
-                string excepcion_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ERROR_EXCEPTION", $"Ocurrió un error inesperado durante la validación de datos.{ex}");
+                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ERROR_EXCEPTION", $"Ocurrió un error inesperado durante la validación de datos.{ex}");
                 throw new Exception();
             }
         }

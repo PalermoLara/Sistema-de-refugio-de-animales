@@ -10,11 +10,7 @@ namespace GUI
 {
     public class RecorrerControlesParaTraducir_941lp
     {
-        public static string TraducirMensaje_941lp(string formulario_941lp, string clave_941lp, string textoPorDefecto_941lp)
-        {
-            string idioma_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
-            return TraductorSubject_941lp.Instancia_941lp.Traducir_941lp(formulario_941lp, clave_941lp, idioma_941lp, textoPorDefecto_941lp);
-        }
+        
 
         public static void TraducirControles_941lp(Control control_941lp, string nombreFormulario_941lp, string idioma_941lp)
         {

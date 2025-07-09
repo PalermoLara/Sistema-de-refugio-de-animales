@@ -43,7 +43,7 @@ namespace BLL
 
         private void QuitarPermisoRecursivoDesdePerfil_941lp(Familia_941lp perfil_941lp, Perfil_941lp permisoABuscar_941lp)
         {
-            var contenidos_941lp = perfil_941lp.ObtenerPermisos_941lp().ToList(); // Copia segura para iterar
+            var contenidos_941lp = perfil_941lp.ObtenerPermisos_941lp().ToList(); 
 
             foreach (var contenido_941lp in contenidos_941lp)
             {
@@ -221,7 +221,7 @@ namespace BLL
             {
                 if (PermisoYaExisteEnHermanosOHijos_941lp(f_941lp, permiso_941lp))
                 {
-                    string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_REPETIDO_FAMILIA_INTERMEDIA", $"No se puede agregar el permiso '{permiso_941lp.nombrePermiso_941lp}' porque ya existe en un hermano o hijo de la familia '{f_941lp.nombrePermiso_941lp}'.");
+                    string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_REPETIDO_FAMILIA_INTERMEDIA", $"No se puede agregar un permiso porque ya existe en un hermano o hijo una familia");
                     throw new InvalidOperationException(excepcion_941lp);
                 }
             }
@@ -316,41 +316,52 @@ namespace BLL
 
             if (!familiasEstructuradas_941lp.TryGetValue(nombreFamilia_941lp, out var familiaActual_941lp))
             {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_NO_ENCONTRADO", $"La familia '{nombreFamilia_941lp}' no existe.");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_NO_ENCONTRADO", $"La familia no existe.");
                 throw new InvalidOperationException(exception_941lp);
             }
+            // 1. Obtener todos los permisos actuales expandidos de la familia
+            var permisosActuales_941lp = new HashSet<string>();
+            ExpandirPermisos_941lp((Familia_941lp)familiaActual_941lp, permisosActuales_941lp);
 
-            int totalPermisosActuales_941lp = ContarPermisos_941lp((Familia_941lp)familiaActual_941lp);
-            int permisosAEliminar_941lp = 0;
+            // 2. Simular estado final removiendo los permisos a eliminar
+            var permisosSimulados_941lp = new HashSet<string>(permisosActuales_941lp);
+            var permisosEliminarExpandidos_941lp = new HashSet<string>();
 
             foreach (string nombre_941lp in permisosAñadir_941lp)
             {
                 if (permisosSimples_941lp.TryGetValue(nombre_941lp, out var simple_941lp))
                 {
                     listaSimples_941lp.Add(simple_941lp);
-                    permisosAEliminar_941lp++;
+                    permisosEliminarExpandidos_941lp.Add(nombre_941lp);
                 }
-                else if (familiasSinEstructura_941lp.ContainsKey(nombre_941lp))
+                else if (familiasSinEstructura_941lp.TryGetValue(nombre_941lp, out var familiaCompuesta_941lp))
                 {
-                    if (familiasEstructuradas_941lp.TryGetValue(nombre_941lp, out var familiaCompuesta_941lp))
-                    {
-                        var familia_941lp = (Familia_941lp)familiaCompuesta_941lp;
-                        listaFamilia_941lp.Add(familia_941lp);
-                        permisosAEliminar_941lp += ContarPermisos_941lp(familia_941lp);
+                    var familia_941lp = (Familia_941lp)familiaCompuesta_941lp;
+                    listaFamilia_941lp.Add(familia_941lp);
 
-                        // Expandir permisos simples
-                        ExpandirPermisos_941lp(familia_941lp, permisosYaAsignados_941lp);
+                    // Expandir permisos de la familia que se eliminará
+                    ExpandirPermisos_941lp(familia_941lp, permisosEliminarExpandidos_941lp);
 
-                        // Registrar familias hijas para evitar duplicación
-                        ExpandirFamiliasInternas_941lp(familia_941lp, familiasYaIncluidas_941lp);
-                    }
+                    // También para evitar duplicados después
+                    ExpandirPermisos_941lp(familia_941lp, permisosYaAsignados_941lp);
+                    ExpandirFamiliasInternas_941lp(familia_941lp, familiasYaIncluidas_941lp);
                 }
             }
 
-            // Verificar si la familia quedaría vacía
-            if (totalPermisosActuales_941lp <= permisosAEliminar_941lp)
+            // 3. Simular eliminación
+            foreach (var permiso in permisosEliminarExpandidos_941lp)
             {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_VACIA_UNO", $"No se pueden eliminar los permisos: la familia '{nombreFamilia_941lp}' quedaría vacía.");
+                permisosSimulados_941lp.Remove(permiso);
+            }
+
+            // 4. Verificar si la familia quedaría vacía
+            if (permisosSimulados_941lp.Count == 0)
+            {
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(
+                    "FormGeneracionDePerfiles_941lp",
+                    "MSG_FAMILIA_VACIA_UNO",
+                    $"No se pueden eliminar los permisos: la familia quedaría vacía."
+                );
                 throw new InvalidOperationException(exception_941lp);
             }
 
@@ -374,23 +385,6 @@ namespace BLL
                 f_941lp.EliminarPermiso_941lp(familia_941lp);
                 OrmIntemedia_941Lp.EliminarDeIntermedia_941lp(f_941lp.nombrePermiso_941lp, familia_941lp.nombrePermiso_941lp);
             }
-        }
-
-        private int ContarPermisos_941lp(Familia_941lp familia_941lp)
-        {
-            int count_941lp = 0;
-            foreach (var permiso_941lp in familia_941lp.ObtenerPermisos_941lp())
-            {
-                if (permiso_941lp is PermisoSimple_941lp)
-                {
-                    count_941lp++;
-                }
-                else if (permiso_941lp is Familia_941lp subFamilia_941lp)
-                {
-                    count_941lp += ContarPermisos_941lp(subFamilia_941lp);
-                }
-            }
-            return count_941lp;
         }
     }
 }

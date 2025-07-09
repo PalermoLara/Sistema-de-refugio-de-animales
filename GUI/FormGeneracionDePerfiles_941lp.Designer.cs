@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class FormGestionDePerfiles_941lp
+    partial class FormGeneracionDePerfiles_941lp
     {
         /// <summary>
         /// Required designer variable.
@@ -192,7 +192,7 @@
             this.rbFamilias.AutoSize = true;
             this.rbFamilias.Location = new System.Drawing.Point(18, 69);
             this.rbFamilias.Name = "rbFamilias";
-            this.rbFamilias.Size = new System.Drawing.Size(112, 29);
+            this.rbFamilias.Size = new System.Drawing.Size(99, 29);
             this.rbFamilias.TabIndex = 19;
             this.rbFamilias.Text = "Familia";
             this.rbFamilias.UseVisualStyleBackColor = true;
@@ -204,7 +204,7 @@
             this.rbPerfiles.Checked = true;
             this.rbPerfiles.Location = new System.Drawing.Point(18, 19);
             this.rbPerfiles.Name = "rbPerfiles";
-            this.rbPerfiles.Size = new System.Drawing.Size(92, 29);
+            this.rbPerfiles.Size = new System.Drawing.Size(79, 29);
             this.rbPerfiles.TabIndex = 17;
             this.rbPerfiles.TabStop = true;
             this.rbPerfiles.Text = "Perfil";
@@ -248,7 +248,7 @@
             this.comboBoxFamilia.TabIndex = 27;
             this.comboBoxFamilia.SelectedIndexChanged += new System.EventHandler(this.comboBoxFamilia_SelectedIndexChanged);
             // 
-            // FormGestionDePerfiles_941lp
+            // FormGeneracionDePerfiles_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -273,7 +273,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.treeViewFamiliaRol);
             this.Controls.Add(this.treeViewPermisos);
-            this.Name = "FormGestionDePerfiles_941lp";
+            this.Name = "FormGeneracionDePerfiles_941lp";
             this.Text = "FormGestionDePerfiles";
             this.Load += new System.EventHandler(this.FormGestionDePerfiles_Load);
             this.groupBox2.ResumeLayout(false);

@@ -163,13 +163,13 @@ namespace GUI
             }
             catch (ArgumentException ex)
             {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ERROR_VALIDACIÓN_UNO", $"Error de validación: {ex.Message}");
-                throw new Exception(exception_941lp);
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ERROR_VALIDACIÓN_UNO", $"Error de validación");
+                throw new Exception($"{exception_941lp}: {ex.Message}");
             }
             catch (Exception ex)
             {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ERROR_VALIDACIÓN", $"Ocurrió un error inesperado durante la validación de datos.{ex}");
-                throw new Exception(exception_941lp);
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ERROR_VALIDACIÓN", $"Ocurrió un error inesperado durante la validación de datos.");
+                throw new Exception($"{exception_941lp}: {ex}");
             }
         }
 

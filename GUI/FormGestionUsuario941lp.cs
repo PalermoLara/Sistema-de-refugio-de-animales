@@ -390,11 +390,6 @@ namespace GUI
                     string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_APELLIDO_INVALIDO", "El apellido ingresado es inválido. Solo se permiten letras y espacios.");
                     throw new ArgumentException(exception_941lp);
                 }
-                if (!regexTexto_941lp.IsMatch(rol_941lp))
-                {
-                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ROL_INVALIDO", "El rol ingresado es inválido. Solo se permiten letras y espacios.");
-                    throw new ArgumentException(exception_941lp );
-                }
                 if (!regexGmail_941lp.IsMatch(email_941lp))
                 {
                     string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_EMAIL_INVALIDO", "El email ingresado debe ser una dirección válida de Gmail.");
@@ -403,8 +398,8 @@ namespace GUI
             }
             catch (ArgumentException ex)
             {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ERROR_VALIDACION", $"Error de validación: {ex.Message}");
-                throw new Exception(exception_941lp);
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ERROR_VALIDACION", $"Error de validación");
+                throw new Exception($"{exception_941lp}: { ex.Message }");
             }
             catch (Exception ex)
             {

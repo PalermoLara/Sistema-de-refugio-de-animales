@@ -15,7 +15,7 @@ using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace GUI
 {
-    public partial class FormGestionDePerfiles_941lp : Form, IObserver_941lp
+    public partial class FormGeneracionDePerfiles_941lp : Form, IObserver_941lp
     {
         bllPermisos_941lp bllPermisos_941lp;
         bllFamilia_941lp bllFamilia_941lp;
@@ -23,7 +23,7 @@ namespace GUI
         bllPerfilTablasIntermedias_941lp bllPerfilTablasIntermedias_941lp;
         bllFamiliaTablasIntermedias_941lp bllFamiliaTablasIntermedias_941lp;
         ModoOperacion_941lp modo_941lp;
-        public FormGestionDePerfiles_941lp()
+        public FormGeneracionDePerfiles_941lp()
         {
             InitializeComponent();
             bllPermisos_941lp = new bllPermisos_941lp();

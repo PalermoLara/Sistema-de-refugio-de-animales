@@ -123,8 +123,8 @@ namespace BLL
 
         private bool EstaContenidaEnOtraEstructura_941lp(string nombreFamiliaBuscada_941lp)
         {
-            var familias_941lp = orm_941lp.ObtenerCompositeFamilias_941lp(); // Diccionario<string, Familia_941lp>
-            var perfiles_941lp = OrmPerfil_941lp.ObtenerCompositePerfiles_941lp(); // Diccionario<string, Perfil_941lp>
+            var familias_941lp = orm_941lp.ObtenerCompositeFamilias_941lp(); 
+            var perfiles_941lp = OrmPerfil_941lp.ObtenerCompositePerfiles_941lp();
 
             var estructuras_941lp = familias_941lp.Values.Cast<Perfil_941lp>()
                                   .Concat(perfiles_941lp.Values);
@@ -167,7 +167,7 @@ namespace BLL
         {
             if (EstaContenidaEnOtraEstructura_941lp(nombreFamilia_941lp))
             {
-                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_CONTENIDA", $"La familia '{nombreFamilia_941lp}' no puede eliminarse porque está contenida dentro de otra familia o perfil.");
+                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_CONTENIDA", $"La familia  no puede eliminarse porque está contenida dentro de otra familia o perfil.");
                 throw new InvalidOperationException(excepcion_941lp);
             }
             // 1. Obtener la familia compuesta desde la estructura en memoria

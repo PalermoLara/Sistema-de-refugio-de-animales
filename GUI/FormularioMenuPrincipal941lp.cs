@@ -25,7 +25,7 @@ namespace GUI
         private FormFichaDeIngreso_941lp formFichaDeIngreso_941Lp;
         private FormGestionFichaMedica_941lp formGestionFichaMedica_941lp;
         private FormMedicamentos_941lp formMedicamentos_941lp;
-        private FormGestionDePerfiles_941lp formGestionDePerfiles_941lp;
+        private FormGeneracionDePerfiles_941lp formGestionDePerfiles_941lp;
         private FormCambioDeIdioma_941lp FormCambioDeIdioma_941lp;
         private List<Panel> submenus_941lp;
 
@@ -42,7 +42,7 @@ namespace GUI
             formFichaDeIngreso_941Lp = new FormFichaDeIngreso_941lp();
             formGestionFichaMedica_941lp = new FormGestionFichaMedica_941lp();
             formMedicamentos_941lp = new FormMedicamentos_941lp();
-            formGestionDePerfiles_941lp = new FormGestionDePerfiles_941lp();
+            formGestionDePerfiles_941lp = new FormGeneracionDePerfiles_941lp();
             FormCambioDeIdioma_941lp = new FormCambioDeIdioma_941lp();
         }
 

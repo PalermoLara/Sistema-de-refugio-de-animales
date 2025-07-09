@@ -12,6 +12,7 @@ namespace BLL
     public class bllPerfil_941lp
     {
         ormPerfil_941lp orm_941lp;
+        ormUsuario_941lp ormUsuario_941lp;
         ormPermiso_941lp ormPermiso_941Lp;
         ormFamilia_941lp ormFamilia_941Lp;
         ormPerfilFamilia_941lp ormPerfilFamilia_941lp;
@@ -23,6 +24,7 @@ namespace BLL
             ormFamilia_941Lp = new ormFamilia_941lp();
             ormPerfilFamilia_941lp = new ormPerfilFamilia_941lp();
             ormPerfilPermiso_941lp = new ormPerfilPermiso_941lp();
+            ormUsuario_941lp = new ormUsuario_941lp();
         }
 
         public void AltaPerfil_941lp(string nombrePerfil_941lp, List<string> permisosAñadir_941lp)
@@ -118,7 +120,7 @@ namespace BLL
                 {
                     if (!permisosVisitados_941lp.Add(permisoSimple_941lp.nombrePermiso_941lp))
                     {
-                        string excepcion1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_DUPLICADO", $"Permiso simple duplicado: '{nombre_941lp}'");
+                        string excepcion1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_DUPLICADO", $"Permiso simple duplicado");
                         throw new Exception(excepcion1_941lp);
                     }
                     continue;
@@ -129,7 +131,7 @@ namespace BLL
                 {
                     if (!familiasVisitadas_941lp.Add(familia_941lp.nombrePermiso_941lp))
                     {
-                        string excepcion1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_DUPLICADA", $"Familia duplicada: '{nombre_941lp}'");
+                        string excepcion1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_DUPLICADA", $"Familia duplicada");
                         throw new Exception(excepcion1_941lp);
                     }
                     VerificarHijosRecursivos(familia_941lp, permisosVisitados_941lp, familiasVisitadas_941lp);
@@ -137,7 +139,7 @@ namespace BLL
                 }
 
                 // 3. No existe
-                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_ELEMENTO_NO_RECONOCIDO", $"Elemento no reconocido: '{nombre_941lp}'");
+                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_ELEMENTO_NO_RECONOCIDO", $"Elemento no reconocido");
                 throw new Exception(excepcion_941lp);
             }
 
@@ -232,7 +234,7 @@ namespace BLL
                 {
                     if (ContieneComoHijaRecursivo_941lp((Familia_941lp)contenedor_941lp, nombreNuevo_941lp))
                     {
-                        string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_CONTENIDAO_EN_EL_MISMO_CONTENEDOR", $"El permiso '{nombreNuevo_941lp}' ya existe en la estructura del contenedor '{contenedor_941lp.nombrePermiso_941lp}'.");
+                        string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_CONTENIDAO_EN_EL_MISMO_CONTENEDOR", $"Un permiso  ya existe en la estructura del contenedor");
                         throw new Exception(excepcion_941lp);
                     }
                 }
@@ -264,7 +266,7 @@ namespace BLL
                 {
                     if (!permisosVisitados_941LP.Add(simple_941lp.nombrePermiso_941lp))
                     {
-                        string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_DUPLICADA_DENTRO_DE_OTRA_FAMILIA", $"Permiso simple duplicado dentro de familia: '{simple_941lp.nombrePermiso_941lp}'");
+                        string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_DUPLICADA_DENTRO_DE_OTRA_FAMILIA", $"Permiso simple duplicado dentro de familia");
                         throw new Exception(excepcion_941lp);
                     }
                 }
@@ -272,7 +274,7 @@ namespace BLL
                 {
                     if (!familiasVisitadas_941lp.Add(subFamilia_941lp.nombrePermiso_941lp))
                     {
-                        string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_DUPLICADA_DENTRO_DE_OTRA_FAMILIA", $"Familia duplicada dentro de otra familia: '{subFamilia_941lp.nombrePermiso_941lp}'");
+                        string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_DUPLICADA_DENTRO_DE_OTRA_FAMILIA", $"Familia duplicada dentro de otra familia");
                         throw new Exception(excepcion_941lp);
                     }
                     VerificarHijosRecursivos(subFamilia_941lp, permisosVisitados_941LP, familiasVisitadas_941lp);
@@ -298,7 +300,7 @@ namespace BLL
             }
             else
             {
-                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERFIL_NO_ENCONTRADO", $"No se encontró '{nombreDestino_941lp}'.");
+                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERFIL_NO_ENCONTRADO", $"No se encontró el perfil");
                 throw new Exception(excepcion_941lp);
             }
 
@@ -322,7 +324,7 @@ namespace BLL
             {
                 if (PermisoYaExisteEnContenedor_941lp(estructuraBase_941lp, permiso_941lp))
                 {
-                    string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_CONTENIDAO_EN_EL_MISMO_CONTENEDOR_PERFIL", $"El permiso '{permiso_941lp.nombrePermiso_941lp}' ya existe en la estructura del contenedor '{estructuraBase_941lp.nombrePermiso_941lp}'.");
+                    string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISO_CONTENIDAO_EN_EL_MISMO_CONTENEDOR_PERFIL", $"Un permiso ya existe en la estructura del contenedor");
                     throw new InvalidOperationException(excepcion_941lp);
                 }
             }
@@ -373,6 +375,11 @@ namespace BLL
 
         public void EliminarPerfil_941lp(string nombreFamilia_941lp)
         {
+            if (ormUsuario_941lp.PerfilAsignadoAUsuario_941lp(nombreFamilia_941lp))
+            {
+                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERFIL_CONTENIDO_EN_FAMILIA", "No se puede eliminar el perfil porque está asignado a uno o más usuarios.");
+                throw new InvalidOperationException(excepcion_941lp);
+            }
             // 1. Obtener la familia compuesta desde la estructura en memoria
             var familiasEstructuradas_941lp = orm_941lp.ObtenerCompositePerfiles_941lp();
 
