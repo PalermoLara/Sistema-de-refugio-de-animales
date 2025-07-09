@@ -44,8 +44,6 @@ namespace GUI
             formMedicamentos_941lp = new FormMedicamentos_941lp();
             formGestionDePerfiles_941lp = new FormGestionDePerfiles_941lp();
             FormCambioDeIdioma_941lp = new FormCambioDeIdioma_941lp();
-            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
-            AplicarTraduccion_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -90,8 +88,8 @@ namespace GUI
         {
             try
             {
-                string titulo_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp(this.Name, "MSG_TITULO_CERRAR_SESION", "CERRAR SESIÓN...");
-                string cuerpo_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp(this.Name, "MSG_PREGUNTA_CERRAR_SESION", "¿Desea cerrar la sesión?");
+                string titulo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_TITULO_CERRAR_SESION", "CERRAR SESIÓN...");
+                string cuerpo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(this.Name, "MSG_PREGUNTA_CERRAR_SESION", "¿Desea cerrar la sesión?");
                 DialogResult dr_941lp = MessageBox.Show(cuerpo_941lp, titulo_941lp, MessageBoxButtons.OKCancel);
                 if(dr_941lp == DialogResult.OK)
                 {
@@ -132,6 +130,8 @@ namespace GUI
             var permisos_941lp = sessionManager941lp.Gestor_941lp.RetornarPermisosUsuario_941lp();
             var perfil_941lp = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().rol_941lp;
             AplicarPermisosAFormulario_941lp(this, permisos_941lp, perfil_941lp);
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
         }
 
         public void RefrescarPermisos_941lp()

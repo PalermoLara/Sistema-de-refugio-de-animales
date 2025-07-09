@@ -26,7 +26,7 @@ namespace BLL
 
         public void Modificar_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp,  DateTime caducidad_941lp)
         {
-            Medicamento_941lp medicamento_941 = BuscarPorNumero(numero_941lp);
+            Medicamento_941lp medicamento_941 = BuscarPorNumero_941lp(numero_941lp);
             medicamento_941.nombreComercial_941lp = nombreComercial_941lp;
             medicamento_941.nombreGenerico_941lp = nombreGenerico_941lp;
             medicamento_941.forma_941lp = forma_941lp;
@@ -63,7 +63,7 @@ namespace BLL
             orm_941Lp.Eliminar_941lp(numero_941lp);
         }
 
-        private Medicamento_941lp BuscarPorNumero(string numero_941lp)
+        private Medicamento_941lp BuscarPorNumero_941lp(string numero_941lp)
         {
             return orm_941Lp.RetornarMedicamento_941lp().Find(x => x.numeroOficial_941lp == numero_941lp);
         }

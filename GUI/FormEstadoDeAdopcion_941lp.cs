@@ -16,8 +16,6 @@ namespace GUI
         public FormEstadoDeAdopcion_941lp()
         {
             InitializeComponent();
-            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
-            AplicarTraduccion_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -35,11 +33,13 @@ namespace GUI
         private void FormEstadoDeAdopcion_941lp_Load(object sender, EventArgs e)
         {
 
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
         }
 
         public void ActualizarTraduccion_941lp(string idioma_941lp)
         {
-            throw new NotImplementedException();
+            AplicarTraduccion_941lp();
         }
     }
 }

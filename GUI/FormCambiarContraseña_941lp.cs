@@ -20,8 +20,6 @@ namespace GUI
         {
             InitializeComponent();
             bllUsuario_941lp = new bllUsuario_941lp();
-            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
-            AplicarTraduccion_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -42,22 +40,22 @@ namespace GUI
             {
                 if (txtContraseñaActual.Text == "" || txtContraseñaConfirmacion.Text == "" || txtContraseñaNueva.Text == "")
                 {
-                    string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_FALTANTES", "Faltan ingresar contraseñas");
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_FALTANTES", "Faltan ingresar contraseñas");
                     throw new Exception(exception_941lp);
                 }
                 string contraseñaActual_941lp = txtContraseñaActual.Text;
                 string contraseñaNueva_941lp = txtContraseñaNueva.Text;
                 string contraseñaConfirmacion_941lp = txtContraseñaConfirmacion.Text;
-                string exception1_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_ACTUAL_INCORRECTA", "Contraseña actual incorrecta");
+                string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_ACTUAL_INCORRECTA", "Contraseña actual incorrecta");
                 if (bllUsuario_941lp.ValidarContraseñaActual_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp,contraseñaActual_941lp) == false) throw new Exception(exception1_941lp);
-                string exception2_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_ACTUAL_IGUAL_A_CONTRASEÑA_NUEVA", "La nueva contraseña no puede ser igual a la actual");
+                string exception2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_ACTUAL_IGUAL_A_CONTRASEÑA_NUEVA", "La nueva contraseña no puede ser igual a la actual");
                 if (contraseñaActual_941lp == contraseñaNueva_941lp) throw new Exception(exception2_941lp);
-                string exception3_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_NUEVA_NO_IGUAL_A_CONTRASEÑA_CONFIRMACION", "La contraseña nueva y la confirmación no coinciden");
+                string exception3_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_NUEVA_NO_IGUAL_A_CONTRASEÑA_CONFIRMACION", "La contraseña nueva y la confirmación no coinciden");
                 if (contraseñaNueva_941lp != contraseñaConfirmacion_941lp) throw new Exception(exception3_941lp);
-                string exception4_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_NUEVA__IGUAL_A_DNI_APELLIDO", "La contraseña no puede ser su dni y apellido");
+                string exception4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_NUEVA__IGUAL_A_DNI_APELLIDO", "La contraseña no puede ser su dni y apellido");
                 if (bllUsuario_941lp.VerificarContraseñaNoSeaDNIyApellido(bllUsuario_941lp.HashearContraseña_941lp(contraseñaNueva_941lp))) throw new Exception(exception4_941lp);
                 bllUsuario_941lp.ModificarContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp(), contraseñaNueva_941lp);
-                string mensaje_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_MODIFICADA", "Su contraseña a sido modificada con exito");
+                string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCambiarContraseña_941lp", "MSG_CONTRASEÑAS_MODIFICADA", "Su contraseña a sido modificada con exito");
                 MessageBox.Show(mensaje_941lp);
                 if (btnSalir.Enabled == false) { btnSalir.Enabled = true; }
                 sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
@@ -72,6 +70,8 @@ namespace GUI
             {
                 btnSalir.Enabled = false;
             }
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

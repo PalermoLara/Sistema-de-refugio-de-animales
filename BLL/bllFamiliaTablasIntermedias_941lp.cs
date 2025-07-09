@@ -350,7 +350,7 @@ namespace BLL
             // Verificar si la familia quedaría vacía
             if (totalPermisosActuales_941lp <= permisosAEliminar_941lp)
             {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_VACIA", $"No se pueden eliminar los permisos: la familia '{nombreFamilia_941lp}' quedaría vacía.");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_VACIA_UNO", $"No se pueden eliminar los permisos: la familia '{nombreFamilia_941lp}' quedaría vacía.");
                 throw new InvalidOperationException(exception_941lp);
             }
 

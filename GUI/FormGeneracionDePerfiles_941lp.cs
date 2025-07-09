@@ -33,8 +33,7 @@ namespace GUI
             bllFamiliaTablasIntermedias_941lp = new bllFamiliaTablasIntermedias_941lp();
             modo_941lp = ModoOperacion_941lp.Consulta;
             HabilitarControles_941lp();
-            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
-            AplicarTraduccion_941lp();
+            
         }
 
         private void AplicarTraduccion_941lp()
@@ -69,6 +68,8 @@ namespace GUI
             LlenarComboBoxCompuestos_941lp(comboBoxPerfiles, bllPerfil_941Lp.RetornarPerfiles_941lp());
             MostrarTreeViewPerfil_941lp(bllPerfil_941Lp.RetornarPerfiles_941lp());
             MostrarPermisosTreeFamilia_941lp(bllFamilia_941lp.RetornarFamilias_941lp());
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
         }
 
         private void MostrarPermisosTreeFamilia_941lp(List<Perfil_941lp> listaFamilias_941lp)
@@ -256,11 +257,11 @@ namespace GUI
             try
             {
                 List<string> seleccionados_941lp = ObtenerPermisosSeleccionadosDelTreeView();
-                string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_NOMBRE_IGUAL_PERFIL", "Nombre igual al nombre de un perfil");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_NOMBRE_IGUAL_PERFIL", "Nombre igual al nombre de un perfil");
                 if (bllPerfil_941Lp.VerificarNombreDePerfil_941lp(txtCrear.Text)) throw new Exception(exception_941lp);
-                string exception1_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_NOMBRE_IGUAL_FAMILIA", "Nombre igual al nombre de una familia");
+                string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_NOMBRE_IGUAL_FAMILIA", "Nombre igual al nombre de una familia");
                 if (bllFamilia_941lp.VerificarNombreDeFamilia_941lp(txtCrear.Text)) throw new Exception(exception1_941lp);
-                string exception2_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_NOMBRE_IGUAL_PERMISO", "Nombre igual al nombre de una patente");
+                string exception2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_NOMBRE_IGUAL_PERMISO", "Nombre igual al nombre de una patente");
                 if (bllPermisos_941lp.VerificarNombreDePatente_941lp(txtCrear.Text)) throw new Exception(exception2_941lp);
                 bllPerfil_941Lp.VerificarDuplicados_941lp(seleccionados_941lp);
                 string nombrePerfilDestino_941lp = comboBoxPerfiles.Text;
@@ -268,7 +269,7 @@ namespace GUI
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Crear:
-                        string exception3_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_DATOS_FALTANTES", "Error. Debe ingresar todos los datos");
+                        string exception3_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_DATOS_FALTANTES", "Error. Debe ingresar todos los datos");
                         if (txtCrear.Text == "") throw new Exception(exception3_941lp);
                         if (rbPerfiles.Checked)
                         {
@@ -276,7 +277,7 @@ namespace GUI
                         }
                         if (rbFamilias.Checked)
                         {
-                            string exception4_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_FAMILIA_VACIA", "No puede crear una familia vacia");
+                            string exception4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_VACIA", "No puede crear una familia vacia");
                             if (seleccionados_941lp.Count == 0) throw new Exception(exception4_941lp);
                             bllFamilia_941lp.AltaFamilia_941lp(txtCrear.Text, seleccionados_941lp);
                         }
@@ -284,13 +285,13 @@ namespace GUI
                     case ModoOperacion_941lp.Asignar:
                         if (rbPerfiles.Checked)
                         {
-                            string exception5_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_PERMISOS_REPETIDOS", "Permisos repetidos");
+                            string exception5_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISOS_REPETIDOS", "Permisos repetidos");
                             if (bllPerfil_941Lp.ValidarContraEstructuraEnMemoria_941lp(nombrePerfilDestino_941lp, seleccionados_941lp) == false) throw new Exception(exception5_941lp);
                             bllPerfilTablasIntermedias_941lp.AltaPerfilIntermedias_941lp(nombrePerfilDestino_941lp, seleccionados_941lp);
                         }
                         if (rbFamilias.Checked)
                         {
-                            string exception6_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_PERMISOS_REPETIDOS", "Permisos repetidos");
+                            string exception6_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_PERMISOS_REPETIDOS", "Permisos repetidos");
                             if (bllPerfil_941Lp.ValidarContraEstructuraEnMemoria_941lp(nombreFamiliaDestino_941lp, seleccionados_941lp) == false) throw new Exception(exception6_941lp);
                             bllFamiliaTablasIntermedias_941lp.AltaFamiliaIntermedia_941lp(nombreFamiliaDestino_941lp, seleccionados_941lp);
                         }
@@ -398,7 +399,7 @@ namespace GUI
             {
                 if (esRaiz_941lp)
                 {
-                    string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_NODO_RAIZ_SELECCIONADO", "No se puede seleccionar el nodo raíz.");
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_NODO_RAIZ_SELECCIONADO", "No se puede seleccionar el nodo raíz.");
                     throw new InvalidOperationException(exception_941lp);
                 }
 

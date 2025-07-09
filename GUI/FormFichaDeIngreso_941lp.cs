@@ -31,9 +31,8 @@ namespace GUI
             bllFichaIngreso_941 = new bllFichaIngreso_941lp();
             formRegistroAnimales_941lp = new FormRegistroAnimales_941lp();
             formGestorCedentes_941lp = new FormGestorCedentes_941lp();
-            modo_941lp = ModoOperacion_941lp.Consulta; TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
-            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
-            AplicarTraduccion_941lp();
+            modo_941lp = ModoOperacion_941lp.Consulta;
+            
         }
 
         private void AplicarTraduccion_941lp()
@@ -63,6 +62,8 @@ namespace GUI
             HabilitarGrillas(false);
             ModoAceptarCancelar_941lp();
             AjustarColumnasListView_941lp();
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
         }
 
         private void AjustarColumnasListView_941lp()
@@ -176,16 +177,16 @@ namespace GUI
         {
             try
             {
-                string exception_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_SIN_ANIMALES_PARA_FICHA", "No hay animales a los que hacerle la ficha de ingreso");
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_SIN_ANIMALES_PARA_FICHA", "No hay animales a los que hacerle la ficha de ingreso");
                 if (dataAnimales.Rows.Count == 0) throw new Exception(exception_941lp);
-                string titulo_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ANIMAL_NUEVO", "¿Nuevo animal?");
-                string cuerpo_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_GENERAR_FICHA_INGRESO", "Generar ficha ingreso");
+                string titulo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ANIMAL_NUEVO", "¿Nuevo animal?");
+                string cuerpo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_GENERAR_FICHA_INGRESO", "Generar ficha ingreso");
                 DialogResult drAnimal_941lp = MessageBox.Show(titulo_941lp, cuerpo_941lp, MessageBoxButtons.YesNo);
                 if(drAnimal_941lp == DialogResult.Yes)
                 {
                     formRegistroAnimales_941lp.ShowDialog();
                 }
-                string titulo1_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_CEDENTE_NUEVO", "¿Nuevo cedente?");
+                string titulo1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_CEDENTE_NUEVO", "¿Nuevo cedente?");
                 DialogResult drCedente_941lp = MessageBox.Show(titulo1_941lp, cuerpo_941lp, MessageBoxButtons.YesNo);
                 if (drCedente_941lp == DialogResult.Yes)
                 {
@@ -255,18 +256,18 @@ namespace GUI
                 var regexTexto_941lp = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$");
                 if (!regexTexto_941lp.IsMatch(razon_941lp))
                 {
-                    string excepcion_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_RAZON_INVALIDA", "La razón ingresada es inválida. Solo se permiten letras y espacios.");
+                    string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_RAZON_INVALIDA", "La razón ingresada es inválida. Solo se permiten letras y espacios.");
                     throw new ArgumentException(excepcion_941lp);
                 }
                 if (!regexTexto_941lp.IsMatch(zona_941lp))
                 {
-                    string excepcion_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ZONA_INVALIDA", "La zona ingresada es inválida. Solo se permiten letras y espacios.");
+                    string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ZONA_INVALIDA", "La zona ingresada es inválida. Solo se permiten letras y espacios.");
                     throw new ArgumentException(excepcion_941lp);
                 }
             }
             catch (ArgumentException ex)
             {
-                string excepcion_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ARGUMENT_EXCEPTION", $"Error de validación: {ex.Message}");
+                string excepcion_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ARGUMENT_EXCEPTION", $"Error de validación: {ex.Message}");
                 throw new Exception(excepcion_941lp);
             }
             catch (Exception ex)
@@ -288,21 +289,23 @@ namespace GUI
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Alta:
-                        if (bllFichaIngreso_941.VerificarCedenteActivo_941lp(dataCedentes.SelectedRows[0].Cells[0].Value.ToString())==false) throw new Exception("El cedente debe estar activo para generar una ficha de ingreso");
-                        if (bllFichaIngreso_941.VerificarAnimalVivo_941lp(Convert.ToBoolean(dataAnimales.SelectedRows[0].Cells[7].Value)) == false) throw new Exception("El animal debe estar vivo para crear una ficha de ingreso");
+                        string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_CEDENTE_NO_ACTIVO", "El cedente debe estar activo para generar una ficha de ingreso");
+                        if (bllFichaIngreso_941.VerificarCedenteActivo_941lp(dataCedentes.SelectedRows[0].Cells[0].Value.ToString())==false) throw new Exception(exception_941lp);
+                        string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ANIMAL_NO_ACTIVO", "El animal debe estar vivo para crear una ficha de ingreso");
+                        if (bllFichaIngreso_941.VerificarAnimalVivo_941lp(Convert.ToBoolean(dataAnimales.SelectedRows[0].Cells[7].Value)) == false) throw new Exception(exception1_941lp);
                         bllAnimal_941lp.Modificar_941lp(codigo_941lp:dataAnimales.SelectedRows[0].Cells[0].Value.ToString(), estadoDeAdopcion_941lp : "En evaluacion");
                         bllFichaIngreso_941.Alta_941lp(codigoAnimal_941lp, dni_941lp, dataCedentes.SelectedRows[0].Cells[1].Value.ToString(), dataCedentes.SelectedRows[0].Cells[2].Value.ToString(), dataCedentes.SelectedRows[0].Cells[4].Value.ToString(),especie_941lp, DateTime.Now, DateTime.Now, txtRazon.Text, txtZona.Text);
-                        string mensaje_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_FICHA_INGRESO_GENERADA_EXITOSAMENTE", "Ficha de ingreso generada exitosamente");
+                        string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_FICHA_INGRESO_GENERADA_EXITOSAMENTE", "Ficha de ingreso generada exitosamente");
                         MessageBox.Show(mensaje_941lp);
                         break;
                     case ModoOperacion_941lp.Modificar:
                         int codigo_941lp = Convert.ToInt32(listViewFichas.SelectedItems[0].SubItems[0].Text);
                         bllFichaIngreso_941.Modificar_941lp(codigo_941lp, txtRazon.Text, txtZona.Text);
-                        string mensaje1_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_FICHA_INGRESO_MODIFICADA_EXITOSAMENTE", "Ficha de ingreso modificada exitosamente");
+                        string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_FICHA_INGRESO_MODIFICADA_EXITOSAMENTE", "Ficha de ingreso modificada exitosamente");
                         MessageBox.Show(mensaje1_941lp);
                         break;
                     default:
-                        string mensaje2_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ERROR", "Error en la operación");
+                        string mensaje2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_ERROR", "Error en la operación");
                         MessageBox.Show(mensaje2_941lp);
                         break;
                 }
@@ -318,7 +321,7 @@ namespace GUI
             if (string.IsNullOrWhiteSpace(txtRazon.Text) ||
                         string.IsNullOrWhiteSpace(txtZona.Text))
             {
-                string mensaje_941lp = RecorrerControlesParaTraducir_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_FALTAN_CAMPOS_OBLIGATORIOS", "Debe completar todos los campos obligatorios.");
+                string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormFichaDeIngreso_941lp", "MSG_FALTAN_CAMPOS_OBLIGATORIOS", "Debe completar todos los campos obligatorios.");
                 throw new Exception(mensaje_941lp);
             }
         }

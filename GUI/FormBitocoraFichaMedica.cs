@@ -20,8 +20,7 @@ namespace GUI
         {
             InitializeComponent();
             bllBitacora_941lp = new bllBitacoraFichaMedica_941lp();
-            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
-            AplicarTraduccion_941lp();
+            
         }
 
         private void AplicarTraduccion_941lp()
@@ -38,6 +37,8 @@ namespace GUI
 
         private void FormBitocoraFichaMedica_Load(object sender, EventArgs e)
         {
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
             dataBitacora.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataBitacora.MultiSelect = false;
             dataBitacora.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
