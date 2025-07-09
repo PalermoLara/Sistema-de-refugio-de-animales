@@ -31,7 +31,22 @@ namespace GUI
                         col_941lp.HeaderText = headerTraducido_941lp;
                     }
                 }
+                else if (c_941lp is ListView listView_941lp)
+                {
+                    int index_941lp = 0;
+                    foreach (ColumnHeader col_941lp in listView_941lp.Columns)
+                    {
+                        string clave_941lp = !string.IsNullOrEmpty(col_941lp.Name)
+                            ? col_941lp.Name
+                            : $"{listView_941lp.Name}_Columna{index_941lp}";
 
+                        string headerTraducido_941lp = TraductorSubject_941lp.Instancia_941lp
+                            .Traducir_941lp(nombreFormulario_941lp, clave_941lp, idioma_941lp, col_941lp.Text);
+
+                        col_941lp.Text = headerTraducido_941lp;
+                        index_941lp++;
+                    }
+                }
                 if (c_941lp.HasChildren)
                     TraducirControles_941lp(c_941lp, nombreFormulario_941lp, idioma_941lp);
             }

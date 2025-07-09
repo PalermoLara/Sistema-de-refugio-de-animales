@@ -319,43 +319,19 @@ namespace BLL
                 string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGeneracionDePerfiles_941lp", "MSG_FAMILIA_NO_ENCONTRADO", $"La familia no existe.");
                 throw new InvalidOperationException(exception_941lp);
             }
-            // 1. Obtener todos los permisos actuales expandidos de la familia
-            var permisosActuales_941lp = new HashSet<string>();
-            ExpandirPermisos_941lp((Familia_941lp)familiaActual_941lp, permisosActuales_941lp);
+            // 1. Obtener permisos directos actuales (simples y compuestos)
+            var hijosDirectos_941lp = ((Familia_941lp)familiaActual_941lp).ObtenerPermisos_941lp()
+                .Select(p => p.nombrePermiso_941lp)
+                .ToHashSet();
 
-            // 2. Simular estado final removiendo los permisos a eliminar
-            var permisosSimulados_941lp = new HashSet<string>(permisosActuales_941lp);
-            var permisosEliminarExpandidos_941lp = new HashSet<string>();
-
+            // 2. Simular eliminación de esos hijos
             foreach (string nombre_941lp in permisosAñadir_941lp)
             {
-                if (permisosSimples_941lp.TryGetValue(nombre_941lp, out var simple_941lp))
-                {
-                    listaSimples_941lp.Add(simple_941lp);
-                    permisosEliminarExpandidos_941lp.Add(nombre_941lp);
-                }
-                else if (familiasSinEstructura_941lp.TryGetValue(nombre_941lp, out var familiaCompuesta_941lp))
-                {
-                    var familia_941lp = (Familia_941lp)familiaCompuesta_941lp;
-                    listaFamilia_941lp.Add(familia_941lp);
-
-                    // Expandir permisos de la familia que se eliminará
-                    ExpandirPermisos_941lp(familia_941lp, permisosEliminarExpandidos_941lp);
-
-                    // También para evitar duplicados después
-                    ExpandirPermisos_941lp(familia_941lp, permisosYaAsignados_941lp);
-                    ExpandirFamiliasInternas_941lp(familia_941lp, familiasYaIncluidas_941lp);
-                }
+                hijosDirectos_941lp.Remove(nombre_941lp);
             }
 
-            // 3. Simular eliminación
-            foreach (var permiso in permisosEliminarExpandidos_941lp)
-            {
-                permisosSimulados_941lp.Remove(permiso);
-            }
-
-            // 4. Verificar si la familia quedaría vacía
-            if (permisosSimulados_941lp.Count == 0)
+            // 3. Si no queda ningún hijo directo → lanzar excepción
+            if (hijosDirectos_941lp.Count == 0)
             {
                 string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(
                     "FormGeneracionDePerfiles_941lp",

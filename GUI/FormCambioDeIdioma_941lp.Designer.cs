@@ -65,6 +65,7 @@
             // 
             // comboBoxIdiomas
             // 
+            this.comboBoxIdiomas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxIdiomas.FormattingEnabled = true;
             this.comboBoxIdiomas.Items.AddRange(new object[] {
             "en",

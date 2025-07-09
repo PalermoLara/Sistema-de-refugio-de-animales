@@ -202,53 +202,29 @@ namespace BLL
             int totalPermisosActuales_941lp = 0;
             var perfilActual_941lp = familiasEstructuradas_941lp.TryGetValue(nombrePerfil_941lp, out var perfil_941lp) ? perfil_941lp : null;
 
-            // Obtener todos los permisos actuales expandidos del perfil
-            var permisosActuales_941lp = new HashSet<string>();
             if (perfilActual_941lp is Familia_941lp familiaDelPerfil)
             {
-                ExpandirPermisos_941lp(familiaDelPerfil, permisosActuales_941lp);
-            }
+                // 1. Obtener los hijos directos del perfil
+                var hijosDirectos_941lp = familiaDelPerfil.ObtenerPermisos_941lp()
+                    .Select(p => p.nombrePermiso_941lp)
+                    .ToHashSet();
 
-            // Simular estado final removiendo los permisos a eliminar
-            var permisosSimulados_941lp = new HashSet<string>(permisosActuales_941lp);
-            var permisosEliminarExpandidos_941lp = new HashSet<string>();
-
-            foreach (string nombre_941lp in permisosAñadir_941lp)
-            {
-                if (permisosSimples_941lp.TryGetValue(nombre_941lp, out var simple_941lp))
+                // 2. Simular eliminación
+                foreach (var nombre_941lp in permisosAñadir_941lp)
                 {
-                    listaSimples_941lp.Add(simple_941lp);
-                    permisosEliminarExpandidos_941lp.Add(nombre_941lp);
+                    hijosDirectos_941lp.Remove(nombre_941lp);
                 }
-                else if (familiasSinEstructura_941lp.TryGetValue(nombre_941lp, out var familiaCompuesta_941lp))
+
+                // 3. Validar si quedó vacío (sin hijos directos)
+                if (hijosDirectos_941lp.Count == 0)
                 {
-                    var familia_941lp = (Familia_941lp)familiaCompuesta_941lp;
-                    listaFamilia_941lp.Add(familia_941lp);
-
-                    // Expandir permisos simples de esta familia
-                    ExpandirPermisos_941lp(familia_941lp, permisosEliminarExpandidos_941lp);
-
-                    // También para evitar duplicados después
-                    ExpandirPermisos_941lp(familia_941lp, permisosYaAsignados_941lp);
-                    ExpandirFamiliasInternas(familia_941lp, familiasYaIncluidas_941lp);
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(
+                        "FormGeneracionDePerfiles_941lp",
+                        "MSG_PERFIL_VACIO",
+                        "No se puede eliminar los permisos: el perfil quedaría vacío."
+                    );
+                    throw new InvalidOperationException(exception_941lp);
                 }
-            }
-
-            // Simular eliminación
-            foreach (var permiso in permisosEliminarExpandidos_941lp)
-            {
-                permisosSimulados_941lp.Remove(permiso);
-            }
-
-            // Validar perfil vacío
-            if (perfilActual_941lp != null && permisosSimulados_941lp.Count == 0)
-            {
-                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp(
-                    "FormGeneracionDePerfiles_941lp",
-                    "MSG_PERFIL_VACIO",
-                    "No se puede eliminar los permisos: el perfil quedaría vacío."
-                );
-                throw new InvalidOperationException(exception_941lp);
             }
 
             // Eliminar permisos simples duplicados

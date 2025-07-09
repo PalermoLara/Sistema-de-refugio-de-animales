@@ -37,6 +37,7 @@ namespace GUI
         {
             string idioma = sessionManager941lp.Gestor_941lp.Idioma_941lp;
             RecorrerControlesParaTraducir_941lp.TraducirControles_941lp(this, this.Name, idioma);
+
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -57,6 +58,7 @@ namespace GUI
             LlenarComboBoxCompuestos_941lp(bllPerfil_941lp.RetornarPerfiles_941lp());
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
             AplicarTraduccion_941lp();
+            txtModo.Text = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ACT_DESAC", ModoOperacion_941lp.Consulta.ToString());
         }
 
         private void LlenarComboBoxCompuestos_941lp(List<Perfil_941lp> listaPermisos_941lp)
@@ -155,6 +157,7 @@ namespace GUI
                 HabilitarTxt_941lp(true);
                 DefinirModoEnTxt_941lp();
                 LimpiarTxt_941lp();
+                txtModo.Text = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_MODO_ALTA", ModoOperacion_941lp.Alta.ToString());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message);
             }
@@ -191,6 +194,7 @@ namespace GUI
                 VisibilidadDeBotones_941lp();
                 HabilitarTxt_941lp(false);
                 DefinirModoEnTxt_941lp();
+                txtModo.Text = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ACT_DESAC", ModoOperacion_941lp.ActivarDesactivar.ToString());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message);
             }
@@ -204,6 +208,7 @@ namespace GUI
                 VisibilidadDeBotones_941lp();
                 HabilitarTxt_941lp(true);
                 DefinirModoEnTxt_941lp();
+                txtModo.Text = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_MODO_MODIFICAR", ModoOperacion_941lp.Modificar.ToString());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); 
             }
@@ -234,6 +239,7 @@ namespace GUI
                 VisibilidadDeBotones_941lp();
                 HabilitarTxt_941lp(false);
                 DefinirModoEnTxt_941lp();
+                txtModo.Text = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_MODO_DESBLOQUEAR", ModoOperacion_941lp.Desbloquear.ToString());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); 
             }
@@ -352,6 +358,7 @@ namespace GUI
             HabilitarTxt_941lp(false);
             DefinirModoEnTxt_941lp();
             LimpiarTxt_941lp();
+            txtModo.Text = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_MODO_CONSULTA", ModoOperacion_941lp.Consulta.ToString());
         }
 
         private void AplicarColorControles_941lp(Control control_941lp)

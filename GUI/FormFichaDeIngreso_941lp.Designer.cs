@@ -45,6 +45,12 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dataCedentes = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBoxFiltro = new System.Windows.Forms.GroupBox();
@@ -52,22 +58,16 @@
             this.rbCedente = new System.Windows.Forms.RadioButton();
             this.rbAnimal = new System.Windows.Forms.RadioButton();
             this.listViewFichas = new System.Windows.Forms.ListView();
-            this.Código = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Código_animal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DNI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Especie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Fecha = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Hora = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Razón = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Zona = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelAniamles = new System.Windows.Forms.Label();
             this.labelCedentes = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataCedentes)).BeginInit();
             this.groupBoxFiltro.SuspendLayout();
@@ -258,6 +258,54 @@
             this.dataCedentes.TabIndex = 30;
             this.dataCedentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCedentes_CellClick_1);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Apellido";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Dirección";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Telefono";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 200;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Activo";
+            this.Column8.MinimumWidth = 10;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 200;
+            // 
             // btnAplicar
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -338,14 +386,14 @@
             // listViewFichas
             // 
             this.listViewFichas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Código,
-            this.Código_animal,
-            this.DNI,
-            this.Especie,
-            this.Fecha,
-            this.Hora,
-            this.Razón,
-            this.Zona});
+            this.ColHeader1,
+            this.ColHeader2,
+            this.ColHeader3,
+            this.ColHeader4,
+            this.ColHeader5,
+            this.ColHeader6,
+            this.ColHeader7,
+            this.ColHeader8});
             this.listViewFichas.FullRowSelect = true;
             this.listViewFichas.GridLines = true;
             this.listViewFichas.HideSelection = false;
@@ -359,38 +407,38 @@
             this.listViewFichas.View = System.Windows.Forms.View.Details;
             this.listViewFichas.SelectedIndexChanged += new System.EventHandler(this.listViewFichas_SelectedIndexChanged);
             // 
-            // Código
+            // ColHeader1
             // 
-            this.Código.Text = "Código";
+            this.ColHeader1.Text = "Código";
             // 
-            // Código_animal
+            // ColHeader2
             // 
-            this.Código_animal.Text = "Código animal";
+            this.ColHeader2.Text = "Código animal";
             // 
-            // DNI
+            // ColHeader3
             // 
-            this.DNI.Text = "Dni";
+            this.ColHeader3.Text = "Dni";
             // 
-            // Especie
+            // ColHeader4
             // 
-            this.Especie.Text = "Especie";
+            this.ColHeader4.Text = "Especie";
             // 
-            // Fecha
+            // ColHeader5
             // 
-            this.Fecha.Text = "Fecha";
+            this.ColHeader5.Text = "Fecha";
             // 
-            // Hora
+            // ColHeader6
             // 
-            this.Hora.Text = "Hora";
+            this.ColHeader6.Text = "Hora";
             // 
-            // Razón
+            // ColHeader7
             // 
-            this.Razón.Text = "Razón";
+            this.ColHeader7.Text = "Razón";
             // 
-            // Zona
+            // ColHeader8
             // 
-            this.Zona.Text = "Zona";
-            this.Zona.Width = 89;
+            this.ColHeader8.Text = "Zona";
+            this.ColHeader8.Width = 89;
             // 
             // labelAniamles
             // 
@@ -411,54 +459,6 @@
             this.labelCedentes.Size = new System.Drawing.Size(132, 25);
             this.labelCedentes.TabIndex = 49;
             this.labelCedentes.Text = "CEDENTES:";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Apellido";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Dirección";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Telefono";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 200;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Activo";
-            this.Column8.MinimumWidth = 10;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 200;
             // 
             // FormFichaDeIngreso_941lp
             // 
@@ -520,14 +520,14 @@
         private System.Windows.Forms.RadioButton rbCedente;
         private System.Windows.Forms.RadioButton rbAnimal;
         private System.Windows.Forms.ListView listViewFichas;
-        private System.Windows.Forms.ColumnHeader Código;
-        private System.Windows.Forms.ColumnHeader Código_animal;
-        private System.Windows.Forms.ColumnHeader DNI;
-        private System.Windows.Forms.ColumnHeader Especie;
-        private System.Windows.Forms.ColumnHeader Fecha;
-        private System.Windows.Forms.ColumnHeader Hora;
-        private System.Windows.Forms.ColumnHeader Razón;
-        private System.Windows.Forms.ColumnHeader Zona;
+        private System.Windows.Forms.ColumnHeader ColHeader1;
+        private System.Windows.Forms.ColumnHeader ColHeader2;
+        private System.Windows.Forms.ColumnHeader ColHeader3;
+        private System.Windows.Forms.ColumnHeader ColHeader4;
+        private System.Windows.Forms.ColumnHeader ColHeader5;
+        private System.Windows.Forms.ColumnHeader ColHeader6;
+        private System.Windows.Forms.ColumnHeader ColHeader7;
+        private System.Windows.Forms.ColumnHeader ColHeader8;
         private System.Windows.Forms.Label labelAniamles;
         private System.Windows.Forms.Label labelCedentes;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

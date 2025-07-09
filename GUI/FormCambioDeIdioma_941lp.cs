@@ -61,6 +61,7 @@ namespace GUI
         {
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
             AplicarTraduccion_941lp();
+            comboBoxIdiomas.SelectedIndex = 0;
         }
 
         public void ActualizarTraduccion_941lp(string idioma_941lp)
