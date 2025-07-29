@@ -344,6 +344,7 @@
             this.groupBoxFiltro.TabIndex = 46;
             this.groupBoxFiltro.TabStop = false;
             this.groupBoxFiltro.Text = "Buscar fichas por:";
+            this.groupBoxFiltro.Enter += new System.EventHandler(this.groupBoxFiltro_Enter);
             // 
             // rbTodos
             // 

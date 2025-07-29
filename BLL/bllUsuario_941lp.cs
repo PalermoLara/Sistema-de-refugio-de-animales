@@ -83,6 +83,7 @@ namespace BLL
                 nuevoUsuario_941lp.rol_941lp = rol_941lp;
                 nuevoUsuario_941lp.email_941lp = email_941lp;
                 orm_941lp.Modificar_941lp(nuevoUsuario_941lp);
+                sessionManager941lp.Gestor_941lp.SetPerfil_941lp(rol_941lp);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

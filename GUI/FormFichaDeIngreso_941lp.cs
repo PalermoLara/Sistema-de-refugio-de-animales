@@ -59,7 +59,6 @@ namespace GUI
             listViewFichas.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             MostrarDataAnimales_941lp(bllAnimal_941lp.RetornarAnimales_941lp());
             MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), " ");
-            HabilitarGrillas(false);
             ModoAceptarCancelar_941lp();
             AjustarColumnasListView_941lp();
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
@@ -76,12 +75,6 @@ namespace GUI
             {
                 col.Width = anchoPorColumna;
             }
-        }
-
-        private void HabilitarGrillas(bool habilitar_941lp)
-        {
-            dataAnimales.Enabled = habilitar_941lp;
-            dataCedentes.Enabled = habilitar_941lp;
         }
 
         private void CargarTxt_941lp()
@@ -195,7 +188,6 @@ namespace GUI
                 modo_941lp = ModoOperacion_941lp.Alta;
                 HabilitarTxt_941lp(true);
                 VisibilidadDeBotones_941lp();
-                HabilitarGrillas(true);
                 MostrarDataAnimales_941lp(bllAnimal_941lp.RetornarAnimales_941lp());
                 MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
             }
@@ -225,8 +217,6 @@ namespace GUI
             btnSalir.Enabled = false;
             btnCancelar.Enabled = true;
             btnAplicar.Enabled = true;
-            dataAnimales.Enabled = true;
-            dataCedentes.Enabled = true;
             AplicarColorControles_941lp();
         }
 
@@ -312,7 +302,20 @@ namespace GUI
                         break;
                 }
                 ModoAceptarCancelar_941lp();
-                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), " ");
+                string identificador = " ";
+                if (rbAnimal.Checked)
+                {
+                    identificador = codigoAnimal_941lp.ToString();
+                }
+                else if (rbCedente.Checked)
+                {
+                    identificador = dni_941lp;
+                }
+                else
+                {
+                    identificador = " ";
+                }
+                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(),identificador);
                 MostrarDataAnimales_941lp(bllAnimal_941lp.RetornarAnimales_941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -336,8 +339,6 @@ namespace GUI
             btnCrearFichaDeIngreso.Enabled = true;
             btnModificarFichaMedica.Enabled = true;
             btnSalir.Enabled = true;
-            dataAnimales.Enabled = false;
-            dataCedentes.Enabled = false;
             AplicarColorControles_941lp();
             HabilitarTxt_941lp(true);
             LimpiarTxt_941lp();
@@ -368,9 +369,10 @@ namespace GUI
         {
             try
             {
-                dataAnimales.Enabled = false;
-                dataCedentes.Enabled = false;
-                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), " ");
+                if (rbTodos.Checked)
+                {
+                    MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), " ");
+                }
             }
             catch (Exception ex){ MessageBox.Show(ex.Message); }
         }
@@ -379,9 +381,10 @@ namespace GUI
         {
             try
             {
-                dataAnimales.Enabled = false;
-                dataCedentes.Enabled = true;
-                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
+                if(rbCedente.Checked)
+                {
+                    MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -390,9 +393,10 @@ namespace GUI
         {
             try
             {
-                dataAnimales.Enabled = true;
-                dataCedentes.Enabled = false;
-                MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataAnimales.SelectedRows[0].Cells[0].Value.ToString());
+                if(rbAnimal.Checked)
+                {
+                    MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(), dataAnimales.SelectedRows[0].Cells[0].Value.ToString());
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -423,7 +427,6 @@ namespace GUI
                 HabilitarTxt_941lp(true);
                 VisibilidadDeBotones_941lp();
                 CargarTxt_941lp();
-                HabilitarGrillas(false);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -463,6 +466,11 @@ namespace GUI
         public void ActualizarTraduccion_941lp(string idioma_941lp)
         {
             AplicarTraduccion_941lp();
+        }
+
+        private void groupBoxFiltro_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

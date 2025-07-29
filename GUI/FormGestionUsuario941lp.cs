@@ -58,7 +58,7 @@ namespace GUI
             LlenarComboBoxCompuestos_941lp(bllPerfil_941lp.RetornarPerfiles_941lp());
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
             AplicarTraduccion_941lp();
-            txtModo.Text = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_ACT_DESAC", ModoOperacion_941lp.Consulta.ToString());
+            txtModo.Text = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_MODO_CONSULTA", ModoOperacion_941lp.Consulta.ToString());
         }
 
         private void LlenarComboBoxCompuestos_941lp(List<Perfil_941lp> listaPermisos_941lp)
@@ -190,6 +190,8 @@ namespace GUI
         {
             try
             {
+                string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_AUTODESACTIVARSE", "No se puede desactivar");
+                if (dataUsuarios.SelectedRows[0].Cells[0].Value.ToString() == sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp) throw new Exception(exception1_941lp);
                 modo_941lp = ModoOperacion_941lp.ActivarDesactivar;
                 VisibilidadDeBotones_941lp();
                 HabilitarTxt_941lp(false);
@@ -249,6 +251,10 @@ namespace GUI
         {
             try
             {
+                if (this.Owner is FormularioMenuPrincipal941lp menuForm_941lp)
+                {
+                    menuForm_941lp.RefrescarPermisos_941lp();
+                }
                 this.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

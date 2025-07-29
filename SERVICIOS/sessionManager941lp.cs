@@ -54,6 +54,11 @@ namespace SERVICIOS
             return usuarioSession_941lp != null ? true : false;
         }
 
+        public void SetPerfil_941lp(string perfil_941lp)
+        {
+            usuarioSession_941lp.rol_941lp = perfil_941lp;
+        }
+
         public void SetUsuario_941lp(Usuario_941lp usuario_941lp)
         {
             usuarioSession_941lp = usuario_941lp;

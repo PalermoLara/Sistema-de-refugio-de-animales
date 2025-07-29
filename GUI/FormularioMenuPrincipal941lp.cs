@@ -107,6 +107,7 @@ namespace GUI
         {
             try
             {
+                formularioAdministradorUsuario_941lp.Owner = this;
                 formularioAdministradorUsuario_941lp.ShowDialog();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

@@ -67,7 +67,7 @@
             this.btnGestionDeUsuario.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGestionDeUsuario.Location = new System.Drawing.Point(0, 60);
             this.btnGestionDeUsuario.Name = "btnGestionDeUsuario";
-            this.btnGestionDeUsuario.Size = new System.Drawing.Size(266, 66);
+            this.btnGestionDeUsuario.Size = new System.Drawing.Size(283, 66);
             this.btnGestionDeUsuario.TabIndex = 1;
             this.btnGestionDeUsuario.Tag = "Gestion de usuarios";
             this.btnGestionDeUsuario.Text = "Gestión de usuarios";
@@ -79,7 +79,7 @@
             this.btnGestionarPerfiles.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGestionarPerfiles.Location = new System.Drawing.Point(0, 0);
             this.btnGestionarPerfiles.Name = "btnGestionarPerfiles";
-            this.btnGestionarPerfiles.Size = new System.Drawing.Size(266, 60);
+            this.btnGestionarPerfiles.Size = new System.Drawing.Size(283, 60);
             this.btnGestionarPerfiles.TabIndex = 8;
             this.btnGestionarPerfiles.Tag = "Generacion de perfiles";
             this.btnGestionarPerfiles.Text = "Generacion de perfiles";
@@ -112,9 +112,9 @@
             this.btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHelp.Location = new System.Drawing.Point(0, 1122);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(266, 71);
+            this.btnHelp.Size = new System.Drawing.Size(283, 71);
             this.btnHelp.TabIndex = 18;
-            this.btnHelp.Text = "Help";
+            this.btnHelp.Text = "Ayuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
@@ -124,7 +124,7 @@
             this.panelSubMenuResportes.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuResportes.Location = new System.Drawing.Point(0, 1022);
             this.panelSubMenuResportes.Name = "panelSubMenuResportes";
-            this.panelSubMenuResportes.Size = new System.Drawing.Size(266, 100);
+            this.panelSubMenuResportes.Size = new System.Drawing.Size(283, 100);
             this.panelSubMenuResportes.TabIndex = 17;
             // 
             // btnReportes
@@ -132,7 +132,7 @@
             this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReportes.Location = new System.Drawing.Point(0, 951);
             this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(266, 71);
+            this.btnReportes.Size = new System.Drawing.Size(283, 71);
             this.btnReportes.TabIndex = 16;
             this.btnReportes.Text = "Reportes";
             this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -146,7 +146,7 @@
             this.panelSubMenuFichas.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuFichas.Location = new System.Drawing.Point(0, 803);
             this.panelSubMenuFichas.Name = "panelSubMenuFichas";
-            this.panelSubMenuFichas.Size = new System.Drawing.Size(266, 148);
+            this.panelSubMenuFichas.Size = new System.Drawing.Size(283, 148);
             this.panelSubMenuFichas.TabIndex = 15;
             // 
             // btnFichaMedica
@@ -154,7 +154,7 @@
             this.btnFichaMedica.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnFichaMedica.Location = new System.Drawing.Point(0, 75);
             this.btnFichaMedica.Name = "btnFichaMedica";
-            this.btnFichaMedica.Size = new System.Drawing.Size(266, 72);
+            this.btnFichaMedica.Size = new System.Drawing.Size(283, 72);
             this.btnFichaMedica.TabIndex = 16;
             this.btnFichaMedica.Tag = "Generar ficha medica";
             this.btnFichaMedica.Text = "Generar F. Médica";
@@ -166,7 +166,7 @@
             this.btnFichaIngreso.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnFichaIngreso.Location = new System.Drawing.Point(0, 0);
             this.btnFichaIngreso.Name = "btnFichaIngreso";
-            this.btnFichaIngreso.Size = new System.Drawing.Size(266, 75);
+            this.btnFichaIngreso.Size = new System.Drawing.Size(283, 75);
             this.btnFichaIngreso.TabIndex = 17;
             this.btnFichaIngreso.Tag = "Generar ficha de ingreso";
             this.btnFichaIngreso.Text = "Generar F. Ingreso";
@@ -178,7 +178,7 @@
             this.btnFichas.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnFichas.Location = new System.Drawing.Point(0, 732);
             this.btnFichas.Name = "btnFichas";
-            this.btnFichas.Size = new System.Drawing.Size(266, 71);
+            this.btnFichas.Size = new System.Drawing.Size(283, 71);
             this.btnFichas.TabIndex = 14;
             this.btnFichas.Tag = "";
             this.btnFichas.Text = "Fichas";
@@ -194,7 +194,7 @@
             this.panelSubMenuMaestro.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuMaestro.Location = new System.Drawing.Point(0, 515);
             this.panelSubMenuMaestro.Name = "panelSubMenuMaestro";
-            this.panelSubMenuMaestro.Size = new System.Drawing.Size(266, 217);
+            this.panelSubMenuMaestro.Size = new System.Drawing.Size(283, 217);
             this.panelSubMenuMaestro.TabIndex = 13;
             // 
             // btnABMMedicamentos
@@ -202,7 +202,7 @@
             this.btnABMMedicamentos.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnABMMedicamentos.Location = new System.Drawing.Point(0, 134);
             this.btnABMMedicamentos.Name = "btnABMMedicamentos";
-            this.btnABMMedicamentos.Size = new System.Drawing.Size(266, 78);
+            this.btnABMMedicamentos.Size = new System.Drawing.Size(283, 78);
             this.btnABMMedicamentos.TabIndex = 20;
             this.btnABMMedicamentos.Tag = "Registrar medicamento";
             this.btnABMMedicamentos.Text = "Registrar medicamentos";
@@ -214,7 +214,7 @@
             this.btnAbrirRegistroCedentes.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAbrirRegistroCedentes.Location = new System.Drawing.Point(0, 67);
             this.btnAbrirRegistroCedentes.Name = "btnAbrirRegistroCedentes";
-            this.btnAbrirRegistroCedentes.Size = new System.Drawing.Size(266, 67);
+            this.btnAbrirRegistroCedentes.Size = new System.Drawing.Size(283, 67);
             this.btnAbrirRegistroCedentes.TabIndex = 18;
             this.btnAbrirRegistroCedentes.Tag = "Registrar cedente";
             this.btnAbrirRegistroCedentes.Text = "Registrar cedentes";
@@ -227,7 +227,7 @@
             this.btnAnimales.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAnimales.Location = new System.Drawing.Point(0, 0);
             this.btnAnimales.Name = "btnAnimales";
-            this.btnAnimales.Size = new System.Drawing.Size(266, 67);
+            this.btnAnimales.Size = new System.Drawing.Size(283, 67);
             this.btnAnimales.TabIndex = 19;
             this.btnAnimales.Tag = "Registrar animal";
             this.btnAnimales.Text = "Registrar animales";
@@ -239,7 +239,7 @@
             this.btnMaestroMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMaestroMenuPrincipal.Location = new System.Drawing.Point(0, 444);
             this.btnMaestroMenuPrincipal.Name = "btnMaestroMenuPrincipal";
-            this.btnMaestroMenuPrincipal.Size = new System.Drawing.Size(266, 71);
+            this.btnMaestroMenuPrincipal.Size = new System.Drawing.Size(283, 71);
             this.btnMaestroMenuPrincipal.TabIndex = 10;
             this.btnMaestroMenuPrincipal.Tag = "";
             this.btnMaestroMenuPrincipal.Text = "Maestro";
@@ -254,7 +254,7 @@
             this.panelSubMenuAdministrador.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuAdministrador.Location = new System.Drawing.Point(0, 318);
             this.panelSubMenuAdministrador.Name = "panelSubMenuAdministrador";
-            this.panelSubMenuAdministrador.Size = new System.Drawing.Size(266, 126);
+            this.panelSubMenuAdministrador.Size = new System.Drawing.Size(283, 126);
             this.panelSubMenuAdministrador.TabIndex = 12;
             // 
             // btnAdministradorMenuPrincipal
@@ -262,7 +262,7 @@
             this.btnAdministradorMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAdministradorMenuPrincipal.Location = new System.Drawing.Point(0, 243);
             this.btnAdministradorMenuPrincipal.Name = "btnAdministradorMenuPrincipal";
-            this.btnAdministradorMenuPrincipal.Size = new System.Drawing.Size(266, 75);
+            this.btnAdministradorMenuPrincipal.Size = new System.Drawing.Size(283, 75);
             this.btnAdministradorMenuPrincipal.TabIndex = 10;
             this.btnAdministradorMenuPrincipal.Tag = "";
             this.btnAdministradorMenuPrincipal.Text = "Administrador";
@@ -278,7 +278,7 @@
             this.panelSubMenuUsuario.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuUsuario.Location = new System.Drawing.Point(0, 75);
             this.panelSubMenuUsuario.Name = "panelSubMenuUsuario";
-            this.panelSubMenuUsuario.Size = new System.Drawing.Size(266, 168);
+            this.panelSubMenuUsuario.Size = new System.Drawing.Size(283, 168);
             this.panelSubMenuUsuario.TabIndex = 11;
             // 
             // btnCambiarIdioma
@@ -286,7 +286,7 @@
             this.btnCambiarIdioma.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCambiarIdioma.Location = new System.Drawing.Point(0, 110);
             this.btnCambiarIdioma.Name = "btnCambiarIdioma";
-            this.btnCambiarIdioma.Size = new System.Drawing.Size(266, 55);
+            this.btnCambiarIdioma.Size = new System.Drawing.Size(283, 55);
             this.btnCambiarIdioma.TabIndex = 6;
             this.btnCambiarIdioma.Tag = "";
             this.btnCambiarIdioma.Text = "Cambiar idioma ";
@@ -298,7 +298,7 @@
             this.btnCambiarContraseña.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCambiarContraseña.Location = new System.Drawing.Point(0, 55);
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
-            this.btnCambiarContraseña.Size = new System.Drawing.Size(266, 55);
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(283, 55);
             this.btnCambiarContraseña.TabIndex = 2;
             this.btnCambiarContraseña.Tag = "";
             this.btnCambiarContraseña.Text = "Cambiar contraseña";
@@ -310,7 +310,7 @@
             this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCerrarSesion.Location = new System.Drawing.Point(0, 0);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(266, 55);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(283, 55);
             this.btnCerrarSesion.TabIndex = 0;
             this.btnCerrarSesion.Tag = "";
             this.btnCerrarSesion.Text = "Cerrar Sesión";
@@ -322,7 +322,7 @@
             this.btnUsuarioMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnUsuarioMenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.btnUsuarioMenuPrincipal.Name = "btnUsuarioMenuPrincipal";
-            this.btnUsuarioMenuPrincipal.Size = new System.Drawing.Size(266, 75);
+            this.btnUsuarioMenuPrincipal.Size = new System.Drawing.Size(283, 75);
             this.btnUsuarioMenuPrincipal.TabIndex = 10;
             this.btnUsuarioMenuPrincipal.Tag = "";
             this.btnUsuarioMenuPrincipal.Text = "Usuario";
@@ -346,7 +346,7 @@
             this.labelWhiskerWare.Font = new System.Drawing.Font("Tahoma", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWhiskerWare.Location = new System.Drawing.Point(776, 579);
             this.labelWhiskerWare.Name = "labelWhiskerWare";
-            this.labelWhiskerWare.Size = new System.Drawing.Size(332, 45);
+            this.labelWhiskerWare.Size = new System.Drawing.Size(172, 23);
             this.labelWhiskerWare.TabIndex = 11;
             this.labelWhiskerWare.Text = "WHISKER-WARE";
             // 
