@@ -34,7 +34,7 @@
             this.panelMenuPrincipal = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
             this.panelSubMenuResportes = new System.Windows.Forms.Panel();
-            this.btnReportes = new System.Windows.Forms.Button();
+            this.btnBitacoras = new System.Windows.Forms.Button();
             this.panelSubMenuFichas = new System.Windows.Forms.Panel();
             this.btnFichaMedica = new System.Windows.Forms.Button();
             this.btnFichaIngreso = new System.Windows.Forms.Button();
@@ -54,7 +54,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelWhiskerWare = new System.Windows.Forms.Label();
             this.btnIniciarSesion2 = new System.Windows.Forms.Button();
+            this.btnBitacoraEventos = new System.Windows.Forms.Button();
             this.panelMenuPrincipal.SuspendLayout();
+            this.panelSubMenuResportes.SuspendLayout();
             this.panelSubMenuFichas.SuspendLayout();
             this.panelSubMenuMaestro.SuspendLayout();
             this.panelSubMenuAdministrador.SuspendLayout();
@@ -92,7 +94,7 @@
             this.panelMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.panelMenuPrincipal.Controls.Add(this.btnHelp);
             this.panelMenuPrincipal.Controls.Add(this.panelSubMenuResportes);
-            this.panelMenuPrincipal.Controls.Add(this.btnReportes);
+            this.panelMenuPrincipal.Controls.Add(this.btnBitacoras);
             this.panelMenuPrincipal.Controls.Add(this.panelSubMenuFichas);
             this.panelMenuPrincipal.Controls.Add(this.btnFichas);
             this.panelMenuPrincipal.Controls.Add(this.panelSubMenuMaestro);
@@ -121,23 +123,24 @@
             // 
             // panelSubMenuResportes
             // 
+            this.panelSubMenuResportes.Controls.Add(this.btnBitacoraEventos);
             this.panelSubMenuResportes.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuResportes.Location = new System.Drawing.Point(0, 1022);
             this.panelSubMenuResportes.Name = "panelSubMenuResportes";
             this.panelSubMenuResportes.Size = new System.Drawing.Size(283, 100);
             this.panelSubMenuResportes.TabIndex = 17;
             // 
-            // btnReportes
+            // btnBitacoras
             // 
-            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReportes.Location = new System.Drawing.Point(0, 951);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(283, 71);
-            this.btnReportes.TabIndex = 16;
-            this.btnReportes.Text = "Reportes";
-            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.UseVisualStyleBackColor = true;
-            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            this.btnBitacoras.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBitacoras.Location = new System.Drawing.Point(0, 951);
+            this.btnBitacoras.Name = "btnBitacoras";
+            this.btnBitacoras.Size = new System.Drawing.Size(283, 71);
+            this.btnBitacoras.TabIndex = 16;
+            this.btnBitacoras.Text = "Bitacoras";
+            this.btnBitacoras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBitacoras.UseVisualStyleBackColor = true;
+            this.btnBitacoras.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // panelSubMenuFichas
             // 
@@ -360,6 +363,17 @@
             this.btnIniciarSesion2.UseVisualStyleBackColor = true;
             this.btnIniciarSesion2.Click += new System.EventHandler(this.btnIniciarSesion2_Click);
             // 
+            // btnBitacoraEventos
+            // 
+            this.btnBitacoraEventos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBitacoraEventos.Location = new System.Drawing.Point(0, 0);
+            this.btnBitacoraEventos.Name = "btnBitacoraEventos";
+            this.btnBitacoraEventos.Size = new System.Drawing.Size(283, 72);
+            this.btnBitacoraEventos.TabIndex = 13;
+            this.btnBitacoraEventos.Text = "Bitacora de eventos";
+            this.btnBitacoraEventos.UseVisualStyleBackColor = true;
+            this.btnBitacoraEventos.Click += new System.EventHandler(this.btnBitacoraEventos_Click);
+            // 
             // FormularioMenuPrincipal941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -374,6 +388,7 @@
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.FormularioMenu_Load);
             this.panelMenuPrincipal.ResumeLayout(false);
+            this.panelSubMenuResportes.ResumeLayout(false);
             this.panelSubMenuFichas.ResumeLayout(false);
             this.panelSubMenuMaestro.ResumeLayout(false);
             this.panelSubMenuAdministrador.ResumeLayout(false);
@@ -404,11 +419,12 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnFichas;
         private System.Windows.Forms.Panel panelSubMenuResportes;
-        private System.Windows.Forms.Button btnReportes;
+        private System.Windows.Forms.Button btnBitacoras;
         private System.Windows.Forms.Label labelWhiskerWare;
         private System.Windows.Forms.Button btnIniciarSesion2;
         private System.Windows.Forms.Panel panelSubMenuFichas;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnABMMedicamentos;
+        private System.Windows.Forms.Button btnBitacoraEventos;
     }
 }

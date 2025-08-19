@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ormBitacoraEventos_941lp.cs" />
     <Compile Include="ormIntemedia_941lp.cs" />
     <Compile Include="ormPerfilPermiso_941lp.cs" />
     <Compile Include="estruturaFamilia_941lp.cs" />

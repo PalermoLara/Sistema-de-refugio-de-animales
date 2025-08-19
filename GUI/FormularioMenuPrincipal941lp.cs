@@ -27,6 +27,7 @@ namespace GUI
         private FormMedicamentos_941lp formMedicamentos_941lp;
         private FormGeneracionDePerfiles_941lp formGestionDePerfiles_941lp;
         private FormCambioDeIdioma_941lp FormCambioDeIdioma_941lp;
+        private formBitacoraEventos_941lp formBitacoraEventos_941lp;
         private List<Panel> submenus_941lp;
 
         public FormularioMenuPrincipal941lp()
@@ -44,6 +45,7 @@ namespace GUI
             formMedicamentos_941lp = new FormMedicamentos_941lp();
             formGestionDePerfiles_941lp = new FormGeneracionDePerfiles_941lp();
             FormCambioDeIdioma_941lp = new FormCambioDeIdioma_941lp();
+            formBitacoraEventos_941lp = new formBitacoraEventos_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -276,6 +278,11 @@ namespace GUI
         private void btnCambiarIdioma_Click(object sender, EventArgs e)
         {
             FormCambioDeIdioma_941lp.ShowDialog();
+        }
+
+        private void btnBitacoraEventos_Click(object sender, EventArgs e)
+        {
+            formBitacoraEventos_941lp.ShowDialog();
         }
     }
 }
