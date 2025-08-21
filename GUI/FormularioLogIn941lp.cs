@@ -62,7 +62,7 @@ namespace GUI
                                     var permisosSimples = bllUsuario_941lp.ObtenerPermisosSimplesDeUsuario_941lp(perfilNombre);
 
                                     sessionManager941lp.Gestor_941lp.SetPermisosUsuario_941lp(permisosSimples);
-                                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Iniciar sesión", "Incio de sesión de usuario", 1);
+                                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Iniciar sesión", "Incio de sesión de usuario", 1);
                                     GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoMenu941lp());
                                 }
                                 else

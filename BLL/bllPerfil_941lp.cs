@@ -88,7 +88,7 @@ namespace BLL
             }
 
             orm_941lp.AltaPerfil_941lp(f_941lp);
-            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion perfiles", "Perfil dada de alta", 1);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion perfiles", "Perfil dada de alta", 1);
         }
 
         // Método auxiliar
@@ -406,7 +406,7 @@ namespace BLL
 
             // 3. Eliminar la familia de la base de datos
             orm_941lp.Eliminar_941lp(f_941lp);
-            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion perfiles", "Perfil eliminado", 1);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion perfiles", "Perfil eliminado", 1);
         }
     }
 }

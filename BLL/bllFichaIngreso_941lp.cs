@@ -70,7 +70,7 @@ namespace BLL
             );
 
             orm_941lp.Alta_941lp(ficha_941lp);
-            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion ficha de ingreso", "Ficha de ingreso dada de alta", 3);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion ficha de ingreso", "Ficha de ingreso dada de alta", 3);
         }
 
         public void Modificar_941lp(int codigo_941lp, string razon_941lp, string zona_941lp)
@@ -79,7 +79,7 @@ namespace BLL
             ficha_941lp.razon_941lp = razon_941lp;
             ficha_941lp.zona_941lp = zona_941lp;
             orm_941lp.Modificar_941lp(ficha_941lp);
-            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion ficha de ingreso", "Ficha de ingreso modificada", 4);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion ficha de ingreso", "Ficha de ingreso modificada", 4);
         }
 
         public bool VerificarAnimalVivo_941lp(bool vivo_941lp)

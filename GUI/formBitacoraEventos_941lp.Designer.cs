@@ -45,15 +45,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxModulo = new System.Windows.Forms.ComboBox();
             this.labelModulo = new System.Windows.Forms.Label();
-            this.comboBoxFechaFin = new System.Windows.Forms.ComboBox();
             this.labelFechaFin = new System.Windows.Forms.Label();
-            this.comboBoxFechaInicio = new System.Windows.Forms.ComboBox();
             this.labelFechaInicio = new System.Windows.Forms.Label();
             this.comboBoxCriticidad = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAplicar = new System.Windows.Forms.Button();
+            this.dateTimePickerInicio = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
+            this.checkBoxFiltro = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +77,7 @@
             this.dataEventos.RowTemplate.Height = 33;
             this.dataEventos.Size = new System.Drawing.Size(1605, 575);
             this.dataEventos.TabIndex = 0;
+            this.dataEventos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEventos_CellClick);
             // 
             // Column1
             // 
@@ -170,6 +172,7 @@
             // 
             // comboBoxLogin
             // 
+            this.comboBoxLogin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLogin.FormattingEnabled = true;
             this.comboBoxLogin.Location = new System.Drawing.Point(168, 726);
             this.comboBoxLogin.Name = "comboBoxLogin";
@@ -178,6 +181,7 @@
             // 
             // comboBoxEvento
             // 
+            this.comboBoxEvento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEvento.FormattingEnabled = true;
             this.comboBoxEvento.Location = new System.Drawing.Point(739, 810);
             this.comboBoxEvento.Name = "comboBoxEvento";
@@ -195,6 +199,7 @@
             // 
             // comboBoxModulo
             // 
+            this.comboBoxModulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModulo.FormattingEnabled = true;
             this.comboBoxModulo.Location = new System.Drawing.Point(168, 810);
             this.comboBoxModulo.Name = "comboBoxModulo";
@@ -210,14 +215,6 @@
             this.labelModulo.TabIndex = 9;
             this.labelModulo.Text = "Modulo";
             // 
-            // comboBoxFechaFin
-            // 
-            this.comboBoxFechaFin.FormattingEnabled = true;
-            this.comboBoxFechaFin.Location = new System.Drawing.Point(1285, 726);
-            this.comboBoxFechaFin.Name = "comboBoxFechaFin";
-            this.comboBoxFechaFin.Size = new System.Drawing.Size(401, 33);
-            this.comboBoxFechaFin.TabIndex = 12;
-            // 
             // labelFechaFin
             // 
             this.labelFechaFin.AutoSize = true;
@@ -226,14 +223,6 @@
             this.labelFechaFin.Size = new System.Drawing.Size(101, 25);
             this.labelFechaFin.TabIndex = 11;
             this.labelFechaFin.Text = "Fecha fin";
-            // 
-            // comboBoxFechaInicio
-            // 
-            this.comboBoxFechaInicio.FormattingEnabled = true;
-            this.comboBoxFechaInicio.Location = new System.Drawing.Point(739, 726);
-            this.comboBoxFechaInicio.Name = "comboBoxFechaInicio";
-            this.comboBoxFechaInicio.Size = new System.Drawing.Size(401, 33);
-            this.comboBoxFechaInicio.TabIndex = 14;
             // 
             // labelFechaInicio
             // 
@@ -246,6 +235,7 @@
             // 
             // comboBoxCriticidad
             // 
+            this.comboBoxCriticidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCriticidad.FormattingEnabled = true;
             this.comboBoxCriticidad.Location = new System.Drawing.Point(1288, 810);
             this.comboBoxCriticidad.Name = "comboBoxCriticidad";
@@ -269,6 +259,7 @@
             this.btnLimpiar.TabIndex = 17;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnSalir
             // 
@@ -288,6 +279,32 @@
             this.btnAplicar.TabIndex = 19;
             this.btnAplicar.Text = "Aplicar";
             this.btnAplicar.UseVisualStyleBackColor = true;
+            this.btnAplicar.Click += new System.EventHandler(this.btnAplicar_Click);
+            // 
+            // dateTimePickerInicio
+            // 
+            this.dateTimePickerInicio.Location = new System.Drawing.Point(739, 734);
+            this.dateTimePickerInicio.Name = "dateTimePickerInicio";
+            this.dateTimePickerInicio.Size = new System.Drawing.Size(401, 31);
+            this.dateTimePickerInicio.TabIndex = 21;
+            // 
+            // dateTimePickerFin
+            // 
+            this.dateTimePickerFin.Location = new System.Drawing.Point(1285, 729);
+            this.dateTimePickerFin.Name = "dateTimePickerFin";
+            this.dateTimePickerFin.Size = new System.Drawing.Size(401, 31);
+            this.dateTimePickerFin.TabIndex = 22;
+            // 
+            // checkBoxFiltro
+            // 
+            this.checkBoxFiltro.AutoSize = true;
+            this.checkBoxFiltro.Location = new System.Drawing.Point(1434, 648);
+            this.checkBoxFiltro.Name = "checkBoxFiltro";
+            this.checkBoxFiltro.Size = new System.Drawing.Size(255, 29);
+            this.checkBoxFiltro.TabIndex = 23;
+            this.checkBoxFiltro.Text = "Aplicar filtros de fechas";
+            this.checkBoxFiltro.UseVisualStyleBackColor = true;
+            this.checkBoxFiltro.CheckedChanged += new System.EventHandler(this.checkBoxFiltro_CheckedChanged);
             // 
             // formBitacoraEventos_941lp
             // 
@@ -295,14 +312,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1865, 1061);
+            this.Controls.Add(this.checkBoxFiltro);
+            this.Controls.Add(this.dateTimePickerFin);
+            this.Controls.Add(this.dateTimePickerInicio);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.comboBoxCriticidad);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBoxFechaInicio);
             this.Controls.Add(this.labelFechaInicio);
-            this.Controls.Add(this.comboBoxFechaFin);
             this.Controls.Add(this.labelFechaFin);
             this.Controls.Add(this.comboBoxModulo);
             this.Controls.Add(this.labelModulo);
@@ -343,14 +361,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxModulo;
         private System.Windows.Forms.Label labelModulo;
-        private System.Windows.Forms.ComboBox comboBoxFechaFin;
         private System.Windows.Forms.Label labelFechaFin;
-        private System.Windows.Forms.ComboBox comboBoxFechaInicio;
         private System.Windows.Forms.Label labelFechaInicio;
         private System.Windows.Forms.ComboBox comboBoxCriticidad;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnAplicar;
+        private System.Windows.Forms.DateTimePicker dateTimePickerInicio;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFin;
+        private System.Windows.Forms.CheckBox checkBoxFiltro;
     }
 }

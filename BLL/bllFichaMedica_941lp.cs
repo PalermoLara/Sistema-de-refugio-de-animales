@@ -26,7 +26,7 @@ namespace BLL
             DateTime soloFecha_941lp = fecha_941lp.Date;
             FichaMedica_941lp ficha_941lp = new FichaMedica_941lp(codigoAnimal_941lp, soloFecha_941lp,castrado_941lp,  dieta_941lp, medicamento_941lp, observaciones_941lp);
             orm_941lp.Alta_941lp(ficha_941lp);
-            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion ficha medica", "Ficha medica dada de alta", 4);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion ficha medica", "Ficha medica dada de alta", 4);
         }
 
         public bool VerificarQueTengaFichaMedica_941lp(string codigoAnimal_941lp)
@@ -42,7 +42,7 @@ namespace BLL
             ficha_941lp.medicamento_941lp = medicamento_941lp;
             ficha_941lp.observaciones_941lp = observaciones_941lp;
             orm_941lp.Modificar_941lp(ficha_941lp);
-            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion ficha medica", "Ficha medica modificada", 4);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion ficha medica", "Ficha medica modificada", 4);
         }
 
         public bool VerificarAnimalVivo_941lp(bool vivo_941lp)

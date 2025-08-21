@@ -100,7 +100,7 @@ namespace GUI
                     var usuario_941lp = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
                     usuario_941lp.lenguaje_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
                     bllUsuario_941lp.CambiarIdioma_941lp(usuario_941lp.dni_941lp, usuario_941lp.lenguaje_941lp);
-                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Cerrar sesión", "Cierre de sesión de usuario", 2);
+                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Cerrar sesión", "Cierre de sesión de usuario", 2);
                     sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
                     GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoLogIn941lp());
                 }

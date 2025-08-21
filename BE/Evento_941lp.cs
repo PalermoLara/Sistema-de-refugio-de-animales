@@ -16,7 +16,7 @@ namespace BE
 
         public Evento_941lp(string pDni_941lp, DateTime f_941lp, TimeSpan h_941lp, string mod_941lp, string ev_941lp, int crit_941lp)
         {
-            dni_941lp = pDni_941lp;
+            login_941lp = pDni_941lp;
             fecha_941lp = f_941lp;
             hora_941lp = h_941lp;
             modulo_941lp = mod_941lp;
@@ -25,7 +25,7 @@ namespace BE
         }
 
         public string codigo_941lp { get; set; } 
-        public string dni_941lp { get; set; }
+        public string login_941lp { get; set; }
         public DateTime fecha_941lp { get; set; }
         public TimeSpan hora_941lp { get; set; }
         public string modulo_941lp { get; set; }

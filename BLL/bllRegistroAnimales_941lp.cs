@@ -25,7 +25,7 @@ namespace BLL
             int codigoAnimal_941lp = orm_941lp.GenerarCodigoAnimalUnico_941lp();
             Animal_941lp animal_941lp = new Animal_941lp(codigoAnimal_941lp,especie_941lp, raza_941lp, nombre_941lp, tañamo_941lp, sexo_941lp, estadoDeAdopcion_941lp, vivo_941lp);
             orm_941lp.Alta_941lp(animal_941lp);
-            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion animales", "Animal dado de alta", 2);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion animales", "Animal dado de alta", 2);
         }
 
         public void Modificar_941lp(string codigo_941lp ,string especie_941lp = null, string raza_941lp = null, string nombre_941lp = null, string tamaño_941lp = null, string sexo_941lp = null, string estadoDeAdopcion_941lp = null, bool? vivo_941lp = null)
@@ -50,7 +50,7 @@ namespace BLL
             }
             else
             {
-                bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion animales", "Animal modificado", 2);
+                bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion animales", "Animal modificado", 2);
             }
 
                 orm_941lp.Modificar_941lp(animal_941lp);

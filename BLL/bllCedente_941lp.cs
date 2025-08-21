@@ -29,7 +29,7 @@ namespace BLL
                 string direccionEncriptada_941lp = EncriptarDireccion_941lp(direccion_941lp); // lógica de negocio: dirección encriptada
                 Cedente_941lp nuevoCedente_941lp = new Cedente_941lp(dni_941lp, nombre_941lp, apellido_941lp, direccionEncriptada_941lp, telefono_941lp, true);
                 orm_941lp.Alta_941lp(nuevoCedente_941lp);
-                bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion cedentes", "Cedente dado de alta", 2);
+                bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion cedentes", "Cedente dado de alta", 2);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -54,7 +54,7 @@ namespace BLL
                 cedente_941lp.direccion_941lp = EncriptarDireccion_941lp( direccion_941lp);
                 cedente_941lp.telefono_941lp = telefono_941lp;
                 orm_941lp.Modificar_941lp(cedente_941lp);
-                bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion cedentes", "Cedente modificado", 3);
+                bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion cedentes", "Cedente modificado", 3);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -78,12 +78,12 @@ namespace BLL
                 if (cedente_941lp.activo_941lp)
                 {
                     mensaje = activado_941lp;
-                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion cedentes", "Cedente activado", 2);
+                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion cedentes", "Cedente activado", 2);
                 }
                 else
                 {
                     mensaje = noActivado_941lp;
-                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion cedentes", "Cedente desactivado", 2);
+                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion cedentes", "Cedente desactivado", 2);
                 }
                 orm_941lp.Modificar_941lp(cedente_941lp);
                 MessageBox.Show(mensaje);
