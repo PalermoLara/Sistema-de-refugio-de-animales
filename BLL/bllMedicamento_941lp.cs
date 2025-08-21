@@ -1,5 +1,6 @@
 ﻿using BE;
 using ORM;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,11 @@ namespace BLL
     public class bllMedicamento_941lp
     {
         ormMedicamento_941lp orm_941Lp;
-
+        bllBitacoraEventos_941lp bllBitacoraEvento_941lp;
         public bllMedicamento_941lp()
         {
             orm_941Lp = new ormMedicamento_941lp();
+            bllBitacoraEvento_941lp = new bllBitacoraEventos_941lp();
         }
 
         public void Alta_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp,  DateTime caducidad_941lp)
@@ -22,6 +24,7 @@ namespace BLL
             DateTime soloFecha_941lp = caducidad_941lp.Date;
             Medicamento_941lp medicamento_941lp = new Medicamento_941lp(numero_941lp, nombreComercial_941lp, nombreGenerico_941lp, forma_941lp, soloFecha_941lp);
             orm_941Lp.Alta_941lp(medicamento_941lp);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion medicamentos", "Alta medicamento", 5);
         }
 
         public void Modificar_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp,  DateTime caducidad_941lp)
@@ -32,6 +35,7 @@ namespace BLL
             medicamento_941.forma_941lp = forma_941lp;
             medicamento_941.caducidad_941lp = caducidad_941lp;
             orm_941Lp.Modificar_941lp(medicamento_941);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion medicamentos", "Modificar medicamento", 5);
         }
 
         public bool VerificarExistenciaDeNumero_941lp(string numero_941lp)
@@ -61,6 +65,7 @@ namespace BLL
         public void Baja_941lp(string numero_941lp)
         {
             orm_941Lp.Eliminar_941lp(numero_941lp);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion medicamentos", "Eliminar medicamento", 5);
         }
 
         private Medicamento_941lp BuscarPorNumero_941lp(string numero_941lp)

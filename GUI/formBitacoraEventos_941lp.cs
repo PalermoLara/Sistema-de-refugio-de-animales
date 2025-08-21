@@ -29,7 +29,7 @@ namespace GUI
             {
                 foreach (Evento_941lp e_941lp in eventosLista_941lp)
                 {
-                    dataEventos.Rows.Add(e_941lp.dni_941lp, e_941lp.fecha_941lp, e_941lp.hora_941lp, e_941lp.modulo_941lp, e_941lp.evento_941lp,e_941lp.criticidad_941lp);
+                    dataEventos.Rows.Add(e_941lp.dni_941lp, e_941lp.fecha_941lp.ToString("dd/MM/yyyy"), e_941lp.hora_941lp.ToString(@"hh\:mm\:ss"), e_941lp.modulo_941lp, e_941lp.evento_941lp,e_941lp.criticidad_941lp);
                 }
             }
         }

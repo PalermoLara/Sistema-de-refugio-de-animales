@@ -29,7 +29,7 @@ namespace BLL
                 string contraseña_941lp = HashearContraseña_941lp(dni_941lp + apellido_941lp); // lógica de negocio: contraseña inicial hasheada
                 Usuario_941lp nuevoUsuario_941lp = new Usuario_941lp( dni_941lp, nombreUsuario_941lp, contraseña_941lp, nombre_941lp, apellido_941lp, rol_941lp, email_941lp, false, 0, "es", true, null);
                 orm_941lp.Alta_941lp(nuevoUsuario_941lp);
-                bllBitacoraEventos_941lp.Alta_941lp(nuevoUsuario_941lp.dni_941lp, "Gestion usuarios", "Alta usuario", 1);
+                bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Usuario dado de alta", 1);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -59,6 +59,7 @@ namespace BLL
         {
             usuario_941lp.intentos_941lp = 0;
             orm_941lp.Modificar_941lp(usuario_941lp);
+            bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Reinicio de intentos de usuario", 2);
         }
 
 
@@ -87,7 +88,7 @@ namespace BLL
                 nuevoUsuario_941lp.email_941lp = email_941lp;
                 orm_941lp.Modificar_941lp(nuevoUsuario_941lp);
                 sessionManager941lp.Gestor_941lp.SetPerfil_941lp(rol_941lp);
-                bllBitacoraEventos_941lp.Alta_941lp(nuevoUsuario_941lp.dni_941lp, "Gestion usuarios", "Modificar usuario", 1);
+                bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Usuario modificado", 1);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -118,9 +119,18 @@ namespace BLL
                 usuario_941lp.activo_941lp = !usuario_941lp.activo_941lp;
                 string activado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_ACTIVADO", "Se ha activado al usuario con éxito");
                 string noActivado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_NO_ACTIVADO", "Se ha desactivado al usuario con éxito");
-                string mensaje = usuario_941lp.activo_941lp ? activado_941lp: noActivado_941lp;
+                string mensaje;
+                if (usuario_941lp.activo_941lp)
+                {
+                    mensaje = activado_941lp;
+                    bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Usuario activado", 1);
+                }
+                else
+                {
+                    mensaje = noActivado_941lp;
+                    bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Usuario desactivado", 1);
+                }
                 orm_941lp.Modificar_941lp(usuario_941lp);
-                bllBitacoraEventos_941lp.Alta_941lp(usuario_941lp.dni_941lp, "Gestion usuarios", "Activar/Desactivar usuario", 1);
                 MessageBox.Show(mensaje);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -150,13 +160,13 @@ namespace BLL
                     usuario_941lp.horaDesbloquear_941lp = null;
                     orm_941lp.Modificar_941lp(usuario_941lp);
                     string desbloqueado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_DESBLOQUEADO", "Usuario desbloqueado exitosamente");
-                    bllBitacoraEventos_941lp.Alta_941lp(usuario_941lp.dni_941lp, "Gestion usuarios", "Bloquear usuario", 1);
+                    bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Usuario bloqueado", 1);
                     MessageBox.Show(desbloqueado_941lp);
                 }
                 else
                 {
                     string desbloqueado_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionUsuario941lp", "MSG_USUARIO_NO_DESBLOQUEADO", "El usuario ya se encuentra desbloqueado");
-                    bllBitacoraEventos_941lp.Alta_941lp(usuario_941lp.dni_941lp, "Gestion usuarios", "Desbloquear usuario", 1);
+                    bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Usuario desbloqueado", 1);
                     MessageBox.Show(desbloqueado_941lp);
                     return;
                 }
@@ -183,7 +193,7 @@ namespace BLL
                 return false;
             }
 
-            bllBitacoraEventos_941lp.Alta_941lp(usuario_941lp.dni_941lp, "Gestion usuarios", "Usuario bloqueado", 1);
+            bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Usuario bloqueado", 1);
             return true;
         }
 
@@ -212,7 +222,7 @@ namespace BLL
             usuario_941lp.contraseña_941lp = HashearContraseña_941lp(contraseñaNueva_941lp);
             orm_941lp.Modificar_941lp(usuario_941lp);
             sessionManager941lp.Gestor_941lp.SetUsuario_941lp(usuario_941lp);
-            bllBitacoraEventos_941lp.Alta_941lp(usuario_941lp.dni_941lp, "Gestion usuarios", "Modificar contraseña usuario", 1);
+            bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Modificar contraseña usuario", 1);
         }
 
         public List<Usuario_941lp> RetornarUsuarios_941lp()

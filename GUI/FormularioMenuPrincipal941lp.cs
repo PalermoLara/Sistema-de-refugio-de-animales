@@ -29,6 +29,7 @@ namespace GUI
         private FormCambioDeIdioma_941lp FormCambioDeIdioma_941lp;
         private formBitacoraEventos_941lp formBitacoraEventos_941lp;
         private List<Panel> submenus_941lp;
+        bllBitacoraEventos_941lp bllBitacoraEvento_941lp;
 
         public FormularioMenuPrincipal941lp()
         {
@@ -46,6 +47,7 @@ namespace GUI
             formGestionDePerfiles_941lp = new FormGeneracionDePerfiles_941lp();
             FormCambioDeIdioma_941lp = new FormCambioDeIdioma_941lp();
             formBitacoraEventos_941lp = new formBitacoraEventos_941lp();
+            bllBitacoraEvento_941lp = new bllBitacoraEventos_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -98,6 +100,7 @@ namespace GUI
                     var usuario_941lp = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
                     usuario_941lp.lenguaje_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
                     bllUsuario_941lp.CambiarIdioma_941lp(usuario_941lp.dni_941lp, usuario_941lp.lenguaje_941lp);
+                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Cerrar sesión", "Cierre de sesión de usuario", 2);
                     sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
                     GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoLogIn941lp());
                 }

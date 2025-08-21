@@ -17,6 +17,7 @@ namespace BLL
         ormFamilia_941lp ormFamilia_941Lp;
         ormPerfilFamilia_941lp ormPerfilFamilia_941lp;
         ormPerfilPermiso_941lp ormPerfilPermiso_941lp;
+        bllBitacoraEventos_941lp bllBitacoraEvento_941lp;
         public bllPerfil_941lp()
         {
             orm_941lp = new ormPerfil_941lp();
@@ -25,6 +26,7 @@ namespace BLL
             ormPerfilFamilia_941lp = new ormPerfilFamilia_941lp();
             ormPerfilPermiso_941lp = new ormPerfilPermiso_941lp();
             ormUsuario_941lp = new ormUsuario_941lp();
+            bllBitacoraEvento_941lp = new bllBitacoraEventos_941lp();
         }
 
         public void AltaPerfil_941lp(string nombrePerfil_941lp, List<string> permisosAñadir_941lp)
@@ -86,6 +88,7 @@ namespace BLL
             }
 
             orm_941lp.AltaPerfil_941lp(f_941lp);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion perfiles", "Perfil dada de alta", 1);
         }
 
         // Método auxiliar
@@ -403,6 +406,7 @@ namespace BLL
 
             // 3. Eliminar la familia de la base de datos
             orm_941lp.Eliminar_941lp(f_941lp);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion perfiles", "Perfil eliminado", 1);
         }
     }
 }

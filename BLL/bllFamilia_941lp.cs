@@ -16,6 +16,7 @@ namespace BLL
         ormIntemedia_941lp OrmIntemedia_941Lp;
         ormPerfil_941lp OrmPerfil_941lp;
         ormFamiliaPermiso_941lp ormFamiliaPermiso_941Lp;
+        bllBitacoraEventos_941lp bllBitacoraEvento_941lp;
 
         public bllFamilia_941lp()
         {
@@ -24,6 +25,7 @@ namespace BLL
             ormPermiso_941Lp = new ormPermiso_941lp();
             OrmIntemedia_941Lp = new ormIntemedia_941lp();
             ormFamiliaPermiso_941Lp = new ormFamiliaPermiso_941lp();
+            bllBitacoraEvento_941lp = new bllBitacoraEventos_941lp();
         }
 
         public void AltaFamilia_941lp(string nombreFamilia_941lp, List<string> permisosAñadir_941lp)
@@ -86,6 +88,7 @@ namespace BLL
             }
 
             orm_941lp.AltaFamilia_941lp(f_941lp);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion familia", "Familia dada de alta", 1);
         }
 
         // Método auxiliar
@@ -194,6 +197,7 @@ namespace BLL
 
             // 3. Eliminar la familia de la base de datos
             orm_941lp.Eliminar_941lp(f_941lp);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion familia", "Familia eliminada", 1);
         }
 
 

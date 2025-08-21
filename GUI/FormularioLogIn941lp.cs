@@ -17,11 +17,13 @@ namespace GUI
     {
         bllUsuario_941lp bllUsuario_941lp;
         private readonly FormCambiarContraseña_941lp formularioCambiarContraseña_941lp;
+        bllBitacoraEventos_941lp bllBitacoraEvento_941lp;
         public FormularioLogIn941lp()
         {
             InitializeComponent();
             bllUsuario_941lp = new bllUsuario_941lp();
             formularioCambiarContraseña_941lp = new FormCambiarContraseña_941lp();
+            bllBitacoraEvento_941lp = new bllBitacoraEventos_941lp();
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
@@ -60,6 +62,7 @@ namespace GUI
                                     var permisosSimples = bllUsuario_941lp.ObtenerPermisosSimplesDeUsuario_941lp(perfilNombre);
 
                                     sessionManager941lp.Gestor_941lp.SetPermisosUsuario_941lp(permisosSimples);
+                                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Iniciar sesión", "Incio de sesión de usuario", 1);
                                     GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoMenu941lp());
                                 }
                                 else
