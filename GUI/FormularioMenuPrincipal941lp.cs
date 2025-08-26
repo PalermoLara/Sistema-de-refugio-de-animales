@@ -30,6 +30,7 @@ namespace GUI
         private formBitacoraEventos_941lp formBitacoraEventos_941lp;
         private List<Panel> submenus_941lp;
         bllBitacoraEventos_941lp bllBitacoraEvento_941lp;
+        private FormBackUpRestore_941lp formBackUpRestore_941Lp;
 
         public FormularioMenuPrincipal941lp()
         {
@@ -37,6 +38,7 @@ namespace GUI
             InicializarSubmenus_941lp();
             bllUsuario_941lp = new bllUsuario_941lp();
             formularioAdministradorUsuario_941lp = new FormGestionUsuario941lp();
+            formBackUpRestore_941Lp = new FormBackUpRestore_941lp();
             formularioCambiarContraseña_941lp = new FormCambiarContraseña_941lp();
             formularioLogIn941lp = new FormularioLogIn941lp();
             formRegistroDeAnimales_941lp = new FormRegistroAnimales_941lp();
@@ -286,6 +288,11 @@ namespace GUI
         private void btnBitacoraEventos_Click(object sender, EventArgs e)
         {
             formBitacoraEventos_941lp.ShowDialog();
+        }
+
+        private void btnBackupRestore_Click(object sender, EventArgs e)
+        {
+            formBackUpRestore_941Lp.ShowDialog();
         }
     }
 }

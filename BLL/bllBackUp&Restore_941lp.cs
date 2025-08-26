@@ -1,0 +1,28 @@
+﻿using ORM;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BLL
+{
+    public class bllBackUp_Restore_941lp
+    {
+        ormBackUp_Restore_941lp orm_941lp;
+        public bllBackUp_Restore_941lp()
+        {
+            orm_941lp = new ormBackUp_Restore_941lp();
+        }
+
+        public void Backup_941lp()
+        {
+            orm_941lp.Backup_941lp();
+        }
+
+        public void RealizarRestore(string restorePath_941lp)
+        {
+           orm_941lp.RealizarRestore(restorePath_941lp);
+        }
+    }
+}
