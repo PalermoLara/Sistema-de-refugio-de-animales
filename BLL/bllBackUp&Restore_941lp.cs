@@ -15,9 +15,9 @@ namespace BLL
             orm_941lp = new ormBackUp_Restore_941lp();
         }
 
-        public void Backup_941lp()
+        public string Backup_941lp()
         {
-            orm_941lp.Backup_941lp();
+            return orm_941lp.Backup_941lp();
         }
 
         public void RealizarRestore(string restorePath_941lp)

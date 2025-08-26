@@ -21,7 +21,7 @@ namespace ORM
 
         string basededatos_941lp = "sistAdopcion941lp";
         
-        public void Backup_941lp(string rutaBackUp_941lp)
+        public string Backup_941lp()
         {
             string backupPath = @"C:\BackUp"; 
             Directory.CreateDirectory(backupPath);
@@ -32,28 +32,16 @@ namespace ORM
             BACKUP DATABASE [sistAdopcion941lp]
             TO DISK = '{rutaCompleta}'
             WITH FORMAT, INIT, NAME = 'Backup_{fileName}';
-        ";
+            ";
             dao_941lp.Query_941lp(query);
+            return rutaCompleta;
         }
 
         public void RealizarRestore(string backupRuta_941lp)
         {
             try
             {
-                string useMaster_941lp = "USE master;";
-                dao_941lp.Query_941lp(useMaster_941lp);
-
-                string setSingleUser_941lp = $@"ALTER DATABASE [{basededatos_941lp}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;";
-                dao_941lp.Query_941lp(setSingleUser_941lp);
-
-                string restoreQuery_941lp = $@" RESTORE DATABASE [{basededatos_941lp}] FROM DISK = @ruta  WITH REPLACE;";
-                dao_941lp.Query_941lp(restoreQuery_941lp, new Dictionary<string, object>
-                {
-                    {"@ruta", backupRuta_941lp}
-                });
-
-                string setMultiUser_941lp = $@"ALTER DATABASE [{basededatos_941lp}] SET MULTI_USER;";
-                dao_941lp.Query_941lp(setMultiUser_941lp);
+                dao_941lp.RestaurarBaseDatos_941lp(basededatos_941lp, backupRuta_941lp);
             }
             catch (Exception ex){ MessageBox.Show( ex.Message);}
         }

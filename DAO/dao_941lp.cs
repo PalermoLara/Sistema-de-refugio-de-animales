@@ -71,5 +71,44 @@ namespace DAO
                 }
             }
         }
+
+        public void RestaurarBaseDatos_941lp(string nombreBase, string rutaBackup)
+        {
+            string connectionStringMaster = "Data Source=.;Initial Catalog=master;Integrated Security=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionStringMaster))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    // Matar conexiones abiertas a la base
+                    cmd.CommandText = $@"
+                    DECLARE @kill varchar(8000) = '';
+                    SELECT @kill = @kill + 'KILL ' + CONVERT(varchar(5), session_id) + ';'
+                    FROM sys.dm_exec_sessions
+                    WHERE database_id = DB_ID('{nombreBase}') AND session_id <> @@SPID;
+                    EXEC(@kill);";
+                    cmd.ExecuteNonQuery();
+
+                    // Forzar single user
+                    cmd.CommandText = $@"ALTER DATABASE [{nombreBase}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;";
+                    cmd.ExecuteNonQuery();
+
+                    // Restaurar
+                    cmd.CommandText = $@"RESTORE DATABASE [{nombreBase}] 
+                                 FROM DISK = @ruta 
+                                 WITH REPLACE;";
+                    cmd.Parameters.AddWithValue("@ruta", rutaBackup);
+                    cmd.ExecuteNonQuery();
+
+                    // Volver a multi user
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = $@"ALTER DATABASE [{nombreBase}] SET MULTI_USER;";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

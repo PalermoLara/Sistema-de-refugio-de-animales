@@ -29,8 +29,7 @@ namespace GUI
         {
             try
             {
-                bllBackUpRestore_941lp.Backup_941lp(txtBackup_941lp.Text);
-                MessageBox.Show("Back up creado con éxito");
+                MessageBox.Show($"Back up creado con éxito en la ruta {bllBackUpRestore_941lp.Backup_941lp()}");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -42,6 +41,7 @@ namespace GUI
                 using (OpenFileDialog fd_941lp = new OpenFileDialog())
                 {
                     fd_941lp.Filter = "SQL Backup Files (*.bak)|*.bak";
+                    fd_941lp.InitialDirectory = @"C:\BackUp";
 
                     if (fd_941lp.ShowDialog() == DialogResult.OK)
                     {
@@ -58,9 +58,9 @@ namespace GUI
             {
                 if (!string.IsNullOrWhiteSpace(txtRestore_941lp.Text))
                 {
-                        bllBackUpRestore_941lp.RealizarRestore(txtRestore_941lp.Text);
-                        MessageBox.Show("Restauración realizada con éxito.");
-                        txtRestore_941lp.Text = "";
+                    bllBackUpRestore_941lp.RealizarRestore(txtRestore_941lp.Text);
+                    MessageBox.Show("Restauración realizada con éxito.");
+                    txtRestore_941lp.Text = "";
                 }
                 else
                 {
