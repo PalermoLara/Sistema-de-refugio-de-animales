@@ -20,9 +20,9 @@ namespace BLL
             return orm_941lp.Backup_941lp();
         }
 
-        public void RealizarRestore(string restorePath_941lp)
+        public void RealizarRestore(string ruta_941lp)
         {
-           orm_941lp.RealizarRestore(restorePath_941lp);
+           orm_941lp.RealizarRestore_941lp(ruta_941lp);
         }
     }
 }

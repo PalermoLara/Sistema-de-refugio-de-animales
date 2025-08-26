@@ -37,11 +37,11 @@ namespace ORM
             return rutaCompleta;
         }
 
-        public void RealizarRestore(string backupRuta_941lp)
+        public void RealizarRestore_941lp(string ruta_941lp)
         {
             try
             {
-                dao_941lp.RestaurarBaseDatos_941lp(basededatos_941lp, backupRuta_941lp);
+                dao_941lp.RestaurarBaseDatos_941lp(basededatos_941lp, ruta_941lp);
             }
             catch (Exception ex){ MessageBox.Show( ex.Message);}
         }

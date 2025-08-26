@@ -72,40 +72,40 @@ namespace DAO
             }
         }
 
-        public void RestaurarBaseDatos_941lp(string nombreBase, string rutaBackup)
+        public void RestaurarBaseDatos_941lp(string nombreBase_941lp, string rutaBackup_941lp)
         {
-            string connectionStringMaster = "Data Source=.;Initial Catalog=master;Integrated Security=True;";
+            string connectionStringMaster_941lp = "Data Source=.;Initial Catalog=master;Integrated Security=True;";
 
-            using (SqlConnection connection = new SqlConnection(connectionStringMaster))
+            using (SqlConnection connection_941lp = new SqlConnection(connectionStringMaster_941lp))
             {
-                connection.Open();
+                connection_941lp.Open();
 
-                using (SqlCommand cmd = connection.CreateCommand())
+                using (SqlCommand cmd_941lp = connection_941lp.CreateCommand())
                 {
                     // Matar conexiones abiertas a la base
-                    cmd.CommandText = $@"
+                    cmd_941lp.CommandText = $@"
                     DECLARE @kill varchar(8000) = '';
                     SELECT @kill = @kill + 'KILL ' + CONVERT(varchar(5), session_id) + ';'
                     FROM sys.dm_exec_sessions
-                    WHERE database_id = DB_ID('{nombreBase}') AND session_id <> @@SPID;
+                    WHERE database_id = DB_ID('{nombreBase_941lp}') AND session_id <> @@SPID;
                     EXEC(@kill);";
-                    cmd.ExecuteNonQuery();
+                    cmd_941lp.ExecuteNonQuery();
 
                     // Forzar single user
-                    cmd.CommandText = $@"ALTER DATABASE [{nombreBase}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;";
-                    cmd.ExecuteNonQuery();
+                    cmd_941lp.CommandText = $@"ALTER DATABASE [{nombreBase_941lp}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;";
+                    cmd_941lp.ExecuteNonQuery();
 
                     // Restaurar
-                    cmd.CommandText = $@"RESTORE DATABASE [{nombreBase}] 
+                    cmd_941lp.CommandText = $@"RESTORE DATABASE [{nombreBase_941lp}] 
                                  FROM DISK = @ruta 
                                  WITH REPLACE;";
-                    cmd.Parameters.AddWithValue("@ruta", rutaBackup);
-                    cmd.ExecuteNonQuery();
+                    cmd_941lp.Parameters.AddWithValue("@ruta", rutaBackup_941lp);
+                    cmd_941lp.ExecuteNonQuery();
 
                     // Volver a multi user
-                    cmd.Parameters.Clear();
-                    cmd.CommandText = $@"ALTER DATABASE [{nombreBase}] SET MULTI_USER;";
-                    cmd.ExecuteNonQuery();
+                    cmd_941lp.Parameters.Clear();
+                    cmd_941lp.CommandText = $@"ALTER DATABASE [{nombreBase_941lp}] SET MULTI_USER;";
+                    cmd_941lp.ExecuteNonQuery();
                 }
             }
         }

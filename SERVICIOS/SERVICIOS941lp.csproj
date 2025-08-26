@@ -86,7 +86,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="backUp&amp;Restore_941lp.cs" />
     <Compile Include="encriptador_941lp.cs" />
     <Compile Include="Familia_941lp.cs" />
     <Compile Include="IObserver_941lp.cs" />
