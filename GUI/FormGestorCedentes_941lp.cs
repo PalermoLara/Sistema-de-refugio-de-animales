@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace GUI
 {
@@ -19,6 +21,7 @@ namespace GUI
 
         bllCedente_941lp bllCedente_941lp;
         ModoOperacion_941lp modo_941lp;
+        bllSerializacion_941lp bllSerializacion_941lp;
         public FormGestorCedentes_941lp()
         {
             InitializeComponent();
@@ -27,6 +30,7 @@ namespace GUI
             btnCancelar.Enabled = false;
             AplicarColorControles_941lp();
             modo_941lp = ModoOperacion_941lp.Consulta;
+            bllSerializacion_941lp = new bllSerializacion_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -59,7 +63,8 @@ namespace GUI
             Consulta,
             Alta,
             Modificar,
-            ActivarDesactivar
+            ActivarDesactivar,
+            Serializar
         }
 
         private void HabilitarTxt_941lp(bool habilitar_941lp)
@@ -135,7 +140,7 @@ namespace GUI
         {
             foreach (Control c_941lp in this.Controls)
             {
-                if (c_941lp is TextBox t_941lp)
+                if (c_941lp is TextBox t_941lp && c_941lp.Name != "txtSerializar")
                 {
                     t_941lp.Text = "";
                 }
@@ -145,6 +150,7 @@ namespace GUI
         private void ModoAceptarCancelar_941lp()
         {
             modo_941lp = ModoOperacion_941lp.Consulta;
+            dataCedentes.MultiSelect = false;
             btnCancelar.Enabled = false;
             btnAplicar.Enabled = false;
             btnAltaCedente.Enabled = true;
@@ -313,6 +319,9 @@ namespace GUI
                     case ModoOperacion_941lp.ActivarDesactivar:
                         bllCedente_941lp.ActivarDesactivar_941lp(dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
                         break;
+                    case ModoOperacion_941lp.Serializar:
+                        Serializar_941lp();
+                        break;
                     default:
                         string error_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ERROR", "Error en la operación");
                         MessageBox.Show(error_941lp);
@@ -324,25 +333,16 @@ namespace GUI
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void dataCedentes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                CargarTxtConGrilla_941lp();
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
         private void CargarTxtConGrilla_941lp()
         {
-            if (modo_941lp != ModoOperacion_941lp.Alta)
-            {
+             if (modo_941lp != ModoOperacion_941lp.Alta && dataCedentes.SelectedRows.Count > 0)
+             {
                 txtDni.Text = dataCedentes.SelectedRows[0].Cells[0].Value.ToString();
                 txtNOmbreCedente.Text = dataCedentes.SelectedRows[0].Cells[1].Value.ToString();
                 txtApellido.Text = dataCedentes.SelectedRows[0].Cells[2].Value.ToString();
                 Desencriptar_941lp();
                 txtTelefono.Text = dataCedentes.SelectedRows[0].Cells[4].Value.ToString();
-            }
+             }
         }
 
         private void checkBoxDesencriptar_CheckedChanged(object sender, EventArgs e)
@@ -370,6 +370,98 @@ namespace GUI
         {
             AplicarTraduccion_941lp();
         }
-    }
 
+        private void btnSerializar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modo_941lp = ModoOperacion_941lp.Serializar;
+                dataCedentes.MultiSelect = true;
+                dataCedentes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                VisibilidadDeBotones_941lp();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void Serializar_941lp()
+        {
+            try
+            {
+                saveFileDialogSerializacion.Filter = "XML Files|*.xml";
+                if (saveFileDialogSerializacion.ShowDialog() == DialogResult.OK)
+                {
+                    List<Cedente_941lp> cedentesSeleccionados_941lp = new List<Cedente_941lp>();
+
+                    foreach (DataGridViewRow row_941lp in dataCedentes.SelectedRows)
+                    {
+                        Cedente_941lp cedente_941lp = new Cedente_941lp()
+                        {
+                            dni_941lp = dataCedentes.SelectedRows[0].Cells[0].Value.ToString(),
+                            nombre_941lp = dataCedentes.SelectedRows[0].Cells[1].Value.ToString(),
+                            apellido_941lp = dataCedentes.SelectedRows[0].Cells[2].Value.ToString(),
+                            direccion_941lp = dataCedentes.SelectedRows[0].Cells[3].Value.ToString(),
+                            telefono_941lp = dataCedentes.SelectedRows[0].Cells[4].Value.ToString(),
+                            activo_941lp = Convert.ToBoolean(dataCedentes.SelectedRows[0].Cells[5].Value)
+                        };
+                        cedentesSeleccionados_941lp.Add(cedente_941lp);
+                    }
+
+                    bllSerializacion_941lp.SerializarCedentes_941lp(cedentesSeleccionados_941lp, saveFileDialogSerializacion.FileName);
+
+                    string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_CEDENTES_SERIALIZADOS", "Cedentes serializados correctamente.");
+                    MessageBox.Show(mensaje_941lp);
+
+                    txtSerializar.Text = bllSerializacion_941lp.ObtenerXmlCrudo_941lp(saveFileDialogSerializacion.FileName);
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dataCedentes_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarTxtConGrilla_941lp();
+                
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnDesarializar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog ofd_941lp = new OpenFileDialog())
+                {
+                    ofd_941lp.Filter = "Archivos XML (*.xml)|*.xml|Todos los archivos (*.*)|*.*";
+                    string titulo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_TITULO", "Seleccione un archivo de Cedentes");
+                    ofd_941lp.Title = titulo_941lp;
+
+                    if (ofd_941lp.ShowDialog() == DialogResult.OK)
+                    {
+                        string ruta_941lp = ofd_941lp.FileName;
+
+                        // Intento de deserialización
+                        bllSerializacion_941lp.MostrarCedentesEnListBox_941lp(ruta_941lp, listBoxDeserealizar);
+                        string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ARCHIVO_SERIALIZADO", "Archivo cargado correctamente");
+                        string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ARCHIVO_SERIALIZADO_EXITO", "Éxito");
+                        MessageBox.Show(mensaje_941lp, mensaje1_941lp, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                txtSerializar.Clear();
+            }
+            catch (Exception ex)
+            {
+                string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ARCHIVO_SERIALIZADO_ERROR", "No se pudo deserializar el archivo. Detalles");
+                string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ERROR1", "Error");
+                MessageBox.Show($"{mensaje_941lp}: {ex.Message}",
+                                mensaje1_941lp, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            listBoxDeserealizar.Items.Clear();
+        }
+    }
 }

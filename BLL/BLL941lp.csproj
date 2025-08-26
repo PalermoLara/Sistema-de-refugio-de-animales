@@ -65,6 +65,7 @@
     <Compile Include="bllPerfil_941lp.cs" />
     <Compile Include="bllPermisos_941lp.cs" />
     <Compile Include="bllRegistroAnimales_941lp.cs" />
+    <Compile Include="bllSerializacion_941lp.cs" />
     <Compile Include="bllUsuario_941lp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

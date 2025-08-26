@@ -55,6 +55,7 @@
             this.dateTimePickerInicio = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
             this.checkBoxFiltro = new System.Windows.Forms.CheckBox();
+            this.btnImprimir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -306,12 +307,23 @@
             this.checkBoxFiltro.UseVisualStyleBackColor = true;
             this.checkBoxFiltro.CheckedChanged += new System.EventHandler(this.checkBoxFiltro_CheckedChanged);
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(932, 899);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(276, 91);
+            this.btnImprimir.TabIndex = 24;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // formBitacoraEventos_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1865, 1061);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.checkBoxFiltro);
             this.Controls.Add(this.dateTimePickerFin);
             this.Controls.Add(this.dateTimePickerInicio);
@@ -371,5 +383,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerInicio;
         private System.Windows.Forms.DateTimePicker dateTimePickerFin;
         private System.Windows.Forms.CheckBox checkBoxFiltro;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }

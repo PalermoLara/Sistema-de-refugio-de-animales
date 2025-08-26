@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    [Serializable]
     public class Cedente_941lp
     {
+        public Cedente_941lp() { }
+
         public Cedente_941lp(string pDni_941lp, string pNombre_941lp, string pApellido_941lp, string pDireccion_941lp, string pTelefono_941lp, bool pActivo_941lp)
         {
             dni_941lp = pDni_941lp;

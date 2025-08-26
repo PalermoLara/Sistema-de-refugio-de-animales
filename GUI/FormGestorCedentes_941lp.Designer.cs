@@ -52,6 +52,13 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActDesact = new System.Windows.Forms.Button();
             this.checkBoxDesencriptar = new System.Windows.Forms.CheckBox();
+            this.btnDesarializar = new System.Windows.Forms.Button();
+            this.btnSerializar = new System.Windows.Forms.Button();
+            this.txtSerializar = new System.Windows.Forms.TextBox();
+            this.listBoxDeserealizar = new System.Windows.Forms.ListBox();
+            this.saveFileDialogSerializacion = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataCedentes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,7 +232,7 @@
             this.dataCedentes.RowTemplate.Height = 33;
             this.dataCedentes.Size = new System.Drawing.Size(1454, 329);
             this.dataCedentes.TabIndex = 63;
-            this.dataCedentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCedentes_CellClick);
+            this.dataCedentes.SelectionChanged += new System.EventHandler(this.dataCedentes_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -297,12 +304,73 @@
             this.checkBoxDesencriptar.UseVisualStyleBackColor = true;
             this.checkBoxDesencriptar.CheckedChanged += new System.EventHandler(this.checkBoxDesencriptar_CheckedChanged);
             // 
+            // btnDesarializar
+            // 
+            this.btnDesarializar.Location = new System.Drawing.Point(990, 934);
+            this.btnDesarializar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDesarializar.Name = "btnDesarializar";
+            this.btnDesarializar.Size = new System.Drawing.Size(215, 81);
+            this.btnDesarializar.TabIndex = 68;
+            this.btnDesarializar.Text = "DESEREALIZAR";
+            this.btnDesarializar.UseVisualStyleBackColor = true;
+            this.btnDesarializar.Click += new System.EventHandler(this.btnDesarializar_Click);
+            // 
+            // btnSerializar
+            // 
+            this.btnSerializar.Location = new System.Drawing.Point(24, 934);
+            this.btnSerializar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSerializar.Name = "btnSerializar";
+            this.btnSerializar.Size = new System.Drawing.Size(231, 81);
+            this.btnSerializar.TabIndex = 67;
+            this.btnSerializar.Text = "SERIALIZAR";
+            this.btnSerializar.UseVisualStyleBackColor = true;
+            this.btnSerializar.Click += new System.EventHandler(this.btnSerializar_Click);
+            // 
+            // txtSerializar
+            // 
+            this.txtSerializar.Location = new System.Drawing.Point(24, 673);
+            this.txtSerializar.Multiline = true;
+            this.txtSerializar.Name = "txtSerializar";
+            this.txtSerializar.ReadOnly = true;
+            this.txtSerializar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtSerializar.Size = new System.Drawing.Size(543, 254);
+            this.txtSerializar.TabIndex = 70;
+            // 
+            // listBoxDeserealizar
+            // 
+            this.listBoxDeserealizar.FormattingEnabled = true;
+            this.listBoxDeserealizar.ItemHeight = 25;
+            this.listBoxDeserealizar.Location = new System.Drawing.Point(990, 673);
+            this.listBoxDeserealizar.Name = "listBoxDeserealizar";
+            this.listBoxDeserealizar.Size = new System.Drawing.Size(476, 254);
+            this.listBoxDeserealizar.TabIndex = 71;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(1251, 934);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(215, 81);
+            this.btnLimpiar.TabIndex = 72;
+            this.btnLimpiar.Text = "LIMPIAR";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // FormGestorCedentes_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1636, 749);
+            this.ClientSize = new System.Drawing.Size(1652, 1045);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.listBoxDeserealizar);
+            this.Controls.Add(this.txtSerializar);
+            this.Controls.Add(this.btnDesarializar);
+            this.Controls.Add(this.btnSerializar);
             this.Controls.Add(this.checkBoxDesencriptar);
             this.Controls.Add(this.btnActDesact);
             this.Controls.Add(this.dataCedentes);
@@ -356,5 +424,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.CheckBox checkBoxDesencriptar;
+        private System.Windows.Forms.Button btnDesarializar;
+        private System.Windows.Forms.Button btnSerializar;
+        private System.Windows.Forms.TextBox txtSerializar;
+        private System.Windows.Forms.ListBox listBoxDeserealizar;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogSerializacion;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

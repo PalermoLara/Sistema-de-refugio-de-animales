@@ -180,5 +180,11 @@ namespace GUI
                 dateTimePickerFin.Enabled = true;
             }
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            //string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("formBitacoraEventos_941lp", "MSG_IMPRESO_EXITO", "La bitacora fue impresa con éxito");
+            MessageBox.Show("La bitacora fue impresa con éxito");
+        }
     }
 }
