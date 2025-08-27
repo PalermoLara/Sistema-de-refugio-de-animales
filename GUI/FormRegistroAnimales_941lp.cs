@@ -437,5 +437,6 @@ namespace GUI
         {
             AplicarTraduccion_941lp();
         }
+
     }
 }

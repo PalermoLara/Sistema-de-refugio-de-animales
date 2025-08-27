@@ -46,6 +46,7 @@
             this.btnAnimales = new System.Windows.Forms.Button();
             this.btnMaestroMenuPrincipal = new System.Windows.Forms.Button();
             this.panelSubMenuAdministrador = new System.Windows.Forms.Panel();
+            this.btnBackupRestore = new System.Windows.Forms.Button();
             this.btnAdministradorMenuPrincipal = new System.Windows.Forms.Button();
             this.panelSubMenuUsuario = new System.Windows.Forms.Panel();
             this.btnCambiarIdioma = new System.Windows.Forms.Button();
@@ -55,7 +56,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelWhiskerWare = new System.Windows.Forms.Label();
             this.btnIniciarSesion2 = new System.Windows.Forms.Button();
-            this.btnBackupRestore = new System.Windows.Forms.Button();
+            this.btnRegistrarAdoptantes = new System.Windows.Forms.Button();
             this.panelMenuPrincipal.SuspendLayout();
             this.panelSubMenuResportes.SuspendLayout();
             this.panelSubMenuFichas.SuspendLayout();
@@ -273,6 +274,18 @@
             this.panelSubMenuAdministrador.Size = new System.Drawing.Size(283, 205);
             this.panelSubMenuAdministrador.TabIndex = 12;
             // 
+            // btnBackupRestore
+            // 
+            this.btnBackupRestore.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBackupRestore.Location = new System.Drawing.Point(0, 129);
+            this.btnBackupRestore.Name = "btnBackupRestore";
+            this.btnBackupRestore.Size = new System.Drawing.Size(283, 70);
+            this.btnBackupRestore.TabIndex = 13;
+            this.btnBackupRestore.Tag = "Realizar backup y restore";
+            this.btnBackupRestore.Text = "Back up y restore";
+            this.btnBackupRestore.UseVisualStyleBackColor = true;
+            this.btnBackupRestore.Click += new System.EventHandler(this.btnBackupRestore_Click);
+            // 
             // btnAdministradorMenuPrincipal
             // 
             this.btnAdministradorMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Top;
@@ -376,17 +389,15 @@
             this.btnIniciarSesion2.UseVisualStyleBackColor = true;
             this.btnIniciarSesion2.Click += new System.EventHandler(this.btnIniciarSesion2_Click);
             // 
-            // btnBackupRestore
+            // btnRegistrarAdoptantes
             // 
-            this.btnBackupRestore.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBackupRestore.Location = new System.Drawing.Point(0, 129);
-            this.btnBackupRestore.Name = "btnBackupRestore";
-            this.btnBackupRestore.Size = new System.Drawing.Size(283, 70);
-            this.btnBackupRestore.TabIndex = 13;
-            this.btnBackupRestore.Tag = "Realizar backup y restore";
-            this.btnBackupRestore.Text = "Back up y restore";
-            this.btnBackupRestore.UseVisualStyleBackColor = true;
-            this.btnBackupRestore.Click += new System.EventHandler(this.btnBackupRestore_Click);
+            this.btnRegistrarAdoptantes.Location = new System.Drawing.Point(306, 91);
+            this.btnRegistrarAdoptantes.Name = "btnRegistrarAdoptantes";
+            this.btnRegistrarAdoptantes.Size = new System.Drawing.Size(387, 75);
+            this.btnRegistrarAdoptantes.TabIndex = 13;
+            this.btnRegistrarAdoptantes.Text = "Registrar adoptantes";
+            this.btnRegistrarAdoptantes.UseVisualStyleBackColor = true;
+            this.btnRegistrarAdoptantes.Click += new System.EventHandler(this.btnRegistrarAdoptantes_Click);
             // 
             // FormularioMenuPrincipal941lp
             // 
@@ -394,6 +405,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1666, 1061);
+            this.Controls.Add(this.btnRegistrarAdoptantes);
             this.Controls.Add(this.btnIniciarSesion2);
             this.Controls.Add(this.labelWhiskerWare);
             this.Controls.Add(this.pictureBox1);
@@ -441,5 +453,6 @@
         private System.Windows.Forms.Button btnABMMedicamentos;
         private System.Windows.Forms.Button btnBitacoraEventos;
         private System.Windows.Forms.Button btnBackupRestore;
+        private System.Windows.Forms.Button btnRegistrarAdoptantes;
     }
 }

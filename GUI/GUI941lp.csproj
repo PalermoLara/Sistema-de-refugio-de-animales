@@ -91,6 +91,12 @@
     <Compile Include="FormEstadoDeAdopcion_941lp.Designer.cs">
       <DependentUpon>FormEstadoDeAdopcion_941lp.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEvaluacionDelAdoptante_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEvaluacionDelAdoptante_941lp.Designer.cs">
+      <DependentUpon>FormEvaluacionDelAdoptante_941lp.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormFichaDeIngreso_941lp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,12 @@
     </Compile>
     <Compile Include="FormGeneracionDePerfiles_941lp.Designer.cs">
       <DependentUpon>FormGeneracionDePerfiles_941lp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGestionAdoptantes_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGestionAdoptantes_941lp.Designer.cs">
+      <DependentUpon>FormGestionAdoptantes_941lp.cs</DependentUpon>
     </Compile>
     <Compile Include="FormGestionFichaMedica_941lp.cs">
       <SubType>Form</SubType>
@@ -171,11 +183,17 @@
     <EmbeddedResource Include="FormEstadoDeAdopcion_941lp.resx">
       <DependentUpon>FormEstadoDeAdopcion_941lp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEvaluacionDelAdoptante_941lp.resx">
+      <DependentUpon>FormEvaluacionDelAdoptante_941lp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFichaDeIngreso_941lp.resx">
       <DependentUpon>FormFichaDeIngreso_941lp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGeneracionDePerfiles_941lp.resx">
       <DependentUpon>FormGeneracionDePerfiles_941lp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGestionAdoptantes_941lp.resx">
+      <DependentUpon>FormGestionAdoptantes_941lp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGestionFichaMedica_941lp.resx">
       <DependentUpon>FormGestionFichaMedica_941lp.cs</DependentUpon>

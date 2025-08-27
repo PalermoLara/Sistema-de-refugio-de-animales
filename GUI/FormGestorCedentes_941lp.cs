@@ -47,10 +47,10 @@ namespace GUI
 
         private void FormGestorCedentes_941lp_Load(object sender, EventArgs e)
         {
-            modo_941lp = ModoOperacion_941lp.Consulta;
             dataCedentes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataCedentes.MultiSelect = false;
             dataCedentes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            modo_941lp = ModoOperacion_941lp.Consulta;
             MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
             HabilitarTxt_941lp(true);
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);

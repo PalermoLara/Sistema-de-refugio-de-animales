@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bllAdoptantes_941lp.cs" />
     <Compile Include="bllBackUp&amp;Restore_941lp.cs" />
     <Compile Include="bllBitacoraEventos_941lp.cs" />
     <Compile Include="bllBitacoraFichaMedica_941lp.cs" />
