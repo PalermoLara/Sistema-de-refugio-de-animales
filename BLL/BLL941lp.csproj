@@ -57,6 +57,7 @@
     <Compile Include="bllBitacoraEventos_941lp.cs" />
     <Compile Include="bllBitacoraFichaMedica_941lp.cs" />
     <Compile Include="bllCedente_941lp.cs" />
+    <Compile Include="bllEvaluacion_941lp.cs" />
     <Compile Include="bllFamiliaTablasIntermedias_941lp.cs" />
     <Compile Include="bllFamilia_941lp.cs" />
     <Compile Include="bllFichaIngreso_941lp.cs" />

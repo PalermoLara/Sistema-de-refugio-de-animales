@@ -36,6 +36,11 @@ namespace BLL
             return orm_941lp.ValidarDni_941lp(dni_941lp);
         }
 
+        public bool VerificarAdoptanteVivo_941lp(bool vivo_941lp)
+        {
+            return vivo_941lp;
+        }
+
         public void Modificar_941lp(string dni_941lp, string nombre_941lp, string apellido_941lp, string telefono_941lp, int edad_941lp, string domicilio_941lp, bool mascotas_941lp)
         {
             try

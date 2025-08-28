@@ -270,6 +270,7 @@ namespace GUI
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void CargarTxtConGrilla_941lp()
         {
             if (modo_941lp != ModoOperacion_941lp.Alta)

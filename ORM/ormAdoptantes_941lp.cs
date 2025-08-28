@@ -69,17 +69,17 @@ namespace ORM
             {
                 { "@dni", dni_941lp }
             };
-            var adoptante_941lp = dao_941lp.RetornarLista_941lp(query_941lp, MapearCedente_941lp, parametros_941lp);
+            var adoptante_941lp = dao_941lp.RetornarLista_941lp(query_941lp, MapearAdoptante_941lp, parametros_941lp);
             return adoptante_941lp.FirstOrDefault();
         }
 
         public List<Adoptante_941lp> RetornarAdoptantes_941lp()
         {
-            List<Adoptante_941lp> adoptante_941lp = dao_941lp.RetornarLista_941lp("SELECT * FROM Adoptante_941lp", MapearCedente_941lp);
+            List<Adoptante_941lp> adoptante_941lp = dao_941lp.RetornarLista_941lp("SELECT * FROM Adoptante_941lp", MapearAdoptante_941lp);
             return adoptante_941lp;
         }
 
-        private Adoptante_941lp MapearCedente_941lp(SqlDataReader reader)
+        private Adoptante_941lp MapearAdoptante_941lp(SqlDataReader reader)
         {
 
             return new Adoptante_941lp(

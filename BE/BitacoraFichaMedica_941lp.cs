@@ -11,7 +11,7 @@ namespace BE
         public BitacoraFichaMedica_941lp() { }
 
         public BitacoraFichaMedica_941lp(int pCodigo_941lp, int pCodigoFicha_941lp, DateTime pFecha_941lp, string pOperacion_941lp, string pCampoModificado_941lp, string pValorPrevio_941lp, string pValorNuevo_941lp)
-       : this(pCodigoFicha_941lp, pFecha_941lp, pOperacion_941lp, pCampoModificado_941lp, pValorPrevio_941lp, pValorNuevo_941lp)
+        : this(pCodigoFicha_941lp, pFecha_941lp, pOperacion_941lp, pCampoModificado_941lp, pValorPrevio_941lp, pValorNuevo_941lp)
         {
             codigo_941lp = pCodigo_941lp;
         }

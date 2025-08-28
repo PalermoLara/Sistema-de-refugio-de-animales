@@ -32,6 +32,7 @@ namespace GUI
         bllBitacoraEventos_941lp bllBitacoraEvento_941lp;
         private FormBackUpRestore_941lp formBackUpRestore_941Lp;
         private FormGestionAdoptantes_941lp FormGestionAdoptantes_941Lp;
+        private FormEvaluacionDelAdoptante_941lp formEvaluacionDelAdoptante_941lp;
 
         public FormularioMenuPrincipal941lp()
         {
@@ -52,6 +53,7 @@ namespace GUI
             formBitacoraEventos_941lp = new formBitacoraEventos_941lp();
             bllBitacoraEvento_941lp = new bllBitacoraEventos_941lp();
             FormGestionAdoptantes_941Lp = new FormGestionAdoptantes_941lp();
+            formEvaluacionDelAdoptante_941lp = new FormEvaluacionDelAdoptante_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -300,6 +302,11 @@ namespace GUI
         private void btnRegistrarAdoptantes_Click(object sender, EventArgs e)
         {
             FormGestionAdoptantes_941Lp.ShowDialog();
+        }
+
+        private void btnEvaluacionAdoptante_Click(object sender, EventArgs e)
+        {
+            formEvaluacionDelAdoptante_941lp.ShowDialog();
         }
     }
 }

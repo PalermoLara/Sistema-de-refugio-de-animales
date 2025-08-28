@@ -57,6 +57,7 @@
             this.labelWhiskerWare = new System.Windows.Forms.Label();
             this.btnIniciarSesion2 = new System.Windows.Forms.Button();
             this.btnRegistrarAdoptantes = new System.Windows.Forms.Button();
+            this.btnEvaluacionAdoptante = new System.Windows.Forms.Button();
             this.panelMenuPrincipal.SuspendLayout();
             this.panelSubMenuResportes.SuspendLayout();
             this.panelSubMenuFichas.SuspendLayout();
@@ -399,12 +400,23 @@
             this.btnRegistrarAdoptantes.UseVisualStyleBackColor = true;
             this.btnRegistrarAdoptantes.Click += new System.EventHandler(this.btnRegistrarAdoptantes_Click);
             // 
+            // btnEvaluacionAdoptante
+            // 
+            this.btnEvaluacionAdoptante.Location = new System.Drawing.Point(306, 185);
+            this.btnEvaluacionAdoptante.Name = "btnEvaluacionAdoptante";
+            this.btnEvaluacionAdoptante.Size = new System.Drawing.Size(387, 75);
+            this.btnEvaluacionAdoptante.TabIndex = 14;
+            this.btnEvaluacionAdoptante.Text = "Evaluación del adoptante";
+            this.btnEvaluacionAdoptante.UseVisualStyleBackColor = true;
+            this.btnEvaluacionAdoptante.Click += new System.EventHandler(this.btnEvaluacionAdoptante_Click);
+            // 
             // FormularioMenuPrincipal941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1666, 1061);
+            this.Controls.Add(this.btnEvaluacionAdoptante);
             this.Controls.Add(this.btnRegistrarAdoptantes);
             this.Controls.Add(this.btnIniciarSesion2);
             this.Controls.Add(this.labelWhiskerWare);
@@ -454,5 +466,6 @@
         private System.Windows.Forms.Button btnBitacoraEventos;
         private System.Windows.Forms.Button btnBackupRestore;
         private System.Windows.Forms.Button btnRegistrarAdoptantes;
+        private System.Windows.Forms.Button btnEvaluacionAdoptante;
     }
 }
