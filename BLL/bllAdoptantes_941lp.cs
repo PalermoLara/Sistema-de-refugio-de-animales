@@ -45,7 +45,7 @@ namespace BLL
         {
             try
             {
-                Adoptante_941lp adoptante_941lp = BuscarCedentePorDNI_941lp(dni_941lp);
+                Adoptante_941lp adoptante_941lp = BuscarAdoptantePorDNI_941lp(dni_941lp);
                 adoptante_941lp.nombre_941lp = nombre_941lp;
                 adoptante_941lp.apellido_941lp = apellido_941lp;
                 adoptante_941lp.telefono_941lp = telefono_941lp;
@@ -62,7 +62,7 @@ namespace BLL
         {
             try
             {
-                Adoptante_941lp adoptante_941lp = BuscarCedentePorDNI_941lp(dni_941lp);
+                Adoptante_941lp adoptante_941lp = BuscarAdoptantePorDNI_941lp(dni_941lp);
                 if (adoptante_941lp == null)
                 {
                     string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestionAdoptantes_941lp", "MSG_ADOPTANTE_NO_ENCONTRADO", "Adoptante no encontrado");
@@ -90,7 +90,7 @@ namespace BLL
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        public Adoptante_941lp BuscarCedentePorDNI_941lp(string dni_941lp)
+        public Adoptante_941lp BuscarAdoptantePorDNI_941lp(string dni_941lp)
         {
             return orm_941lp.ObtenerAdoptantePorDni_941lp(dni_941lp);
         }

@@ -58,6 +58,7 @@
             this.btnIniciarSesion2 = new System.Windows.Forms.Button();
             this.btnRegistrarAdoptantes = new System.Windows.Forms.Button();
             this.btnEvaluacionAdoptante = new System.Windows.Forms.Button();
+            this.btnCertificado = new System.Windows.Forms.Button();
             this.panelMenuPrincipal.SuspendLayout();
             this.panelSubMenuResportes.SuspendLayout();
             this.panelSubMenuFichas.SuspendLayout();
@@ -410,12 +411,23 @@
             this.btnEvaluacionAdoptante.UseVisualStyleBackColor = true;
             this.btnEvaluacionAdoptante.Click += new System.EventHandler(this.btnEvaluacionAdoptante_Click);
             // 
+            // btnCertificado
+            // 
+            this.btnCertificado.Location = new System.Drawing.Point(306, 278);
+            this.btnCertificado.Name = "btnCertificado";
+            this.btnCertificado.Size = new System.Drawing.Size(387, 75);
+            this.btnCertificado.TabIndex = 15;
+            this.btnCertificado.Text = "Certificado de adopción";
+            this.btnCertificado.UseVisualStyleBackColor = true;
+            this.btnCertificado.Click += new System.EventHandler(this.btnCertificado_Click);
+            // 
             // FormularioMenuPrincipal941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1666, 1061);
+            this.Controls.Add(this.btnCertificado);
             this.Controls.Add(this.btnEvaluacionAdoptante);
             this.Controls.Add(this.btnRegistrarAdoptantes);
             this.Controls.Add(this.btnIniciarSesion2);
@@ -467,5 +479,6 @@
         private System.Windows.Forms.Button btnBackupRestore;
         private System.Windows.Forms.Button btnRegistrarAdoptantes;
         private System.Windows.Forms.Button btnEvaluacionAdoptante;
+        private System.Windows.Forms.Button btnCertificado;
     }
 }

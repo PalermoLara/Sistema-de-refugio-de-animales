@@ -24,7 +24,7 @@ namespace BLL
         {
             EvaluacionAdoptante_941lp evaluacion_941lp = new EvaluacionAdoptante_941lp(dni_941lp, motivo_941lp, condicionesEconomicas_941lp, vivienda_941lp);
             orm_941lp.Alta_941lp(evaluacion_941lp);
-            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion evaluación del adoptante", "Evaluación dada de alta", 4);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion evaluación del adoptante", "Evaluación dada de alta", 2);
         }
 
         public void Modificar_941lp(int codigo_941lp, string dni_941lp,  string motivo_941lp, string condicionesEconomicas_941lp, string vivienda_941lp)
@@ -35,7 +35,7 @@ namespace BLL
             evaluacion_941lp.condicionesEconomicas_941lp = condicionesEconomicas_941lp;
             evaluacion_941lp.vivienda_941lp  = vivienda_941lp;
             orm_941lp.Modificar_941lp(evaluacion_941lp);
-            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion evaluación del adoptante", "Evaluación modificada", 4);
+            bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion evaluación del adoptante", "Evaluación modificada", 3);
         }
 
 
