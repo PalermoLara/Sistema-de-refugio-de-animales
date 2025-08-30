@@ -1,7 +1,10 @@
 ﻿using BE;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using ORM;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace BLL
@@ -37,6 +40,70 @@ namespace BLL
                 aux_941lp.Add(new Evento_941lp(c_941lp.codigo_941lp,c_941lp.login_941lp, c_941lp.fecha_941lp, c_941lp.hora_941lp, c_941lp.modulo_941lp, c_941lp.evento_941lp, c_941lp.criticidad_941lp));
             }
             return aux_941lp;
+        }
+
+        public void Imprimir_941lp(List<Evento_941lp> listaEventos, string nombreArchivo)
+        {
+            try
+            {
+                string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string carpetaBitacora = Path.Combine(documentosPath, "Bitacora");
+
+                // 📂 Crear carpeta si no existe
+                if (!Directory.Exists(carpetaBitacora))
+                {
+                    Directory.CreateDirectory(carpetaBitacora);
+                }
+
+                // 📄 Ruta final del archivo PDF
+                string rutaArchivo = Path.Combine(carpetaBitacora, nombreArchivo);
+
+                Document doc = new Document(PageSize.A4, 10, 10, 10, 10);
+
+                using (FileStream stream = new FileStream(rutaArchivo, FileMode.Create))
+                {
+                    PdfWriter.GetInstance(doc, stream);
+                    doc.Open();
+
+                    // 📝 Título
+                    Paragraph titulo = new Paragraph("Reporte de Eventos del Sistema",
+                        FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14));
+                    titulo.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(titulo);
+                    doc.Add(new Paragraph(" ")); // espacio
+
+                    // 📊 Tabla con 6 columnas
+                    PdfPTable tabla = new PdfPTable(6);
+                    tabla.WidthPercentage = 100;
+
+                    // Encabezados
+                    string[] headers = { "LogIn", "Fecha", "Hora", "Módulo", "Evento", "Criticidad" };
+                    foreach (var h in headers)
+                    {
+                        PdfPCell cell = new PdfPCell(new Phrase(h,
+                            FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10)));
+                        cell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        tabla.AddCell(cell);
+                    }
+
+                    // Datos
+                    foreach (var ev in listaEventos)
+                    {
+                        tabla.AddCell(ev.login_941lp);
+                        tabla.AddCell(ev.fecha_941lp.ToShortDateString());
+                        tabla.AddCell(ev.hora_941lp.ToString(@"hh\:mm\:ss"));
+                        tabla.AddCell(ev.modulo_941lp);
+                        tabla.AddCell(ev.evento_941lp);
+                        tabla.AddCell(ev.criticidad_941lp.ToString());
+                    }
+
+                    doc.Add(tabla);
+                    doc.Close();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            
         }
     }
 }

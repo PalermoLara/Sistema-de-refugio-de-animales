@@ -53,9 +53,13 @@ namespace GUI
                     // Verificar si la fecha del evento es mayor o igual a la fecha límite
                     if (e_941lp.fecha_941lp >= fechaLimite_941lp)
                     {
-                        dataEventos.Rows.Add(e_941lp.login_941lp,e_941lp.fecha_941lp.ToString("dd/MM/yyyy"),e_941lp.hora_941lp.ToString(@"hh\:mm\:ss"),e_941lp.modulo_941lp,e_941lp.evento_941lp,e_941lp.criticidad_941lp);
+                        dataEventos.Rows.Add(e_941lp.codigo_941lp,e_941lp.login_941lp,e_941lp.fecha_941lp.ToString("dd/MM/yyyy"),e_941lp.hora_941lp.ToString(@"hh\:mm\:ss"),e_941lp.modulo_941lp,e_941lp.evento_941lp,e_941lp.criticidad_941lp);
                     }
                 }
+            }
+            if(dataEventos.Columns[0].Name == "Codigo")
+            {
+                dataEventos.Columns[0].Visible = false;
             }
         }
 
@@ -101,7 +105,7 @@ namespace GUI
         {
             try
             {
-                Usuario_941lp u_941lp = bllUsuario_941lp.RetornarUsuarios_941lp().Find(x => x.nombreUsuario_941lp == dataEventos.SelectedRows[0].Cells[0].Value.ToString());
+                Usuario_941lp u_941lp = bllUsuario_941lp.RetornarUsuarios_941lp().Find(x => x.nombreUsuario_941lp == dataEventos.SelectedRows[0].Cells[1].Value.ToString());
                 txtNombre.Text = u_941lp.nombre_941lp;
                 txtApellido.Text = u_941lp.apellido_941lp;
             }
@@ -183,8 +187,31 @@ namespace GUI
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            //string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("formBitacoraEventos_941lp", "MSG_IMPRESO_EXITO", "La bitacora fue impresa con éxito");
-            MessageBox.Show("La bitacora fue impresa con éxito");
+            try
+            {
+                List<Evento_941lp> listaEventos = new List<Evento_941lp>();
+
+                foreach (DataGridViewRow row in dataEventos.Rows)
+                {
+                    if (!row.IsNewRow) 
+                    {
+                        listaEventos.Add(new Evento_941lp(
+                            row.Cells[0].Value?.ToString(),
+                            row.Cells[1].Value?.ToString(),
+                            Convert.ToDateTime(row.Cells[2].Value),
+                            TimeSpan.Parse(row.Cells[3].Value.ToString()), // porque tu ORM ya maneja TimeSpan
+                            row.Cells[4].Value?.ToString(),
+                            row.Cells[5].Value?.ToString(),
+                            Convert.ToInt32(row.Cells[6].Value)
+                        ));
+                    }
+                }
+                string nombreArchivo = $"Bitacora_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                bllBitacora_941lp.Imprimir_941lp(listaEventos,nombreArchivo);
+
+                MessageBox.Show("PDF generado correctamente.");
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }
