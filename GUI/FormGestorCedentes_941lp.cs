@@ -442,7 +442,7 @@ namespace GUI
                         string ruta_941lp = ofd_941lp.FileName;
 
                         // Intento de deserialización
-                        bllSerializacion_941lp.MostrarCedentesEnListBox_941lp(ruta_941lp, listBoxDeserealizar);
+                        MostrarGrillaCedentes_941lp(bllSerializacion_941lp.MostrarCedentesDeserealizados_941lp(ruta_941lp));
                         string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ARCHIVO_SERIALIZADO", "Archivo cargado correctamente");
                         string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_ARCHIVO_SERIALIZADO_EXITO", "Éxito");
                         MessageBox.Show(mensaje_941lp, mensaje1_941lp, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -461,7 +461,7 @@ namespace GUI
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            listBoxDeserealizar.Items.Clear();
+            MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
         }
     }
 }

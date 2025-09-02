@@ -55,7 +55,6 @@
             this.btnDesarializar = new System.Windows.Forms.Button();
             this.btnSerializar = new System.Windows.Forms.Button();
             this.txtSerializar = new System.Windows.Forms.TextBox();
-            this.listBoxDeserealizar = new System.Windows.Forms.ListBox();
             this.saveFileDialogSerializacion = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btnLimpiar = new System.Windows.Forms.Button();
@@ -306,7 +305,7 @@
             // 
             // btnDesarializar
             // 
-            this.btnDesarializar.Location = new System.Drawing.Point(990, 934);
+            this.btnDesarializar.Location = new System.Drawing.Point(352, 934);
             this.btnDesarializar.Margin = new System.Windows.Forms.Padding(4);
             this.btnDesarializar.Name = "btnDesarializar";
             this.btnDesarializar.Size = new System.Drawing.Size(215, 81);
@@ -336,25 +335,16 @@
             this.txtSerializar.Size = new System.Drawing.Size(543, 254);
             this.txtSerializar.TabIndex = 70;
             // 
-            // listBoxDeserealizar
-            // 
-            this.listBoxDeserealizar.FormattingEnabled = true;
-            this.listBoxDeserealizar.ItemHeight = 25;
-            this.listBoxDeserealizar.Location = new System.Drawing.Point(990, 673);
-            this.listBoxDeserealizar.Name = "listBoxDeserealizar";
-            this.listBoxDeserealizar.Size = new System.Drawing.Size(476, 254);
-            this.listBoxDeserealizar.TabIndex = 71;
-            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(1251, 934);
+            this.btnLimpiar.Location = new System.Drawing.Point(596, 673);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(215, 81);
+            this.btnLimpiar.Size = new System.Drawing.Size(258, 81);
             this.btnLimpiar.TabIndex = 72;
             this.btnLimpiar.Text = "LIMPIAR";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -367,7 +357,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1652, 1045);
             this.Controls.Add(this.btnLimpiar);
-            this.Controls.Add(this.listBoxDeserealizar);
             this.Controls.Add(this.txtSerializar);
             this.Controls.Add(this.btnDesarializar);
             this.Controls.Add(this.btnSerializar);
@@ -427,7 +416,6 @@
         private System.Windows.Forms.Button btnDesarializar;
         private System.Windows.Forms.Button btnSerializar;
         private System.Windows.Forms.TextBox txtSerializar;
-        private System.Windows.Forms.ListBox listBoxDeserealizar;
         private System.Windows.Forms.SaveFileDialog saveFileDialogSerializacion;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button btnLimpiar;

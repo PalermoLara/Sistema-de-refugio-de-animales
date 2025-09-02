@@ -38,15 +38,10 @@ namespace BLL
             }
         }
 
-        public void MostrarCedentesEnListBox_941lp(string ruta_941lp, ListBox listBox_941lp)
+        public List<Cedente_941lp> MostrarCedentesDeserealizados_941lp(string ruta_941lp)
         {
             List<Cedente_941lp> cedentes_941lp = DeserializarCedentes_941lp(ruta_941lp);
-
-            listBox_941lp.Items.Clear();
-            foreach (var c_941lp in cedentes_941lp)
-            {
-                listBox_941lp.Items.Add($"{c_941lp.dni_941lp} - {c_941lp.nombre_941lp} {c_941lp.apellido_941lp}");
-            }
+            return cedentes_941lp;
         }
     }
 }
