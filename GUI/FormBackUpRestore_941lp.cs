@@ -74,8 +74,6 @@ namespace GUI
                 if (!string.IsNullOrWhiteSpace(txtRestore_941lp.Text))
                 {
                     bllBackUpRestore_941lp.RealizarRestore(txtRestore_941lp.Text);
-                    string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormBackUpRestore_941lp", "MSG_RESTORE_EXITOSO", "Restauración realizada con éxito.");
-                    MessageBox.Show(mensaje_941lp);
                     txtRestore_941lp.Text = "";
                 }
                 else
@@ -96,7 +94,5 @@ namespace GUI
         {
             AplicarTraduccion_941lp();
         }
-
-        
     }
 }

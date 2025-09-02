@@ -1,4 +1,5 @@
 ﻿using DAO;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -19,7 +20,6 @@ namespace ORM
             dao_941lp = new dao_941lp();
         }
 
-        string basededatos_941lp = "sistAdopcion941lp";
         
         public string Backup_941lp()
         {
@@ -41,7 +41,9 @@ namespace ORM
         {
             try
             {
-                dao_941lp.RestaurarBaseDatos_941lp(basededatos_941lp, ruta_941lp);
+                dao_941lp.RestaurarBaseDatos_941lp(ruta_941lp);
+                string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormBackUpRestore_941lp", "MSG_RESTORE_EXITOSO", "Restauración realizada con éxito.");
+                MessageBox.Show(mensaje_941lp);
             }
             catch (Exception ex){ MessageBox.Show( ex.Message);}
         }

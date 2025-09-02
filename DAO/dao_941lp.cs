@@ -70,12 +70,9 @@ namespace DAO
             }
         }
 
-        public void RestaurarBaseDatos_941lp(string nombreBase_941lp, string rutaBackup_941lp)
+        public void RestaurarBaseDatos_941lp(string rutaBackup_941lp)
         {
             const string miBase = "sistAdopcion941lp";
-
-            if (!string.Equals(nombreBase_941lp, miBase, StringComparison.OrdinalIgnoreCase))
-                throw new InvalidOperationException("Solo se permite restaurar la base de datos " + miBase);
 
             string connectionStringMaster_941lp = "Data Source=.;Initial Catalog=master;Integrated Security=True;";
 
@@ -83,9 +80,33 @@ namespace DAO
             {
                 connection_941lp.Open();
 
+                // 1. Verificar metadata del backup
+                using (SqlCommand checkCmd = new SqlCommand("RESTORE HEADERONLY FROM DISK = @ruta", connection_941lp))
+                {
+                    checkCmd.Parameters.AddWithValue("@ruta", rutaBackup_941lp);
+
+                    using (SqlDataReader reader = checkCmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string dbName = reader["DatabaseName"].ToString();
+
+                            if (!string.Equals(dbName, miBase, StringComparison.OrdinalIgnoreCase))
+                            {
+                                throw new InvalidOperationException(
+                                    $"El backup corresponde a la base '{dbName}', pero solo se permite restaurar '{miBase}'.");
+                            }
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("No se pudo leer la cabecera del backup.");
+                        }
+                    }
+                }
+
                 using (SqlCommand cmd_941lp = connection_941lp.CreateCommand())
                 {
-                    // Matar conexiones abiertas
+                    // 2. Matar conexiones abiertas
                     cmd_941lp.CommandText = $@"
                 DECLARE @kill varchar(8000) = '';
                 SELECT @kill = @kill + 'KILL ' + CONVERT(varchar(5), session_id) + ';'
@@ -94,23 +115,24 @@ namespace DAO
                 EXEC(@kill);";
                     cmd_941lp.ExecuteNonQuery();
 
-                    // Single user
+                    // 3. Single user
                     cmd_941lp.CommandText = $@"ALTER DATABASE [{miBase}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;";
                     cmd_941lp.ExecuteNonQuery();
 
-                    // Restaurar
+                    // 4. Restaurar
                     cmd_941lp.CommandText = $@"RESTORE DATABASE [{miBase}] 
                                        FROM DISK = @ruta 
                                        WITH REPLACE;";
                     cmd_941lp.Parameters.AddWithValue("@ruta", rutaBackup_941lp);
                     cmd_941lp.ExecuteNonQuery();
 
-                    // Multi user
+                    // 5. Multi user
                     cmd_941lp.Parameters.Clear();
                     cmd_941lp.CommandText = $@"ALTER DATABASE [{miBase}] SET MULTI_USER;";
                     cmd_941lp.ExecuteNonQuery();
                 }
             }
         }
+
     }
 }
