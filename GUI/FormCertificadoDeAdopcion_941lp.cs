@@ -121,7 +121,7 @@ namespace GUI
                 string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCertificadoDeAdopcion_941lp", "MSG_ADOPTANTE_MUERTO", "El adoptante debe estar vivo para realizar el certificado");
                 if (bllAdoptantes_941lp.VerificarAdoptanteVivo_941lp(Convert.ToBoolean(dataAdoptantes.SelectedRows[0].Cells[7].Value)) == false) throw new Exception(exception_941lp);
                 string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCertificadoDeAdopcion_941lp", "MSG_ANIMAL_MUERTO", "El animal debe estar vivo para realizar el certificado");
-                if (bllRegistroAnimales_941lp.VerificarAnimalVivo_941lp(dataAnimales.SelectedRows[0].Cells[7].Value.ToString()) == false) throw new Exception(exception1_941lp);
+                if (bllRegistroAnimales_941lp.VerificarAnimalVivo_941lp(dataAnimales.SelectedRows[0].Cells[0].Value.ToString()) == false) throw new Exception(exception1_941lp);
                 modo_941lp = ModoOperacion_941lp.Alta;
                 VisibilidadDeBotones_941lp();
             }

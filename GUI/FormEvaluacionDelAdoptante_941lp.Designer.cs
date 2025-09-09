@@ -32,7 +32,6 @@
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnModificarEvaluacion = new System.Windows.Forms.Button();
             this.txtVivienda = new System.Windows.Forms.TextBox();
-            this.labelVivienda = new System.Windows.Forms.Label();
             this.txtMotivo = new System.Windows.Forms.TextBox();
             this.labelMotivo = new System.Windows.Forms.Label();
             this.btnGenerarEvaluacion = new System.Windows.Forms.Button();
@@ -47,13 +46,14 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dataEvaluacion = new System.Windows.Forms.DataGridView();
-            this.labelCondicionEconomica = new System.Windows.Forms.Label();
-            this.comboBoxCondicionEco = new System.Windows.Forms.ComboBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelCondicionEconomica = new System.Windows.Forms.Label();
+            this.comboBoxCondicionEco = new System.Windows.Forms.ComboBox();
+            this.labelVivienda = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataAdoptantes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataEvaluacion)).BeginInit();
             this.SuspendLayout();
@@ -102,17 +102,6 @@
             this.txtVivienda.Size = new System.Drawing.Size(376, 31);
             this.txtVivienda.TabIndex = 49;
             // 
-            // labelVivienda
-            // 
-            this.labelVivienda.AutoSize = true;
-            this.labelVivienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVivienda.Location = new System.Drawing.Point(1325, 355);
-            this.labelVivienda.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelVivienda.Name = "labelVivienda";
-            this.labelVivienda.Size = new System.Drawing.Size(66, 17);
-            this.labelVivienda.TabIndex = 53;
-            this.labelVivienda.Text = "Vivienda:";
-            // 
             // txtMotivo
             // 
             this.txtMotivo.Location = new System.Drawing.Point(90, 388);
@@ -128,17 +117,17 @@
             this.labelMotivo.Location = new System.Drawing.Point(25, 350);
             this.labelMotivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMotivo.Name = "labelMotivo";
-            this.labelMotivo.Size = new System.Drawing.Size(53, 17);
+            this.labelMotivo.Size = new System.Drawing.Size(102, 31);
             this.labelMotivo.TabIndex = 52;
             this.labelMotivo.Text = "Motivo:";
             // 
             // btnGenerarEvaluacion
             // 
             this.btnGenerarEvaluacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarEvaluacion.Location = new System.Drawing.Point(1328, 474);
+            this.btnGenerarEvaluacion.Location = new System.Drawing.Point(1328, 441);
             this.btnGenerarEvaluacion.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerarEvaluacion.Name = "btnGenerarEvaluacion";
-            this.btnGenerarEvaluacion.Size = new System.Drawing.Size(436, 56);
+            this.btnGenerarEvaluacion.Size = new System.Drawing.Size(436, 89);
             this.btnGenerarEvaluacion.TabIndex = 51;
             this.btnGenerarEvaluacion.Text = "Generar evaluación del adoptante";
             this.btnGenerarEvaluacion.UseVisualStyleBackColor = true;
@@ -158,12 +147,12 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            this.dataAdoptantes.Location = new System.Drawing.Point(28, 474);
+            this.dataAdoptantes.Location = new System.Drawing.Point(28, 441);
             this.dataAdoptantes.Name = "dataAdoptantes";
             this.dataAdoptantes.ReadOnly = true;
             this.dataAdoptantes.RowHeadersWidth = 82;
             this.dataAdoptantes.RowTemplate.Height = 33;
-            this.dataAdoptantes.Size = new System.Drawing.Size(1279, 391);
+            this.dataAdoptantes.Size = new System.Drawing.Size(1279, 424);
             this.dataAdoptantes.TabIndex = 83;
             // 
             // dataGridViewTextBoxColumn1
@@ -217,14 +206,18 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "Mascotas";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 10;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 200;
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.HeaderText = "Activo";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 10;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 200;
             // 
             // btnSalir
             // 
@@ -258,6 +251,46 @@
             this.dataEvaluacion.TabIndex = 85;
             this.dataEvaluacion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEvaluacion_CellClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Código";
+            this.Column1.MinimumWidth = 10;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "DNI";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 200;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Motivo";
+            this.Column2.MinimumWidth = 10;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Condiciones economicas";
+            this.Column3.MinimumWidth = 10;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 200;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Vivienda";
+            this.Column4.MinimumWidth = 10;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
             // labelCondicionEconomica
             // 
             this.labelCondicionEconomica.AutoSize = true;
@@ -265,7 +298,7 @@
             this.labelCondicionEconomica.Location = new System.Drawing.Point(548, 350);
             this.labelCondicionEconomica.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCondicionEconomica.Name = "labelCondicionEconomica";
-            this.labelCondicionEconomica.Size = new System.Drawing.Size(146, 17);
+            this.labelCondicionEconomica.Size = new System.Drawing.Size(281, 31);
             this.labelCondicionEconomica.TabIndex = 86;
             this.labelCondicionEconomica.Text = "Condición económica:";
             // 
@@ -280,37 +313,14 @@
             this.comboBoxCondicionEco.Size = new System.Drawing.Size(385, 33);
             this.comboBoxCondicionEco.TabIndex = 87;
             // 
-            // Column1
+            // labelVivienda
             // 
-            this.Column1.HeaderText = "Código";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "DNI";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 200;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Motivo";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Condiciones economicas";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Vivienda";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.labelVivienda.AutoSize = true;
+            this.labelVivienda.Location = new System.Drawing.Point(1320, 361);
+            this.labelVivienda.Name = "labelVivienda";
+            this.labelVivienda.Size = new System.Drawing.Size(95, 25);
+            this.labelVivienda.TabIndex = 88;
+            this.labelVivienda.Text = "Vivienda";
             // 
             // FormEvaluacionDelAdoptante_941lp
             // 
@@ -318,6 +328,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1861, 1051);
+            this.Controls.Add(this.labelVivienda);
             this.Controls.Add(this.comboBoxCondicionEco);
             this.Controls.Add(this.labelCondicionEconomica);
             this.Controls.Add(this.dataEvaluacion);
@@ -327,7 +338,6 @@
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.btnModificarEvaluacion);
             this.Controls.Add(this.txtVivienda);
-            this.Controls.Add(this.labelVivienda);
             this.Controls.Add(this.txtMotivo);
             this.Controls.Add(this.labelMotivo);
             this.Controls.Add(this.btnGenerarEvaluacion);
@@ -347,7 +357,6 @@
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.Button btnModificarEvaluacion;
         private System.Windows.Forms.TextBox txtVivienda;
-        private System.Windows.Forms.Label labelVivienda;
         private System.Windows.Forms.TextBox txtMotivo;
         private System.Windows.Forms.Label labelMotivo;
         private System.Windows.Forms.Button btnGenerarEvaluacion;
@@ -369,5 +378,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Label labelVivienda;
     }
 }

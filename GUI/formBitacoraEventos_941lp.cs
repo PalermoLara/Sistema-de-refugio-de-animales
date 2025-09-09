@@ -27,7 +27,6 @@ namespace GUI
             bllUsuario_941lp = new bllUsuario_941lp();
             MostrarEventos_941lp(bllBitacora_941lp.RetornarEventos_941lp());
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxLogin, e=> e.login_941lp);
-            LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxEvento, e => e.evento_941lp);
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxModulo, e => e.modulo_941lp);
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxCriticidad, e => e.criticidad_941lp);
            
@@ -91,7 +90,6 @@ namespace GUI
         {
             MostrarEventos_941lp(bllBitacora_941lp.RetornarEventos_941lp());
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxLogin, a => a.login_941lp);
-            LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxEvento, a => a.evento_941lp);
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxModulo, a => a.modulo_941lp);
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxCriticidad, a => a.criticidad_941lp);
         }
@@ -128,13 +126,16 @@ namespace GUI
                 {
                     filtros_941lp.Add("criticidad_941lp", comboBoxCriticidad.SelectedItem.ToString());
                 }
-                if (dateTimePickerInicio.Value.Date < dateTimePickerFin.Value.Date)
+                if (dateTimePickerInicio.Value.Date <= dateTimePickerFin.Value.Date)
                 {
                     filtros_941lp.Add("fechaInicio_941lp", dateTimePickerInicio.Value.Date.ToString());
                     filtros_941lp.Add("fechaFin_941lp", dateTimePickerFin.Value.Date.ToString());
                 }
                 else
                 {
+                    dateTimePickerInicio.Value = DateTime.Today;
+                    dateTimePickerFin.Value = DateTime.Today;
+                    MostrarEventos_941lp(bllBitacora_941lp.RetornarEventos_941lp());
                     throw new Exception("La fecha de inicio no puede ser mayor a la de fin");
                 }
                 
@@ -178,7 +179,7 @@ namespace GUI
                             row.Cells[0].Value?.ToString(),
                             row.Cells[1].Value?.ToString(),
                             Convert.ToDateTime(row.Cells[2].Value),
-                            TimeSpan.Parse(row.Cells[3].Value.ToString()), // porque tu ORM ya maneja TimeSpan
+                            TimeSpan.Parse(row.Cells[3].Value.ToString()), 
                             row.Cells[4].Value?.ToString(),
                             row.Cells[5].Value?.ToString(),
                             Convert.ToInt32(row.Cells[6].Value)
@@ -193,9 +194,22 @@ namespace GUI
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void dataEventos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+        private void comboBoxModulo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxModulo.SelectedItem != null)
+            {
+                string moduloSeleccionado = comboBoxModulo.SelectedItem.ToString();
+
+                Dictionary<string, string> filtroModulo = new Dictionary<string, string>
+                {
+                    { "modulo_941lp", moduloSeleccionado }
+                };
+
+                var eventosPorModulo = bllBitacora_941lp.Filtros_941lp(filtroModulo);
+
+                LlenarComboBox_941lp(eventosPorModulo, comboBoxEvento, ex => ex.evento_941lp);
+            }
         }
     }
 }

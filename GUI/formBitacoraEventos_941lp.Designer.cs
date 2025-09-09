@@ -80,7 +80,6 @@
             this.dataEventos.Size = new System.Drawing.Size(1605, 575);
             this.dataEventos.TabIndex = 0;
             this.dataEventos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEventos_CellClick);
-            this.dataEventos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEventos_CellContentClick);
             // 
             // Codigo
             // 
@@ -216,6 +215,7 @@
             this.comboBoxModulo.Name = "comboBoxModulo";
             this.comboBoxModulo.Size = new System.Drawing.Size(401, 33);
             this.comboBoxModulo.TabIndex = 10;
+            this.comboBoxModulo.SelectedIndexChanged += new System.EventHandler(this.comboBoxModulo_SelectedIndexChanged);
             // 
             // labelModulo
             // 
