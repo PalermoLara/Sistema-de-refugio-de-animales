@@ -396,12 +396,12 @@ namespace GUI
                     {
                         Cedente_941lp cedente_941lp = new Cedente_941lp()
                         {
-                            dni_941lp = dataCedentes.SelectedRows[0].Cells[0].Value.ToString(),
-                            nombre_941lp = dataCedentes.SelectedRows[0].Cells[1].Value.ToString(),
-                            apellido_941lp = dataCedentes.SelectedRows[0].Cells[2].Value.ToString(),
-                            direccion_941lp = dataCedentes.SelectedRows[0].Cells[3].Value.ToString(),
-                            telefono_941lp = dataCedentes.SelectedRows[0].Cells[4].Value.ToString(),
-                            activo_941lp = Convert.ToBoolean(dataCedentes.SelectedRows[0].Cells[5].Value)
+                            dni_941lp = row_941lp.Cells[0].Value.ToString(),
+                            nombre_941lp = row_941lp.Cells[1].Value.ToString(),
+                            apellido_941lp = row_941lp.Cells[2].Value.ToString(),
+                            direccion_941lp = row_941lp.Cells[3].Value.ToString(),
+                            telefono_941lp = row_941lp.Cells[4].Value.ToString(),
+                            activo_941lp = Convert.ToBoolean(row_941lp.Cells[5].Value)
                         };
                         cedentesSeleccionados_941lp.Add(cedente_941lp);
                     }

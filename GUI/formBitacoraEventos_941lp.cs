@@ -30,16 +30,7 @@ namespace GUI
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxEvento, e => e.evento_941lp);
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxModulo, e => e.modulo_941lp);
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxCriticidad, e => e.criticidad_941lp);
-            if (!checkBoxFiltro.Checked)
-            {
-                dateTimePickerInicio.Enabled = false;
-                dateTimePickerFin.Enabled = false;
-            }
-            else
-            {
-                dateTimePickerInicio.Enabled = true;
-                dateTimePickerFin.Enabled = true;
-            }
+           
         }
 
         private void MostrarEventos_941lp(List<Evento_941lp> eventosLista_941lp)
@@ -70,8 +61,12 @@ namespace GUI
             {
                 foreach (Evento_941lp e_941lp in eventosLista_941lp)
                 {
-                    dataEventos.Rows.Add(e_941lp.login_941lp, e_941lp.fecha_941lp.ToString("dd/MM/yyyy"), e_941lp.hora_941lp.ToString(@"hh\:mm\:ss"), e_941lp.modulo_941lp, e_941lp.evento_941lp, e_941lp.criticidad_941lp);
+                    dataEventos.Rows.Add(e_941lp.codigo_941lp,e_941lp.login_941lp, e_941lp.fecha_941lp.ToString("dd/MM/yyyy"), e_941lp.hora_941lp.ToString(@"hh\:mm\:ss"), e_941lp.modulo_941lp, e_941lp.evento_941lp, e_941lp.criticidad_941lp);
                 }
+            }
+            if (dataEventos.Columns[0].Name == "Codigo")
+            {
+                dataEventos.Columns[0].Visible = false;
             }
         }
 
@@ -133,18 +128,16 @@ namespace GUI
                 {
                     filtros_941lp.Add("criticidad_941lp", comboBoxCriticidad.SelectedItem.ToString());
                 }
-                if (checkBoxFiltro.Checked) 
+                if (dateTimePickerInicio.Value.Date < dateTimePickerFin.Value.Date)
                 {
-                    if (dateTimePickerInicio.Value.Date < dateTimePickerFin.Value.Date)
-                    {
-                        filtros_941lp.Add("fechaInicio_941lp", dateTimePickerInicio.Value.Date.ToString());
-                        filtros_941lp.Add("fechaFin_941lp", dateTimePickerFin.Value.Date.ToString());
-                    }
-                    else
-                    {
-                        throw new Exception("La fecha de inicio no puede ser mayor a la de fin");
-                    }
+                    filtros_941lp.Add("fechaInicio_941lp", dateTimePickerInicio.Value.Date.ToString());
+                    filtros_941lp.Add("fechaFin_941lp", dateTimePickerFin.Value.Date.ToString());
                 }
+                else
+                {
+                    throw new Exception("La fecha de inicio no puede ser mayor a la de fin");
+                }
+                
                 MostrarFiltros_941lp(bllBitacora_941lp.Filtros_941lp(filtros_941lp));
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -161,29 +154,15 @@ namespace GUI
                     combo_941lp.SelectedItem = null;
                     }
                 }
+                txtApellido.Clear();
+                txtNombre.Clear();
                 MostrarEventos_941lp(bllBitacora_941lp.RetornarEventos_941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void rbFiltroFechas_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
 
-        private void checkBoxFiltro_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!checkBoxFiltro.Checked)
-            {
-                dateTimePickerInicio.Enabled = false;
-                dateTimePickerFin.Enabled = false;
-            }
-            else
-            {
-                dateTimePickerInicio.Enabled = true;
-                dateTimePickerFin.Enabled = true;
-            }
-        }
+        
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
@@ -212,6 +191,11 @@ namespace GUI
                 MessageBox.Show("PDF generado correctamente.");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dataEventos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
