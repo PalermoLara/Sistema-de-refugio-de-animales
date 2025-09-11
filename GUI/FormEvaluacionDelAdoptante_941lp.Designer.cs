@@ -117,17 +117,17 @@
             this.labelMotivo.Location = new System.Drawing.Point(25, 350);
             this.labelMotivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMotivo.Name = "labelMotivo";
-            this.labelMotivo.Size = new System.Drawing.Size(102, 31);
+            this.labelMotivo.Size = new System.Drawing.Size(53, 17);
             this.labelMotivo.TabIndex = 52;
             this.labelMotivo.Text = "Motivo:";
             // 
             // btnGenerarEvaluacion
             // 
-            this.btnGenerarEvaluacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarEvaluacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarEvaluacion.Location = new System.Drawing.Point(1328, 441);
             this.btnGenerarEvaluacion.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerarEvaluacion.Name = "btnGenerarEvaluacion";
-            this.btnGenerarEvaluacion.Size = new System.Drawing.Size(436, 89);
+            this.btnGenerarEvaluacion.Size = new System.Drawing.Size(436, 94);
             this.btnGenerarEvaluacion.TabIndex = 51;
             this.btnGenerarEvaluacion.Text = "Generar evaluación del adoptante";
             this.btnGenerarEvaluacion.UseVisualStyleBackColor = true;
@@ -298,7 +298,7 @@
             this.labelCondicionEconomica.Location = new System.Drawing.Point(548, 350);
             this.labelCondicionEconomica.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCondicionEconomica.Name = "labelCondicionEconomica";
-            this.labelCondicionEconomica.Size = new System.Drawing.Size(281, 31);
+            this.labelCondicionEconomica.Size = new System.Drawing.Size(146, 17);
             this.labelCondicionEconomica.TabIndex = 86;
             this.labelCondicionEconomica.Text = "Condición económica:";
             // 

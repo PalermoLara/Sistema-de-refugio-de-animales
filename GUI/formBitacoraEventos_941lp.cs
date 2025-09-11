@@ -157,6 +157,8 @@ namespace GUI
                 }
                 txtApellido.Clear();
                 txtNombre.Clear();
+                dateTimePickerInicio.Value = DateTime.Today;
+                dateTimePickerFin.Value = DateTime.Today;
                 MostrarEventos_941lp(bllBitacora_941lp.RetornarEventos_941lp());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
