@@ -29,7 +29,7 @@ namespace BLL
                 string contraseña_941lp = HashearContraseña_941lp(dni_941lp + apellido_941lp); // lógica de negocio: contraseña inicial hasheada
                 Usuario_941lp nuevoUsuario_941lp = new Usuario_941lp( dni_941lp, nombreUsuario_941lp, contraseña_941lp, nombre_941lp, apellido_941lp, rol_941lp, email_941lp, false, 0, "es", true, null);
                 orm_941lp.Alta_941lp(nuevoUsuario_941lp);
-                bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion usuarios", "Usuario dado de alta", 1);
+                bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion usuarios", "Usuario dado de alta", 1);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -37,7 +37,7 @@ namespace BLL
         public bool VerificarContraseñaNoSeaDNIyApellido(string contraseña_941lp)
         {
             bool coincide_941lp = false;
-            string contraseñaVieja_941lp = HashearContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp + sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().apellido_941lp);
+            string contraseñaVieja_941lp = HashearContraseña_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp + sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().apellido_941lp);
             if (contraseña_941lp== contraseñaVieja_941lp)
             {
                 coincide_941lp = true;

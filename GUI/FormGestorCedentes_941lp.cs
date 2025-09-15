@@ -64,7 +64,8 @@ namespace GUI
             Alta,
             Modificar,
             ActivarDesactivar,
-            Serializar
+            Serializar,
+            Deserealizar
         }
 
         private void HabilitarTxt_941lp(bool habilitar_941lp)
@@ -118,6 +119,8 @@ namespace GUI
             btnModificarCedente.Enabled = false;
             btnSalir.Enabled = false;
             btnActDesact.Enabled = false;
+            btnSerializar.Enabled = false;
+            btnDesarializar.Enabled = false;
             btnCancelar.Enabled = true;
             btnAplicar.Enabled = true;
             AplicarColorControles_941lp();
@@ -157,6 +160,8 @@ namespace GUI
             btnActDesact.Enabled = true;
             btnModificarCedente.Enabled = true;
             btnSalir.Enabled = true;
+            btnSerializar.Enabled = true;
+            btnDesarializar.Enabled = true;
             AplicarColorControles_941lp();
             HabilitarTxt_941lp(true);
             LimpiarTxt_941lp();
@@ -167,7 +172,7 @@ namespace GUI
             var controles_941lp = new Control[]
             {
                 btnActDesact, btnAltaCedente, btnModificarCedente, btnAplicar, btnCancelar, txtDni,
-                txtNOmbreCedente, txtApellido, txtDireccion, txtTelefono, btnSalir
+                txtNOmbreCedente, txtApellido, txtDireccion, txtTelefono, btnSalir, btnSerializar, btnDesarializar
             };
 
             foreach (var control_941lp in controles_941lp)
@@ -251,10 +256,17 @@ namespace GUI
         {
             try
             {
-                modo_941lp = ModoOperacion_941lp.Modificar;
-                CargarTxtConGrilla_941lp();
-                VisibilidadDeBotones_941lp();
-                HabilitarTxt_941lp(true);
+                if(dataCedentes.Rows.Count > 0)
+                {
+                    modo_941lp = ModoOperacion_941lp.Modificar;
+                    CargarTxtConGrilla_941lp();
+                    VisibilidadDeBotones_941lp();
+                    HabilitarTxt_941lp(true);
+                }
+                else
+                {
+                    throw new Exception("No hay cedentes");
+                }
             }
             catch (Exception ex)
             {
@@ -266,9 +278,16 @@ namespace GUI
         {
             try
             {
-                modo_941lp = ModoOperacion_941lp.ActivarDesactivar;
-                VisibilidadDeBotones_941lp();
-                HabilitarTxt_941lp(true);
+                if (dataCedentes.Rows.Count > 0)
+                {
+                    modo_941lp = ModoOperacion_941lp.ActivarDesactivar;
+                    VisibilidadDeBotones_941lp();
+                    HabilitarTxt_941lp(true);
+                }
+                else
+                {
+                    throw new Exception("No hay cedentes");
+                }
             }
             catch (Exception ex)
             {
@@ -349,7 +368,10 @@ namespace GUI
         {
             try
             {
-                Desencriptar_941lp();
+                if(modo_941lp != ModoOperacion_941lp.Alta)
+                {
+                    Desencriptar_941lp();
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -358,7 +380,7 @@ namespace GUI
         {
             if (checkBoxDesencriptar.Checked)
             {
-                txtDireccion.Text = bllCedente_941lp.DireccionDesencriptada(dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
+                txtDireccion.Text = bllCedente_941lp.DireccionDesencriptada(dataCedentes.SelectedRows[0].Cells[3].Value.ToString());
             }
             else
             {
@@ -379,6 +401,7 @@ namespace GUI
                 dataCedentes.MultiSelect = true;
                 dataCedentes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 VisibilidadDeBotones_941lp();
+                HabilitarTxt_941lp(true);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -422,7 +445,6 @@ namespace GUI
             try
             {
                 CargarTxtConGrilla_941lp();
-                
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -431,6 +453,18 @@ namespace GUI
         {
             try
             {
+                modo_941lp = ModoOperacion_941lp.Deserealizar;
+                btnAltaCedente.Enabled = false;
+                btnModificarCedente.Enabled = false;
+                btnSalir.Enabled = false;
+                btnActDesact.Enabled = false;
+                btnSerializar.Enabled = false;
+                btnDesarializar.Enabled = false;
+                btnCancelar.Enabled = false;
+                btnAplicar.Enabled = false;
+                HabilitarTxt_941lp(true);
+                LimpiarTxt_941lp();
+                AplicarColorControles_941lp();
                 using (OpenFileDialog ofd_941lp = new OpenFileDialog())
                 {
                     ofd_941lp.Filter = "Archivos XML (*.xml)|*.xml|Todos los archivos (*.*)|*.*";
@@ -462,6 +496,8 @@ namespace GUI
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
+            modo_941lp = ModoOperacion_941lp.Consulta;
+            ModoAceptarCancelar_941lp();
         }
     }
 }

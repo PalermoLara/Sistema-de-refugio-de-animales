@@ -49,13 +49,11 @@ namespace BLL
                 string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 string carpetaBitacora = Path.Combine(documentosPath, "Bitacora");
 
-                // 📂 Crear carpeta si no existe
                 if (!Directory.Exists(carpetaBitacora))
                 {
                     Directory.CreateDirectory(carpetaBitacora);
                 }
 
-                // 📄 Ruta final del archivo PDF
                 string rutaArchivo = Path.Combine(carpetaBitacora, nombreArchivo);
 
                 Document doc = new Document(PageSize.A4, 10, 10, 10, 10);
@@ -65,18 +63,15 @@ namespace BLL
                     PdfWriter.GetInstance(doc, stream);
                     doc.Open();
 
-                    // 📝 Título
                     Paragraph titulo = new Paragraph("Reporte de Eventos del Sistema",
                         FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14));
                     titulo.Alignment = Element.ALIGN_CENTER;
                     doc.Add(titulo);
-                    doc.Add(new Paragraph(" ")); // espacio
+                    doc.Add(new Paragraph(" ")); 
 
-                    // 📊 Tabla con 6 columnas
                     PdfPTable tabla = new PdfPTable(6);
                     tabla.WidthPercentage = 100;
 
-                    // Encabezados
                     string[] headers = { "LogIn", "Fecha", "Hora", "Módulo", "Evento", "Criticidad" };
                     foreach (var h in headers)
                     {
@@ -87,7 +82,6 @@ namespace BLL
                         tabla.AddCell(cell);
                     }
 
-                    // Datos
                     foreach (var ev in listaEventos)
                     {
                         tabla.AddCell(ev.login_941lp);

@@ -108,10 +108,9 @@ namespace BLL
             return aux_941lp;
         }
 
-        public string DireccionDesencriptada(string dni_941lp)
+        public string DireccionDesencriptada(string direccion_941lp)
         {
-            Cedente_941lp cedente_941lp = BuscarCedentePorDNI_941lp(dni_941lp);
-            return  seguridad_941lp.Decrypt(cedente_941lp.direccion_941lp);
+            return  seguridad_941lp.Decrypt(direccion_941lp);
         }
     }
 }

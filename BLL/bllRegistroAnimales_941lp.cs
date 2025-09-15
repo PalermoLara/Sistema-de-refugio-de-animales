@@ -46,7 +46,7 @@ namespace BLL
             if (vivo_941lp != null)
             {  
                 animal_941lp.vivo_941lp = vivo_941lp.Value;
-                bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().dni_941lp, "Gestion animales", "Animal dado de baja", 2);
+                bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion animales", "Animal dado de baja", 2);
             }
             else
             {
