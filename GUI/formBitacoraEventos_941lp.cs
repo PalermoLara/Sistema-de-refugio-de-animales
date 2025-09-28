@@ -171,6 +171,7 @@ namespace GUI
         {
             try
             {
+                if (dataEventos.Rows.Count == 0) throw new Exception("No hay nada para imprimir");
                 List<Evento_941lp> listaEventos = new List<Evento_941lp>();
 
                 foreach (DataGridViewRow row in dataEventos.Rows)

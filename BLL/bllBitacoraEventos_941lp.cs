@@ -94,6 +94,11 @@ namespace BLL
 
                     doc.Add(tabla);
                     doc.Close();
+
+                    MessageBox.Show($"El reporte se guardó en:\n{rutaArchivo}",
+                        "Impresión Exitosa",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

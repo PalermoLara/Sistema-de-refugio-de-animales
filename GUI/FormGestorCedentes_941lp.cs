@@ -339,6 +339,7 @@ namespace GUI
                         bllCedente_941lp.ActivarDesactivar_941lp(dataCedentes.SelectedRows[0].Cells[0].Value.ToString());
                         break;
                     case ModoOperacion_941lp.Serializar:
+                        if (dataCedentes.SelectedRows.Count == 0) throw new Exception("No hay ningun usuario seleccionado");
                         Serializar_941lp();
                         break;
                     default:
