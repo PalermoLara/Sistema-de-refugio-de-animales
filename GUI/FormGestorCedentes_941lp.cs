@@ -430,6 +430,11 @@ namespace GUI
                         cedentesSeleccionados_941lp.Add(cedente_941lp);
                     }
 
+                    if (!saveFileDialogSerializacion.FileName.EndsWith(".xml", StringComparison.OrdinalIgnoreCase))
+                    {
+                        saveFileDialogSerializacion.FileName += ".xml";
+                    }
+
                     bllSerializacion_941lp.SerializarCedentes_941lp(cedentesSeleccionados_941lp, saveFileDialogSerializacion.FileName);
 
                     string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormGestorCedentes_941lp", "MSG_CEDENTES_SERIALIZADOS", "Cedentes serializados correctamente.");
