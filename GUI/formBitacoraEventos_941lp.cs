@@ -192,7 +192,7 @@ namespace GUI
                 string nombreArchivo = $"Bitacora_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
                 bllBitacora_941lp.Imprimir_941lp(listaEventos,nombreArchivo);
 
-                MessageBox.Show("PDF generado correctamente.");
+                
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
