@@ -19,31 +19,20 @@ namespace ORM
         public void Alta_941lp(Medicamento_941lp medicamento_941lp)
         {
             string query_941lp = "INSERT INTO Medicamento_941lp " +
-                         "(numeroOficial_941lp, nombreComercial_941lp, nombreGenerico_941lp, forma_941lp,  caducidad_941lp) " +
-                         "VALUES (@numeroOficial_941lp, @nombreComercial_941lp, @nombreGenerico_941lp, @forma_941lp,  @caducidad_941lp)";
+                         "(numeroOficial_941lp, nombreComercial_941lp, nombreGenerico_941lp, forma_941lp,  caducidad_941lp, activo_941lp) " +
+                         "VALUES (@numeroOficial_941lp, @nombreComercial_941lp, @nombreGenerico_941lp, @forma_941lp,  @caducidad_941lp, @activo_941lp)";
             EjecutarQueryConEntidad_941lp(medicamento_941lp, query_941lp);
         }
 
         public void Modificar_941lp(Medicamento_941lp medicamento_941lp)
         {
-            string query_941lp = "UPDATE Medicamento_941lp SET nombreComercial_941lp = @nombreComercial_941lp, nombreGenerico_941lp = @nombreGenerico_941lp, forma_941lp = @forma_941lp,  caducidad_941lp = @caducidad_941lp WHERE numeroOficial_941lp = @numeroOficial_941lp";
+            string query_941lp = "UPDATE Medicamento_941lp SET nombreComercial_941lp = @nombreComercial_941lp, nombreGenerico_941lp = @nombreGenerico_941lp, forma_941lp = @forma_941lp,  caducidad_941lp = @caducidad_941lp, activo_941lp = @activo_941lp WHERE numeroOficial_941lp = @numeroOficial_941lp";
             var props = new List<string>
             {
-                "nombreComercial_941lp", "nombreGenerico_941lp", "forma_941lp",  "caducidad_941lp", "numeroOficial_941lp"
+                "nombreComercial_941lp", "nombreGenerico_941lp", "forma_941lp",  "caducidad_941lp","activo_941lp", "numeroOficial_941lp"
             };
             EjecutarQueryConEntidad_941lp(medicamento_941lp, query_941lp, props);
         }
-
-        public void Eliminar_941lp(string numeroOficial_941lp)
-        {
-            string query_941lp = "DELETE FROM Medicamento_941lp WHERE numeroOficial_941lp = @numeroOficial_941lp";
-            Dictionary<string, object> parametros_941lp = new Dictionary<string, object>
-            {
-                { "@numeroOficial_941lp", numeroOficial_941lp }
-            };
-            dao_941lp.EjecutarEscalar_941lp(query_941lp, parametros_941lp);
-        }
-
 
         private void EjecutarQueryConEntidad_941lp(Medicamento_941lp medicamento_941lp, string query_941lp, List<string> propiedadesIncluir_941lp = null)
         {
@@ -87,7 +76,8 @@ namespace ORM
                 reader["nombreComercial_941lp"].ToString(),
                 reader["nombreGenerico_941lp"].ToString(),
                 reader["forma_941lp"].ToString(),
-                Convert.ToDateTime(reader["caducidad_941lp"])
+                Convert.ToDateTime(reader["caducidad_941lp"]),
+                Convert.ToBoolean(reader["activo_941lp"])
             );
         }
     }

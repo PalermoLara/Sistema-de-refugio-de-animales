@@ -59,6 +59,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formBitacoraCambios_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formBitacoraCambios_941lp.Designer.cs">
+      <DependentUpon>formBitacoraCambios_941lp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DigitoVerificadorError_941lp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DigitoVerificadorError_941lp.Designer.cs">
+      <DependentUpon>DigitoVerificadorError_941lp.cs</DependentUpon>
+    </Compile>
     <Compile Include="EstadoLogIn941lp.cs" />
     <Compile Include="EstadoMenu941lp.cs" />
     <Compile Include="FormBackUpRestore_941lp.cs">
@@ -174,6 +186,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecorrerControlesParaTraducir_941lp.cs" />
+    <EmbeddedResource Include="formBitacoraCambios_941lp.resx">
+      <DependentUpon>formBitacoraCambios_941lp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DigitoVerificadorError_941lp.resx">
+      <DependentUpon>DigitoVerificadorError_941lp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormBackUpRestore_941lp.resx">
       <DependentUpon>FormBackUpRestore_941lp.cs</DependentUpon>
     </EmbeddedResource>

@@ -18,6 +18,7 @@ namespace GUI
 {
     public partial class FormGestionFichaMedica_941lp : Form, IObserver_941lp
     {
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
         private FormBitocoraFichaMedica_941lp FormBitocoraFichaMedica_941lp; 
         bllRegistroAnimales_941lp bllRegistroAnimales_941Lp;
         bllMedicamento_941lp bllMedicamento_941lp;
@@ -32,6 +33,7 @@ namespace GUI
             bllFichaMedica_941lp = new bllFichaMedica_941lp();
             bllBitacora_941lp = new bllBitacoraFichaMedica_941lp ();
             FormBitocoraFichaMedica_941lp = new FormBitocoraFichaMedica_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -254,6 +256,7 @@ namespace GUI
                 }
                 modo_941lp = ModoOperacion_941lp.Consulta;
                 HabilitarTxt_941lp(true);
+                bllDigitoVerificador_941Lp.CalcularDVFichaMedica_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

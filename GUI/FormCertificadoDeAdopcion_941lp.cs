@@ -18,6 +18,7 @@ namespace GUI
         bllCertificado_941lp bllCertificado_941lp;
         bllRegistroAnimales_941lp bllRegistroAnimales_941lp;
         bllAdoptantes_941lp bllAdoptantes_941lp;
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
         ModoOperacion_941lp modo_941lp;
         public FormCertificadoDeAdopcion_941lp()
         {
@@ -25,6 +26,7 @@ namespace GUI
             bllCertificado_941lp = new bllCertificado_941lp();
             bllRegistroAnimales_941lp = new bllRegistroAnimales_941lp();
             bllAdoptantes_941lp = new bllAdoptantes_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
         }
 
         private void FormCertificadoDeAdopcion_941lp_Load(object sender, EventArgs e)
@@ -155,6 +157,7 @@ namespace GUI
                         MessageBox.Show(mensaje2_941lp);
                         break;
                 }
+                bllDigitoVerificador_941Lp.CalcularDVCertificadoAdopcion_941lp();
                 MostrarGrillaCertificado_941lp(bllCertificado_941lp.RetornarCertificado_941lp());
                 ModoAceptarCancelar_941lp();
             }

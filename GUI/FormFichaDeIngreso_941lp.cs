@@ -23,6 +23,7 @@ namespace GUI
         FormRegistroAnimales_941lp formRegistroAnimales_941lp;
         FormGestorCedentes_941lp formGestorCedentes_941lp;
         ModoOperacion_941lp modo_941lp;
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
         public FormFichaDeIngreso_941lp()
         {
             InitializeComponent();
@@ -31,8 +32,8 @@ namespace GUI
             bllFichaIngreso_941 = new bllFichaIngreso_941lp();
             formRegistroAnimales_941lp = new FormRegistroAnimales_941lp();
             formGestorCedentes_941lp = new FormGestorCedentes_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
             modo_941lp = ModoOperacion_941lp.Consulta;
-            
         }
 
         private void AplicarTraduccion_941lp()
@@ -315,6 +316,7 @@ namespace GUI
                 {
                     identificador = " ";
                 }
+                bllDigitoVerificador_941Lp.CalcularDVFichaIngreso_941lp();
                 MostrarFichasIngreso_941lp(bllFichaIngreso_941.RetornarFichas_941lp(),identificador);
                 MostrarDataAnimales_941lp(bllAnimal_941lp.RetornarAnimales_941lp());
             }

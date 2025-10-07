@@ -17,12 +17,14 @@ namespace GUI
     public partial class FormRegistroAnimales_941lp : Form, IObserver_941lp
     {
         bllRegistroAnimales_941lp bllRegistroAnimales_941lp;
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
         ModoOperacion_941lp modo_941lp;
         public FormRegistroAnimales_941lp()
         {
             InitializeComponent();
             modo_941lp = ModoOperacion_941lp.Consulta;
             bllRegistroAnimales_941lp = new bllRegistroAnimales_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -323,7 +325,7 @@ namespace GUI
                 MostrarDataAnimales_941lp(bllRegistroAnimales_941lp.RetornarAnimales_941lp());
                 HabilitarControlesDeIngresoDeDatos_941lp(false);
                 HabilitarBotones_941lp();
-                
+                bllDigitoVerificador_941Lp.CalcularDVAnimales_941lp();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

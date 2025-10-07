@@ -53,16 +53,17 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxOrdenamiento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataMedicamentos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBaja
             // 
-            this.btnBaja.Location = new System.Drawing.Point(559, 298);
-            this.btnBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBaja.Location = new System.Drawing.Point(1118, 573);
+            this.btnBaja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBaja.Name = "btnBaja";
-            this.btnBaja.Size = new System.Drawing.Size(205, 42);
+            this.btnBaja.Size = new System.Drawing.Size(410, 81);
             this.btnBaja.TabIndex = 78;
             this.btnBaja.Text = "BAJA";
             this.btnBaja.UseVisualStyleBackColor = true;
@@ -72,8 +73,8 @@
             // 
             this.labelEstadoAnimal.AutoSize = true;
             this.labelEstadoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEstadoAnimal.Location = new System.Drawing.Point(34, 349);
-            this.labelEstadoAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelEstadoAnimal.Location = new System.Drawing.Point(68, 671);
+            this.labelEstadoAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEstadoAnimal.Name = "labelEstadoAnimal";
             this.labelEstadoAnimal.Size = new System.Drawing.Size(101, 17);
             this.labelEstadoAnimal.TabIndex = 73;
@@ -86,10 +87,10 @@
             this.comboBoxForma.Items.AddRange(new object[] {
             "Oral ",
             "Inyectable"});
-            this.comboBoxForma.Location = new System.Drawing.Point(210, 289);
-            this.comboBoxForma.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxForma.Location = new System.Drawing.Point(420, 556);
+            this.comboBoxForma.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxForma.Name = "comboBoxForma";
-            this.comboBoxForma.Size = new System.Drawing.Size(160, 21);
+            this.comboBoxForma.Size = new System.Drawing.Size(316, 33);
             this.comboBoxForma.TabIndex = 72;
             // 
             // groupBoxOrdenamiento
@@ -97,9 +98,11 @@
             this.groupBoxOrdenamiento.Controls.Add(this.rbDescendente);
             this.groupBoxOrdenamiento.Controls.Add(this.rbAscendente);
             this.groupBoxOrdenamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxOrdenamiento.Location = new System.Drawing.Point(782, 17);
+            this.groupBoxOrdenamiento.Location = new System.Drawing.Point(1564, 33);
+            this.groupBoxOrdenamiento.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBoxOrdenamiento.Name = "groupBoxOrdenamiento";
-            this.groupBoxOrdenamiento.Size = new System.Drawing.Size(264, 77);
+            this.groupBoxOrdenamiento.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBoxOrdenamiento.Size = new System.Drawing.Size(528, 148);
             this.groupBoxOrdenamiento.TabIndex = 70;
             this.groupBoxOrdenamiento.TabStop = false;
             this.groupBoxOrdenamiento.Text = "Nombre generico:";
@@ -107,7 +110,8 @@
             // rbDescendente
             // 
             this.rbDescendente.AutoSize = true;
-            this.rbDescendente.Location = new System.Drawing.Point(40, 53);
+            this.rbDescendente.Location = new System.Drawing.Point(80, 102);
+            this.rbDescendente.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbDescendente.Name = "rbDescendente";
             this.rbDescendente.Size = new System.Drawing.Size(168, 24);
             this.rbDescendente.TabIndex = 1;
@@ -119,7 +123,8 @@
             // 
             this.rbAscendente.AutoSize = true;
             this.rbAscendente.Checked = true;
-            this.rbAscendente.Location = new System.Drawing.Point(40, 25);
+            this.rbAscendente.Location = new System.Drawing.Point(80, 48);
+            this.rbAscendente.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbAscendente.Name = "rbAscendente";
             this.rbAscendente.Size = new System.Drawing.Size(159, 24);
             this.rbAscendente.TabIndex = 0;
@@ -130,10 +135,10 @@
             // 
             // btnAplicar
             // 
-            this.btnAplicar.Location = new System.Drawing.Point(386, 205);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAplicar.Location = new System.Drawing.Point(772, 394);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(129, 42);
+            this.btnAplicar.Size = new System.Drawing.Size(258, 81);
             this.btnAplicar.TabIndex = 61;
             this.btnAplicar.Text = "APLICAR";
             this.btnAplicar.UseVisualStyleBackColor = true;
@@ -141,10 +146,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(386, 251);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Location = new System.Drawing.Point(772, 483);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(129, 42);
+            this.btnCancelar.Size = new System.Drawing.Size(258, 81);
             this.btnCancelar.TabIndex = 62;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -152,18 +157,18 @@
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(210, 208);
-            this.txtNumero.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumero.Location = new System.Drawing.Point(420, 400);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(160, 20);
+            this.txtNumero.Size = new System.Drawing.Size(316, 31);
             this.txtNumero.TabIndex = 0;
             // 
             // labelNumero
             // 
             this.labelNumero.AutoSize = true;
             this.labelNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumero.Location = new System.Drawing.Point(33, 211);
-            this.labelNumero.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelNumero.Location = new System.Drawing.Point(66, 406);
+            this.labelNumero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNumero.Name = "labelNumero";
             this.labelNumero.Size = new System.Drawing.Size(69, 17);
             this.labelNumero.TabIndex = 69;
@@ -171,10 +176,10 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(386, 298);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalir.Location = new System.Drawing.Point(772, 573);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(129, 42);
+            this.btnSalir.Size = new System.Drawing.Size(258, 81);
             this.btnSalir.TabIndex = 67;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -182,26 +187,26 @@
             // 
             // txtNombreGenerico
             // 
-            this.txtNombreGenerico.Location = new System.Drawing.Point(210, 262);
-            this.txtNombreGenerico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombreGenerico.Location = new System.Drawing.Point(420, 504);
+            this.txtNombreGenerico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombreGenerico.Name = "txtNombreGenerico";
-            this.txtNombreGenerico.Size = new System.Drawing.Size(160, 20);
+            this.txtNombreGenerico.Size = new System.Drawing.Size(316, 31);
             this.txtNombreGenerico.TabIndex = 3;
             // 
             // txtNombreComercial
             // 
-            this.txtNombreComercial.Location = new System.Drawing.Point(210, 234);
-            this.txtNombreComercial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombreComercial.Location = new System.Drawing.Point(420, 450);
+            this.txtNombreComercial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombreComercial.Name = "txtNombreComercial";
-            this.txtNombreComercial.Size = new System.Drawing.Size(160, 20);
+            this.txtNombreComercial.Size = new System.Drawing.Size(316, 31);
             this.txtNombreComercial.TabIndex = 1;
             // 
             // btnRazaRegistroAnimal
             // 
             this.btnRazaRegistroAnimal.AutoSize = true;
             this.btnRazaRegistroAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRazaRegistroAnimal.Location = new System.Drawing.Point(34, 237);
-            this.btnRazaRegistroAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.btnRazaRegistroAnimal.Location = new System.Drawing.Point(68, 456);
+            this.btnRazaRegistroAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnRazaRegistroAnimal.Name = "btnRazaRegistroAnimal";
             this.btnRazaRegistroAnimal.Size = new System.Drawing.Size(151, 17);
             this.btnRazaRegistroAnimal.TabIndex = 66;
@@ -211,8 +216,8 @@
             // 
             this.labelForma.AutoSize = true;
             this.labelForma.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelForma.Location = new System.Drawing.Point(33, 293);
-            this.labelForma.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelForma.Location = new System.Drawing.Point(66, 563);
+            this.labelForma.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelForma.Name = "labelForma";
             this.labelForma.Size = new System.Drawing.Size(57, 17);
             this.labelForma.TabIndex = 63;
@@ -222,8 +227,8 @@
             // 
             this.labelNombreRegistroAnimal.AutoSize = true;
             this.labelNombreRegistroAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNombreRegistroAnimal.Location = new System.Drawing.Point(34, 264);
-            this.labelNombreRegistroAnimal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelNombreRegistroAnimal.Location = new System.Drawing.Point(68, 508);
+            this.labelNombreRegistroAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNombreRegistroAnimal.Name = "labelNombreRegistroAnimal";
             this.labelNombreRegistroAnimal.Size = new System.Drawing.Size(144, 17);
             this.labelNombreRegistroAnimal.TabIndex = 60;
@@ -231,10 +236,10 @@
             // 
             // btnModificarMedicamento
             // 
-            this.btnModificarMedicamento.Location = new System.Drawing.Point(559, 250);
-            this.btnModificarMedicamento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificarMedicamento.Location = new System.Drawing.Point(1118, 481);
+            this.btnModificarMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnModificarMedicamento.Name = "btnModificarMedicamento";
-            this.btnModificarMedicamento.Size = new System.Drawing.Size(205, 42);
+            this.btnModificarMedicamento.Size = new System.Drawing.Size(410, 81);
             this.btnModificarMedicamento.TabIndex = 65;
             this.btnModificarMedicamento.Text = "MODIFICAR";
             this.btnModificarMedicamento.UseVisualStyleBackColor = true;
@@ -242,10 +247,10 @@
             // 
             // btnAltaMedicamento
             // 
-            this.btnAltaMedicamento.Location = new System.Drawing.Point(559, 205);
-            this.btnAltaMedicamento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAltaMedicamento.Location = new System.Drawing.Point(1118, 394);
+            this.btnAltaMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAltaMedicamento.Name = "btnAltaMedicamento";
-            this.btnAltaMedicamento.Size = new System.Drawing.Size(205, 42);
+            this.btnAltaMedicamento.Size = new System.Drawing.Size(410, 81);
             this.btnAltaMedicamento.TabIndex = 64;
             this.btnAltaMedicamento.Text = "ALTA";
             this.btnAltaMedicamento.UseVisualStyleBackColor = true;
@@ -261,23 +266,24 @@
             this.Column1,
             this.Column3,
             this.Column4,
-            this.Column6});
-            this.dataMedicamentos.Location = new System.Drawing.Point(36, 17);
-            this.dataMedicamentos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Column6,
+            this.Column5});
+            this.dataMedicamentos.Location = new System.Drawing.Point(72, 33);
+            this.dataMedicamentos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataMedicamentos.Name = "dataMedicamentos";
             this.dataMedicamentos.ReadOnly = true;
             this.dataMedicamentos.RowHeadersWidth = 82;
             this.dataMedicamentos.RowTemplate.Height = 33;
-            this.dataMedicamentos.Size = new System.Drawing.Size(728, 171);
+            this.dataMedicamentos.Size = new System.Drawing.Size(1456, 329);
             this.dataMedicamentos.TabIndex = 58;
             this.dataMedicamentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMedicamentos_CellClick);
             // 
             // dateTimePickerVencimiento
             // 
-            this.dateTimePickerVencimiento.Location = new System.Drawing.Point(210, 346);
-            this.dateTimePickerVencimiento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerVencimiento.Location = new System.Drawing.Point(420, 665);
+            this.dateTimePickerVencimiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePickerVencimiento.Name = "dateTimePickerVencimiento";
-            this.dateTimePickerVencimiento.Size = new System.Drawing.Size(307, 20);
+            this.dateTimePickerVencimiento.Size = new System.Drawing.Size(610, 31);
             this.dateTimePickerVencimiento.TabIndex = 79;
             // 
             // Column2
@@ -320,12 +326,18 @@
             this.Column6.ReadOnly = true;
             this.Column6.Width = 200;
             // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Activo";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
             // FormMedicamentos_941lp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1082, 480);
+            this.ClientSize = new System.Drawing.Size(2164, 923);
             this.Controls.Add(this.dateTimePickerVencimiento);
             this.Controls.Add(this.btnBaja);
             this.Controls.Add(this.labelEstadoAnimal);
@@ -344,7 +356,7 @@
             this.Controls.Add(this.btnModificarMedicamento);
             this.Controls.Add(this.btnAltaMedicamento);
             this.Controls.Add(this.dataMedicamentos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormMedicamentos_941lp";
             this.Text = "FormMedicamentos";
             this.Load += new System.EventHandler(this.FormMedicamentos_941lp_Load);
@@ -382,5 +394,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

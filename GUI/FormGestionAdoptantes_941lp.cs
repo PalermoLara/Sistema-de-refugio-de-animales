@@ -17,12 +17,13 @@ namespace GUI
     public partial class FormGestionAdoptantes_941lp : Form, IObserver_941lp
     {
         bllAdoptantes_941lp bllAdoptantes_941lp;
-
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
         ModoOperacion_941lp modo_941lp;
         public FormGestionAdoptantes_941lp()
         {
             InitializeComponent();
             bllAdoptantes_941lp = new bllAdoptantes_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
             btnAplicar.Enabled = false;
             btnCancelar.Enabled = false;
             AplicarColorControles_941lp();
@@ -348,6 +349,7 @@ namespace GUI
                         MessageBox.Show(error_941lp);
                         break;
                 }
+                bllDigitoVerificador_941Lp.CalcularDVAdoptante_941lp();
                 MostrarGrillaAdoptantes_941lp(bllAdoptantes_941lp.RetornarAdoptantes_941lp());
                 ModoAceptarCancelar_941lp();
             }

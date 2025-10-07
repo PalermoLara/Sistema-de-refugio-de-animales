@@ -22,7 +22,7 @@ namespace BLL
         public void Alta_941lp(string numero_941lp, string nombreComercial_941lp, string nombreGenerico_941lp, string forma_941lp,  DateTime caducidad_941lp)
         {
             DateTime soloFecha_941lp = caducidad_941lp.Date;
-            Medicamento_941lp medicamento_941lp = new Medicamento_941lp(numero_941lp, nombreComercial_941lp, nombreGenerico_941lp, forma_941lp, soloFecha_941lp);
+            Medicamento_941lp medicamento_941lp = new Medicamento_941lp(numero_941lp, nombreComercial_941lp, nombreGenerico_941lp, forma_941lp, soloFecha_941lp, true);
             orm_941Lp.Alta_941lp(medicamento_941lp);
             bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion medicamentos", "Alta medicamento", 5);
         }
@@ -64,7 +64,16 @@ namespace BLL
 
         public void Baja_941lp(string numero_941lp)
         {
-            orm_941Lp.Eliminar_941lp(numero_941lp);
+            Medicamento_941lp medicamento_941 = BuscarPorNumero_941lp(numero_941lp);
+            if (medicamento_941.activo_941lp)
+            {
+                medicamento_941.activo_941lp = false;
+            }
+            else
+            {
+                medicamento_941.activo_941lp = true;
+            }
+            orm_941Lp.Modificar_941lp(medicamento_941);
             bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion medicamentos", "Eliminar medicamento", 5);
         }
 

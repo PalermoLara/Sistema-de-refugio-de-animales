@@ -16,6 +16,8 @@ namespace GUI
     public partial class FormularioLogIn941lp : Form
     {
         bllUsuario_941lp bllUsuario_941lp;
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
+        private readonly formDigitoVerificadorError_941lp digitoVerificador_941lp;
         private readonly FormCambiarContraseña_941lp formularioCambiarContraseña_941lp;
         bllBitacoraEventos_941lp bllBitacoraEvento_941lp;
         public FormularioLogIn941lp()
@@ -24,6 +26,8 @@ namespace GUI
             bllUsuario_941lp = new bllUsuario_941lp();
             formularioCambiarContraseña_941lp = new FormCambiarContraseña_941lp();
             bllBitacoraEvento_941lp = new bllBitacoraEventos_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
+            digitoVerificador_941lp = new formDigitoVerificadorError_941lp();
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
@@ -49,21 +53,37 @@ namespace GUI
                                 if (bllUsuario_941lp.ValidarContraseñaActual_941lp(usuario_941lp.nombreUsuario_941lp, txtContraseñaUsuario.Text))
                                 {
                                     bllUsuario_941lp.ReiniciarIntentos_941lp(usuario_941lp);
-                                    sessionManager941lp.Gestor_941lp.SetUsuario_941lp(usuario_941lp);
-                                    if (bllUsuario_941lp.VerificarContraseñaNoSeaDNIyApellido(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().contraseña_941lp))
-                                    {
-                                        MessageBox.Show("Primer inicio de sesión. Debe cambiar su contraseña", "CAMBIO DE CONTRASEÑA REQUERIDO", MessageBoxButtons.OK);
-                                        formularioCambiarContraseña_941lp.ShowDialog();
-                                    }
-                                    sessionManager941lp.Gestor_941lp.Idioma_941lp = usuario_941lp.lenguaje_941lp;
-                                    TraductorSubject_941lp.Instancia_941lp.Notificar_941lp(usuario_941lp.lenguaje_941lp);
-                                    var usuario = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
-                                    var perfilNombre = usuario.rol_941lp; 
-                                    var permisosSimples = bllUsuario_941lp.ObtenerPermisosSimplesDeUsuario_941lp(perfilNombre);
 
-                                    sessionManager941lp.Gestor_941lp.SetPermisosUsuario_941lp(permisosSimples);
-                                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Iniciar sesión", "Incio de sesión de usuario", 1);
-                                    GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoMenu941lp());
+                                    sessionManager941lp.Gestor_941lp.SetUsuario_941lp(usuario_941lp);
+                                    if (bllDigitoVerificador_941Lp.Deteccion_941lp())
+                                    {
+                                        if (usuario_941lp.rol_941lp == "Administrador")
+                                        {
+                                            digitoVerificador_941lp.ShowDialog();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("No se puede iniciar el sistema. Por favor, contactese con un administrador");
+                                            sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (bllUsuario_941lp.VerificarContraseñaNoSeaDNIyApellido(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().contraseña_941lp))
+                                        {
+                                            MessageBox.Show("Primer inicio de sesión. Debe cambiar su contraseña", "CAMBIO DE CONTRASEÑA REQUERIDO", MessageBoxButtons.OK);
+                                            formularioCambiarContraseña_941lp.ShowDialog();
+                                        }
+                                        sessionManager941lp.Gestor_941lp.Idioma_941lp = usuario_941lp.lenguaje_941lp;
+                                        TraductorSubject_941lp.Instancia_941lp.Notificar_941lp(usuario_941lp.lenguaje_941lp);
+                                        var usuario = sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp();
+                                        var perfilNombre = usuario.rol_941lp;
+                                        var permisosSimples = bllUsuario_941lp.ObtenerPermisosSimplesDeUsuario_941lp(perfilNombre);
+
+                                        sessionManager941lp.Gestor_941lp.SetPermisosUsuario_941lp(permisosSimples);
+                                        bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Iniciar sesión", "Incio de sesión de usuario", 1);
+                                        GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoMenu941lp());
+                                    }
                                 }
                                 else
                                 {
@@ -116,6 +136,7 @@ namespace GUI
 
         private void FormularioLogIn941lp_Load_1(object sender, EventArgs e)
         {
+
         }
 
         private void checkBoxMostrarConstraseña_CheckedChanged(object sender, EventArgs e)

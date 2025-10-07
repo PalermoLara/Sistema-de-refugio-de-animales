@@ -52,9 +52,11 @@
   <ItemGroup>
     <Compile Include="Adoptante_941lp.cs" />
     <Compile Include="Animal_941lp.cs" />
+    <Compile Include="BitacoraCambio_941lp.cs" />
     <Compile Include="BitacoraFichaMedica_941lp.cs" />
     <Compile Include="Cedente_941lp.cs" />
     <Compile Include="CertificadoAdopcion_941lp.cs" />
+    <Compile Include="DigitoVerificador_941lp.cs" />
     <Compile Include="EvaluacionAdoptante_941lp.cs" />
     <Compile Include="Evento_941lp.cs" />
     <Compile Include="FichaDeIngreso_941lp.cs" />

@@ -34,6 +34,7 @@ namespace GUI
         private FormGestionAdoptantes_941lp FormGestionAdoptantes_941Lp;
         private FormEvaluacionDelAdoptante_941lp formEvaluacionDelAdoptante_941lp;
         private FormCertificadoDeAdopcion_941lp formCertificadoDeAdopcion_941Lp;
+        private formBitacoraCambios_941lp formBitacoraCambios_941Lp;
 
         public FormularioMenuPrincipal941lp()
         {
@@ -56,6 +57,7 @@ namespace GUI
             FormGestionAdoptantes_941Lp = new FormGestionAdoptantes_941lp();
             formEvaluacionDelAdoptante_941lp = new FormEvaluacionDelAdoptante_941lp();
             formCertificadoDeAdopcion_941Lp = new FormCertificadoDeAdopcion_941lp();
+            formBitacoraCambios_941Lp = new formBitacoraCambios_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -314,6 +316,11 @@ namespace GUI
         private void btnCertificado_Click(object sender, EventArgs e)
         {
             formCertificadoDeAdopcion_941Lp.ShowDialog();
+        }
+
+        private void btnBitacoraCambios_Click(object sender, EventArgs e)
+        {
+            formBitacoraCambios_941Lp.ShowDialog();
         }
     }
 }

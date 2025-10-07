@@ -18,12 +18,14 @@ namespace GUI
     {
         bllEvaluacion_941lp bllEvaluacion_941lp;
         bllAdoptantes_941lp bllAdoptantes_941lp;
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
         ModoOperacion_941lp modo_941lp;
         public FormEvaluacionDelAdoptante_941lp()
         {
             InitializeComponent();
             bllEvaluacion_941lp = new bllEvaluacion_941lp();
             bllAdoptantes_941lp = new bllAdoptantes_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
         }
 
         private void FormEvaluacionDelAdoptante_941lp_Load(object sender, EventArgs e)
@@ -191,6 +193,7 @@ namespace GUI
                         MessageBox.Show(mensaje2_941lp);
                         break;
                 }
+                bllDigitoVerificador_941Lp.CalcularDVEvaluaciones_941lp();
                 MostrarGrillaEvaluaciones_941lp(bllEvaluacion_941lp.RetornarEvaluaciones_941lp());
                 ModoAceptarCancelar_941lp();
                 CargarTxtConGrilla_941lp();

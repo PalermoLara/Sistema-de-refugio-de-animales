@@ -17,11 +17,13 @@ namespace GUI
     public partial class FormMedicamentos_941lp : Form, IObserver_941lp
     {
         bllMedicamento_941lp bllMedicamento_941Lp;
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
         ModoOperacion_941lp modo_941lp;
         public FormMedicamentos_941lp()
         {
             InitializeComponent();
             bllMedicamento_941Lp = new bllMedicamento_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
             modo_941lp = ModoOperacion_941lp.Consulta;
             btnCancelar.Enabled = false;
             btnAplicar.Enabled = false;
@@ -49,6 +51,7 @@ namespace GUI
             HabilitarTxt_941lp(true);
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
             AplicarTraduccion_941lp();
+            ModoAceptarCancelar_941lp();
         }
 
         enum ModoOperacion_941lp
@@ -66,9 +69,9 @@ namespace GUI
             {
                 foreach (Medicamento_941lp m_941lp in medicamentosLista_941lp)
                 {
-                    int rowIndex = dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp,  m_941lp.caducidad_941lp);
+                    int rowIndex = dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp,  m_941lp.caducidad_941lp, m_941lp.activo_941lp);
                     dataMedicamentos.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
-                    if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(m_941lp.caducidad_941lp))
+                    if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(m_941lp.caducidad_941lp) || m_941lp.activo_941lp == false)
                     {
                         dataMedicamentos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
                     }
@@ -238,11 +241,11 @@ namespace GUI
         {
             try
             {
-                ValidarCargaDeTxt_941lp();
-                ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text);
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Alta:
+                        ValidarCargaDeTxt_941lp();
+                        ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text);
                         string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_NUMERO_REPETIDO", "Número repetido");
                         if (bllMedicamento_941Lp.VerificarExistenciaDeNumero_941lp(txtNumero.Text))throw new Exception(exception_941lp);
                         string exception1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_VENCIDO", "Medicamento vencido");
@@ -252,6 +255,8 @@ namespace GUI
                         MessageBox.Show(mensaje_941lp);
                         break;
                     case ModoOperacion_941lp.Modificar:
+                        ValidarCargaDeTxt_941lp();
+                        ControlDeIngresoDeDatos_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text);
                         string exception2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_VENCIDO", "Medicamento vencido");
                         if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(dateTimePickerVencimiento.Value)) throw new Exception(exception2_941lp);
                         bllMedicamento_941Lp.Modificar_941lp(txtNumero.Text, txtNombreComercial.Text, txtNombreGenerico.Text, comboBoxForma.Text, dateTimePickerVencimiento.Value);
@@ -268,6 +273,7 @@ namespace GUI
                         MessageBox.Show(error_941lp);
                         break;
                 }
+                bllDigitoVerificador_941Lp.CalcularDVMedicamentos_941lp();
                 ModoAceptarCancelar_941lp();
                 LimpiarTxt_941lp();
                 MostrarGrillaMedicamentos_941lp(bllMedicamento_941Lp.RetornarMedicamento_941lp());

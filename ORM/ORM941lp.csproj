@@ -53,8 +53,10 @@
   <ItemGroup>
     <Compile Include="ormAdoptantes_941lp.cs" />
     <Compile Include="ormBackUp&amp;Restore_941lp.cs" />
+    <Compile Include="ormBitacoraCambios_941lp.cs" />
     <Compile Include="ormBitacoraEventos_941lp.cs" />
     <Compile Include="ormCertificado_941lp.cs" />
+    <Compile Include="ormDigitoVerificador_941lp.cs" />
     <Compile Include="ormEvaluacion_941lp.cs" />
     <Compile Include="ormIntemedia_941lp.cs" />
     <Compile Include="ormPerfilPermiso_941lp.cs" />

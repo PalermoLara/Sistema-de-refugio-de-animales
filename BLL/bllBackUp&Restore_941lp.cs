@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BLL
 {
@@ -28,6 +29,7 @@ namespace BLL
         {
             bllBitacoraEventos_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Restore", "Restore Realizado", 1);
             orm_941lp.RealizarRestore_941lp(ruta_941lp);
+            MessageBox.Show("Restore realizado con éxito");
         }
     }
 }

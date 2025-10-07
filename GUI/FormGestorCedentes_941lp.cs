@@ -20,6 +20,7 @@ namespace GUI
     {
 
         bllCedente_941lp bllCedente_941lp;
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
         ModoOperacion_941lp modo_941lp;
         bllSerializacion_941lp bllSerializacion_941lp;
         public FormGestorCedentes_941lp()
@@ -31,6 +32,7 @@ namespace GUI
             AplicarColorControles_941lp();
             modo_941lp = ModoOperacion_941lp.Consulta;
             bllSerializacion_941lp = new bllSerializacion_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
         }
 
         private void AplicarTraduccion_941lp()
@@ -55,6 +57,7 @@ namespace GUI
             HabilitarTxt_941lp(true);
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
             AplicarTraduccion_941lp();
+            bllDigitoVerificador_941Lp.CalcularDVMedicamentos_941lp();
         }
 
 
@@ -347,6 +350,7 @@ namespace GUI
                         MessageBox.Show(error_941lp);
                         break;
                 }
+                bllDigitoVerificador_941Lp.CalcularDVCedente_941lp();
                 MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
                 ModoAceptarCancelar_941lp();
             }
