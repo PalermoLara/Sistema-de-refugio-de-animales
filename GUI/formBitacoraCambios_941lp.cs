@@ -47,7 +47,7 @@ namespace GUI
             {
                 foreach (BitacoraCambio_941lp e_941lp in cambios_941lp)
                 {
-                    dataCambios.Rows.Add(e_941lp.codMedicamento_941lp,e_941lp.fechaHora_941lp.ToString("dd/MM/yyyy"), e_941lp.fechaHora_941lp.ToString(@"hh\:mm\:ss"), e_941lp.nombreComercial_941lp, e_941lp.nombreGenerico_941lp, e_941lp.forma_941lp, e_941lp.caducidad_941lp.ToString("dd/MM/yyyy"),e_941lp.activoMedicamento_941lp, e_941lp.activo_941lp);
+                    dataCambios.Rows.Add(e_941lp.codMedicamento_941lp,e_941lp.fechaHora_941lp.ToString("dd/MM/yyyy"), e_941lp.fechaHora_941lp.ToString("HH:mm:ss"), e_941lp.nombreComercial_941lp, e_941lp.nombreGenerico_941lp, e_941lp.forma_941lp, e_941lp.caducidad_941lp.ToString("dd/MM/yyyy"),e_941lp.activoMedicamento_941lp, e_941lp.activo_941lp);
                 }
             }
         }
@@ -68,9 +68,25 @@ namespace GUI
         {
             try
             {
+                if (dataCambios.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Seleccione una versión a restaurar.");
+                    return;
+                }
 
+                string codigo = dataCambios.SelectedRows[0].Cells[0].Value.ToString();
+                DateTime fecha = Convert.ToDateTime(dataCambios.SelectedRows[0].Cells[1].Value);
+                DateTime hora = Convert.ToDateTime(dataCambios.SelectedRows[0].Cells[2].Value);
+
+                DateTime fechaSeleccionada = fecha.Date.Add(hora.TimeOfDay);
+
+                bllBitacoraCambios_941lp.RollbackMedicamento_941lp(codigo, fechaSeleccionada);
+                MostrarCambios_941lp(bllBitacoraCambios_941lp.RetornarCambios_941lp());
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar rollback: " + ex.Message);
+            }
         }
 
         private void btnAplicar_Click(object sender, EventArgs e)

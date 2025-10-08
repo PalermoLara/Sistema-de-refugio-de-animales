@@ -134,5 +134,29 @@ namespace DAO
             }
         }
 
+
+        public void EjecutarRollBack_941lp(string query_941lp, Dictionary<string, object> parametros_941lp = null)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString_941lp))
+            {
+                conn.Open();
+
+                // 🔹 Configurar CONTEXT_INFO = 'ROLLBACK_LOGICO'
+                using (SqlCommand ctx = new SqlCommand("SET CONTEXT_INFO 0x524F4C4C4241434B5F4C4F4749434F", conn))
+                {
+                    ctx.ExecuteNonQuery();
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query_941lp, conn))
+                {
+                    if (parametros_941lp != null)
+                    {
+                        foreach (var p in parametros_941lp)
+                            cmd.Parameters.AddWithValue(p.Key, p.Value ?? DBNull.Value);
+                    }
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

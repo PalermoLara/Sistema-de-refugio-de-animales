@@ -26,6 +26,14 @@ namespace BLL
             return orm_941lp.Filtros_941lp(filtros_941lp);
         }
 
+        public void RollbackMedicamento_941lp(string codigoMedicamento, DateTime fechaSeleccionada)
+        {
+            if (string.IsNullOrWhiteSpace(codigoMedicamento))
+                throw new ArgumentException("Debe especificar un código de medicamento válido.");
+
+            orm_941lp.RollbackMedicamento_941lp(codigoMedicamento, fechaSeleccionada);
+        }
+
         public List<BitacoraCambio_941lp> RetornarCambios_941lp()
         {
             List<BitacoraCambio_941lp> aux_941lp = new List<BitacoraCambio_941lp>();

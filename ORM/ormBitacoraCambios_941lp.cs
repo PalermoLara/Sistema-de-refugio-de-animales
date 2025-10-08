@@ -66,6 +66,53 @@ namespace ORM
             return dao_941lp.RetornarLista_941lp(query_941lp, MapearCambio_941lp, parametros_941lp);
         }
 
+        
+        public void RollbackMedicamento_941lp(string codigoMedicamento, DateTime fechaElegida)
+        {
+            string sql = @"
+                BEGIN TRANSACTION;
+            
+                -- 1️⃣ Buscar fecha exacta (manejo más flexible de fechas)
+                DECLARE @fechaExacta DATETIME;
+                SELECT TOP 1 @fechaExacta = fechaHora_941lp
+                FROM BitacoraCambios_941lp
+                WHERE codMedicamento_941lp = @codigo
+                    AND CAST(fechaHora_941lp AS DATE) = CAST(@fecha AS DATE)
+                ORDER BY ABS(DATEDIFF(SECOND, fechaHora_941lp, @fecha)) ASC;
+
+                IF @fechaExacta IS NOT NULL
+                BEGIN
+                    -- 2️⃣ Desactivar TODOS los registros de este medicamento
+                    UPDATE BitacoraCambios_941lp
+                    SET activo_941lp = 0
+                    WHERE codMedicamento_941lp = @codigo;
+
+                    -- 3️⃣ Activar la versión histórica seleccionada
+                    UPDATE BitacoraCambios_941lp
+                    SET activo_941lp = 1
+                    WHERE codMedicamento_941lp = @codigo 
+                        AND fechaHora_941lp = @fechaExacta;
+
+                    -- 4️⃣ Forzar un UPDATE en Medicamento_941lp para que el trigger 
+                    --    (con CONTEXT_INFO) sincronice los datos SIN crear nuevo registro
+                    UPDATE Medicamento_941lp 
+                    SET nombreComercial_941lp = nombreComercial_941lp
+                    WHERE numeroOficial_941lp = @codigo;
+                END
+            
+                COMMIT TRANSACTION;
+            ";
+
+            // ✅ Este método YA configura el CONTEXT_INFO automáticamente
+            dao_941lp.EjecutarRollBack_941lp(sql, new Dictionary<string, object>
+            {
+                { "@codigo", codigoMedicamento },
+                { "@fecha", fechaElegida }
+            });
+        }
+
+        
+
         public List<BitacoraCambio_941lp> RetornarCambios_941lp()
         {
             List<BitacoraCambio_941lp> cambio_941lp = dao_941lp.RetornarLista_941lp("SELECT * FROM BitacoraCambios_941lp", MapearCambio_941lp);
