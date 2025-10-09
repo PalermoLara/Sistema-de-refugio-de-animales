@@ -42,60 +42,60 @@ namespace BLL
             return aux_941lp;
         }
 
-        public void Imprimir_941lp(List<Evento_941lp> listaEventos, string nombreArchivo)
+        public void Imprimir_941lp(List<Evento_941lp> listaEventos_941lp, string nombreArchivo_941lp)
         {
             try
             {
-                string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string carpetaBitacora = Path.Combine(documentosPath, "Bitacora");
+                string documentosPath_941lp = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string carpetaBitacora_941lp = Path.Combine(documentosPath_941lp, "Bitacora");
 
-                if (!Directory.Exists(carpetaBitacora))
+                if (!Directory.Exists(carpetaBitacora_941lp))
                 {
-                    Directory.CreateDirectory(carpetaBitacora);
+                    Directory.CreateDirectory(carpetaBitacora_941lp);
                 }
 
-                string rutaArchivo = Path.Combine(carpetaBitacora, nombreArchivo);
+                string rutaArchivo_941lp = Path.Combine(carpetaBitacora_941lp, nombreArchivo_941lp);
 
-                Document doc = new Document(PageSize.A4, 10, 10, 10, 10);
+                Document doc_941lp = new Document(PageSize.A4, 10, 10, 10, 10);
 
-                using (FileStream stream = new FileStream(rutaArchivo, FileMode.Create))
+                using (FileStream stream_941lp = new FileStream(rutaArchivo_941lp, FileMode.Create))
                 {
-                    PdfWriter.GetInstance(doc, stream);
-                    doc.Open();
+                    PdfWriter.GetInstance(doc_941lp, stream_941lp);
+                    doc_941lp.Open();
 
-                    Paragraph titulo = new Paragraph("Reporte de Eventos del Sistema",
+                    Paragraph titulo_941lp = new Paragraph("Reporte de Eventos del Sistema",
                         FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14));
-                    titulo.Alignment = Element.ALIGN_CENTER;
-                    doc.Add(titulo);
-                    doc.Add(new Paragraph(" ")); 
+                    titulo_941lp.Alignment = Element.ALIGN_CENTER;
+                    doc_941lp.Add(titulo_941lp);
+                    doc_941lp.Add(new Paragraph(" ")); 
 
-                    PdfPTable tabla = new PdfPTable(6);
-                    tabla.WidthPercentage = 100;
+                    PdfPTable tabla_941lp = new PdfPTable(6);
+                    tabla_941lp.WidthPercentage = 100;
 
-                    string[] headers = { "LogIn", "Fecha", "Hora", "Módulo", "Evento", "Criticidad" };
-                    foreach (var h in headers)
+                    string[] headers_941lp = { "LogIn", "Fecha", "Hora", "Módulo", "Evento", "Criticidad" };
+                    foreach (var h_941lp in headers_941lp)
                     {
-                        PdfPCell cell = new PdfPCell(new Phrase(h,
+                        PdfPCell cell_941lp = new PdfPCell(new Phrase(h_941lp,
                             FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10)));
-                        cell.BackgroundColor = BaseColor.LIGHT_GRAY;
-                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                        tabla.AddCell(cell);
+                        cell_941lp.BackgroundColor = BaseColor.LIGHT_GRAY;
+                        cell_941lp.HorizontalAlignment = Element.ALIGN_CENTER;
+                        tabla_941lp.AddCell(cell_941lp);
                     }
 
-                    foreach (var ev in listaEventos)
+                    foreach (var ev_941lp in listaEventos_941lp)
                     {
-                        tabla.AddCell(ev.login_941lp);
-                        tabla.AddCell(ev.fecha_941lp.ToShortDateString());
-                        tabla.AddCell(ev.hora_941lp.ToString(@"hh\:mm\:ss"));
-                        tabla.AddCell(ev.modulo_941lp);
-                        tabla.AddCell(ev.evento_941lp);
-                        tabla.AddCell(ev.criticidad_941lp.ToString());
+                        tabla_941lp.AddCell(ev_941lp.login_941lp);
+                        tabla_941lp.AddCell(ev_941lp.fecha_941lp.ToShortDateString());
+                        tabla_941lp.AddCell(ev_941lp.hora_941lp.ToString(@"hh\:mm\:ss"));
+                        tabla_941lp.AddCell(ev_941lp.modulo_941lp);
+                        tabla_941lp.AddCell(ev_941lp.evento_941lp);
+                        tabla_941lp.AddCell(ev_941lp.criticidad_941lp.ToString());
                     }
 
-                    doc.Add(tabla);
-                    doc.Close();
+                    doc_941lp.Add(tabla_941lp);
+                    doc_941lp.Close();
 
-                    MessageBox.Show($"El reporte se guardó en:\n{rutaArchivo}",
+                    MessageBox.Show($"El reporte se guardó en:\n{rutaArchivo_941lp}",
                         "Impresión Exitosa",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);

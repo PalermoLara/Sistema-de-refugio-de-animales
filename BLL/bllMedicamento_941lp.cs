@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BLL
 {
@@ -68,10 +69,13 @@ namespace BLL
             if (medicamento_941.activo_941lp)
             {
                 medicamento_941.activo_941lp = false;
+                string mensaje2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_BAJA", "Medicamento dado de baja con exito");
+                MessageBox.Show(mensaje2_941lp);
             }
             else
             {
-                medicamento_941.activo_941lp = true;
+                string mensaje2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_YA_DADO_DE_BAJA", "El medicamento ya fue dado de baja");
+                MessageBox.Show(mensaje2_941lp);
             }
             orm_941Lp.Modificar_941lp(medicamento_941);
             bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion medicamentos", "Eliminar medicamento", 5);

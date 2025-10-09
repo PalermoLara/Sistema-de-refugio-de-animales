@@ -16,11 +16,13 @@ namespace GUI
     public partial class formBitacoraCambios_941lp : Form, IObserver_941lp
     {
         bllBitacoraCambios_941lp bllBitacoraCambios_941lp;
+        bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
 
         public formBitacoraCambios_941lp()
         {
             InitializeComponent();
             bllBitacoraCambios_941lp = new bllBitacoraCambios_941lp();
+            bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
             dataCambios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataCambios.MultiSelect = false;
             dataCambios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -70,7 +72,8 @@ namespace GUI
             {
                 if (dataCambios.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Seleccione una versión a restaurar.");
+                    string mensaje4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("formBitacoraCambios_941lp", "MSG_NADA_SELECCIONADO", "Seleccione una versión a restaurar.");
+                    MessageBox.Show(mensaje4_941lp);
                     return;
                 }
 
@@ -81,11 +84,13 @@ namespace GUI
                 DateTime fechaSeleccionada = fecha.Date.Add(hora.TimeOfDay);
 
                 bllBitacoraCambios_941lp.RollbackMedicamento_941lp(codigo, fechaSeleccionada);
+                bllDigitoVerificador_941Lp.CalcularDVMedicamentos_941lp();
                 MostrarCambios_941lp(bllBitacoraCambios_941lp.RetornarCambios_941lp());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al realizar rollback: " + ex.Message);
+                string mensaje4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("formBitacoraCambios_941lp", "MSG_ERROR_ROLLBACK", "Error al realizar rollback: ");
+                MessageBox.Show(mensaje4_941lp + ex.Message);
             }
         }
 
@@ -112,7 +117,8 @@ namespace GUI
                     dateTimePickerFin.Value = DateTime.Today;
                     MostrarCambios_941lp(bllBitacoraCambios_941lp.RetornarCambios_941lp());
                     btnLimpiar_Click(null, null);
-                    throw new Exception("La fecha de inicio no puede ser mayor a la de fin");
+                    string mensaje4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("formBitacoraCambios_941lp", "MSG_FECHA_ERROR", "La fecha de inicio no puede ser mayor a la de fin");
+                    throw new Exception(mensaje4_941lp);
                 }
                 MostrarCambios_941lp(bllBitacoraCambios_941lp.Filtros_941lp(filtros_941lp));
             }

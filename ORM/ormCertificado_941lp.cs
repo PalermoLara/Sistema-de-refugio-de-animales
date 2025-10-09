@@ -27,6 +27,25 @@ namespace ORM
             EjecutarQueryConEntidad_941lp(certificado_941lp, query_941lp);
         }
 
+        public bool ExisteCertificado_941lp(string dni_941lp, int codigoAnimal_941lp)
+        {
+            string query_941lp = @"
+            SELECT COUNT(*) 
+            FROM CertificadoAdopcion_941lp 
+            WHERE dni_941lp = @dni_941lp AND codigoAnimal_941lp = @codigoAnimal_941lp";
+
+            var parametros_941lp = new Dictionary<string, object>
+            {
+                { "@dni_941lp", dni_941lp },
+                { "@codigoAnimal_941lp", codigoAnimal_941lp }
+            };
+
+            object resultado_941lp = dao_941lp.EjecutarEscalar_941lp(query_941lp, parametros_941lp);
+
+            // Convertir a int y retornar si hay al menos un registro
+            return Convert.ToInt32(resultado_941lp) > 0;
+        }
+
         public void Modificar_941lp(CertificadoAdopcion_941lp certificado_941lp)
         {
             string query_941lp = "UPDATE CertificadoAdopcion_941lp SET dni_941lp = @dni_941lp ,codigoAnimal_941lp = @codigoAnimal_941lp, especie_941lp = @especie_941lp ,raza_941lp = @raza_941lp, nombreAnimal_941lp = @nombreAnimal_941lp, nombreAdoptante_941lp = @nombreAdoptante_941lp, apellidoAdoptante_941lp = @apellidoAdoptante_941lp WHERE codigo_941lp = @codigo_941lp";

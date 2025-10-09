@@ -71,7 +71,11 @@ namespace GUI
                 {
                     int rowIndex = dataMedicamentos.Rows.Add(m_941lp.numeroOficial_941lp, m_941lp.nombreComercial_941lp, m_941lp.nombreGenerico_941lp, m_941lp.forma_941lp,  m_941lp.caducidad_941lp, m_941lp.activo_941lp);
                     dataMedicamentos.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
-                    if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(m_941lp.caducidad_941lp) || m_941lp.activo_941lp == false)
+                    if (bllMedicamento_941Lp.VencimientoDeProducto_941lp(m_941lp.caducidad_941lp) )
+                    {
+                        dataMedicamentos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    }
+                    if (m_941lp.activo_941lp == false)
                     {
                         dataMedicamentos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
                     }
@@ -265,8 +269,6 @@ namespace GUI
                         break;
                     case ModoOperacion_941lp.Baja:
                         bllMedicamento_941Lp.Baja_941lp(dataMedicamentos.SelectedRows[0].Cells[0].Value.ToString());
-                        string mensaje2_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_MEDICAMENTO_BAJA", "Medicamento dado de baja con exito");
-                        MessageBox.Show(mensaje2_941lp);
                         break;
                     default:
                         string error_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_ERROR", "Error en la operación");

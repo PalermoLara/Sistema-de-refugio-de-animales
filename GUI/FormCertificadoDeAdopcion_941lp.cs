@@ -143,7 +143,13 @@ namespace GUI
                 switch (modo_941lp)
                 {
                     case ModoOperacion_941lp.Alta:
+                        string codigo_941lp = DateTime.Now.ToString("d") + dataAdoptantes.SelectedRows[0].Cells[0].Value.ToString().Substring(0, 3);
+                        CertificadoAdopcion_941lp c_941lp = new CertificadoAdopcion_941lp(codigo_941lp,dataAdoptantes.SelectedRows[0].Cells[0].Value.ToString(), Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value), dataAnimales.SelectedRows[0].Cells[1].Value.ToString(), dataAnimales.SelectedRows[0].Cells[2].Value.ToString(), dataAnimales.SelectedRows[0].Cells[3].Value.ToString(), dataAdoptantes.SelectedRows[0].Cells[1].Value.ToString(), dataAdoptantes.SelectedRows[0].Cells[2].Value.ToString(), DateTime.Now);
+                        string nombreArchivo_941lp = $"Certificado_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                        string mensaje4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCertificadoDeAdopcion_941lp", "MSG_CERTIFICADO_EXISTENTE", "Ya existe un certificado");
+                        if (bllCertificado_941lp.VerificarExistencia_941lp(dataAdoptantes.SelectedRows[0].Cells[0].Value.ToString(), Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value))) throw new Exception(mensaje4_941lp);
                         bllCertificado_941lp.Alta_941lp(dataAdoptantes.SelectedRows[0].Cells[0].Value.ToString(), Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value), dataAnimales.SelectedRows[0].Cells[1].Value.ToString(), dataAnimales.SelectedRows[0].Cells[2].Value.ToString(), dataAnimales.SelectedRows[0].Cells[3].Value.ToString(), dataAdoptantes.SelectedRows[0].Cells[1].Value.ToString(), dataAdoptantes.SelectedRows[0].Cells[2].Value.ToString());
+                        bllCertificado_941lp.Imprimir_941lp(c_941lp, nombreArchivo_941lp);
                         string mensaje_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCertificadoDeAdopcion_941lp", "MSG_CERTIFICADO_ALTA", "Certificado de adopción dado de alta exitosamente");
                         MessageBox.Show(mensaje_941lp);
                         break;

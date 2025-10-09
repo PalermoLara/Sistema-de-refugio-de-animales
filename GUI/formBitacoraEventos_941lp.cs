@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class formBitacoraEventos_941lp : Form
+    public partial class formBitacoraEventos_941lp : Form, IObserver_941lp
     {
         bllBitacoraEventos_941lp bllBitacora_941lp;
         bllUsuario_941lp bllUsuario_941lp;
@@ -92,6 +92,8 @@ namespace GUI
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxLogin, a => a.login_941lp);
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxModulo, a => a.modulo_941lp);
             LlenarComboBox_941lp(bllBitacora_941lp.RetornarEventos_941lp(), comboBoxCriticidad, a => a.criticidad_941lp);
+            TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
+            AplicarTraduccion_941lp();
         }
 
         private void dataEventos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -136,7 +138,8 @@ namespace GUI
                     dateTimePickerInicio.Value = DateTime.Today;
                     dateTimePickerFin.Value = DateTime.Today;
                     MostrarEventos_941lp(bllBitacora_941lp.RetornarEventos_941lp());
-                    throw new Exception("La fecha de inicio no puede ser mayor a la de fin");
+                    string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("formBitacoraEventos_941lp", "MSG_FECHA_ERROR", "La fecha de inicio no puede ser mayor a la de fin");
+                    throw new Exception(exception_941lp);
                 }
                 
                 MostrarFiltros_941lp(bllBitacora_941lp.Filtros_941lp(filtros_941lp));
@@ -171,26 +174,27 @@ namespace GUI
         {
             try
             {
-                if (dataEventos.Rows.Count == 0) throw new Exception("No hay nada para imprimir");
-                List<Evento_941lp> listaEventos = new List<Evento_941lp>();
+                string exception_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("formBitacoraEventos_941lp", "MSG_NADA_PARA_IMPRIMIR", "No hay nada para imprimir");
+                if (dataEventos.Rows.Count == 0) throw new Exception(exception_941lp);
+                List<Evento_941lp> listaEventos_941lp = new List<Evento_941lp>();
 
-                foreach (DataGridViewRow row in dataEventos.Rows)
+                foreach (DataGridViewRow row_941lp in dataEventos.Rows)
                 {
-                    if (!row.IsNewRow) 
+                    if (!row_941lp.IsNewRow) 
                     {
-                        listaEventos.Add(new Evento_941lp(
-                            row.Cells[0].Value?.ToString(),
-                            row.Cells[1].Value?.ToString(),
-                            Convert.ToDateTime(row.Cells[2].Value),
-                            TimeSpan.Parse(row.Cells[3].Value.ToString()), 
-                            row.Cells[4].Value?.ToString(),
-                            row.Cells[5].Value?.ToString(),
-                            Convert.ToInt32(row.Cells[6].Value)
+                        listaEventos_941lp.Add(new Evento_941lp(
+                            row_941lp.Cells[0].Value?.ToString(),
+                            row_941lp.Cells[1].Value?.ToString(),
+                            Convert.ToDateTime(row_941lp.Cells[2].Value),
+                            TimeSpan.Parse(row_941lp.Cells[3].Value.ToString()), 
+                            row_941lp.Cells[4].Value?.ToString(),
+                            row_941lp.Cells[5].Value?.ToString(),
+                            Convert.ToInt32(row_941lp.Cells[6].Value)
                         ));
                     }
                 }
-                string nombreArchivo = $"Bitacora_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
-                bllBitacora_941lp.Imprimir_941lp(listaEventos,nombreArchivo);
+                string nombreArchivo_941lp = $"Bitacora_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                bllBitacora_941lp.Imprimir_941lp(listaEventos_941lp,nombreArchivo_941lp);
 
                 
             }
@@ -213,6 +217,23 @@ namespace GUI
 
                 LlenarComboBox_941lp(eventosPorModulo, comboBoxEvento, ex => ex.evento_941lp);
             }
+        }
+
+        private void AplicarTraduccion_941lp()
+        {
+            string idioma_941lp = sessionManager941lp.Gestor_941lp.Idioma_941lp;
+            RecorrerControlesParaTraducir_941lp.TraducirControles_941lp(this, this.Name, idioma_941lp);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
+            base.OnFormClosed(e);
+        }
+
+        public void ActualizarTraduccion_941lp(string idioma_941lp)
+        {
+            AplicarTraduccion_941lp();
         }
     }
 }
