@@ -140,6 +140,7 @@ namespace BLL
                     
 
                     doc_941lp.Close();
+                    bllBitacoraEvento_941lp.Alta_941lp(sessionManager941lp.Gestor_941lp.RetornarUsuarioSession_941lp().nombreUsuario_941lp, "Gestion certificados de adopción", "Reporte del certificado de adopción generado", 5);
                 }
 
                 MessageBox.Show($"Los certificados se guardaron en:\n{rutaArchivo_941lp}",

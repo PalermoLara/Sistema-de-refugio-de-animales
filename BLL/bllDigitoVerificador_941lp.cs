@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BLL
 {
@@ -39,7 +40,14 @@ namespace BLL
 
         public bool Deteccion_941lp()
         {
-            List<DigitoVerificador_941lp> dvCalculados_941lp = new List<DigitoVerificador_941lp>
+            List<DigitoVerificador_941lp> dvCalculados_941lp = Calcular_941lp();
+
+            return orm_941lp.CompararDigitos_941lp(dvCalculados_941lp).Count > 0;
+        }
+
+        private List<DigitoVerificador_941lp> Calcular_941lp()
+        {
+            return new List<DigitoVerificador_941lp>
             {
                 DVCedente_941lp(),
                 DVAdoptante_941lp(),
@@ -50,8 +58,15 @@ namespace BLL
                 DVFichaMedica_941lp(),
                 DVMedicamentos_941lp()
             };
+        }
 
-            return orm_941lp.CompararDigitos_941lp(dvCalculados_941lp);
+        public List<string> MostrarInconsistencias_941lp()
+        {
+            List<DigitoVerificador_941lp> dvCalculados_941lp = Calcular_941lp();
+
+            List<string> tablasConInconsistencias_941lp = orm_941lp.CompararDigitos_941lp(dvCalculados_941lp);
+
+            return tablasConInconsistencias_941lp;
         }
 
 

@@ -22,6 +22,7 @@ namespace GUI
             InitializeComponent();
             bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
             bllBackUpRestore_941lp = new bllBackUp_Restore_941lp();
+            
         }
 
         private void btnRecalcular_Click(object sender, EventArgs e)
@@ -73,6 +74,14 @@ namespace GUI
                 this.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void formDigitoVerificadorError_941lp_Load(object sender, EventArgs e)
+        {
+            foreach(var s_941lp in bllDigitoVerificador_941Lp.MostrarInconsistencias_941lp())
+            {
+                textBox1.Text = s_941lp.ToString();
+            }
         }
     }
 }

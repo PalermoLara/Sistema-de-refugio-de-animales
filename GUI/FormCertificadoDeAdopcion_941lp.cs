@@ -133,7 +133,7 @@ namespace GUI
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            modo_941lp = ModoOperacion_941lp.Consulta;
+            ModoAceptarCancelar_941lp();
             this.Close();
         }
 

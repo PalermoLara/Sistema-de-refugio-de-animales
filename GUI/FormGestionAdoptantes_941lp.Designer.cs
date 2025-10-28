@@ -30,6 +30,14 @@
         {
             this.btnActDesact = new System.Windows.Forms.Button();
             this.dataAdoptantes = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.txtEdad = new System.Windows.Forms.TextBox();
             this.btnAplicar = new System.Windows.Forms.Button();
@@ -56,14 +64,6 @@
             this.comboBoxMascota = new System.Windows.Forms.ComboBox();
             this.comboBoxActivo = new System.Windows.Forms.ComboBox();
             this.labelActiva = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataAdoptantes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,6 +100,70 @@
             this.dataAdoptantes.Size = new System.Drawing.Size(1454, 329);
             this.dataAdoptantes.TabIndex = 82;
             this.dataAdoptantes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataAdoptantes_CellClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Apellido";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Telefono";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Edad";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 200;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Domicilio";
+            this.Column1.MinimumWidth = 10;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Mascotas";
+            this.Column3.MinimumWidth = 10;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 200;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Activo";
+            this.Column2.MinimumWidth = 10;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
             // 
             // txtDni
             // 
@@ -154,7 +218,7 @@
             this.labelNombre.Location = new System.Drawing.Point(-320, 324);
             this.labelNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNombre.Name = "labelNombre";
-            this.labelNombre.Size = new System.Drawing.Size(68, 17);
+            this.labelNombre.Size = new System.Drawing.Size(133, 31);
             this.labelNombre.TabIndex = 81;
             this.labelNombre.Text = "NOMBRE";
             this.labelNombre.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -177,7 +241,7 @@
             this.labelDNI.Location = new System.Drawing.Point(-318, 273);
             this.labelDNI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDNI.Name = "labelDNI";
-            this.labelDNI.Size = new System.Drawing.Size(31, 17);
+            this.labelDNI.Size = new System.Drawing.Size(62, 31);
             this.labelDNI.TabIndex = 80;
             this.labelDNI.Text = "DNI";
             // 
@@ -204,7 +268,7 @@
             this.btnApellido.Location = new System.Drawing.Point(-318, 374);
             this.btnApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnApellido.Name = "btnApellido";
-            this.btnApellido.Size = new System.Drawing.Size(75, 17);
+            this.btnApellido.Size = new System.Drawing.Size(147, 31);
             this.btnApellido.TabIndex = 78;
             this.btnApellido.Text = "APELLIDO";
             // 
@@ -215,7 +279,7 @@
             this.labelDireccion.Location = new System.Drawing.Point(-320, 482);
             this.labelDireccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDireccion.Name = "labelDireccion";
-            this.labelDireccion.Size = new System.Drawing.Size(82, 17);
+            this.labelDireccion.Size = new System.Drawing.Size(169, 31);
             this.labelDireccion.TabIndex = 75;
             this.labelDireccion.Text = "DIRECCIÓN";
             // 
@@ -226,7 +290,7 @@
             this.labelTelefono.Location = new System.Drawing.Point(-318, 426);
             this.labelTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTelefono.Name = "labelTelefono";
-            this.labelTelefono.Size = new System.Drawing.Size(83, 17);
+            this.labelTelefono.Size = new System.Drawing.Size(161, 31);
             this.labelTelefono.TabIndex = 72;
             this.labelTelefono.Text = "TELEFONO";
             // 
@@ -325,6 +389,7 @@
             // 
             // comboBoxMascota
             // 
+            this.comboBoxMascota.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMascota.FormattingEnabled = true;
             this.comboBoxMascota.Items.AddRange(new object[] {
             "si",
@@ -336,6 +401,7 @@
             // 
             // comboBoxActivo
             // 
+            this.comboBoxActivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxActivo.FormattingEnabled = true;
             this.comboBoxActivo.Items.AddRange(new object[] {
             "si",
@@ -353,66 +419,6 @@
             this.labelActiva.Size = new System.Drawing.Size(71, 25);
             this.labelActiva.TabIndex = 94;
             this.labelActiva.Text = "Activa";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Apellido";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Telefono";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Edad";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Domicilio";
-            this.Column1.MinimumWidth = 10;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Mascotas";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Activo";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             // 
             // FormGestionAdoptantes_941lp
             // 

@@ -32,14 +32,13 @@ namespace ORM
             dao_941lp.Query_941lp(query_941lp, parametros_941lp);
         }
 
-        public bool CompararDigitos_941lp(List<DigitoVerificador_941lp> listaCalculados_941lp)
+        public List<string> CompararDigitos_941lp(List<DigitoVerificador_941lp> listaCalculados_941lp)
         {
-            // Si se detecta cualquier diferencia, devolvemos true
-            bool error = false;
+            List<string> tablasConInconsistencias = new List<string>();  // Lista para almacenar las tablas con inconsistencias
 
             foreach (var dvCalculado in listaCalculados_941lp)
             {
-                string query = @"SELECT nombreTabla_941lp,horizontal_941lp, vertical_941lp 
+                string query = @"SELECT nombreTabla_941lp, horizontal_941lp, vertical_941lp 
                          FROM DigitoVerificador_941lp 
                          WHERE nombreTabla_941lp = @nombreTabla_941lp";
 
@@ -52,24 +51,63 @@ namespace ORM
 
                 if (resultado.Count == 0)
                 {
-                    // No existe el registro en BD → error
-                    error = true;
-                    break;
+                    // No existe el registro en BD → inconsistencia
+                    tablasConInconsistencias.Add($"No se encuentra el registro para la tabla: {dvCalculado.nombreTabla_941lp}");
+                    continue;
                 }
 
                 var almacenado = resultado[0];
 
-                //Comparamos los valores
+                // Comparamos los valores de los dígitos verificadores
                 if (almacenado.horizontal_941lp != dvCalculado.horizontal_941lp ||
                     almacenado.vertical_941lp != dvCalculado.vertical_941lp)
                 {
-                    error = true;
-                    break;
+                    tablasConInconsistencias.Add($"Inconsistencia en la tabla: {dvCalculado.nombreTabla_941lp}");
                 }
             }
 
-            return error;
+            return tablasConInconsistencias;
         }
+
+
+        //public bool CompararDigitos_941lp(List<DigitoVerificador_941lp> listaCalculados_941lp)
+        //{
+        //    // Si se detecta cualquier diferencia, devolvemos true
+        //    bool error = false;
+
+        //    foreach (var dvCalculado in listaCalculados_941lp)
+        //    {
+        //        string query = @"SELECT nombreTabla_941lp,horizontal_941lp, vertical_941lp 
+        //                 FROM DigitoVerificador_941lp 
+        //                 WHERE nombreTabla_941lp = @nombreTabla_941lp";
+
+        //        var parametros = new Dictionary<string, object>
+        //        {
+        //            { "@nombreTabla_941lp", dvCalculado.nombreTabla_941lp }
+        //        };
+
+        //        List<DigitoVerificador_941lp> resultado = dao_941lp.RetornarLista_941lp(query, MapearDigito_941lp, parametros);
+
+        //        if (resultado.Count == 0)
+        //        {
+        //            // No existe el registro en BD → error
+        //            error = true;
+        //            break;
+        //        }
+
+        //        var almacenado = resultado[0];
+
+        //        //Comparamos los valores
+        //        if (almacenado.horizontal_941lp != dvCalculado.horizontal_941lp ||
+        //            almacenado.vertical_941lp != dvCalculado.vertical_941lp)
+        //        {
+        //            error = true;
+        //            break;
+        //        }
+        //    }
+
+        //    return error;
+        //}
 
         public List<DigitoVerificador_941lp> RetornarDigitos_941lp()
         {
