@@ -64,6 +64,9 @@ namespace GUI
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
             AplicarTraduccion_941lp();
             MostrarCambios_941lp(bllBitacoraCambios_941lp.RetornarCambios_941lp());
+            MostrarCambios_941lp(bllBitacoraCambios_941lp.RetornarCambios_941lp());
+            LlenarComboBox_941lp(bllBitacoraCambios_941lp.RetornarCambios_941lp(), comboBoxCodigo, ex => ex.codMedicamento_941lp);
+            LlenarComboBox_941lp(bllBitacoraCambios_941lp.RetornarCambios_941lp(), comboBoxComercial, ex => ex.nombreComercial_941lp);
         }
 
         private void btnActivar_Click(object sender, EventArgs e)

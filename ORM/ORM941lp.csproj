@@ -72,6 +72,7 @@
     <Compile Include="ormPerfil_941lp.cs" />
     <Compile Include="ormPermiso_941lp.cs" />
     <Compile Include="ormRegistroAnimales_941lp.cs" />
+    <Compile Include="ormReporteAdopciones_941lp.cs" />
     <Compile Include="ormUsuario_941lp.cs" />
     <Compile Include="ParametroHelper_941lp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

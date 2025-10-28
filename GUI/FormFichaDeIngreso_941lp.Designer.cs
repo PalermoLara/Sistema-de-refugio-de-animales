@@ -100,7 +100,7 @@
             this.labelMedicamento.Location = new System.Drawing.Point(1324, 538);
             this.labelMedicamento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMedicamento.Name = "labelMedicamento";
-            this.labelMedicamento.Size = new System.Drawing.Size(41, 17);
+            this.labelMedicamento.Size = new System.Drawing.Size(76, 31);
             this.labelMedicamento.TabIndex = 23;
             this.labelMedicamento.Text = "Zona";
             // 
@@ -119,7 +119,7 @@
             this.labelDieta.Location = new System.Drawing.Point(1324, 460);
             this.labelDieta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDieta.Name = "labelDieta";
-            this.labelDieta.Size = new System.Drawing.Size(122, 17);
+            this.labelDieta.Size = new System.Drawing.Size(229, 31);
             this.labelDieta.TabIndex = 21;
             this.labelDieta.Text = "Razón de entrega";
             // 
@@ -340,7 +340,7 @@
             this.groupBoxFiltro.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxFiltro.Name = "groupBoxFiltro";
             this.groupBoxFiltro.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBoxFiltro.Size = new System.Drawing.Size(551, 106);
+            this.groupBoxFiltro.Size = new System.Drawing.Size(621, 106);
             this.groupBoxFiltro.TabIndex = 46;
             this.groupBoxFiltro.TabStop = false;
             this.groupBoxFiltro.Text = "Buscar fichas por:";
@@ -353,7 +353,7 @@
             this.rbTodos.Location = new System.Drawing.Point(460, 50);
             this.rbTodos.Margin = new System.Windows.Forms.Padding(6);
             this.rbTodos.Name = "rbTodos";
-            this.rbTodos.Size = new System.Drawing.Size(71, 24);
+            this.rbTodos.Size = new System.Drawing.Size(138, 41);
             this.rbTodos.TabIndex = 2;
             this.rbTodos.TabStop = true;
             this.rbTodos.Text = "Todos";
@@ -366,7 +366,7 @@
             this.rbCedente.Location = new System.Drawing.Point(260, 48);
             this.rbCedente.Margin = new System.Windows.Forms.Padding(6);
             this.rbCedente.Name = "rbCedente";
-            this.rbCedente.Size = new System.Drawing.Size(88, 24);
+            this.rbCedente.Size = new System.Drawing.Size(167, 41);
             this.rbCedente.TabIndex = 1;
             this.rbCedente.Text = "Cedente";
             this.rbCedente.UseVisualStyleBackColor = true;
@@ -378,7 +378,7 @@
             this.rbAnimal.Location = new System.Drawing.Point(80, 50);
             this.rbAnimal.Margin = new System.Windows.Forms.Padding(6);
             this.rbAnimal.Name = "rbAnimal";
-            this.rbAnimal.Size = new System.Drawing.Size(75, 24);
+            this.rbAnimal.Size = new System.Drawing.Size(147, 41);
             this.rbAnimal.TabIndex = 0;
             this.rbAnimal.Text = "Animal";
             this.rbAnimal.UseVisualStyleBackColor = true;

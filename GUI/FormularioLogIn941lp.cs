@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ToolTip = System.Windows.Forms.ToolTip;
 
 namespace GUI
 {
@@ -28,6 +30,13 @@ namespace GUI
             bllBitacoraEvento_941lp = new bllBitacoraEventos_941lp();
             bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
             digitoVerificador_941lp = new formDigitoVerificadorError_941lp();
+            ToolTip ttLogin = new ToolTip();
+            ttLogin.SetToolTip(txtNombreUsuario, "Ingrese su nombre de usuario");
+            ttLogin.SetToolTip(txtContraseñaUsuario, "Ingrese su contraseña");
+            ttLogin.SetToolTip(txtNombreUsuario, "Ingrese su nombre de usuario");
+            ttLogin.SetToolTip(btnIniciarSesion, "Presione el botón para iniciar sesión");
+            ttLogin.SetToolTip(txtNombreUsuario, "Ingrese su nombre de usuario");
+            ttLogin.SetToolTip(checkBoxMostrarConstraseña, "Activelo para mostrar la contraseña");
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)

@@ -62,10 +62,9 @@ namespace GUI
             {
                 foreach (Adoptante_941lp c_941lp in adoptantesLista_941lp)
                 {
-                    int intIndex_941lp = dataAdoptantes.Rows.Add(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp, c_941lp.telefono_941lp, c_941lp.edad_941lp, c_941lp.domicilio_941lp, c_941lp.mascotas_941lp, c_941lp.activo_941lp);
-                    if (c_941lp.activo_941lp == false)
+                    if (c_941lp.activo_941lp == true)
                     {
-                        dataAdoptantes.Rows[intIndex_941lp].DefaultCellStyle.BackColor = Color.Red;
+                        int intIndex_941lp = dataAdoptantes.Rows.Add(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp, c_941lp.telefono_941lp, c_941lp.edad_941lp, c_941lp.domicilio_941lp, c_941lp.mascotas_941lp, c_941lp.activo_941lp);
                     }
                 }
             }

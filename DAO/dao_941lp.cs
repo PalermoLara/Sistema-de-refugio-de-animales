@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Configuration;
 using System.Threading.Tasks;
 
 namespace DAO
@@ -14,7 +15,13 @@ namespace DAO
 
         public dao_941lp()
         {
-            connectionString_941lp = "Data Source=.;Initial Catalog=sistAdopcion941lp;Integrated Security=True;";
+            #if DEBUG
+            // Si estás en modo DEBUG, usa la conexión de desarrollo.
+            connectionString_941lp = ConfigurationManager.ConnectionStrings["ConexionDesarrollo"].ConnectionString;
+            #else
+                // Si estás en modo RELEASE (para el instalador), usa la conexión de producción.
+            connectionString_941lp = ConfigurationManager.ConnectionStrings["ConexionProduccion"].ConnectionString;
+            #endif
         }
 
         public List<T> RetornarLista_941lp<T>(string query_941lp, Func<SqlDataReader, T> mapFunc, Dictionary<string, object> parametros_941lp = null)
@@ -74,7 +81,11 @@ namespace DAO
         {
             const string miBase = "sistAdopcion941lp";
 
-            string connectionStringMaster_941lp = "Data Source=.;Initial Catalog=master;Integrated Security=True;";
+            var builder = new SqlConnectionStringBuilder(connectionString_941lp)
+            {
+                InitialCatalog = "master"
+            };
+            string connectionStringMaster_941lp = builder.ConnectionString;
 
             using (SqlConnection connection_941lp = new SqlConnection(connectionStringMaster_941lp))
             {
@@ -108,11 +119,11 @@ namespace DAO
                 {
                     // 2. Matar conexiones abiertas
                     cmd_941lp.CommandText = $@"
-                DECLARE @kill varchar(8000) = '';
-                SELECT @kill = @kill + 'KILL ' + CONVERT(varchar(5), session_id) + ';'
-                FROM sys.dm_exec_sessions
-                WHERE database_id = DB_ID('{miBase}') AND session_id <> @@SPID;
-                EXEC(@kill);";
+                    DECLARE @kill varchar(8000) = '';
+                    SELECT @kill = @kill + 'KILL ' + CONVERT(varchar(5), session_id) + ';'
+                    FROM sys.dm_exec_sessions
+                    WHERE database_id = DB_ID('{miBase}') AND session_id <> @@SPID;
+                    EXEC(@kill);";
                     cmd_941lp.ExecuteNonQuery();
 
                     // 3. Single user

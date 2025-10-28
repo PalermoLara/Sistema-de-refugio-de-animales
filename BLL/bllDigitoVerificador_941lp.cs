@@ -3,6 +3,7 @@ using ORM;
 using SERVICIOS;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,7 @@ namespace BLL
 
             return orm_941lp.CompararDigitos_941lp(dvCalculados_941lp);
         }
+
 
         public DigitoVerificador_941lp DVCedente_941lp()
         {

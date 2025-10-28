@@ -53,13 +53,13 @@
             this.Column5,
             this.Column6,
             this.Column7});
-            this.dataBitacora.Location = new System.Drawing.Point(140, 123);
-            this.dataBitacora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataBitacora.Location = new System.Drawing.Point(280, 131);
+            this.dataBitacora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataBitacora.Name = "dataBitacora";
             this.dataBitacora.ReadOnly = true;
             this.dataBitacora.RowHeadersWidth = 82;
             this.dataBitacora.RowTemplate.Height = 33;
-            this.dataBitacora.Size = new System.Drawing.Size(938, 328);
+            this.dataBitacora.Size = new System.Drawing.Size(1876, 631);
             this.dataBitacora.TabIndex = 0;
             // 
             // Column1
@@ -120,9 +120,10 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(140, 456);
+            this.btnSalir.Location = new System.Drawing.Point(280, 800);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(110, 34);
+            this.btnSalir.Size = new System.Drawing.Size(220, 65);
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -130,13 +131,13 @@
             // 
             // FormBitocoraFichaMedica_941lp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1247, 552);
+            this.ClientSize = new System.Drawing.Size(2375, 966);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dataBitacora);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormBitocoraFichaMedica_941lp";
             this.Text = "FormBitocoraFichaMedica";
             this.Load += new System.EventHandler(this.FormBitocoraFichaMedica_Load);

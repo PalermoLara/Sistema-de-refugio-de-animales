@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -207,6 +209,13 @@ namespace GUI
             try
             {
                 OcultarSubmenus_941lp();
+                string ruta = Path.Combine(Application.StartupPath, "ManualAyuda.pdf");
+
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = ruta,
+                    UseShellExecute = true
+                });
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

@@ -81,7 +81,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(802, 601);
+            this.ClientSize = new System.Drawing.Size(802, 397);
             this.Controls.Add(this.comboBoxIdiomas);
             this.Controls.Add(this.labelCambioDeIdioma);
             this.Controls.Add(this.btnAceptar);

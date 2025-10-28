@@ -63,6 +63,7 @@
     <Compile Include="FichaMedica_941lp.cs" />
     <Compile Include="Medicamento_941lp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteMensualAdopciones_941lp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

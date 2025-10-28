@@ -52,6 +52,25 @@ namespace GUI
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
             AplicarTraduccion_941lp();
             ModoAceptarCancelar_941lp();
+            ToolTip ttAnimales = new ToolTip();
+            string mjsNumero_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_NUMERO_TOOLTIP", "Ingrese el número del medicamento.");
+            ttAnimales.SetToolTip(txtNumero, mjsNumero_941lp);
+            string mjsComercial_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_COMERCIAL_TOOLTIP", "Ingrese el nombre comercial del medicamento.");
+            ttAnimales.SetToolTip(txtNombreComercial, mjsComercial_941lp);
+            string mjsGenerico_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_GENERICO_TOOLTIP", "Ingrese el nombre generico del medicamento.");
+            ttAnimales.SetToolTip(txtNombreGenerico, mjsGenerico_941lp);
+            string mjsForma_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormMedicamentos_941lp", "MSG_FORMA_TOOLTIP", "Ingrese la forma de aplicación del medicamento.");
+            ttAnimales.SetToolTip(comboBoxForma, mjsForma_941lp);
+            string mjsCancelar_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_CANCELAR_TOOLTIP", "Botón para cancelar una operación");
+            ttAnimales.SetToolTip(btnCancelar, mjsCancelar_941lp);
+            string mjsAplicar_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_APLICAR_TOOLTIP", "Botón para llevar a cabo una operación");
+            ttAnimales.SetToolTip(btnAplicar, mjsAplicar_941lp);
+            string mjsSalir_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_SALIR_TOOLTIP", "Botón para volver al menú principal");
+            ttAnimales.SetToolTip(btnSalir, mjsSalir_941lp);
+            string mjsModificar_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_MODIFICAR_TOOLTIP", "Botón para modificar un medicamento");
+            ttAnimales.SetToolTip(btnModificarMedicamento, mjsModificar_941lp);
+            string mjsBaja_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_BAJA_TOOLTIP", "Botón para dar de baja a un medicamento");
+            ttAnimales.SetToolTip(btnBaja, mjsBaja_941lp);
         }
 
         enum ModoOperacion_941lp

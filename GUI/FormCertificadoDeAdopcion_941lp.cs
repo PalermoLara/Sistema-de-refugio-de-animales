@@ -19,6 +19,7 @@ namespace GUI
         bllRegistroAnimales_941lp bllRegistroAnimales_941lp;
         bllAdoptantes_941lp bllAdoptantes_941lp;
         bllDigitoVerificador_941lp bllDigitoVerificador_941Lp;
+        bllReporte_941lp bllReporte_941Lp;
         ModoOperacion_941lp modo_941lp;
         public FormCertificadoDeAdopcion_941lp()
         {
@@ -27,6 +28,7 @@ namespace GUI
             bllRegistroAnimales_941lp = new bllRegistroAnimales_941lp();
             bllAdoptantes_941lp = new bllAdoptantes_941lp();
             bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
+            bllReporte_941Lp = new bllReporte_941lp();
         }
 
         private void FormCertificadoDeAdopcion_941lp_Load(object sender, EventArgs e)
@@ -63,10 +65,10 @@ namespace GUI
             dataAnimales.Rows.Clear();
             foreach (Animal_941lp a_941lp in animalLista_941lp)
             {
-                int rowIdex_941lp = dataAnimales.Rows.Add(a_941lp.codigoAnimal_941lp, a_941lp.especie_941lp, a_941lp.raza_941lp, a_941lp.nombre_941lp, a_941lp.tamaño_941lp, a_941lp.sexo_941lp, a_941lp.estadoAdopcion_941lp, a_941lp.vivo_941lp);
-                if (a_941lp.vivo_941lp == false)
+                if (a_941lp.vivo_941lp == true)
                 {
-                    dataAnimales.Rows[rowIdex_941lp].DefaultCellStyle.BackColor = Color.Red;
+                    int rowIdex_941lp = dataAnimales.Rows.Add(a_941lp.codigoAnimal_941lp, a_941lp.especie_941lp, a_941lp.raza_941lp, a_941lp.nombre_941lp, a_941lp.tamaño_941lp, a_941lp.sexo_941lp, a_941lp.estadoAdopcion_941lp, a_941lp.vivo_941lp);
+                  
                 }
             }
         }
@@ -78,10 +80,9 @@ namespace GUI
             {
                 foreach (Adoptante_941lp c_941lp in adoptantesLista_941lp)
                 {
-                    int intIndex_941lp = dataAdoptantes.Rows.Add(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp, c_941lp.telefono_941lp, c_941lp.edad_941lp, c_941lp.domicilio_941lp, c_941lp.mascotas_941lp, c_941lp.activo_941lp);
-                    if (c_941lp.activo_941lp == false)
+                    if (c_941lp.activo_941lp == true)
                     {
-                        dataAdoptantes.Rows[intIndex_941lp].DefaultCellStyle.BackColor = Color.Red;
+                        int intIndex_941lp = dataAdoptantes.Rows.Add(c_941lp.dni_941lp, c_941lp.nombre_941lp, c_941lp.apellido_941lp, c_941lp.telefono_941lp, c_941lp.edad_941lp, c_941lp.domicilio_941lp, c_941lp.mascotas_941lp, c_941lp.activo_941lp);
                     }
                 }
             }
@@ -233,6 +234,11 @@ namespace GUI
                 if (bllAdoptantes_941lp.VerificarAdoptanteVivo_941lp(Convert.ToBoolean(dataAnimales.SelectedRows[0].Cells[7].Value)) == false) throw new Exception(exception1_941lp);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnReporteInteligente_Click(object sender, EventArgs e)
+        {
+            bllReporte_941Lp.GenerarReportePDF_941lp();
         }
     }
 }

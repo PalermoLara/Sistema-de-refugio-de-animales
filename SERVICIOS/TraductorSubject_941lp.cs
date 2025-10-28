@@ -28,23 +28,45 @@ namespace SERVICIOS
 
         private void CargarTraduccionesDesdeJson_941lp()
         {
-            string path_941lp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "traducciones.json");
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string appPath = Path.Combine(appDataPath, "WiskerWare");
+            Directory.CreateDirectory(appPath); // Aseguramos que la carpeta exista
+            string path_941lp = Path.Combine(appPath, "traducciones.json");
 
+            // 2. 🔹 LÓGICA DE PRIMER ARRANQUE
+            // Si el archivo no existe en AppData, lo copiamos desde la carpeta de instalación.
             if (!File.Exists(path_941lp))
             {
-                traducciones_941lp = new Dictionary<string, Dictionary<string, Dictionary<string, string>>>();
-                GuardarJson_941lp();
+                string sourcePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "traducciones.json");
+                if (File.Exists(sourcePath))
+                {
+                    File.Copy(sourcePath, path_941lp);
+                }
+            }
+
+            // 3. 🔹 AHORA LEEMOS DESDE APPDATA
+            if (File.Exists(path_941lp))
+            {
+                string json_941lp = File.ReadAllText(path_941lp);
+                traducciones_941lp = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, Dictionary<string, string>>>>(json_941lp);
             }
             else
             {
-                string json_941lp = File.ReadAllText(path_941lp);
-                traducciones_941lp = JsonConvert.DeserializeObject< Dictionary<string, Dictionary<string, Dictionary<string, string>>>>(json_941lp);
+                // Si no existe en ningún lado, empezamos con un diccionario vacío.
+                traducciones_941lp = new Dictionary<string, Dictionary<string, Dictionary<string, string>>>();
+                GuardarJson_941lp(); // Esto lo creará en la carpeta AppData gracias al cambio que ya hicimos en Guardar.
             }
         }
 
         private void GuardarJson_941lp()
         {
-            string path_941lp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "traducciones.json");
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string appPath = Path.Combine(appDataPath, "WiskerWare");
+            Directory.CreateDirectory(appPath); // Nos aseguramos de que la carpeta exista
+
+            string path_941lp = Path.Combine(appPath, "traducciones.json");
+
+            // El resto de tu código no cambia.
             string json_941lp = JsonConvert.SerializeObject(traducciones_941lp, Formatting.Indented);
             File.WriteAllText(path_941lp, json_941lp);
         }

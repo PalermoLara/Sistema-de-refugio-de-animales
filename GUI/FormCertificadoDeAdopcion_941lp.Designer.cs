@@ -61,6 +61,10 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnReporteInteligente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataCertificado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataAdoptantes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
@@ -81,12 +85,13 @@
             this.Column10,
             this.Column11,
             this.Column12});
-            this.dataCertificado.Location = new System.Drawing.Point(12, 12);
+            this.dataCertificado.Location = new System.Drawing.Point(11, 27);
+            this.dataCertificado.Margin = new System.Windows.Forms.Padding(2);
             this.dataCertificado.Name = "dataCertificado";
             this.dataCertificado.ReadOnly = true;
             this.dataCertificado.RowHeadersWidth = 82;
             this.dataCertificado.RowTemplate.Height = 33;
-            this.dataCertificado.Size = new System.Drawing.Size(1739, 318);
+            this.dataCertificado.Size = new System.Drawing.Size(870, 165);
             this.dataCertificado.TabIndex = 97;
             // 
             // Column1
@@ -164,10 +169,10 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(1315, 805);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSalir.Location = new System.Drawing.Point(663, 471);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(436, 58);
+            this.btnSalir.Size = new System.Drawing.Size(218, 30);
             this.btnSalir.TabIndex = 96;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -187,12 +192,13 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            this.dataAdoptantes.Location = new System.Drawing.Point(12, 336);
+            this.dataAdoptantes.Location = new System.Drawing.Point(11, 227);
+            this.dataAdoptantes.Margin = new System.Windows.Forms.Padding(2);
             this.dataAdoptantes.Name = "dataAdoptantes";
             this.dataAdoptantes.ReadOnly = true;
             this.dataAdoptantes.RowHeadersWidth = 82;
             this.dataAdoptantes.RowTemplate.Height = 33;
-            this.dataAdoptantes.Size = new System.Drawing.Size(1279, 334);
+            this.dataAdoptantes.Size = new System.Drawing.Size(640, 174);
             this.dataAdoptantes.TabIndex = 95;
             // 
             // dataGridViewTextBoxColumn1
@@ -262,10 +268,10 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(1315, 720);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelar.Location = new System.Drawing.Point(663, 426);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(436, 58);
+            this.btnCancelar.Size = new System.Drawing.Size(218, 30);
             this.btnCancelar.TabIndex = 94;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -274,10 +280,10 @@
             // btnAplicar
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(1314, 638);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAplicar.Location = new System.Drawing.Point(663, 369);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(436, 62);
+            this.btnAplicar.Size = new System.Drawing.Size(218, 32);
             this.btnAplicar.TabIndex = 93;
             this.btnAplicar.Text = "Aplicar";
             this.btnAplicar.UseVisualStyleBackColor = true;
@@ -286,10 +292,10 @@
             // btnModificarEvaluacion
             // 
             this.btnModificarEvaluacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarEvaluacion.Location = new System.Drawing.Point(1315, 554);
-            this.btnModificarEvaluacion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModificarEvaluacion.Location = new System.Drawing.Point(663, 305);
+            this.btnModificarEvaluacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificarEvaluacion.Name = "btnModificarEvaluacion";
-            this.btnModificarEvaluacion.Size = new System.Drawing.Size(436, 59);
+            this.btnModificarEvaluacion.Size = new System.Drawing.Size(218, 31);
             this.btnModificarEvaluacion.TabIndex = 92;
             this.btnModificarEvaluacion.Text = "Modificar ";
             this.btnModificarEvaluacion.UseVisualStyleBackColor = true;
@@ -298,10 +304,10 @@
             // btnGenerarCertificado
             // 
             this.btnGenerarCertificado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarCertificado.Location = new System.Drawing.Point(1312, 420);
-            this.btnGenerarCertificado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGenerarCertificado.Location = new System.Drawing.Point(663, 227);
+            this.btnGenerarCertificado.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerarCertificado.Name = "btnGenerarCertificado";
-            this.btnGenerarCertificado.Size = new System.Drawing.Size(436, 108);
+            this.btnGenerarCertificado.Size = new System.Drawing.Size(218, 56);
             this.btnGenerarCertificado.TabIndex = 90;
             this.btnGenerarCertificado.Text = "Generar certificado de adopción";
             this.btnGenerarCertificado.UseVisualStyleBackColor = true;
@@ -321,13 +327,13 @@
             this.Column6,
             this.Column7,
             this.Column8});
-            this.dataAnimales.Location = new System.Drawing.Point(12, 687);
-            this.dataAnimales.Margin = new System.Windows.Forms.Padding(4);
+            this.dataAnimales.Location = new System.Drawing.Point(11, 426);
+            this.dataAnimales.Margin = new System.Windows.Forms.Padding(2);
             this.dataAnimales.Name = "dataAnimales";
             this.dataAnimales.ReadOnly = true;
             this.dataAnimales.RowHeadersWidth = 82;
             this.dataAnimales.RowTemplate.Height = 33;
-            this.dataAnimales.Size = new System.Drawing.Size(1279, 329);
+            this.dataAnimales.Size = new System.Drawing.Size(640, 171);
             this.dataAnimales.TabIndex = 98;
             // 
             // dataGridViewTextBoxColumn10
@@ -394,12 +400,55 @@
             this.Column8.ReadOnly = true;
             this.Column8.Width = 200;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 13);
+            this.label1.TabIndex = 99;
+            this.label1.Text = "Certificados de adopción:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 411);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 100;
+            this.label2.Text = "Animales:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 212);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.TabIndex = 101;
+            this.label3.Text = "Adoptantes:";
+            // 
+            // btnReporteInteligente
+            // 
+            this.btnReporteInteligente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteInteligente.Location = new System.Drawing.Point(663, 541);
+            this.btnReporteInteligente.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReporteInteligente.Name = "btnReporteInteligente";
+            this.btnReporteInteligente.Size = new System.Drawing.Size(218, 56);
+            this.btnReporteInteligente.TabIndex = 102;
+            this.btnReporteInteligente.Text = "Generar reporte inteligente";
+            this.btnReporteInteligente.UseVisualStyleBackColor = true;
+            this.btnReporteInteligente.Click += new System.EventHandler(this.btnReporteInteligente_Click);
+            // 
             // FormCertificadoDeAdopcion_941lp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1834, 1051);
+            this.ClientSize = new System.Drawing.Size(1295, 655);
+            this.Controls.Add(this.btnReporteInteligente);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataAnimales);
             this.Controls.Add(this.dataCertificado);
             this.Controls.Add(this.btnSalir);
@@ -408,6 +457,7 @@
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.btnModificarEvaluacion);
             this.Controls.Add(this.btnGenerarCertificado);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormCertificadoDeAdopcion_941lp";
             this.Text = "FormCertificadoDeAdopcion_941lp";
             this.Load += new System.EventHandler(this.FormCertificadoDeAdopcion_941lp_Load);
@@ -415,6 +465,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataAdoptantes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -453,5 +504,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnReporteInteligente;
     }
 }

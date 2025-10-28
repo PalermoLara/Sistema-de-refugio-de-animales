@@ -60,7 +60,39 @@ namespace GUI
             HabilitarBotones_941lp();
             TraductorSubject_941lp.Instancia_941lp.Suscribir_941lp(this);
             AplicarTraduccion_941lp();
+            ToolTip ttAnimales = new ToolTip();
+            string mjsEspecie_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ESPECIE_TOOLTIP", "Ingrese la especie del animal");
+            ttAnimales.SetToolTip(txtEspecie, mjsEspecie_941lp);
+            string mjsRaza_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_RAZA_TOOLTIP", "Ingrese la raza del animal");
+            ttAnimales.SetToolTip(txtRaza, mjsRaza_941lp);
+            string mjsNombre_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_NOMBRE_TOOLTIP", "Ingrese el nombre del animal");
+            ttAnimales.SetToolTip(txtNombre, mjsNombre_941lp);
+            string mjsTamaño_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_RAZA_TOOLTIP", "Ingrese el tamaño del animal");
+            ttAnimales.SetToolTip(comboBoxTamaño, mjsTamaño_941lp);
+            string mjsSexo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_SEXO_TOOLTIP", "Ingrese el sexo del animal");
+            ttAnimales.SetToolTip(comboBoxSexo, mjsSexo_941lp);
+            string mjsVivo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_VIVO_TOOLTIP", "Ingrese el estado del animal");
+            ttAnimales.SetToolTip(comboBoxVivo, mjsVivo_941lp);
+            string mjsCodigo_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_CODIGO_TOOLTIP", "Ingrese el código del animal");
+            ttAnimales.SetToolTip(txtCodigo, mjsCodigo_941lp);
+            string mjsGrilla_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_RAZA_TOOLTIP", "Grilla con información del animal");
+            ttAnimales.SetToolTip(dataAnimales, mjsGrilla_941lp);
+            string mjsAlta_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_ALTA_TOOLTIP", "Botón para dar de alta a un animal");
+            ttAnimales.SetToolTip(btnAltaAnimal, mjsAlta_941lp);
+            string mjsCancelar_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_CANCELAR_TOOLTIP", "Botón para cancelar una operación");
+            ttAnimales.SetToolTip(btnCancelar, mjsCancelar_941lp);
+            string mjsAplicar_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_APLICAR_TOOLTIP", "Botón para llevar a cabo una operación");
+            ttAnimales.SetToolTip(btnAplicar, mjsAplicar_941lp);
+            string mjsSalir_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_SALIR_TOOLTIP", "Botón para volver al menú principal");
+            ttAnimales.SetToolTip(btnSalir, mjsSalir_941lp);
+            string mjsModificar_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_MODIFICAR_TOOLTIP", "Botón para modificar un animal");
+            ttAnimales.SetToolTip(btnModificarAnimal, mjsModificar_941lp);
+            string mjsBaja_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_BAJA_TOOLTIP", "Botón para dar de baja a un animal");
+            ttAnimales.SetToolTip(btnBaja, mjsBaja_941lp);
+            string mjsReingreso_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormRegistroAnimales_941lp", "MSG_REINGRESO_TOOLTIP", "Botón para el reingreso de un animal");
+            ttAnimales.SetToolTip(btnReingreso, mjsReingreso_941lp);
         }
+
 
         private void MostrarDataAnimales_941lp(List<Animal_941lp> animalLista_941lp)
         {
