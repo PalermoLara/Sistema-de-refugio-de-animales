@@ -33,14 +33,14 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnActivar = new System.Windows.Forms.Button();
-            this.dateTimePickerInicio = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxCodigo = new System.Windows.Forms.ComboBox();
             this.comboBoxComercial = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerInicio = new System.Windows.Forms.DateTimePicker();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,24 +116,6 @@
             this.btnActivar.UseVisualStyleBackColor = true;
             this.btnActivar.Click += new System.EventHandler(this.btnActivar_Click);
             // 
-            // dateTimePickerInicio
-            // 
-            this.dateTimePickerInicio.Location = new System.Drawing.Point(51, 542);
-            this.dateTimePickerInicio.MaxDate = new System.DateTime(2025, 10, 22, 0, 0, 0, 0);
-            this.dateTimePickerInicio.Name = "dateTimePickerInicio";
-            this.dateTimePickerInicio.Size = new System.Drawing.Size(503, 31);
-            this.dateTimePickerInicio.TabIndex = 5;
-            this.dateTimePickerInicio.Value = new System.DateTime(2025, 10, 22, 0, 0, 0, 0);
-            // 
-            // dateTimePickerFin
-            // 
-            this.dateTimePickerFin.Location = new System.Drawing.Point(51, 651);
-            this.dateTimePickerFin.MaxDate = new System.DateTime(2025, 10, 22, 16, 1, 15, 0);
-            this.dateTimePickerFin.Name = "dateTimePickerFin";
-            this.dateTimePickerFin.Size = new System.Drawing.Size(503, 31);
-            this.dateTimePickerFin.TabIndex = 6;
-            this.dateTimePickerFin.Value = new System.DateTime(2025, 10, 22, 0, 0, 0, 0);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -187,6 +169,20 @@
             this.label4.Size = new System.Drawing.Size(191, 25);
             this.label4.TabIndex = 12;
             this.label4.Text = "Nombre comercial:";
+            // 
+            // dateTimePickerFin
+            // 
+            this.dateTimePickerFin.Location = new System.Drawing.Point(51, 651);
+            this.dateTimePickerFin.Name = "dateTimePickerFin";
+            this.dateTimePickerFin.Size = new System.Drawing.Size(503, 31);
+            this.dateTimePickerFin.TabIndex = 13;
+            // 
+            // dateTimePickerInicio
+            // 
+            this.dateTimePickerInicio.Location = new System.Drawing.Point(51, 544);
+            this.dateTimePickerInicio.Name = "dateTimePickerInicio";
+            this.dateTimePickerInicio.Size = new System.Drawing.Size(498, 31);
+            this.dateTimePickerInicio.TabIndex = 14;
             // 
             // Column1
             // 
@@ -246,7 +242,7 @@
             // 
             // Column9
             // 
-            this.Column9.HeaderText = "Medicamento disponible";
+            this.Column9.HeaderText = "Medicamento vencido";
             this.Column9.MinimumWidth = 10;
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
@@ -266,14 +262,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1847, 768);
+            this.Controls.Add(this.dateTimePickerInicio);
+            this.Controls.Add(this.dateTimePickerFin);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxComercial);
             this.Controls.Add(this.comboBoxCodigo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePickerFin);
-            this.Controls.Add(this.dateTimePickerInicio);
             this.Controls.Add(this.btnActivar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnLimpiar);
@@ -295,14 +291,14 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnActivar;
-        private System.Windows.Forms.DateTimePicker dateTimePickerInicio;
-        private System.Windows.Forms.DateTimePicker dateTimePickerFin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxCodigo;
         private System.Windows.Forms.ComboBox comboBoxComercial;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFin;
+        private System.Windows.Forms.DateTimePicker dateTimePickerInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

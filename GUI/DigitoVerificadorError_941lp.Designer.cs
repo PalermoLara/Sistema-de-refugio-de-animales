@@ -32,8 +32,8 @@
             this.btnRestore_941lp = new System.Windows.Forms.Button();
             this.btnSalir_941lp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnRecalcular
@@ -78,15 +78,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "INCONSISTENCIA EN LA BASE DE DATOS";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(358, 387);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(623, 143);
-            this.textBox1.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -96,14 +87,23 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Tablas con incosistencias:";
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(358, 401);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(623, 139);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
+            // 
             // formDigitoVerificadorError_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1443, 715);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSalir_941lp);
             this.Controls.Add(this.btnRestore_941lp);
@@ -122,7 +122,7 @@
         private System.Windows.Forms.Button btnRestore_941lp;
         private System.Windows.Forms.Button btnSalir_941lp;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

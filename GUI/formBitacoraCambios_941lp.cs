@@ -109,6 +109,14 @@ namespace GUI
                 if (comboBoxComercial.SelectedItem != null)
                     filtros_941lp.Add("nombreComercial_941lp", comboBoxComercial.SelectedItem.ToString());
 
+                if(dateTimePickerFin.Value.Date > DateTime.Today.Date)
+                {
+                    dateTimePickerInicio.Value = DateTime.Today;
+                    dateTimePickerFin.Value = DateTime.Today;
+                    string mensaje4_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("formBitacoraCambios_941lp", "MSG_FECHA_FIN_ERROR", "La fecha de fin no puede ser mayor a la fecha actual");
+                    throw new Exception(mensaje4_941lp);
+                }
+
                 if (dateTimePickerInicio.Value.Date <= dateTimePickerFin.Value.Date)
                 {
                     filtros_941lp.Add("fechaInicio_941lp", dateTimePickerInicio.Value.Date);

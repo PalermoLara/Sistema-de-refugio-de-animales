@@ -80,7 +80,7 @@ namespace GUI
         {
             foreach(var s_941lp in bllDigitoVerificador_941Lp.MostrarInconsistencias_941lp())
             {
-                textBox1.Text = s_941lp.ToString();
+                richTextBox1.Text += $"{s_941lp}\n";
             }
         }
     }
