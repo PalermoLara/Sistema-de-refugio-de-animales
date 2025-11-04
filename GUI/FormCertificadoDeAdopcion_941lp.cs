@@ -155,6 +155,8 @@ namespace GUI
                         MessageBox.Show(mensaje_941lp);
                         break;
                     case ModoOperacion_941lp.Modificar:
+                        string mensaje7_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCertificadoDeAdopcion_941lp", "MSG_CERTIFICADO_EXISTENTE", "Ya existe un certificado");
+                        if (bllCertificado_941lp.VerificarExistencia_941lp(dataAdoptantes.SelectedRows[0].Cells[0].Value.ToString(), Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value))) throw new Exception(mensaje7_941lp);
                         bllCertificado_941lp.Modificar_941lp(dataCertificado.SelectedRows[0].Cells[0].Value.ToString(), dataAdoptantes.SelectedRows[0].Cells[0].Value.ToString(), Convert.ToInt32(dataAnimales.SelectedRows[0].Cells[0].Value), dataAnimales.SelectedRows[0].Cells[1].Value.ToString(), dataAnimales.SelectedRows[0].Cells[2].Value.ToString(), dataAnimales.SelectedRows[0].Cells[3].Value.ToString(), dataAdoptantes.SelectedRows[0].Cells[1].Value.ToString(), dataAdoptantes.SelectedRows[0].Cells[2].Value.ToString());
                         string mensaje1_941lp = TraductorHelper_941lp.TraducirMensaje_941lp("FormCertificadoDeAdopcion_941lp", "MSG_CERTIFICADO_MODIFICADO_EXITOSAMENTE", "Certificado modificada exitosamente");
                         MessageBox.Show(mensaje1_941lp);
