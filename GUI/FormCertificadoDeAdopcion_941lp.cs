@@ -29,10 +29,12 @@ namespace GUI
             bllAdoptantes_941lp = new bllAdoptantes_941lp();
             bllDigitoVerificador_941Lp = new bllDigitoVerificador_941lp();
             bllReporte_941Lp = new bllReporte_941lp();
+            btnModificarEvaluacion.Hide();
         }
 
         private void FormCertificadoDeAdopcion_941lp_Load(object sender, EventArgs e)
         {
+            btnModificarEvaluacion.Hide();
             dataCertificado.MultiSelect = false;
             dataCertificado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataCertificado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -166,6 +168,7 @@ namespace GUI
                         MessageBox.Show(mensaje2_941lp);
                         break;
                 }
+                btnModificarEvaluacion.Hide();
                 bllDigitoVerificador_941Lp.CalcularDVCertificadoAdopcion_941lp();
                 MostrarGrillaCertificado_941lp(bllCertificado_941lp.RetornarCertificado_941lp());
                 ModoAceptarCancelar_941lp();
@@ -178,6 +181,7 @@ namespace GUI
             try
             {
                 ModoAceptarCancelar_941lp();
+                btnModificarEvaluacion.Hide();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -205,6 +209,7 @@ namespace GUI
 
         private void VisibilidadDeBotones_941lp()
         {
+            btnModificarEvaluacion.Hide();
             btnGenerarCertificado.Enabled = false;
             btnModificarEvaluacion.Enabled = false;
             btnSalir.Enabled = true;
@@ -222,6 +227,7 @@ namespace GUI
             btnModificarEvaluacion.Enabled = true;
             btnSalir.Enabled = true;
             AplicarColorControles_941lp();
+            btnModificarEvaluacion.Hide();
         }
 
         private void btnModificarEvaluacion_Click(object sender, EventArgs e)

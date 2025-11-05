@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace DAO
 {
@@ -17,11 +18,27 @@ namespace DAO
         {
             #if DEBUG
             // Si estás en modo DEBUG, usa la conexión de desarrollo.
-            connectionString_941lp = ConfigurationManager.ConnectionStrings["ConexionDesarrollo"].ConnectionString;
+            connectionString_941lp = ObtenerCadenaConexionDesarrollo_941lp();
             #else
                 // Si estás en modo RELEASE (para el instalador), usa la conexión de producción.
-            connectionString_941lp = ConfigurationManager.ConnectionStrings["ConexionProduccion"].ConnectionString;
+            connectionString_941lp = ObtenerCadenaConexionProduccion_941lp();
             #endif
+        }
+
+        private static string ObtenerCadenaConexionProduccion_941lp()
+        {
+            string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dao.config");
+            var configMap = new ExeConfigurationFileMap { ExeConfigFilename = ruta };
+            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+            return config.ConnectionStrings.ConnectionStrings["ConexionProduccion"].ConnectionString;
+        }
+
+        private static string ObtenerCadenaConexionDesarrollo_941lp()
+        {
+            string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dao.config");
+            var configMap = new ExeConfigurationFileMap { ExeConfigFilename = ruta };
+            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+            return config.ConnectionStrings.ConnectionStrings["ConexionDesarrollo"].ConnectionString;
         }
 
         public List<T> RetornarLista_941lp<T>(string query_941lp, Func<SqlDataReader, T> mapFunc, Dictionary<string, object> parametros_941lp = null)
