@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -67,6 +68,12 @@ namespace GUI
         public void ActualizarTraduccion_941lp(string idioma_941lp)
         {
             AplicarTraduccion_941lp();
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            string url = "https://docs.google.com/document/d/1j5AR3nS1CD2I-xyaW_7rPCf6-4WdFzHvhaq5q_U_rDQ/edit?tab=t.0#heading=h.ibo8j6jwafdg";
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
     }
 }

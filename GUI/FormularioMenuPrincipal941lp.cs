@@ -72,6 +72,9 @@ namespace GUI
         {
             TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
             base.OnFormClosed(e);
+            sessionManager941lp.Gestor_941lp.UnsetUsuario_941lp();
+
+            GestorFormulario941lp.gestorFormSG_941lp.DefinirEstado_941lp(new EstadoLogIn941lp());
         }
 
         private void InicializarSubmenus_941lp()
@@ -208,14 +211,8 @@ namespace GUI
         {
             try
             {
-                OcultarSubmenus_941lp();
-                string ruta = Path.Combine(Application.StartupPath, "ManualAyuda.pdf");
-
-                Process.Start(new ProcessStartInfo()
-                {
-                    FileName = ruta,
-                    UseShellExecute = true
-                });
+                string url = "https://docs.google.com/document/d/1j5AR3nS1CD2I-xyaW_7rPCf6-4WdFzHvhaq5q_U_rDQ/edit?tab=t.0";
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -330,6 +327,12 @@ namespace GUI
         private void btnBitacoraCambios_Click(object sender, EventArgs e)
         {
             formBitacoraCambios_941Lp.ShowDialog();
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            string url = "https://docs.google.com/document/d/1j5AR3nS1CD2I-xyaW_7rPCf6-4WdFzHvhaq5q_U_rDQ/edit?tab=t.0#heading=h.5u8y9xecq7s";
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
     }
 }

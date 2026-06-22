@@ -65,6 +65,7 @@
             this.btnBaja = new System.Windows.Forms.Button();
             this.comboBoxVivo = new System.Windows.Forms.ComboBox();
             this.labelVivo = new System.Windows.Forms.Label();
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
             this.groupBoxEstadoAdopcion.SuspendLayout();
             this.SuspendLayout();
@@ -194,7 +195,7 @@
             this.labelEspecieRegistro.Location = new System.Drawing.Point(12, 369);
             this.labelEspecieRegistro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEspecieRegistro.Name = "labelEspecieRegistro";
-            this.labelEspecieRegistro.Size = new System.Drawing.Size(132, 31);
+            this.labelEspecieRegistro.Size = new System.Drawing.Size(65, 17);
             this.labelEspecieRegistro.TabIndex = 41;
             this.labelEspecieRegistro.Text = "ESPECIE";
             // 
@@ -216,7 +217,7 @@
             this.labelSexoAnimal.Location = new System.Drawing.Point(14, 581);
             this.labelSexoAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSexoAnimal.Name = "labelSexoAnimal";
-            this.labelSexoAnimal.Size = new System.Drawing.Size(89, 31);
+            this.labelSexoAnimal.Size = new System.Drawing.Size(46, 17);
             this.labelSexoAnimal.TabIndex = 40;
             this.labelSexoAnimal.Text = "SEXO";
             // 
@@ -243,7 +244,7 @@
             this.btnRazaRegistroAnimal.Location = new System.Drawing.Point(14, 419);
             this.btnRazaRegistroAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnRazaRegistroAnimal.Name = "btnRazaRegistroAnimal";
-            this.btnRazaRegistroAnimal.Size = new System.Drawing.Size(87, 31);
+            this.btnRazaRegistroAnimal.Size = new System.Drawing.Size(45, 17);
             this.btnRazaRegistroAnimal.TabIndex = 38;
             this.btnRazaRegistroAnimal.Text = "RAZA";
             // 
@@ -254,7 +255,7 @@
             this.labelTamañoAnimal.Location = new System.Drawing.Point(12, 527);
             this.labelTamañoAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTamañoAnimal.Name = "labelTamañoAnimal";
-            this.labelTamañoAnimal.Size = new System.Drawing.Size(130, 31);
+            this.labelTamañoAnimal.Size = new System.Drawing.Size(67, 17);
             this.labelTamañoAnimal.TabIndex = 35;
             this.labelTamañoAnimal.Text = "TAMAÑO";
             // 
@@ -265,7 +266,7 @@
             this.labelNombreRegistroAnimal.Location = new System.Drawing.Point(14, 471);
             this.labelNombreRegistroAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNombreRegistroAnimal.Name = "labelNombreRegistroAnimal";
-            this.labelNombreRegistroAnimal.Size = new System.Drawing.Size(133, 31);
+            this.labelNombreRegistroAnimal.Size = new System.Drawing.Size(68, 17);
             this.labelNombreRegistroAnimal.TabIndex = 31;
             this.labelNombreRegistroAnimal.Text = "NOMBRE";
             // 
@@ -314,7 +315,7 @@
             this.rbTodos.Location = new System.Drawing.Point(80, 244);
             this.rbTodos.Margin = new System.Windows.Forms.Padding(6);
             this.rbTodos.Name = "rbTodos";
-            this.rbTodos.Size = new System.Drawing.Size(138, 41);
+            this.rbTodos.Size = new System.Drawing.Size(71, 24);
             this.rbTodos.TabIndex = 3;
             this.rbTodos.TabStop = true;
             this.rbTodos.Text = "Todos";
@@ -327,7 +328,7 @@
             this.rbAdoptado.Location = new System.Drawing.Point(80, 181);
             this.rbAdoptado.Margin = new System.Windows.Forms.Padding(6);
             this.rbAdoptado.Name = "rbAdoptado";
-            this.rbAdoptado.Size = new System.Drawing.Size(187, 41);
+            this.rbAdoptado.Size = new System.Drawing.Size(97, 24);
             this.rbAdoptado.TabIndex = 2;
             this.rbAdoptado.Text = "Adoptado";
             this.rbAdoptado.UseVisualStyleBackColor = true;
@@ -339,7 +340,7 @@
             this.rbDisponibleAdopcion.Location = new System.Drawing.Point(80, 115);
             this.rbDisponibleAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.rbDisponibleAdopcion.Name = "rbDisponibleAdopcion";
-            this.rbDisponibleAdopcion.Size = new System.Drawing.Size(197, 41);
+            this.rbDisponibleAdopcion.Size = new System.Drawing.Size(101, 24);
             this.rbDisponibleAdopcion.TabIndex = 1;
             this.rbDisponibleAdopcion.Text = "Disponible";
             this.rbDisponibleAdopcion.UseVisualStyleBackColor = true;
@@ -351,7 +352,7 @@
             this.rbEnEvaluacionAdopcion.Location = new System.Drawing.Point(80, 50);
             this.rbEnEvaluacionAdopcion.Margin = new System.Windows.Forms.Padding(6);
             this.rbEnEvaluacionAdopcion.Name = "rbEnEvaluacionAdopcion";
-            this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(248, 41);
+            this.rbEnEvaluacionAdopcion.Size = new System.Drawing.Size(126, 24);
             this.rbEnEvaluacionAdopcion.TabIndex = 0;
             this.rbEnEvaluacionAdopcion.Text = "En evaluación";
             this.rbEnEvaluacionAdopcion.UseVisualStyleBackColor = true;
@@ -404,7 +405,7 @@
             this.labelEstadoAnimal.Location = new System.Drawing.Point(14, 635);
             this.labelEstadoAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEstadoAnimal.Name = "labelEstadoAnimal";
-            this.labelEstadoAnimal.Size = new System.Drawing.Size(126, 31);
+            this.labelEstadoAnimal.Size = new System.Drawing.Size(65, 17);
             this.labelEstadoAnimal.TabIndex = 48;
             this.labelEstadoAnimal.Text = "ESTADO";
             // 
@@ -415,7 +416,7 @@
             this.labelCodigo.Location = new System.Drawing.Point(18, 881);
             this.labelCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCodigo.Name = "labelCodigo";
-            this.labelCodigo.Size = new System.Drawing.Size(125, 31);
+            this.labelCodigo.Size = new System.Drawing.Size(63, 17);
             this.labelCodigo.TabIndex = 50;
             this.labelCodigo.Text = "CÓDIGO";
             // 
@@ -469,9 +470,19 @@
             this.labelVivo.Location = new System.Drawing.Point(14, 694);
             this.labelVivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelVivo.Name = "labelVivo";
-            this.labelVivo.Size = new System.Drawing.Size(79, 31);
+            this.labelVivo.Size = new System.Drawing.Size(40, 17);
             this.labelVivo.TabIndex = 54;
             this.labelVivo.Text = "VIVO";
+            // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(841, 900);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(90, 62);
+            this.btnAyuda.TabIndex = 56;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
             // 
             // FormRegistroAnimales_941lp
             // 
@@ -479,6 +490,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1548, 974);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.comboBoxVivo);
             this.Controls.Add(this.labelVivo);
             this.Controls.Add(this.btnBaja);
@@ -555,5 +567,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

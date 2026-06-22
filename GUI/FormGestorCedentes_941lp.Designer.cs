@@ -58,6 +58,7 @@
             this.saveFileDialogSerializacion = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataCedentes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -350,12 +351,23 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(596, 865);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(90, 62);
+            this.btnAyuda.TabIndex = 81;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormGestorCedentes_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1652, 1045);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.txtSerializar);
             this.Controls.Add(this.btnDesarializar);
@@ -419,5 +431,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialogSerializacion;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

@@ -47,13 +47,14 @@
             this.btnModificarMedicamento = new System.Windows.Forms.Button();
             this.btnAltaMedicamento = new System.Windows.Forms.Button();
             this.dataMedicamentos = new System.Windows.Forms.DataGridView();
-            this.dateTimePickerVencimiento = new System.Windows.Forms.DateTimePicker();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePickerVencimiento = new System.Windows.Forms.DateTimePicker();
+            this.btnAyuda = new System.Windows.Forms.Button();
             this.groupBoxOrdenamiento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataMedicamentos)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +62,7 @@
             // btnBaja
             // 
             this.btnBaja.Location = new System.Drawing.Point(1118, 573);
-            this.btnBaja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBaja.Margin = new System.Windows.Forms.Padding(4);
             this.btnBaja.Name = "btnBaja";
             this.btnBaja.Size = new System.Drawing.Size(410, 81);
             this.btnBaja.TabIndex = 78;
@@ -88,7 +89,7 @@
             "Oral ",
             "Inyectable"});
             this.comboBoxForma.Location = new System.Drawing.Point(420, 556);
-            this.comboBoxForma.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxForma.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxForma.Name = "comboBoxForma";
             this.comboBoxForma.Size = new System.Drawing.Size(316, 33);
             this.comboBoxForma.TabIndex = 72;
@@ -99,9 +100,9 @@
             this.groupBoxOrdenamiento.Controls.Add(this.rbAscendente);
             this.groupBoxOrdenamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxOrdenamiento.Location = new System.Drawing.Point(1564, 33);
-            this.groupBoxOrdenamiento.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBoxOrdenamiento.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxOrdenamiento.Name = "groupBoxOrdenamiento";
-            this.groupBoxOrdenamiento.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBoxOrdenamiento.Padding = new System.Windows.Forms.Padding(6);
             this.groupBoxOrdenamiento.Size = new System.Drawing.Size(528, 148);
             this.groupBoxOrdenamiento.TabIndex = 70;
             this.groupBoxOrdenamiento.TabStop = false;
@@ -111,7 +112,7 @@
             // 
             this.rbDescendente.AutoSize = true;
             this.rbDescendente.Location = new System.Drawing.Point(80, 102);
-            this.rbDescendente.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rbDescendente.Margin = new System.Windows.Forms.Padding(6);
             this.rbDescendente.Name = "rbDescendente";
             this.rbDescendente.Size = new System.Drawing.Size(168, 24);
             this.rbDescendente.TabIndex = 1;
@@ -124,7 +125,7 @@
             this.rbAscendente.AutoSize = true;
             this.rbAscendente.Checked = true;
             this.rbAscendente.Location = new System.Drawing.Point(80, 48);
-            this.rbAscendente.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rbAscendente.Margin = new System.Windows.Forms.Padding(6);
             this.rbAscendente.Name = "rbAscendente";
             this.rbAscendente.Size = new System.Drawing.Size(159, 24);
             this.rbAscendente.TabIndex = 0;
@@ -136,7 +137,7 @@
             // btnAplicar
             // 
             this.btnAplicar.Location = new System.Drawing.Point(772, 394);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(258, 81);
             this.btnAplicar.TabIndex = 61;
@@ -147,7 +148,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(772, 483);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(258, 81);
             this.btnCancelar.TabIndex = 62;
@@ -158,7 +159,7 @@
             // txtNumero
             // 
             this.txtNumero.Location = new System.Drawing.Point(420, 400);
-            this.txtNumero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(316, 31);
             this.txtNumero.TabIndex = 0;
@@ -177,7 +178,7 @@
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(772, 573);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(258, 81);
             this.btnSalir.TabIndex = 67;
@@ -188,7 +189,7 @@
             // txtNombreGenerico
             // 
             this.txtNombreGenerico.Location = new System.Drawing.Point(420, 504);
-            this.txtNombreGenerico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombreGenerico.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreGenerico.Name = "txtNombreGenerico";
             this.txtNombreGenerico.Size = new System.Drawing.Size(316, 31);
             this.txtNombreGenerico.TabIndex = 3;
@@ -196,7 +197,7 @@
             // txtNombreComercial
             // 
             this.txtNombreComercial.Location = new System.Drawing.Point(420, 450);
-            this.txtNombreComercial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombreComercial.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreComercial.Name = "txtNombreComercial";
             this.txtNombreComercial.Size = new System.Drawing.Size(316, 31);
             this.txtNombreComercial.TabIndex = 1;
@@ -237,7 +238,7 @@
             // btnModificarMedicamento
             // 
             this.btnModificarMedicamento.Location = new System.Drawing.Point(1118, 481);
-            this.btnModificarMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModificarMedicamento.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificarMedicamento.Name = "btnModificarMedicamento";
             this.btnModificarMedicamento.Size = new System.Drawing.Size(410, 81);
             this.btnModificarMedicamento.TabIndex = 65;
@@ -248,7 +249,7 @@
             // btnAltaMedicamento
             // 
             this.btnAltaMedicamento.Location = new System.Drawing.Point(1118, 394);
-            this.btnAltaMedicamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAltaMedicamento.Margin = new System.Windows.Forms.Padding(4);
             this.btnAltaMedicamento.Name = "btnAltaMedicamento";
             this.btnAltaMedicamento.Size = new System.Drawing.Size(410, 81);
             this.btnAltaMedicamento.TabIndex = 64;
@@ -269,7 +270,7 @@
             this.Column6,
             this.Column5});
             this.dataMedicamentos.Location = new System.Drawing.Point(72, 33);
-            this.dataMedicamentos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataMedicamentos.Margin = new System.Windows.Forms.Padding(4);
             this.dataMedicamentos.Name = "dataMedicamentos";
             this.dataMedicamentos.ReadOnly = true;
             this.dataMedicamentos.RowHeadersWidth = 82;
@@ -277,14 +278,6 @@
             this.dataMedicamentos.Size = new System.Drawing.Size(1456, 329);
             this.dataMedicamentos.TabIndex = 58;
             this.dataMedicamentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMedicamentos_CellClick);
-            // 
-            // dateTimePickerVencimiento
-            // 
-            this.dateTimePickerVencimiento.Location = new System.Drawing.Point(420, 665);
-            this.dateTimePickerVencimiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePickerVencimiento.Name = "dateTimePickerVencimiento";
-            this.dateTimePickerVencimiento.Size = new System.Drawing.Size(610, 31);
-            this.dateTimePickerVencimiento.TabIndex = 79;
             // 
             // Column2
             // 
@@ -329,8 +322,28 @@
             // Column5
             // 
             this.Column5.HeaderText = "Activo";
+            this.Column5.MinimumWidth = 10;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Width = 200;
+            // 
+            // dateTimePickerVencimiento
+            // 
+            this.dateTimePickerVencimiento.Location = new System.Drawing.Point(420, 665);
+            this.dateTimePickerVencimiento.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerVencimiento.Name = "dateTimePickerVencimiento";
+            this.dateTimePickerVencimiento.Size = new System.Drawing.Size(610, 31);
+            this.dateTimePickerVencimiento.TabIndex = 79;
+            // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(1564, 300);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(90, 62);
+            this.btnAyuda.TabIndex = 80;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
             // 
             // FormMedicamentos_941lp
             // 
@@ -338,6 +351,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(2164, 923);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.dateTimePickerVencimiento);
             this.Controls.Add(this.btnBaja);
             this.Controls.Add(this.labelEstadoAnimal);
@@ -356,7 +370,7 @@
             this.Controls.Add(this.btnModificarMedicamento);
             this.Controls.Add(this.btnAltaMedicamento);
             this.Controls.Add(this.dataMedicamentos);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMedicamentos_941lp";
             this.Text = "FormMedicamentos";
             this.Load += new System.EventHandler(this.FormMedicamentos_941lp_Load);
@@ -395,5 +409,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

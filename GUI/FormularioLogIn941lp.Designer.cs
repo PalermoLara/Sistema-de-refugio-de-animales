@@ -40,6 +40,7 @@
             this.labelWhiskerWare = new System.Windows.Forms.Label();
             this.checkBoxMostrarConstraseña = new System.Windows.Forms.CheckBox();
             this.toolTipLogin = new System.Windows.Forms.ToolTip(this.components);
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,12 +130,23 @@
             this.checkBoxMostrarConstraseña.UseVisualStyleBackColor = true;
             this.checkBoxMostrarConstraseña.CheckedChanged += new System.EventHandler(this.checkBoxMostrarConstraseña_CheckedChanged);
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(488, 504);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(86, 61);
+            this.btnAyuda.TabIndex = 14;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormularioLogIn941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1279, 653);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.checkBoxMostrarConstraseña);
             this.Controls.Add(this.labelWhiskerWare);
             this.Controls.Add(this.labelContraseñaLogIN);
@@ -166,6 +178,7 @@
         private System.Windows.Forms.Label labelWhiskerWare;
         private System.Windows.Forms.CheckBox checkBoxMostrarConstraseña;
         private System.Windows.Forms.ToolTip toolTipLogin;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }
 

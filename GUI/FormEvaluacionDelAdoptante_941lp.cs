@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -294,6 +295,12 @@ namespace GUI
                 txtVivienda.Text = dataEvaluacion.SelectedRows[0].Cells[4].Value.ToString();
                 comboBoxCondicionEco.SelectedItem = dataEvaluacion.SelectedRows[0].Cells[3].Value.ToString() == "Buena" ? comboBoxCondicionEco.SelectedIndex = 0 : comboBoxCondicionEco.SelectedIndex = 1;
             }
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            string url = "https://docs.google.com/document/d/1j5AR3nS1CD2I-xyaW_7rPCf6-4WdFzHvhaq5q_U_rDQ/edit?tab=t.0#heading=h.elu1nj1dvx23";
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
     }
 }

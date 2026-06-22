@@ -35,6 +35,7 @@
             this.labelBackUp = new System.Windows.Forms.Label();
             this.buttonRestoreCarpeta = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRealizarRestore
@@ -110,12 +111,23 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(900, 113);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(90, 66);
+            this.btnAyuda.TabIndex = 109;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormBackUpRestore_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1329, 731);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.buttonRestoreCarpeta);
             this.Controls.Add(this.btnRealizarRestore);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.Label labelBackUp;
         private System.Windows.Forms.Button buttonRestoreCarpeta;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -170,6 +171,12 @@ namespace GUI
         {
             TraductorSubject_941lp.Instancia_941lp.Desuscribir_941lp(this);
             base.OnFormClosed(e);
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            string url = "https://docs.google.com/document/d/1j5AR3nS1CD2I-xyaW_7rPCf6-4WdFzHvhaq5q_U_rDQ/edit?tab=t.0#heading=h.cu5wn45jfcw";
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
     }
 }

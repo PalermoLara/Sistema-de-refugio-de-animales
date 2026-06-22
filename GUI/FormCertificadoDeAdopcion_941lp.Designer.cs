@@ -65,6 +65,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnReporteInteligente = new System.Windows.Forms.Button();
             this.btnModificarEvaluacion = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataCertificado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataAdoptantes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataAnimales)).BeginInit();
@@ -86,7 +87,7 @@
             this.Column11,
             this.Column12});
             this.dataCertificado.Location = new System.Drawing.Point(22, 52);
-            this.dataCertificado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataCertificado.Margin = new System.Windows.Forms.Padding(4);
             this.dataCertificado.Name = "dataCertificado";
             this.dataCertificado.ReadOnly = true;
             this.dataCertificado.RowHeadersWidth = 82;
@@ -169,8 +170,8 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(1326, 906);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Location = new System.Drawing.Point(1326, 885);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(436, 58);
             this.btnSalir.TabIndex = 96;
@@ -193,7 +194,7 @@
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
             this.dataAdoptantes.Location = new System.Drawing.Point(22, 437);
-            this.dataAdoptantes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataAdoptantes.Margin = new System.Windows.Forms.Padding(4);
             this.dataAdoptantes.Name = "dataAdoptantes";
             this.dataAdoptantes.ReadOnly = true;
             this.dataAdoptantes.RowHeadersWidth = 82;
@@ -269,7 +270,7 @@
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(1326, 819);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(436, 58);
             this.btnCancelar.TabIndex = 94;
@@ -281,7 +282,7 @@
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAplicar.Location = new System.Drawing.Point(1326, 710);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(436, 62);
             this.btnAplicar.TabIndex = 93;
@@ -293,7 +294,7 @@
             // 
             this.btnGenerarCertificado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarCertificado.Location = new System.Drawing.Point(1326, 437);
-            this.btnGenerarCertificado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerarCertificado.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerarCertificado.Name = "btnGenerarCertificado";
             this.btnGenerarCertificado.Size = new System.Drawing.Size(436, 108);
             this.btnGenerarCertificado.TabIndex = 90;
@@ -316,7 +317,7 @@
             this.Column7,
             this.Column8});
             this.dataAnimales.Location = new System.Drawing.Point(22, 819);
-            this.dataAnimales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataAnimales.Margin = new System.Windows.Forms.Padding(4);
             this.dataAnimales.Name = "dataAnimales";
             this.dataAnimales.ReadOnly = true;
             this.dataAnimales.RowHeadersWidth = 82;
@@ -411,7 +412,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 408);
+            this.label3.Location = new System.Drawing.Point(24, 408);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 25);
@@ -422,7 +423,7 @@
             // 
             this.btnReporteInteligente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReporteInteligente.Location = new System.Drawing.Point(1326, 1040);
-            this.btnReporteInteligente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReporteInteligente.Margin = new System.Windows.Forms.Padding(4);
             this.btnReporteInteligente.Name = "btnReporteInteligente";
             this.btnReporteInteligente.Size = new System.Drawing.Size(436, 108);
             this.btnReporteInteligente.TabIndex = 102;
@@ -442,12 +443,23 @@
             this.btnModificarEvaluacion.UseVisualStyleBackColor = true;
             this.btnModificarEvaluacion.Click += new System.EventHandler(this.btnModificarEvaluacion_Click);
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(1326, 967);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(436, 66);
+            this.btnAyuda.TabIndex = 103;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormCertificadoDeAdopcion_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(2564, 1260);
+            this.ClientSize = new System.Drawing.Size(2564, 1061);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnReporteInteligente);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -460,7 +472,7 @@
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.btnModificarEvaluacion);
             this.Controls.Add(this.btnGenerarCertificado);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCertificadoDeAdopcion_941lp";
             this.Text = "FormCertificadoDeAdopcion_941lp";
             this.Load += new System.EventHandler(this.FormCertificadoDeAdopcion_941lp_Load);
@@ -511,5 +523,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnReporteInteligente;
         private System.Windows.Forms.Button btnModificarEvaluacion;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

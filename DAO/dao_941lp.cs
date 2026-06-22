@@ -35,7 +35,7 @@ namespace DAO
 
         private static string ObtenerCadenaConexionDesarrollo_941lp()
         {
-            string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dao.config");
+            string ruta = Path.Combine("C:\\Users\\paler\\OneDrive\\Documentos\\facu cuarto año\\campo\\Sistema-de-refugio-de-animales\\DAO", "Dao.config");
             var configMap = new ExeConfigurationFileMap { ExeConfigFilename = ruta };
             Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
             return config.ConnectionStrings.ConnectionStrings["ConexionDesarrollo"].ConnectionString;

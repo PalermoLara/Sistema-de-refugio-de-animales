@@ -37,6 +37,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataBitacora)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             this.Column6,
             this.Column7});
             this.dataBitacora.Location = new System.Drawing.Point(280, 131);
-            this.dataBitacora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataBitacora.Margin = new System.Windows.Forms.Padding(4);
             this.dataBitacora.Name = "dataBitacora";
             this.dataBitacora.ReadOnly = true;
             this.dataBitacora.RowHeadersWidth = 82;
@@ -121,7 +122,7 @@
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(280, 800);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(6);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(220, 65);
             this.btnSalir.TabIndex = 1;
@@ -129,15 +130,26 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(535, 799);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(90, 66);
+            this.btnAyuda.TabIndex = 106;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormBitocoraFichaMedica_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(2375, 966);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dataBitacora);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormBitocoraFichaMedica_941lp";
             this.Text = "FormBitocoraFichaMedica";
             this.Load += new System.EventHandler(this.FormBitocoraFichaMedica_Load);
@@ -157,5 +169,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

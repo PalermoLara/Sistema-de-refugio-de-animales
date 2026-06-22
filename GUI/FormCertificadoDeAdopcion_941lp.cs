@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -247,6 +248,12 @@ namespace GUI
         private void btnReporteInteligente_Click(object sender, EventArgs e)
         {
             bllReporte_941Lp.GenerarReportePDF_941lp();
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            string url = "https://docs.google.com/document/d/1j5AR3nS1CD2I-xyaW_7rPCf6-4WdFzHvhaq5q_U_rDQ/edit?tab=t.0#heading=h.9zadcqrm5u0p";
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
     }
 }

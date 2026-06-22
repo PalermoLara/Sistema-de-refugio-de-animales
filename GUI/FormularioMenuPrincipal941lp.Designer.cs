@@ -59,6 +59,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelWhiskerWare = new System.Windows.Forms.Label();
             this.btnIniciarSesion2 = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
             this.panelMenuPrincipal.SuspendLayout();
             this.panelSubMenuFichas.SuspendLayout();
             this.panelSubMenuMaestro.SuspendLayout();
@@ -430,12 +431,23 @@
             this.btnIniciarSesion2.UseVisualStyleBackColor = true;
             this.btnIniciarSesion2.Click += new System.EventHandler(this.btnIniciarSesion2_Click);
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(708, 0);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(88, 75);
+            this.btnAyuda.TabIndex = 13;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormularioMenuPrincipal941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1666, 1061);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnIniciarSesion2);
             this.Controls.Add(this.labelWhiskerWare);
             this.Controls.Add(this.pictureBox1);
@@ -485,5 +497,6 @@
         private System.Windows.Forms.Button btnCertificado;
         private System.Windows.Forms.Panel panelSubMenuResportes;
         private System.Windows.Forms.Button btnBitacoraCambios;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

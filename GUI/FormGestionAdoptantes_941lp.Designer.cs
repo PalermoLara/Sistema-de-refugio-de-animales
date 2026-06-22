@@ -64,6 +64,7 @@
             this.comboBoxMascota = new System.Windows.Forms.ComboBox();
             this.comboBoxActivo = new System.Windows.Forms.ComboBox();
             this.labelActiva = new System.Windows.Forms.Label();
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataAdoptantes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -218,7 +219,7 @@
             this.labelNombre.Location = new System.Drawing.Point(-320, 324);
             this.labelNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNombre.Name = "labelNombre";
-            this.labelNombre.Size = new System.Drawing.Size(133, 31);
+            this.labelNombre.Size = new System.Drawing.Size(68, 17);
             this.labelNombre.TabIndex = 81;
             this.labelNombre.Text = "NOMBRE";
             this.labelNombre.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -241,7 +242,7 @@
             this.labelDNI.Location = new System.Drawing.Point(-318, 273);
             this.labelDNI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDNI.Name = "labelDNI";
-            this.labelDNI.Size = new System.Drawing.Size(62, 31);
+            this.labelDNI.Size = new System.Drawing.Size(31, 17);
             this.labelDNI.TabIndex = 80;
             this.labelDNI.Text = "DNI";
             // 
@@ -268,7 +269,7 @@
             this.btnApellido.Location = new System.Drawing.Point(-318, 374);
             this.btnApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnApellido.Name = "btnApellido";
-            this.btnApellido.Size = new System.Drawing.Size(147, 31);
+            this.btnApellido.Size = new System.Drawing.Size(75, 17);
             this.btnApellido.TabIndex = 78;
             this.btnApellido.Text = "APELLIDO";
             // 
@@ -279,7 +280,7 @@
             this.labelDireccion.Location = new System.Drawing.Point(-320, 482);
             this.labelDireccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDireccion.Name = "labelDireccion";
-            this.labelDireccion.Size = new System.Drawing.Size(169, 31);
+            this.labelDireccion.Size = new System.Drawing.Size(82, 17);
             this.labelDireccion.TabIndex = 75;
             this.labelDireccion.Text = "DIRECCIÓN";
             // 
@@ -290,7 +291,7 @@
             this.labelTelefono.Location = new System.Drawing.Point(-318, 426);
             this.labelTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTelefono.Name = "labelTelefono";
-            this.labelTelefono.Size = new System.Drawing.Size(161, 31);
+            this.labelTelefono.Size = new System.Drawing.Size(83, 17);
             this.labelTelefono.TabIndex = 72;
             this.labelTelefono.Text = "TELEFONO";
             // 
@@ -420,12 +421,23 @@
             this.labelActiva.TabIndex = 94;
             this.labelActiva.Text = "Activa";
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(1533, 274);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(90, 67);
+            this.btnAyuda.TabIndex = 96;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormGestionAdoptantes_941lp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1635, 821);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.comboBoxActivo);
             this.Controls.Add(this.labelActiva);
             this.Controls.Add(this.comboBoxMascota);
@@ -500,5 +512,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

@@ -58,6 +58,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbActivosConsulta = new System.Windows.Forms.RadioButton();
             this.rbTodosConsulta = new System.Windows.Forms.RadioButton();
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -183,7 +184,7 @@
             this.labelNombreAdministradorUsuarios.Location = new System.Drawing.Point(20, 492);
             this.labelNombreAdministradorUsuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNombreAdministradorUsuarios.Name = "labelNombreAdministradorUsuarios";
-            this.labelNombreAdministradorUsuarios.Size = new System.Drawing.Size(133, 31);
+            this.labelNombreAdministradorUsuarios.Size = new System.Drawing.Size(68, 17);
             this.labelNombreAdministradorUsuarios.TabIndex = 4;
             this.labelNombreAdministradorUsuarios.Text = "NOMBRE";
             // 
@@ -194,7 +195,7 @@
             this.labelRolAdministradorUsuarios.Location = new System.Drawing.Point(20, 600);
             this.labelRolAdministradorUsuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRolAdministradorUsuarios.Name = "labelRolAdministradorUsuarios";
-            this.labelRolAdministradorUsuarios.Size = new System.Drawing.Size(220, 62);
+            this.labelRolAdministradorUsuarios.Size = new System.Drawing.Size(55, 17);
             this.labelRolAdministradorUsuarios.TabIndex = 7;
             this.labelRolAdministradorUsuarios.Text = "PERFIL";
             // 
@@ -205,7 +206,7 @@
             this.labelApellidoAdministradorUsuarios.Location = new System.Drawing.Point(20, 548);
             this.labelApellidoAdministradorUsuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelApellidoAdministradorUsuarios.Name = "labelApellidoAdministradorUsuarios";
-            this.labelApellidoAdministradorUsuarios.Size = new System.Drawing.Size(147, 31);
+            this.labelApellidoAdministradorUsuarios.Size = new System.Drawing.Size(75, 17);
             this.labelApellidoAdministradorUsuarios.TabIndex = 10;
             this.labelApellidoAdministradorUsuarios.Text = "APELLIDO";
             // 
@@ -240,7 +241,7 @@
             this.labelEmailAdministradorUsuarios.Location = new System.Drawing.Point(20, 654);
             this.labelEmailAdministradorUsuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEmailAdministradorUsuarios.Name = "labelEmailAdministradorUsuarios";
-            this.labelEmailAdministradorUsuarios.Size = new System.Drawing.Size(95, 31);
+            this.labelEmailAdministradorUsuarios.Size = new System.Drawing.Size(48, 17);
             this.labelEmailAdministradorUsuarios.TabIndex = 16;
             this.labelEmailAdministradorUsuarios.Text = "EMAIL";
             // 
@@ -291,7 +292,7 @@
             this.labelDniAdministrtadorUsuarios.Location = new System.Drawing.Point(20, 442);
             this.labelDniAdministrtadorUsuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDniAdministrtadorUsuarios.Name = "labelDniAdministrtadorUsuarios";
-            this.labelDniAdministrtadorUsuarios.Size = new System.Drawing.Size(62, 31);
+            this.labelDniAdministrtadorUsuarios.Size = new System.Drawing.Size(31, 17);
             this.labelDniAdministrtadorUsuarios.TabIndex = 21;
             this.labelDniAdministrtadorUsuarios.Text = "DNI";
             // 
@@ -334,7 +335,7 @@
             this.labelModo.Location = new System.Drawing.Point(1056, 710);
             this.labelModo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelModo.Name = "labelModo";
-            this.labelModo.Size = new System.Drawing.Size(149, 44);
+            this.labelModo.Size = new System.Drawing.Size(74, 24);
             this.labelModo.TabIndex = 26;
             this.labelModo.Text = "MODO:";
             // 
@@ -359,7 +360,7 @@
             this.rbActivosConsulta.Location = new System.Drawing.Point(36, 121);
             this.rbActivosConsulta.Margin = new System.Windows.Forms.Padding(6);
             this.rbActivosConsulta.Name = "rbActivosConsulta";
-            this.rbActivosConsulta.Size = new System.Drawing.Size(151, 41);
+            this.rbActivosConsulta.Size = new System.Drawing.Size(78, 24);
             this.rbActivosConsulta.TabIndex = 1;
             this.rbActivosConsulta.TabStop = true;
             this.rbActivosConsulta.Text = "Activos";
@@ -372,11 +373,21 @@
             this.rbTodosConsulta.Location = new System.Drawing.Point(36, 58);
             this.rbTodosConsulta.Margin = new System.Windows.Forms.Padding(6);
             this.rbTodosConsulta.Name = "rbTodosConsulta";
-            this.rbTodosConsulta.Size = new System.Drawing.Size(138, 41);
+            this.rbTodosConsulta.Size = new System.Drawing.Size(71, 24);
             this.rbTodosConsulta.TabIndex = 0;
             this.rbTodosConsulta.Text = "Todos";
             this.rbTodosConsulta.UseVisualStyleBackColor = true;
             this.rbTodosConsulta.CheckedChanged += new System.EventHandler(this.rbTodosConsulta_CheckedChanged);
+            // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(1336, 607);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(90, 62);
+            this.btnAyuda.TabIndex = 82;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
             // 
             // FormGestionUsuario941lp
             // 
@@ -384,6 +395,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1652, 856);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelModo);
             this.Controls.Add(this.txtModo);
@@ -449,5 +461,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbActivosConsulta;
         private System.Windows.Forms.RadioButton rbTodosConsulta;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

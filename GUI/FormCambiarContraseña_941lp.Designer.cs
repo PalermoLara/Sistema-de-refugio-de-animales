@@ -37,6 +37,7 @@
             this.txtContraseñaConfirmacion = new System.Windows.Forms.TextBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.checkBoxMostrarConstraseñas = new System.Windows.Forms.CheckBox();
+            this.btnAyuda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelContraseñaActual
@@ -45,7 +46,7 @@
             this.labelContraseñaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelContraseñaActual.Location = new System.Drawing.Point(26, 180);
             this.labelContraseñaActual.Name = "labelContraseñaActual";
-            this.labelContraseñaActual.Size = new System.Drawing.Size(387, 37);
+            this.labelContraseñaActual.Size = new System.Drawing.Size(190, 20);
             this.labelContraseñaActual.TabIndex = 0;
             this.labelContraseñaActual.Text = "CONTRASEÑA ACTUAL:";
             // 
@@ -55,7 +56,7 @@
             this.labelContraseñaConfirmacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelContraseñaConfirmacion.Location = new System.Drawing.Point(26, 400);
             this.labelContraseñaConfirmacion.Name = "labelContraseñaConfirmacion";
-            this.labelContraseñaConfirmacion.Size = new System.Drawing.Size(451, 37);
+            this.labelContraseñaConfirmacion.Size = new System.Drawing.Size(224, 20);
             this.labelContraseñaConfirmacion.TabIndex = 1;
             this.labelContraseñaConfirmacion.Text = "CONFIRMAR CONTRASEÑA:";
             // 
@@ -65,7 +66,7 @@
             this.labelContraseñaNueva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelContraseñaNueva.Location = new System.Drawing.Point(26, 290);
             this.labelContraseñaNueva.Name = "labelContraseñaNueva";
-            this.labelContraseñaNueva.Size = new System.Drawing.Size(371, 37);
+            this.labelContraseñaNueva.Size = new System.Drawing.Size(183, 20);
             this.labelContraseñaNueva.TabIndex = 2;
             this.labelContraseñaNueva.Text = "CONTRASEÑA NUEVA:";
             // 
@@ -119,11 +120,21 @@
             this.checkBoxMostrarConstraseñas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxMostrarConstraseñas.Location = new System.Drawing.Point(504, 454);
             this.checkBoxMostrarConstraseñas.Name = "checkBoxMostrarConstraseñas";
-            this.checkBoxMostrarConstraseñas.Size = new System.Drawing.Size(342, 41);
+            this.checkBoxMostrarConstraseñas.Size = new System.Drawing.Size(174, 24);
             this.checkBoxMostrarConstraseñas.TabIndex = 14;
             this.checkBoxMostrarConstraseñas.Text = "Mostrar contraseñas";
             this.checkBoxMostrarConstraseñas.UseVisualStyleBackColor = true;
             this.checkBoxMostrarConstraseñas.CheckedChanged += new System.EventHandler(this.checkBoxMostrarConstraseñas_CheckedChanged);
+            // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(493, 650);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(90, 66);
+            this.btnAyuda.TabIndex = 105;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
             // 
             // FormCambiarContraseña_941lp
             // 
@@ -131,6 +142,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1522, 745);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.checkBoxMostrarConstraseñas);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.txtContraseñaConfirmacion);
@@ -159,5 +171,6 @@
         private System.Windows.Forms.TextBox txtContraseñaConfirmacion;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.CheckBox checkBoxMostrarConstraseñas;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

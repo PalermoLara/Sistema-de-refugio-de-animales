@@ -56,6 +56,7 @@
             this.labelVivienda = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataAdoptantes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataEvaluacion)).BeginInit();
             this.SuspendLayout();
@@ -63,10 +64,10 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(666, 441);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Location = new System.Drawing.Point(1332, 848);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(218, 30);
+            this.btnCancelar.Size = new System.Drawing.Size(436, 58);
             this.btnCancelar.TabIndex = 57;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -75,10 +76,10 @@
             // btnAplicar
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(665, 399);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAplicar.Location = new System.Drawing.Point(1330, 767);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(218, 32);
+            this.btnAplicar.Size = new System.Drawing.Size(436, 62);
             this.btnAplicar.TabIndex = 56;
             this.btnAplicar.Text = "Aplicar";
             this.btnAplicar.UseVisualStyleBackColor = true;
@@ -87,10 +88,10 @@
             // btnModificarEvaluacion
             // 
             this.btnModificarEvaluacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarEvaluacion.Location = new System.Drawing.Point(666, 355);
-            this.btnModificarEvaluacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificarEvaluacion.Location = new System.Drawing.Point(1332, 683);
+            this.btnModificarEvaluacion.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificarEvaluacion.Name = "btnModificarEvaluacion";
-            this.btnModificarEvaluacion.Size = new System.Drawing.Size(218, 31);
+            this.btnModificarEvaluacion.Size = new System.Drawing.Size(436, 60);
             this.btnModificarEvaluacion.TabIndex = 54;
             this.btnModificarEvaluacion.Text = "Modificar ";
             this.btnModificarEvaluacion.UseVisualStyleBackColor = true;
@@ -98,26 +99,26 @@
             // 
             // txtVivienda
             // 
-            this.txtVivienda.Location = new System.Drawing.Point(695, 226);
-            this.txtVivienda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtVivienda.Location = new System.Drawing.Point(1390, 435);
+            this.txtVivienda.Margin = new System.Windows.Forms.Padding(4);
             this.txtVivienda.Name = "txtVivienda";
-            this.txtVivienda.Size = new System.Drawing.Size(190, 20);
+            this.txtVivienda.Size = new System.Drawing.Size(376, 31);
             this.txtVivienda.TabIndex = 49;
             // 
             // txtMotivo
             // 
-            this.txtMotivo.Location = new System.Drawing.Point(45, 227);
-            this.txtMotivo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMotivo.Location = new System.Drawing.Point(90, 437);
+            this.txtMotivo.Margin = new System.Windows.Forms.Padding(4);
             this.txtMotivo.Name = "txtMotivo";
-            this.txtMotivo.Size = new System.Drawing.Size(190, 20);
+            this.txtMotivo.Size = new System.Drawing.Size(376, 31);
             this.txtMotivo.TabIndex = 48;
             // 
             // labelMotivo
             // 
             this.labelMotivo.AutoSize = true;
             this.labelMotivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMotivo.Location = new System.Drawing.Point(12, 207);
-            this.labelMotivo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMotivo.Location = new System.Drawing.Point(24, 398);
+            this.labelMotivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMotivo.Name = "labelMotivo";
             this.labelMotivo.Size = new System.Drawing.Size(53, 17);
             this.labelMotivo.TabIndex = 52;
@@ -126,10 +127,10 @@
             // btnGenerarEvaluacion
             // 
             this.btnGenerarEvaluacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarEvaluacion.Location = new System.Drawing.Point(664, 295);
-            this.btnGenerarEvaluacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGenerarEvaluacion.Location = new System.Drawing.Point(1328, 567);
+            this.btnGenerarEvaluacion.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerarEvaluacion.Name = "btnGenerarEvaluacion";
-            this.btnGenerarEvaluacion.Size = new System.Drawing.Size(218, 49);
+            this.btnGenerarEvaluacion.Size = new System.Drawing.Size(436, 94);
             this.btnGenerarEvaluacion.TabIndex = 51;
             this.btnGenerarEvaluacion.Text = "Generar evaluación del adoptante";
             this.btnGenerarEvaluacion.UseVisualStyleBackColor = true;
@@ -149,13 +150,13 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            this.dataAdoptantes.Location = new System.Drawing.Point(14, 295);
-            this.dataAdoptantes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataAdoptantes.Location = new System.Drawing.Point(28, 567);
+            this.dataAdoptantes.Margin = new System.Windows.Forms.Padding(4);
             this.dataAdoptantes.Name = "dataAdoptantes";
             this.dataAdoptantes.ReadOnly = true;
             this.dataAdoptantes.RowHeadersWidth = 82;
             this.dataAdoptantes.RowTemplate.Height = 33;
-            this.dataAdoptantes.Size = new System.Drawing.Size(640, 220);
+            this.dataAdoptantes.Size = new System.Drawing.Size(1280, 423);
             this.dataAdoptantes.TabIndex = 83;
             // 
             // dataGridViewTextBoxColumn1
@@ -225,10 +226,10 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(666, 486);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalir.Location = new System.Drawing.Point(1332, 935);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(218, 30);
+            this.btnSalir.Size = new System.Drawing.Size(436, 58);
             this.btnSalir.TabIndex = 84;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -245,13 +246,13 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataEvaluacion.Location = new System.Drawing.Point(14, 32);
-            this.dataEvaluacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataEvaluacion.Location = new System.Drawing.Point(28, 62);
+            this.dataEvaluacion.Margin = new System.Windows.Forms.Padding(4);
             this.dataEvaluacion.Name = "dataEvaluacion";
             this.dataEvaluacion.ReadOnly = true;
             this.dataEvaluacion.RowHeadersWidth = 82;
             this.dataEvaluacion.RowTemplate.Height = 33;
-            this.dataEvaluacion.Size = new System.Drawing.Size(870, 171);
+            this.dataEvaluacion.Size = new System.Drawing.Size(1740, 329);
             this.dataEvaluacion.TabIndex = 85;
             this.dataEvaluacion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEvaluacion_CellClick);
             // 
@@ -299,8 +300,8 @@
             // 
             this.labelCondicionEconomica.AutoSize = true;
             this.labelCondicionEconomica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCondicionEconomica.Location = new System.Drawing.Point(274, 207);
-            this.labelCondicionEconomica.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCondicionEconomica.Location = new System.Drawing.Point(548, 398);
+            this.labelCondicionEconomica.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCondicionEconomica.Name = "labelCondicionEconomica";
             this.labelCondicionEconomica.Size = new System.Drawing.Size(146, 17);
             this.labelCondicionEconomica.TabIndex = 86;
@@ -313,46 +314,59 @@
             this.comboBoxCondicionEco.Items.AddRange(new object[] {
             "Buena",
             "Mala"});
-            this.comboBoxCondicionEco.Location = new System.Drawing.Point(370, 226);
-            this.comboBoxCondicionEco.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxCondicionEco.Location = new System.Drawing.Point(740, 435);
+            this.comboBoxCondicionEco.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCondicionEco.Name = "comboBoxCondicionEco";
-            this.comboBoxCondicionEco.Size = new System.Drawing.Size(194, 21);
+            this.comboBoxCondicionEco.Size = new System.Drawing.Size(384, 33);
             this.comboBoxCondicionEco.TabIndex = 87;
             // 
             // labelVivienda
             // 
             this.labelVivienda.AutoSize = true;
-            this.labelVivienda.Location = new System.Drawing.Point(660, 213);
-            this.labelVivienda.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelVivienda.Location = new System.Drawing.Point(1320, 410);
+            this.labelVivienda.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelVivienda.Name = "labelVivienda";
-            this.labelVivienda.Size = new System.Drawing.Size(48, 13);
+            this.labelVivienda.Size = new System.Drawing.Size(95, 25);
             this.labelVivienda.TabIndex = 88;
             this.labelVivienda.Text = "Vivienda";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(24, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.Size = new System.Drawing.Size(147, 25);
             this.label1.TabIndex = 89;
             this.label1.Text = "Evaluaciones:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 270);
+            this.label2.Location = new System.Drawing.Point(22, 519);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(127, 25);
             this.label2.TabIndex = 90;
             this.label2.Text = "Adoptantes:";
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(1678, 478);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(90, 66);
+            this.btnAyuda.TabIndex = 99;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormEvaluacionDelAdoptante_941lp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(142)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(930, 547);
+            this.ClientSize = new System.Drawing.Size(1860, 1052);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelVivienda);
@@ -368,7 +382,7 @@
             this.Controls.Add(this.txtMotivo);
             this.Controls.Add(this.labelMotivo);
             this.Controls.Add(this.btnGenerarEvaluacion);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormEvaluacionDelAdoptante_941lp";
             this.Text = "FormEvaluacionDelAdoptante_941lp";
             this.Load += new System.EventHandler(this.FormEvaluacionDelAdoptante_941lp_Load);
@@ -409,5 +423,6 @@
         private System.Windows.Forms.Label labelVivienda;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

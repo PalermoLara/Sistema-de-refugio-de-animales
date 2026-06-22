@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -508,6 +509,12 @@ namespace GUI
             MostrarGrillaCedentes_941lp(bllCedente_941lp.RetornarCedentes_941lp());
             modo_941lp = ModoOperacion_941lp.Consulta;
             ModoAceptarCancelar_941lp();
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            string url = "https://docs.google.com/document/d/1j5AR3nS1CD2I-xyaW_7rPCf6-4WdFzHvhaq5q_U_rDQ/edit?tab=t.0#heading=h.cg19xld52ksf";
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
     }
 }
